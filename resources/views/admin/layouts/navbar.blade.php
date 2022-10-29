@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top" style="position:static; z-index:-1">
+<nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top" style="position:static; z-index:-1; background-color:  #2a3f4e"> {{-- edit (bg-color) --}}
     <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
         <i class="fa fa-bars"></i>
     </button>

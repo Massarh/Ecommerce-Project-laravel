@@ -11,7 +11,7 @@
     </div>
     <!-- Breadcrumb -->
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center ">
 
         @if (Session::has('message')) {{-- to show the message --}}
             <div class="alert alert-success">
@@ -50,7 +50,7 @@
                         </div>
 
                         {{-- Image --}}
-                        <div class="form-group">
+                        <div class="form-group ">
                             <div class="custom-file">
                                 <label for="customFile" class="custom-file-label">Choose file</label>
                                 <input id="customFile" name="image" type="file" class="custom-file-input @error('image') is-invalid @enderror">
