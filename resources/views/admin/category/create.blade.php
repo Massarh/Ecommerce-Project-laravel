@@ -27,28 +27,35 @@
                         <h6 class="m-0 font-weight-bold text-primary">Create Category</h6>
                     </div>
                     <div class="card-body">
+                        {{-- Name --}}
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror" aria-describedby="" placeholder="Enter name of categry">
+                            <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror" aria-describedby="" placeholder="Enter name of categry" value="{{ old('name') }}">
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
+
+                        {{-- Description --}}
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <textarea id="description" name="description" class="form-control @error('description') is-invalid @enderror"></textarea>
+                            <textarea id="description" name="description" class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
+
+                        {{-- Image --}}
                         <div class="form-group">
                             <div class="custom-file">
                                 <label for="customFile" class="custom-file-label">Choose file</label>
                                 <input id="customFile" name="image" type="file" class="custom-file-input @error('image') is-invalid @enderror">
+
+                                <img src="" value="{{ old('image') }}">
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -57,6 +64,7 @@
                             </div>
                         </div>
 
+                        {{-- Button --}}
                         <button type="submit" class="btn btn-primary">Submit</button>
 
                     </div>

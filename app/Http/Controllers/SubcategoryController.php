@@ -29,14 +29,14 @@ class SubcategoryController extends Controller
             'name'=>'required|min:3',
             'category'=>'required', // <select name="category" ...>
         ]);
-        $a = Subcategory::create([
+        Subcategory::create([  /*$a =*/
             'name'=>$request->name,
             'category_id'=>$request->category // category_id : column name in db
-            // category: <select name="category" ...>
+                                            //category: <select name="category" ...>
         ]);
         notify()->success('SubCategory created successfully');
-        // return redirect()->route('subcategory.index');
-        return $a;
+        return redirect()->route('subcategory.index');
+        //return $a; // {"name":"lenove","category_id":"1","updated_at":"2022-10-24T06:39:26.000000Z","created_at":"2022-10-24T06:39:26.000000Z","id":1}
     }
 
 // ----------------------------------------------------------------------------

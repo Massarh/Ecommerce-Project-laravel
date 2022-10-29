@@ -27,15 +27,18 @@
                         <h6 class="m-0 font-weight-bold text-primary">Create Subcategory</h6>
                     </div>
                     <div class="card-body">
+                        {{-- Name --}}
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror" aria-describedby="" placeholder="Enter name of subcategry">
+                            <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror" aria-describedby="" placeholder="Enter name of subcategry" value="{{ old('name') }}">
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
+
+                        {{-- Category --}}
                         <div class="form-group">
                             <div class="custom-file">
                                 <label>Choose Category</label>
@@ -53,6 +56,7 @@
                             </div>
                         </div>
 
+                        {{-- button --}}
                         <button type="submit" class="btn btn-primary">Submit</button>
 
                     </div>

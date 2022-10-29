@@ -15,14 +15,15 @@ class CategoryController extends Controller
         return view('admin.category.index', compact('categories'));
     }
 
-// ----------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------
 
     public function create()
     {
-        return view('admin.category.create');
+        $category = Category::all();
+        return view('admin.category.create', compact('category'));
     }
 
-// ----------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------
 
     public function store(Request $request)
     {
@@ -30,7 +31,7 @@ class CategoryController extends Controller
             'name'        => 'required|unique:categories',
             'description' => 'required',
             'image'       => 'required||mimes:png,jpg', // \/ 
-            // اذا دخلت صوره امتدادها مو اول قيمه انا معطيته اياها ما برضا ياخذها ولا المشكلة من الصور نفسها
+            // mimes:png,jpg --> لازم يكون قيمتين/نوعين امتداد فقط غير هيك بصير ياخد اوا نوع امتداد كتبته
         ]);
 
         $image = $request->file('image')->store('public/files');
@@ -46,42 +47,71 @@ class CategoryController extends Controller
         return redirect()->route('category.index');
     }
 
-// ----------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------
 
     public function show($id)
     {
         //
     }
 
-// ----------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------
 
     public function edit($id)
     {
         $category = Category::find($id);
         return view('admin.category.edit', compact('category'));
     }
-// ----------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------
 
     public function update(Request $request, $id)
-    {
-        $category = Category::find($id);
-        $image = $category->image;
-        // if($category->file('image')) //image is name input in file edit
-        // { // to edit the image of folder files-in-public
-        //     $image = $request->file('image')->store('public/files');
-        //     Storage::delete($category->image);
-        // }
+    { // both ways right
+        //  way 1
+        $category = Category::find($id); //first we find the category
+        $image = $category->image; //then we go to the image of that cat id
 
+        if ($request->file('image')) { //new or old imahe condition
+
+            $image = $request->file('image')->store(
+                'public/files'
+            );
+
+            Storage::delete($category->image);
+        }
+        //things to be updated 
         $category->name        =  $request->name;
         $category->description =  $request->description;
         $category->image       =  $image;
-        $category->save(); 
+        $category->save();
+
+        //Notification 
+        notify()->success('Category updated successfully');
+        return redirect()->route('category.index');
+
+        //  way 2
+        $category = Category::find($id);
+        $filename = $category->image; // 
+        if ($request->file('image')) //image is name input in file edit
+        { // to edit the image of folder files-in-public
+            $image = $request->file('image')->store('public/files');
+            Storage::delete($filename); //$category->image
+
+            //to updated with image
+            $category->name        =  $request->name;
+            $category->description =  $request->description;
+            $category->image       =  $image;
+            $category->save();
+        } else {
+            //to updated without image
+            $category->name        =  $request->name;
+            $category->description =  $request->description;
+            $category->save();
+        }
 
         notify()->success('Category updated successfully');
         return redirect()->route('category.index');
     }
 
-// ----------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------
 
     public function destroy($id)
     {
@@ -97,8 +127,8 @@ class CategoryController extends Controller
         // return redirect()->route('category.index');
     }
 
-    
-// ----------------------------------------------------------------------------
+
+    // ----------------------------------------------------------------------------
     public function tests($request)
     {
         $request->validate([

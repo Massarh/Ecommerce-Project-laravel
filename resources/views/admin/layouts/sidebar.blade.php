@@ -47,6 +47,22 @@
             </div>
         </div>
     </li>
+
+    <!-- Product -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap2"
+        aria-expanded="true" aria-controls="collapseBootstrap2">
+        <i class="far fa-fw fa-window-maximize"></i>
+        <span>Products</span>
+        </a>
+        <div id="collapseBootstrap2" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Products</h6>
+                <a class="collapse-item" href=" {{ route('product.index') }} ">View</a>
+                <a class="collapse-item" href=" {{ route('product.create') }} ">Create</a>
+            </div>
+        </div>
+    </li>
     
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"
@@ -102,12 +118,22 @@
         </div>
         </div>
     </li>
+
+    {{-- Logout --}}
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-        <i class="fas fa-fw fa-chart-area"></i>
-        <span>Charts</span>
+        
+        <a class="dropdown-item" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                <i class="fas fa-fw fa-chart-area"></i>Logout
         </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
+
     </li>
+
     <hr class="sidebar-divider">
     <div class="version" id="version-ruangadmin"></div>
 </ul>

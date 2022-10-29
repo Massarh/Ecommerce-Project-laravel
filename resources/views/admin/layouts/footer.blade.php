@@ -15,14 +15,42 @@
     <script src="{{asset('admin/js/ruang-admin.min.js')}}"></script>
     <script src="{{asset('admin/vendor/chart.js/Chart.min.js')}}"></script>
     <script src="{{asset('admin/js/demo/chart-area-demo.js')}}"></script>  
+    {{-- include summernote css/js --}}
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    {{-- Page level plugins --}}
+    <script src="{{asset('admin/vendor/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('admin/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
 
-    {{-- <script type="text/javascript">
+
+
+    {{-- onsubmit (ما زبطت معي) --}}
+    <script type="text/javascript">
         function confirmDelete(){
-            console.log("massarh");
-            let a = confirm('Are you sure you want to delete?');
-            console.log(a);
+            return confirm('Are you sure you want to delete?')
         }
-    </script> --}}
+    </script>
+
+    {{-- summernote to description --}}
+    <script>
+        $(document).ready(function() {
+        $('#summernote').summernote();
+        });
+    </script>
+
+    {{-- summernote to additional_info --}}
+    <script>
+        $(document).ready(function() {
+        $('#summernote1').summernote();
+        });
+    </script>
+
+    <!-- Page level custom scripts -->
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable(); // ID From dataTable 
+            $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+        });
+    </script>
 
 </body>
 
