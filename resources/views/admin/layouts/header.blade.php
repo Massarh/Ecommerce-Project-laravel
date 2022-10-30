@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="{{asset('admin/img/logo/logo1.png')}}" rel="icon">
+    <link href="{{asset('admin/img/logo/logo.jfif')}}" rel="icon">
     <title>GO-Plaza - Dashboard</title>
     {{-- public/admin/vendor --}} 
     <link href="{{asset('admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
