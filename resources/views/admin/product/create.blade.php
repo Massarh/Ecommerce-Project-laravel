@@ -24,7 +24,7 @@
                 @csrf
                 <div class="card mb-6">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Create Product</h6>
+                        <h6 class="m-0 font-weight-bold" style="color: #344f63">Create Product</h6>
                     </div>
                     <div class="card-body">
 
@@ -115,7 +115,7 @@
                         </div>
 
                         {{-- Submit button --}}
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" style="background-color: #344f63">Submit</button>
 
                     </div>
                 </div>
@@ -124,8 +124,8 @@
 
     </div>
 
-    {{-- To associate a category-field and a subcategory --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    {{--To associate a category-field and a subcategory --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script type="text/javascript">
 
         $("document").ready(function() {

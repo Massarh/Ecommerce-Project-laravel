@@ -24,7 +24,7 @@
                 @csrf
                 <div class="card mb-6">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Create Category</h6>
+                        <h6 class="m-0 font-weight-bold" style="color:  #344f63">Create Category</h6>
                     </div>
                     <div class="card-body">
                         {{-- Name --}}
@@ -65,7 +65,7 @@
                         </div>
 
                         {{-- Button --}}
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" style="background-color:  #344f63">Submit</button>
 
                     </div>
                 </div>

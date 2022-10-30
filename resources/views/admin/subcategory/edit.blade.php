@@ -25,7 +25,7 @@
                 @method('PUT')
                 <div class="card mb-6">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Update Subcategory</h6>
+                        <h6 class="m-0 font-weight-bold" style="color: #344f63">Update Subcategory</h6>
                     </div>
                     <div class="card-body">
                         <div class="form-group">
@@ -57,7 +57,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="btn btn-primary" style="background-color:  #344f63">Update</button>
 
                     </div>
                 </div>
