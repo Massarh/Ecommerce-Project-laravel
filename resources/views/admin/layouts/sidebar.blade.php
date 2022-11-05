@@ -1,7 +1,7 @@
 <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
     <a class="sidebar-brand d-flex align-items-center justify-content-center " href="index.html" style="background-color: #233744">
         <div class="sidebar-brand-icon">
-        <img src="{{asset('admin/img/logo/logo.jfif')}}">
+            <img src="{{asset('admin/img/logo/logo.jfif')}}">
         </div>
         <div class="sidebar-brand-text mx-3">GO-plaza</div>
     </a>
@@ -81,15 +81,15 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
         aria-controls="collapseTable">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Tables</span>
+            <i class="fas fa-fw fa-table"></i>
+            <span>Tables</span>
         </a>
         <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Tables</h6>
-            <a class="collapse-item" href="simple-tables.html">Simple Tables</a>
-            <a class="collapse-item" href="datatables.html">DataTables</a>
-        </div>
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Tables</h6>
+                <a class="collapse-item" href="simple-tables.html">Simple Tables</a>
+                <a class="collapse-item" href="datatables.html">DataTables</a>
+            </div>
         </div>
     </li>
     <li class="nav-item">
@@ -134,6 +134,6 @@
 
     </li>
 
-    <hr class="sidebar-divider">
-    <div class="version" id="version-ruangadmin"></div>
+    {{-- <hr class="sidebar-divider">
+    <div class="version" id="version-ruangadmin"></div> --}}
 </ul>

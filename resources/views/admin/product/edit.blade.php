@@ -131,37 +131,36 @@
 
     </div>
 
-    {{-- To associate a category-field and a subcategory --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>jquery
-<script>
-    $("document").ready(function() {
+    {{--To associate a category-field and a subcategory --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script type="text/javascript">
 
-        $('select[name="category"]').on('change', function() {
-            var catId = $(this).val(); //catId : category id
-            // alert(catId);
-            if(catId) {
-                $.ajax({
+        $("document").ready(function() {
 
-                    url:'/subcategories'+catId,
-                    type: "GET",
-                    dataType: "json",
-                    success:function(data) {
-                        // alert(data) // 127v-13m
-                        $('select[name="subcategory"]').empty();
-                        $.each(data, function(key, value)) { //key is a subcategory id, value is a  subcategory name 
-                        $('select[name="subcategory"]').append('<option value=" '+key+'">'+value+'</option>');
-                            
+            $('select[name="category"]').on('change', function() {
+                var catId = $(this).val(); //catId : category id
+                // alert(catId);
+                if(catId) {
+                    $.ajax({
+
+                        url:'/subcategories/'+catId,
+                        type: "GET",
+                        dataType: "json",
+                        success:function(data) {
+                            // alert(data) // 127v-13m
+                            $('select[name="subcategory"]').empty();
+                            $.each(data, function(key, value){ //key is a subcategory id, value is a  subcategory name 
+                            $('select[name="subcategory"]').append('<option value=" '+key+'">'+value+'</option>');
+                                
+                            }) 
                         }
-                    }
 
-                })
-            } else{
-                $('select[name="subcategory"]').empty();
-            }
+                    })
+                } else{
+                    $('select[name="subcategory"]').empty();
+                }
+            });
         });
-
-    });
-</script>
-
+    </script>
 
 @endsection

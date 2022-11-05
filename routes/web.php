@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FrontProductListController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
@@ -17,9 +18,14 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::resource('product', FrontProductListController::class);
+Route::get('/', [FrontProductListController::class, 'index']);
+Route::get('/product/{id}', [FrontProductListController::class, 'show'])->name('product.view');// change 'product.show' to 'product.view' because We used "product.show" in the product folder
+Route::get('/category/{name}', [FrontProductListController::class, 'allproduct'])->name('product.list');
 
 
 /** Auth */
@@ -28,7 +34,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 /** Auth */
 
-Route::group(['prefix'=>'auth', 'middleware'=>['auth', 'isAdmin']], function() {
+Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function () {
 
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
@@ -36,7 +42,6 @@ Route::group(['prefix'=>'auth', 'middleware'=>['auth', 'isAdmin']], function() {
     Route::resource('category', CategoryController::class);
     Route::resource('subcategory', SubcategoryController::class);
     Route::resource('product', ProductController::class);
-    
 });
 
 // ?

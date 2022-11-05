@@ -1,3 +1,8 @@
-.bg-color-nav {
-    background: #000;
+/* Medium */
+@media (max-width: 768px) {
+    .card-aside-img {
+        margin-top: 0!important;
+        height: 100%!important; 
+
+    }
 }
