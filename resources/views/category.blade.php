@@ -5,31 +5,33 @@
     <h2>Products</h2>
     <div class="row">
         <div class="col-md-2">
-            <form action="{{ route('product.list', [$slug]) }}" method="GET">
-                {{-- foreach subcategories--}}
-                @foreach ($subcategories as $subcategory)
-                    {{-- ????? --}}
-                <p><input type="checkbox" name="subcategory[]" value="{{ $subcategory->id }}"
-                    @if(isset($filterSubCategories)) {{-- ? --}}
-                        {{ in_array($subcategory->id, $filterSubCategories)?'checked="checked" ' : '' }} 
-                    @endif
-                    >{{ $subcategory->name }}</p>
+            
+        <form action="{{ route('product.list', [$slug]) }}" method="GET">
+            {{-- foreach subcategories--}}
+            @foreach ($subcategories as $subcategory)
+                {{-- Checkbox --}}
+            <p><input type="checkbox" name="subcategory[]" value="{{ $subcategory->id }}"
+                @if(isset($filterSubCategories)) {{-- Filter عشان يضل محدد مين السبكاتيقوري الي محطوت عليه صح بعد ما اكبس على  --}}
+                    {{ in_array($subcategory->id, $filterSubCategories)?'checked="checked" ' : '' }} 
+                @endif
+                > {{ $subcategory->name }}</p>
 
-                @endforeach
-                {{-- endforeach --}}
-                <input type="submit" value="Filter" class="btn btn-success">
-            </form>
-            <hr>
-            <h3>Filter by price</h3>
+            @endforeach
+            {{-- endforeach --}}
+            <input type="submit" value="Filter" class="btn btn-success">
+        </form>
+        <hr>
+        <h3>Filter by price</h3>
 
-            <form action="{{ route('product.list', [$slug]) }}" method="GET">
-                <input type="text" name="min" class="form-control" placeholder="minimum price" required="">
-                <br>
-                <input type="text" name="max" class="form-control" placeholder="maximum price" required="">
-                <input type="hidden" name="categoryId" value="{{ $categoryId }}">
-                <br>
-                <input type="submit" name="Filter" class="btn btn-secondary">
-            </form>
+        <form action="{{ route('product.list', [$slug]) }}" method="GET">
+            <input type="text" name="min" class="form-control" placeholder="minimum price" >
+            <br>
+            <input type="text" name="max" class="form-control" placeholder="maximum price" > 
+            <input type="hidden" name="categoryId" value="{{ $categoryId }}">
+            <br>
+            <input type="submit" name="Filter" class="btn btn-secondary">
+        </form>
+
             <hr>
             <a href="{{route('product.list', [$slug])}}">Back</a>
 
@@ -47,12 +49,13 @@
                             <p class="card-text">
                                 {!! Str::limit($product->description, 120) !!} 
                             </p>
-                            <div class="d-flex justify-content-between-alige-item-center">
+                            
+                            <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <a href="{{ route('product.view',[$product->id]) }}"><button type="button" class="btn btn-sm btn-outline-success">View</button></a>
                                     <button type="button" class="btn btn-sm btn-outline-primary">Add ro card</button>
                                 </div>
-                                <small class="text-muted text-center">${{ $product->price }}</small>
+                                <small class="text-muted">$ {{ $product->price }}</small>
                             </div>
                         </div>
                     </div>

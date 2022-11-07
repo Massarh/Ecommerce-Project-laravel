@@ -34,6 +34,7 @@ class FrontProductListController extends Controller
         //تحت العنصر الي فاتحه id لعرض العناصر الي الهم نفس 
         $productFormSameCategories = Product::inRandomOrder()
         ->where('category_id', $product->category_id)
+        ->whereBetween('price', [$product->price-50, $product->price+50]) // Massarh
         ->where('id', '!=',$product->id) 
         ->limit(3)
         ->get();
@@ -47,13 +48,15 @@ class FrontProductListController extends Controller
     {
         $category = Category::where('slug', $name)->first();
         $categoryId = $category->id;
+        $filterSubCategories=null;
+
         if($request->subcategory) {  // filter products
             $products = $this->filterProducts($request);
             $filterSubCategories = $this->getSubcategoriesId($request);  
             // return $filterSubCategories; //output:: [1,2,3]
             
-        } elseif ($request->min||$request->min) {
-            $products = $this->filterByPrice($request);
+        } elseif ($request->min||$request->max) {
+                $products = $this->filterByPrice($request);
         } else {
 
             $products = Product::where('category_id', $category->id)->get();
@@ -61,8 +64,8 @@ class FrontProductListController extends Controller
         $subcategories = Subcategory::where('category_id', $category->id)->get();
         $slug = $name;
 
-        return view('category', compact('products', 'subcategories', 'slug', 'categoryId'));
-        // return view('category', compact('products', 'subcategories', 'slug', 'filterSubCategories','categoryId')) ;
+        return view('category', compact('products', 'subcategories', 'slug', 'filterSubCategories','categoryId'));
+
     }
 
     // ----------------------------------------------------------------------------
@@ -96,8 +99,15 @@ class FrontProductListController extends Controller
     {
         $categoryId = $request->categoryId;
 
+        if($request->min && $request->max){
         $product = Product::whereBetween('price', [$request->min, $request->max])->where('category_id', $categoryId)->get();
-        return $product;
+        } elseif ($request->min) {
+        $product= Product::where('price', '>', $request->min)->where('category_id', $categoryId)->get();
+        } else { // $request->max
+        $product = Product::where('price', '<', $request->max)->where('category_id', $categoryId)->get();
+        }
+
+        return  $product;
     }
 
 }

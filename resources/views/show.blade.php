@@ -56,7 +56,7 @@
 
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
-                        <img src="{{ Storage::url($product->image) }}" height="200" style="width: 100%"> {{-- using height & width To make all images the same size --}}
+                        <img src="{{ Storage::url($product->image) }}" height="250" style="width: 100%"> {{-- using height & width To make all images the same size --}}
                         <div class="card-body">
                             <p><b>{{ $product->name }}</b></p>
                             <p class="card-text">
