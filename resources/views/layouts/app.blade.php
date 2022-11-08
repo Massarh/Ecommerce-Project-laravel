@@ -13,10 +13,16 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    {{-- My Style --}}
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    {{-- Notification --}}  <!--ليشش css بتضرب-->
+    {{-- @notifyCss 
+        <x:notify-messages />
+    @notifyJs --}}
 </head>
 <body>
     <div id="app">
@@ -40,8 +46,10 @@
                         <!-- Authentication Links -->
 
                         {{-- Shopping Cart --}}
-                        <a href="#" class="nav-link">
-                            <span class="fas fa-shopping-cart">0</span>
+                        <a href="{{ route('cart.show') }}" class="nav-link">
+                            <span class="fas fa-shopping-cart">
+                                ({{session()->has('cart')?session()->get('cart')->totalQuantity:'0'}})
+                            </span>
                         </a>
                         {{-- Shopping Cart --}}
 

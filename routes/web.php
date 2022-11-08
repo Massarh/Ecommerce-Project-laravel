@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\FrontProductListController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\FrontProductListController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -22,10 +23,16 @@ use Illuminate\Support\Facades\Auth;
 //     return view('welcome');
 // });
 
-// Route::resource('product', FrontProductListController::class);
+// FrontProductListController
 Route::get('/', [FrontProductListController::class, 'index']);
 Route::get('/product/{id}', [FrontProductListController::class, 'show'])->name('product.view');// change 'product.show' to 'product.view' because We used "product.show" in the product folder
 Route::get('/category/{name}', [FrontProductListController::class, 'allproduct'])->name('product.list');
+
+// CartController
+Route::get('/addToCart/{product}', [CartController::class, 'addToCart'])->name('add.cart');
+Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
+Route::post('/products/{product}', [CartController::class, 'updateCart'])->name('cart.update');
+Route::post('/product/{product}', [CartController::class, 'removeCart'])->name('cart.remove');
 
 
 /** Auth */
