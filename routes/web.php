@@ -33,6 +33,12 @@ Route::get('/addToCart/{product}', [CartController::class, 'addToCart'])->name('
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
 Route::post('/products/{product}', [CartController::class, 'updateCart'])->name('cart.update');
 Route::post('/product/{product}', [CartController::class, 'removeCart'])->name('cart.remove');
+    //payment 
+Route::get('/checkout/{amount}', [CartController::class, 'checkout'])->name('cart.checkout')->middleware('auth'); // must login
+Route::post('/charge', [CartController::class, 'charge'])->name('cart.charge'); 
+Route::get('/orders', [CartController::class, 'order'])->name('order')->middleware('auth');  
+// END CartController
+
 
 
 /** Auth */

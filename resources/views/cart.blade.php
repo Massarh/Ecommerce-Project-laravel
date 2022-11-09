@@ -54,7 +54,9 @@
             <div class="card-footer">
                 <button class="btn btn-primary">Continue Shopping</button>
                 <span style="margin-left:300px;">Total Price: ${{$cart->totalPrice}}</span>{{--What is the alternative to using margin-left ??--}} 
-                <button class="btn btn-info float-right">Checkout</button> {{--  float-right?? --}}
+                <a href="{{route('cart.checkout', $cart->totalPrice)}}">
+                    <button class="btn btn-info float-right">Checkout</button> {{--  float-right?? --}}
+                </a>
             </div>			
         </div>
         @else
