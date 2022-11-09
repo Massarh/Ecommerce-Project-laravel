@@ -22,7 +22,12 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('home');
+    { 
+        // if logining (Admin) -> (auth/dashboard)
+        if(auth()->user()->is_admin==1){
+            return redirect()->to('auth/dashboard');
+        }
+        // if logining (User) -> (main page)
+        return redirect()->to('/');
     }
 }

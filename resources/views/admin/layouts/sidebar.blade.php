@@ -64,7 +64,21 @@
         </div>
     </li>
     
+    <!-- User -->
     <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap4"
+        aria-expanded="true" aria-controls="collapseBootstrap4">
+        <i class="far fa-fw fa-window-maximize"></i>
+        <span>Users</span>
+        </a>
+        <div id="collapseBootstrap4" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Users</h6>
+                <a class="collapse-item" href=" {{ route('user.index') }} ">View all users</a>
+            </div>
+        </div>
+    </li>
+    {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"
         aria-controls="collapseForm">
         <i class="fab fa-fw fa-wpforms"></i>
@@ -117,7 +131,7 @@
             <a class="collapse-item" href="blank.html">Blank Page</a>
         </div>
         </div>
-    </li>
+    </li> --}}
 
     {{-- Logout --}}
     <li class="nav-item">
@@ -125,7 +139,7 @@
         <a class="dropdown-item" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
-                <i class="fas fa-fw fa-chart-area"></i>Logout
+                <i class="fas fa-sign-out-alt"></i>Logout
         </a>
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

@@ -6,6 +6,7 @@ use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FrontProductListController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -39,6 +40,8 @@ Route::post('/charge', [CartController::class, 'charge'])->name('cart.charge');
 Route::get('/orders', [CartController::class, 'order'])->name('order')->middleware('auth');  
 // END CartController
 
+// UserController
+Route::get('/users', [UserController::class, 'index'])->name('user.index');
 
 
 /** Auth */
@@ -54,10 +57,11 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
     });
     Route::resource('category', CategoryController::class);
     Route::resource('subcategory', SubcategoryController::class);
-    Route::resource('product', ProductController::class);
+    Route::resource('product', ProductController::class); 
+
 });
 
-// ?
+// 
 Route::get('subcategories/{id}', [ProductController::class, 'loadSubCategories']);
 
 

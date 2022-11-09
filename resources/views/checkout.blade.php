@@ -77,7 +77,7 @@
                 @csrf
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" name="name" id="name" class="form-control" required="">
+                    <input type="text" name="name" id="name" class="form-control" required="" value="{{auth()->user()->name}}" readonly>
                 </div>
                 
                 <div class="form-group">

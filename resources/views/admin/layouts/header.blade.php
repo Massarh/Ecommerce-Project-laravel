@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="{{asset('admin/img/logo/logo.jfif')}}" rel="icon">
-    <title>GO-Plaza - Dashboard</title>
+    <title>Dashboard</title>
     {{-- public/admin/vendor --}} 
     <link href="{{asset('admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('admin/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
