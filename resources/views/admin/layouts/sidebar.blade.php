@@ -7,7 +7,7 @@
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{route('dashboard')}}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
     </li>
@@ -75,6 +75,21 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Users</h6>
                 <a class="collapse-item" href=" {{ route('user.index') }} ">View all users</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Order -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap5"
+        aria-expanded="true" aria-controls="collapseBootstrap5">
+        <i class="far fa-fw fa-window-maximize"></i>
+        <span>User Order</span>
+        </a>
+        <div id="collapseBootstrap5" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Order</h6>
+                <a class="collapse-item" href=" {{ route('order.index') }} ">View</a>
             </div>
         </div>
     </li>

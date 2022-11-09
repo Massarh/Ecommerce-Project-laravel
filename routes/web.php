@@ -54,10 +54,13 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
 
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
-    });
+    })->name('dashboard');
     Route::resource('category', CategoryController::class);
     Route::resource('subcategory', SubcategoryController::class);
     Route::resource('product', ProductController::class); 
+
+    Route::get('/orders', [CartController::class, 'userOrder'])->name('order.index');
+    Route::get('/orders/{userid}/{orderid}', [CartController::class, 'viewUserOrder'])->name('user.order');  // {id} is user id
 
 });
 

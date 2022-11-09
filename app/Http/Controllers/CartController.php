@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
@@ -98,6 +99,7 @@ class CartController extends Controller
         }
     }
 
+    // For Loggedin User
     public function order()
     {
         $orders = auth()->user()->orders;
@@ -106,5 +108,27 @@ class CartController extends Controller
             return unserialize($cart->cart);
         });
         return view('order', compact('carts'));
+    }
+
+//////////////////////////////////////////////////////////////
+/////////////////For Admin///////////////////////////////////
+////////////////////////////////////////////////////////////
+
+    // For Admin
+    public function userOrder()
+    {
+        $orders = Order::latest()->get();
+        return view('admin.order.index', compact('orders'));
+    }
+
+    public function viewUserOrder($userid, $orderid)
+    {
+        // return $orderid;
+        $user = User::find($userid);
+        $orders = $user->orders->where('id', $orderid);
+        $carts = $orders->transform(function ($cart, $key) {
+            return unserialize($cart->cart);
+        });
+        return view('admin.order.show', compact('carts'));
     }
 }
