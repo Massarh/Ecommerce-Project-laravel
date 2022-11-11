@@ -5,16 +5,28 @@
 <div class="container">
     <main role="main">
 
-    <section class="jumbotron text-center" style="padding: 4rem 2rem; margin-bottom: 2rem; background-color: #e9ecef; border-radius: 0.3rem;">
-        <div class="container">
-        <h1>Album example</h1>
-        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-        <p>
-            <a href="#" class="btn btn-primary my-2">Main call to action</a>
-            <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-        </p>
+    {{-- dynamic Slider --}}
+        <div class="container" >
+            <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                
+                @foreach($sliders as $key=>$slider)
+                <div class="carousel-inner">
+                    <div class="carousel-item {{$key == 0 ? 'active' : ''}}">
+                        <img src="{{Storage::url($slider->image)}}" height="400">
+                    </div>
+                </div>
+                @endforeach
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
         </div>
-    </section>
 
     <h2>Category</h2>
 
@@ -41,7 +53,7 @@
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a href="product/{{ $product->id }}"> {{-- to go to 'show.blade.php' file --}}
+                                    <a href="{{route('product.view',[$product->id])}}"> {{-- to go to 'show.blade.php' file --}}
                                     <button type="button" class="btn btn-sm btn-outline-success">View</button>
                                     </a>
                                     <a href="{{ route('add.cart', [$product->id]) }}">
