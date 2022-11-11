@@ -107,7 +107,23 @@ class FrontProductListController extends Controller
         $product = Product::where('price', '<', $request->max)->where('category_id', $categoryId)->get();
         }
 
-        return  $product;
+        return $product;
+    }
+
+    // ----------------------------------------------------------------------------
+// to search product
+    public function moreProducts(Request $request)
+    {
+        if ($request->search) {
+            $products = Product::where('name', 'like', '%'.$request->search.'%')
+            ->orWhere('description', 'like', '%'.$request->search.'%')
+            ->orWhere('additional_info', 'like', '%'.$request->search.'%')
+            ->paginate(50); // SQL
+            return view('all-product', compact("products"));
+            /*SELECT count(*) AS aggregate FROM `products` WHERE `name` LIKE % This IS % OR `description` LIKE % This IS %*/
+        }
+        $products = Product::latest()->paginate(50);
+        return view('all-product', compact("products"));
     }
 
 }

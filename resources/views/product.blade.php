@@ -56,6 +56,9 @@
 
                 @endforeach
             </div>
+            <a href="{{route('more.product')}}" >
+                <button style="text-align: center;" class="btn btn-success">More Product</button>
+            </a>
         </div>
     </div>
 

@@ -48,7 +48,9 @@
                         {{-- Shopping Cart --}}
                         <a href="{{ route('cart.show') }}" class="nav-link">
                             <span class="fas fa-shopping-cart">
+                                <sup>
                                 ({{session()->has('cart')?session()->get('cart')->totalQuantity:'0'}})
+                                </sup>
                             </span>
                         </a>
                         {{-- Shopping Cart --}}

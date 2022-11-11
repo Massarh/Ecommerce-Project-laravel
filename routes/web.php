@@ -28,6 +28,8 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', [FrontProductListController::class, 'index']);
 Route::get('/product/{id}', [FrontProductListController::class, 'show'])->name('product.view');// change 'product.show' to 'product.view' because We used "product.show" in the product folder
 Route::get('/category/{name}', [FrontProductListController::class, 'allproduct'])->name('product.list');
+    // to search product
+Route::get('/all/products', [FrontProductListController::class, 'moreProducts'])->name('more.product');
 
 // CartController
 Route::get('/addToCart/{product}', [CartController::class, 'addToCart'])->name('add.cart');
