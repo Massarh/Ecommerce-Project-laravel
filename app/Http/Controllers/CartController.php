@@ -8,6 +8,8 @@ use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Sendmail;
 
 class CartController extends Controller
 {
@@ -86,6 +88,15 @@ class CartController extends Controller
         ]);
 
         $chargeId = $charge['id'];
+        // ************/
+        if(session()->has('cart')){
+            $cart = new Cart(session()->get('cart'));
+        }else{
+            $cart = null;
+        } 
+        Mail::to(auth()->user()->email)->send(new Sendmail($cart));
+
+
         if ($chargeId) {
             auth()->user()->orders()->create([ // orders() in App\Models\User.php
                 'cart' => serialize(session()->get('cart')) //serialize()??
