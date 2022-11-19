@@ -3,7 +3,7 @@
 @section('content')
 
 {{-- CSS from "stripe DOCS"--}}
-<style>
+{{-- <style>
     .StripeElement {
         box-sizing: border-box;
 
@@ -31,7 +31,7 @@
     .StripeElement--webkit-autofill {
         background-color: #fefde5 !important;
     }
-</style>
+</style> --}}
 
 <div class="container">
 <div class="row">

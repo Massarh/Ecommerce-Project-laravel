@@ -88,27 +88,27 @@ class CategoryController extends Controller
         return redirect()->route('category.index');
 
         //  way 2
-        $category = Category::find($id);
-        $filename = $category->image; // 
-        if ($request->file('image')) //image is name input in file edit
-        { // to edit the image of folder files-in-public
-            $image = $request->file('image')->store('public/files');
-            Storage::delete($filename); //$category->image
+        // $category = Category::find($id);
+        // $filename = $category->image; // 
+        // if ($request->file('image')) //image is name input in file edit
+        // { // to edit the image of folder files-in-public
+        //     $image = $request->file('image')->store('public/files');
+        //     Storage::delete($filename); //$category->image
 
-            //to updated with image
-            $category->name        =  $request->name;
-            $category->description =  $request->description;
-            $category->image       =  $image;
-            $category->save();
-        } else {
-            //to updated without image
-            $category->name        =  $request->name;
-            $category->description =  $request->description;
-            $category->save();
-        }
+        //     //to updated with image
+        //     $category->name        =  $request->name;
+        //     $category->description =  $request->description;
+        //     $category->image       =  $image;
+        //     $category->save();
+        // } else {
+        //     //to updated without image
+        //     $category->name        =  $request->name;
+        //     $category->description =  $request->description;
+        //     $category->save();
+        // }
 
-        notify()->success('Category updated successfully');
-        return redirect()->route('category.index');
+        // notify()->success('Category updated successfully');
+        // return redirect()->route('category.index');
     }
 
     // ----------------------------------------------------------------------------

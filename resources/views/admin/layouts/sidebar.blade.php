@@ -165,7 +165,7 @@
     </li> --}}
 
     {{-- Logout --}}
-    <li class="nav-item">
+    <li class="nav-item mt-4">
         
         <a class="dropdown-item" href="{{ route('logout') }}"
                 onclick="event.preventDefault();

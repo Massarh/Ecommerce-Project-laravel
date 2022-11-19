@@ -5,7 +5,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 ml-4 text-gray-800">Product</h1>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="./">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Product</li> <!-- what is aria? Accessible Rich Internet Applications (ARIA) -->
         </ol>
     </div>
@@ -130,7 +130,7 @@
 
         $("document").ready(function() {
 
-            $('select[name="category"]').on('change', function() {
+            $('select[name="category"]').on('change', function() { // on change (بصير على) category 
                 var catId = $(this).val(); //catId : category id
                 // alert(catId);
                 if(catId) {

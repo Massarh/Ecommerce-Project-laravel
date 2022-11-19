@@ -49,25 +49,23 @@ class FrontProductListController extends Controller
 
     // ----------------------------------------------------------------------------
 
-    public function allproduct($name, Request $request)
+    public function allproduct($slug, Request $request)
     {
-        $category = Category::where('slug', $name)->first();
+        $category = Category::where('slug', $slug)->first();
         $categoryId = $category->id;
         $filterSubCategories=null;
 
         if($request->subcategory) {  // filter products
-            $products = $this->filterProducts($request);
+            $products = $this->filterProducts($request, $categoryId);
             $filterSubCategories = $this->getSubcategoriesId($request);  
             // return $filterSubCategories; //output:: [1,2,3]
-            
+            // return $products;
         } elseif ($request->min||$request->max) {
-                $products = $this->filterByPrice($request);
-        } else {
-
+            $products = $this->filterByPrice($request);
+        } else {  // main page في category اول مره بدخل عن طريق الكبس على كبسه 
             $products = Product::where('category_id', $category->id)->get();
         }
         $subcategories = Subcategory::where('category_id', $category->id)->get();
-        $slug = $name;
 
         return view('category', compact('products', 'subcategories', 'slug', 'filterSubCategories','categoryId'));
 
@@ -75,16 +73,14 @@ class FrontProductListController extends Controller
 
     // ----------------------------------------------------------------------------
 
-    public function filterProducts(Request $request) 
+    public function filterProducts(Request $request, $categoryId) // we should show the product that related for the chosen subcategory and chosen category
     {
-        $subId = [];
-        $subcategories = Subcategory::whereIn('id', $request->subcategory)->get();
-        foreach( $subcategories as $sub) {
-            array_push($subId, $sub->id);
-        }
-        $products = Product::whereIn('subcategory_id', $subId)->get();
+        $products = Product::whereIn('subcategory_id', $request->subcategory) //:with('category')
+        ->where('category_id', $categoryId)
+        ->get();
         return $products;
     }
+
      // ----------------------------------------------------------------------------
     
     public function getSubcategoriesId(Request $request) 
@@ -107,9 +103,9 @@ class FrontProductListController extends Controller
         if($request->min && $request->max){
         $product = Product::whereBetween('price', [$request->min, $request->max])->where('category_id', $categoryId)->get();
         } elseif ($request->min) {
-        $product= Product::where('price', '>', $request->min)->where('category_id', $categoryId)->get();
+        $product= Product::where('price', '<', $request->min)->where('category_id', $categoryId)->get();
         } else { // $request->max
-        $product = Product::where('price', '<', $request->max)->where('category_id', $categoryId)->get();
+        $product = Product::where('price', '>', $request->max)->where('category_id', $categoryId)->get();
         }
 
         return $product;

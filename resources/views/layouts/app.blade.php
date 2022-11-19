@@ -26,7 +26,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="position: sticky; top:0px; z-index: 10;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -44,6 +44,14 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
+
+                        {{-- Order --}}
+                        @if(Auth::check())
+                        <li class="nav-link">
+                            <a class="dropdown-item" href="{{route('order')}}">Order</a>
+                        </li>
+                        @endif
+                        {{-- Order --}}
 
                         {{-- Shopping Cart --}}
                         <a href="{{ route('cart.show') }}" class="nav-link">
