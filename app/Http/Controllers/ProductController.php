@@ -13,7 +13,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::get();
+        $products = Product::where('category_id', auth()->user()->category_id)->get();
         return view('admin.product.index', compact('products'));
     }
 

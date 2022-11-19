@@ -10,7 +10,7 @@ class SubcategoryController extends Controller
 
     public function index()
     {
-        $subcategories = Subcategory::get();
+        $subcategories = Subcategory::where('category_id', auth()->user()->category_id)->get();
         return view('admin.subcategory.index', compact('subcategories'));
     }
 

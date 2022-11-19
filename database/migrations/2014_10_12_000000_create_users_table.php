@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('phone_number')->nullable();
             $table->string('address')->nullable();
             $table->bigInteger('is_admin')->default(0); // bigInteger()
+
+            $table->integer('category_id')->nullable();
             // new
 
             $table->rememberToken();

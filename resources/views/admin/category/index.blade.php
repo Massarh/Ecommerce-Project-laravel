@@ -33,10 +33,10 @@
                 </thead>
                 <tbody>
 
-                    @if (count($categories)>0)
-                        @foreach ($categories as $key=>$category)
+                    @if ($category)
+                        {{-- @foreach ($categories as $key=>$category) --}}
                             <tr>
-                                <td><a href="#">{{ $key+1 }}</a></td> {{-- $key+1 to increment the $key --}}
+                                <td>1</td> {{-- $key+1 to increment the $key --}}
                                 <td><img src="{{ Storage::url($category->image) }}" alt=".." width="100"></td>
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->description }}</td>
@@ -72,9 +72,9 @@
                                             </form> 
                                         </div>
                                     </div>
-                                </td> {{--btn-outline-danger--}}
+                                </td>
                             </tr>
-                        @endforeach
+                        {{-- @endforeach --}}
                     @else 
                         <td>No Category created yet</td>
                     @endif

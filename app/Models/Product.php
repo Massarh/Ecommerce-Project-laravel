@@ -14,10 +14,20 @@ class Product extends Model
         'name', 'description', 'image', 'price', 'additional_info', 'category_id', 'subcategory_id'
     ];
 
+    // public function category()
+    // {
+    //     return $this->hasOne(Category::class, 'id', 'category_id'); 
+    //     // 'id' is a category id in table category , 
+    //     //'category_id' is a category id in table product 
+    // }
+
     public function category()
     {
-        return $this->hasOne(Category::class, 'id', 'category_id'); 
-        // 'id' is a category id in table category , 
-        //'category_id' is a category id in table product 
+        return $this->belongsTo(Category::class); 
+    }
+
+    public function subcategory()
+    {
+        return $this->belongsTo(Subcategory::class); 
     }
 }

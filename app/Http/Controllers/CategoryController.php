@@ -5,14 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::get();
-        return view('admin.category.index', compact('categories'));
+        $user = User::with('category')
+        ->where('id', auth()->user()->id)
+        ->first();
+        $category = $user->category;
+        return view('admin.category.index', compact('category'));
     }
 
     // ----------------------------------------------------------------------------
@@ -35,13 +39,17 @@ class CategoryController extends Controller
         ]);
 
         $image = $request->file('image')->store('public/files');
-        Category::create([
+        $category = Category::create([
             'name'        => $request->name,
             'slug'        => Str::slug($request->name), // "Str" is class in laravel [contains a lot of function]
             // slug() is function in Str -> [public static function slug($title, $separator = '-', $language = 'en') { ... }]
             'description' => $request->description,
             'image'       => $image
         ]);
+        // to update category_id in user
+        User::where('id', auth()->user()->id)
+        ->update(['category_id' => $category->id]);
+
         //return view('/test',compact('image')); // public/files/G82chwJKSfQo24cNu6rmwADCVQuiZPLg9GocgG8L.png
         notify()->success('Category created successfully');
         return redirect()->route('category.index');
