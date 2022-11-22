@@ -43,8 +43,8 @@ Route::post('/charge', [CartController::class, 'charge'])->name('cart.charge');
 Route::get('/orders', [CartController::class, 'order'])->name('order')->middleware('auth');
 // END CartController
 
-// UserController
-Route::get('/users', [UserController::class, 'index'])->name('user.index');
+// UserController XX -> CategoryController
+Route::get('/users-categories', [CategoryController::class, 'categoriesWithUser'])->name('getCategoriesWithUser');
 
 
 /** Auth */
@@ -60,12 +60,12 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
     })->name('dashboard');
     Route::resource('category', CategoryController::class);
     // subcategory
-    Route::get('subcategory/{categoryId}', [SubcategoryController::class, 'getSubcategoryByCatId'])->name('subcategory.getSubcategoryByCatId');
+    Route::get('subcategory/category/{categoryId}', [SubcategoryController::class, 'getSubcategoryByCatId'])->name('subcategory.getSubcategoryByCatId');
     Route::resource('subcategory', SubcategoryController::class);
 
     // product
     Route::get('product/subcategory/{subcategoryId}', [ProductController::class, 'getProductBySubId'])->name('product.getProductBySubId');
-    Route::get('product/category/{categoryId}', [ProductController::class, 'getProductByCatId'])->name('product.getProductByCatId');
+    // Route::get('product/category', [ProductController::class, 'getProductByCatId'])->name('product.getProductByCatId');
     Route::resource('product', ProductController::class);
 
     Route::get('/orders', [CartController::class, 'userOrder'])->name('order.index');

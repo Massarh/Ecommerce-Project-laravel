@@ -74,7 +74,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Products</h6>
                 <a class="collapse-item"
-                    href=" {{ route('product.getProductByCatId',[auth()->user()->category_id]) }} ">View</a>
+                    href=" {{ route('product.index') }} ">View</a>
                 <a class="collapse-item" href=" {{ route('product.create') }} ">Create</a>
             </div>
         </div>
@@ -101,18 +101,18 @@
         </div>
     </li>
 
-    <!-- User -->
+    <!-- Company -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap4"
             aria-expanded="true" aria-controls="collapseBootstrap4">
             <i class="far fa-fw fa-window-maximize"></i>
-            <span>Users</span>
+            <span>Company</span>
         </a>
         <div id="collapseBootstrap4" class="collapse" aria-labelledby="headingBootstrap"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Users</h6>
-                <a class="collapse-item" href=" {{ route('user.index') }} ">View all users</a>
+                <h6 class="collapse-header">Company</h6>
+                <a class="collapse-item" href=" {{ route('getCategoriesWithUser') }}">View all companies</a>
             </div>
         </div>
     </li>

@@ -158,4 +158,13 @@ class CategoryController extends Controller
         $image = $this->file('image')->store('public/files');
         return view('/test', compact('image'));
     }
+
+    // ----------------------------------------------------------------------------
+
+    public function categoriesWithUser ()
+    {
+        $categories = Category::get();
+        return view('admin.user.index', compact('categories'));
+    }
+
 }

@@ -32,7 +32,7 @@ class SliderController extends Controller
             'image'=>$image
         ]);
         notify()->success('Image uploaded successfully!');
-        return redirect()->back();
+        return redirect()->route('slider.index');
     }
 
     //--------------------------------------------------------

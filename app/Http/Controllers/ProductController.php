@@ -21,7 +21,7 @@ class ProductController extends Controller
     // ----------------------------------------------------------------------------
 
     // for admin
-    public function getProductByCatId()
+    public function index()
     {
         $products = Product::where('category_id', auth()->user()->category_id)->get();
         return view('admin.product.index', compact('products'));
@@ -59,8 +59,7 @@ class ProductController extends Controller
             'subcategory_id'  => $request->subcategory
         ]);
         notify()->success('Product created successfully');
-        return redirect()->route('product.create');
-        // return redirect()->route('product.index');
+        return redirect()->route('product.index');
     }
 
     // ----------------------------------------------------------------------------
