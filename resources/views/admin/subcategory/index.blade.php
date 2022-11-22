@@ -27,7 +27,9 @@
                         <th>Name</th>
                         <th>Category</th>
                         <th>Action</th>
-                        <th></th>
+                        @if(auth()->user()->user_role=='admin')
+                            <th></th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -38,44 +40,55 @@
                                 <td><a href="#">{{ $key+1 }}</a></td> {{-- $key+1 to increment the $key --}}
                                 <td>{{ $subcategory->name }}</td>
                                 <td>{{ $subcategory->category->name}}</td> <!-- category is function name in \AppModels\Subcategory -->
-                                <!-- Button Edit -->
-                                <td>  
-                                    <a href=" {{route('subcategory.edit', [$subcategory->id])}} ">
-                                        <button class="btn" style="background-color:#198754; color:white;">Edit</button>
-                                    </a>
-                                </td>
-                                <!-- Button Edit -->
                                 
-                                <!-- Button Delete -->
-                                <td>
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$subcategory->id}}">
-                                        Delete 
-                                    </button>
+                                @if(auth()->user()->user_role=='superadmin')
+                                    <td>  
+                                        <a href=" {{route('product.getProductBySubId', [$subcategory->id])}} ">
+                                            <button class="btn" style="background-color:#198754; color:white;">products</button>
+                                        </a>
+                                    </td>
+                                @endif
+                                
+                                @if(auth()->user()->user_role=='admin')
+                                    <!-- Button Edit -->
+                                    <td>  
+                                        <a href=" {{route('subcategory.edit', [$subcategory->id])}} ">
+                                            <button class="btn" style="background-color:#198754; color:white;">Edit</button>
+                                        </a>
+                                    </td>
+                                    <!-- Button Edit -->
                                     
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal{{$subcategory->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <form action=" {{ route('subcategory.destroy', [$subcategory->id]) }} " method="POST">
-                                                @csrf
-                                                @method('DELETE') 
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete?</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
+                                    <!-- Button Delete -->
+                                    <td>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$subcategory->id}}">
+                                            Delete 
+                                        </button>
+                                        
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal{{$subcategory->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <form action=" {{ route('subcategory.destroy', [$subcategory->id]) }} " method="POST">
+                                                    @csrf
+                                                    @method('DELETE') 
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete?</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-danger" data-dismiss="submit">Delete</button>
+                                                        </div>
                                                     </div>
-                                                    <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-danger" data-dismiss="submit">Delete</button>
-                                                    </div>
-                                                </div>
-                                            </form> 
+                                                </form> 
+                                            </div>
                                         </div>
-                                    </div>
-                                </td> 
-                                <!-- Button Delete -->
+                                    </td> 
+                                    <!-- Button Delete -->
+                                @endif
                             </tr>
                         @endforeach
                     @else 

@@ -12,11 +12,19 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $user = User::with('category')
-        ->where('id', auth()->user()->id)
-        ->first();
-        $category = $user->category;
-        return view('admin.category.index', compact('category'));
+        $currentUser=auth()->user();
+
+        if($currentUser->user_role=='admin' || $currentUser->user_role=='employee'){
+            $user = User::with('category')
+            ->where('id', $currentUser->id)
+            ->first();
+            $category = $user->category;
+            return view('admin.category.index', compact('category'));
+
+        }elseif($currentUser->user_role=='superadmin'){
+            $categories = Category::get();
+            return view('admin.category.index', compact('categories'));
+        }
     }
 
     // ----------------------------------------------------------------------------
@@ -47,8 +55,10 @@ class CategoryController extends Controller
             'image'       => $image
         ]);
         // to update category_id in user
-        User::where('id', auth()->user()->id)
-        ->update(['category_id' => $category->id]);
+        if(auth()->user()->user_role=='admin'|| auth()->user()->user_role=='employee'){
+            User::where('id', auth()->user()->id)
+            ->update(['category_id' => $category->id]);
+        }
 
         //return view('/test',compact('image')); // public/files/G82chwJKSfQo24cNu6rmwADCVQuiZPLg9GocgG8L.png
         notify()->success('Category created successfully');

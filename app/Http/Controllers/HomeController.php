@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function index()
     { 
         // if logining (Admin) -> (auth/dashboard)
-        if(auth()->user()->is_admin==1){
+        if(auth()->user()->user_role!='customer'){
             return redirect()->to('auth/dashboard');
         }
         // if logining (User) -> (main page)

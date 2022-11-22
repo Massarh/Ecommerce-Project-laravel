@@ -46,41 +46,43 @@
                                     <td>{!! $product->additional_info !!}</td>
                                     <td>${{ $product->price }}</td>
                                     <td>{{ $product->category->name }}</td>
-                                    <td>
-                                        <a href="{{ route('product.edit', [$product->id]) }}" class="">
-                                            <button class="btn" style="background-color:#198754; color:white;">Edit</button>
-                                        </a>
-                                    </td>
-                                    <td>
 
-                                    <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$product->id}}">
-                                            Delete 
-                                        </button>
-                                    {{-- Modals --}}
-                                        <div class="modal fade" id="exampleModal{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <form action=" {{ route('product.destroy', [$product->id]) }} " method="POST">
-                                                    @csrf
-                                                    @method('DELETE') 
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete?</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
+                                    @if(auth()->user()->user_role=='admin')
+                                        <td>
+                                            <a href="{{ route('product.edit', [$product->id]) }}" class="">
+                                                <button class="btn" style="background-color:#198754; color:white;">Edit</button>
+                                            </a>
+                                        </td>
+                                        <td>
+
+                                        <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$product->id}}">
+                                                Delete 
+                                            </button>
+                                        {{-- Modals --}}
+                                            <div class="modal fade" id="exampleModal{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <form action=" {{ route('product.destroy', [$product->id]) }} " method="POST">
+                                                        @csrf
+                                                        @method('DELETE') 
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete?</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-danger" data-dismiss="submit">Delete</button>
+                                                            </div>
                                                         </div>
-                                                        
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-danger" data-dismiss="submit">Delete</button>
-                                                        </div>
-                                                    </div>
-                                                </form> 
+                                                    </form> 
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-
+                                        </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         @else

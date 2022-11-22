@@ -34,7 +34,7 @@
                             <tr>
                                 <td><a href="#">{{ $key+1 }}</a></td> {{-- $key+1 to increment the $key --}}
                                 <td>{{ $user->name }}</td>
-                                {{-- <td>{{ $user->email }}</td> --}}
+                                <td>{{ $user->email }}</td>
                             </tr>
                         @endforeach
                     @else 

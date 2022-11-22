@@ -11,7 +11,17 @@ use App\Models\Subcategory;
 class ProductController extends Controller
 {
 
-    public function index()
+   // for super admin
+    public function getProductBySubId($subcategoryId)
+    {
+        $products = Product::where('subcategory_id',$subcategoryId)->get();
+        return view('admin.product.index', compact('products'));
+    }
+
+    // ----------------------------------------------------------------------------
+
+    // for admin
+    public function getProductByCatId()
     {
         $products = Product::where('category_id', auth()->user()->category_id)->get();
         return view('admin.product.index', compact('products'));

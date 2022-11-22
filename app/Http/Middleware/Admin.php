@@ -19,7 +19,7 @@ class Admin
     
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->is_admin == 1) {
+        if (Auth::user()->user_role != 'customer') {
             return $next($request);
         }
         return redirect('home');

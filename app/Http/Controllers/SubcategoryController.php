@@ -8,9 +8,9 @@ use App\Models\Subcategory;
 class SubcategoryController extends Controller
 {
 
-    public function index()
+    public function getSubcategoryByCatId($categoryId)
     {
-        $subcategories = Subcategory::where('category_id', auth()->user()->category_id)->get();
+        $subcategories = Subcategory::where('category_id', $categoryId)->get();
         return view('admin.subcategory.index', compact('subcategories'));
     }
 

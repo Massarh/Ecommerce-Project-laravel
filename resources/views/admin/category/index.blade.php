@@ -33,52 +33,77 @@
                 </thead>
                 <tbody>
 
-                    @if ($category)
-                        {{-- @foreach ($categories as $key=>$category) --}}
-                            <tr>
-                                <td>1</td> {{-- $key+1 to increment the $key --}}
-                                <td><img src="{{ Storage::url($category->image) }}" alt=".." width="100"></td>
-                                <td>{{ $category->name }}</td>
-                                <td>{{ $category->description }}</td>
-                                <td> 
-                                    <a href=" {{route('category.edit', [$category->id])}} ">
-                                        <button class="btn " style="background-color:#198754; color:white;">Edit</button>
-                                    </a>
-                                </td>
-                                <td>
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$category->id}}">
-                                        Delete 
-                                    </button>
-                                    
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal{{$category->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <form action=" {{ route('category.destroy', [$category->id]) }} " method="POST">
-                                                @csrf
-                                                @method('DELETE') 
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete?</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
+                    @if (auth()->user()->user_role=='admin'||auth()->user()->user_role=='employee')
+                        @if ($category)
+                            {{-- @foreach ($categories as $key=>$category) --}}
+                                <tr>
+                                    <td>1</td> 
+                                    <td><img src="{{ Storage::url($category->image) }}" alt=".." width="100"></td>
+                                    <td>{{ $category->name }}</td>
+                                    <td>{{ $category->description }}</td>
+{{-- ? --}}
+                                    <td> 
+                                        <a href=" {{route('category.edit', [$category->id])}} ">
+                                            <button class="btn " style="background-color:#198754; color:white;">Edit</button>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$category->id}}">
+                                            Delete 
+                                        </button>
+                                        
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal{{$category->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <form action=" {{ route('category.destroy', [$category->id]) }} " method="POST">
+                                                    @csrf
+                                                    @method('DELETE') 
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete?</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-danger" data-dismiss="submit">Delete</button>
+                                                        </div>
                                                     </div>
-                                                    <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-danger" data-dismiss="submit">Delete</button>
-                                                    </div>
-                                                </div>
-                                            </form> 
+                                                </form> 
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        {{-- @endforeach --}}
-                    @else 
-                        <td>No Category created yet</td>
+                                    </td>
+                                </tr>
+                            {{-- @endforeach --}}
+{{-- ? --}}
+                        @else 
+                            <td>No Category created yet</td>
+                        @endif
                     @endif
                     
+                    @if(auth()->user()->user_role=='superadmin')
+                        
+                        @if (count($categories)>0)
+                            @foreach ($categories as $key=>$category) 
+                                <tr>
+                                    <td><a href="#">{{ $key+1 }}</a></td> 
+                                    <td><img src="{{ Storage::url($category->image) }}" alt=".." width="100"></td>
+                                    <td>{{ $category->name }}</td>
+                                    <td>{{ $category->description }}</td>
+                                    <td> 
+                                        <a href=" {{route('subcategory.getSubcategoryByCatId',[ $category->id])}} ">
+                                            <button class="btn " style="background-color:#198754; color:white;">departments</button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else 
+                            <td>No Category created yet</td>
+                        @endif
+
+                    @endif
                 </tbody>
                 </table>
 

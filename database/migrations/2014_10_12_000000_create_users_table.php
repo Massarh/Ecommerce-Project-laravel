@@ -23,8 +23,7 @@ return new class extends Migration
             // new
             $table->string('phone_number')->nullable();
             $table->string('address')->nullable();
-            $table->bigInteger('is_admin')->default(0); // bigInteger()
-
+            $table->enum('user_role',['superadmin','admin','employee','customer'])->default('customer'); 
             $table->integer('category_id')->nullable();
             // new
 
