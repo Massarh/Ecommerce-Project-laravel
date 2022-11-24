@@ -52,10 +52,12 @@
             <hr>
             {{-- Footer --}}  
             <div class="card-footer">
-                <button class="btn btn-primary">Continue Shopping</button>
-                <span style="margin-left:300px;">Total Price: ${{$cart->totalPrice}}</span>{{--What is the alternative to using margin-left ??--}} 
+                <a href="/">
+                    <button class="btn btn-secondary">Continue Shopping</button>
+                </a>
+                <span style="margin-left:350px">Total Price: ${{$cart->totalPrice}}</span>{{--What is the alternative to using margin-left ??--}} 
                 <a href="{{route('cart.checkout', $cart->totalPrice)}}">
-                    <button class="btn btn-info float-right">Checkout</button> {{--  float-right?? --}}
+                    <button class="btn btn-info float-right" style="background-color: #a6e9d5; margin-left:370px">Checkout</button> {{--  float-right?? --}}
                 </a>
             </div>			
         </div>

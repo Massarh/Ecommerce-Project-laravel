@@ -35,7 +35,7 @@ class SubcategoryController extends Controller
                                             //category: <select name="category" ...>
         ]);
         notify()->success('SubCategory created successfully');
-        return redirect()->route('subcategory.getSubcategoryByCatId', [$request->category]);
+        return redirect()->route('section.getSubcategoryByCatId', [$request->category]);
         //return $a; // {"name":"lenove","category_id":"1","updated_at":"2022-10-24T06:39:26.000000Z","created_at":"2022-10-24T06:39:26.000000Z","id":1}
     }
 
@@ -68,7 +68,7 @@ class SubcategoryController extends Controller
         $subcategory->save();
 
         notify()->success('SubCategory updated successfully');
-        return redirect()->route('subcategory.getSubcategoryByCatId', [$request->category]);
+        return redirect()->route('section.getSubcategoryByCatId', [$request->category]);
     }
 
 // ----------------------------------------------------------------------------
@@ -79,6 +79,6 @@ class SubcategoryController extends Controller
         $categoryId = $subcategory->category_id;
         $subcategory->delete();
         notify()->success('SubCategory deleted successfully');
-        return redirect()->route('subcategory.getSubcategoryByCatId', [$categoryId]);
+        return redirect()->route('section.getSubcategoryByCatId', [$categoryId]);
     }
 }

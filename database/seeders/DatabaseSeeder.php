@@ -29,22 +29,22 @@ class DatabaseSeeder extends Seeder
         Category::create([
             'name' => 'Zara',
             'slug' => 'Zara',
-            'description' => 'Zara category',
-            'image' => 'files/photo1.jpg'
+            'description' => 'Zara store',
+            'image' => 'files/zara.png'
         ]);
 
         Category::create([
-            'name' => 'Nike',
-            'slug' => 'Nike',
-            'description' => 'Nike category',
-            'image' => 'files/photo1.jpg'
+            'name' => 'H&M',
+            'slug' => 'H&M',
+            'description' => 'H&M store',
+            'image' => 'files/hm.jpg'
         ]);
 
         Category::create([
-            'name' => 'Adidas',
-            'slug' => 'Adidas',
-            'description' => 'Adidas category',
-            'image' => 'files/photo1.jpg'
+            'name' => 'Prada',
+            'slug' => 'Prada',
+            'description' => 'Prada store',
+            'image' => 'files/Prada.jpg'
         ]);
 
         // Subcategory
@@ -64,39 +64,39 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Subcategory::create([
-            'name' => 'Nike Men',
+            'name' => 'H&M Men',
             'category_id' => 2
         ]);
 
         Subcategory::create([
-            'name' => 'Nike Wemon',
+            'name' => 'H&M Wemon',
             'category_id' => 2
         ]);
 
         Subcategory::create([
-            'name' => 'Nike Kids',
+            'name' => 'H&M Kids',
             'category_id' => 2
         ]);
 
         Subcategory::create([
-            'name' => 'Adidas Men',
+            'name' => 'Prada Men',
             'category_id' => 3
         ]);
 
         Subcategory::create([
-            'name' => 'Adidas Wemon',
+            'name' => 'Prada Wemon',
             'category_id' => 3
         ]);
 
         Subcategory::create([
-            'name' => 'Adidas Kids',
+            'name' => 'Prada Kids',
             'category_id' => 3
         ]);
 
         // Product
         Product::create([
             'name' => 'Zara Men Product1',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'image' => 'product/5e6c4921541cdbb458e1eae641981cd0.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -106,7 +106,7 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Zara Men Product2',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'image' => 'product/7b71c13faf3a19a8c65408b72d0e5537.jpg',
             'price' => rand(800, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -116,7 +116,7 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Zara Men Product3',
-            'image' => 'product/DbBdOLz8gpHxpJ0chvNsoXqPaq5wAZ52SBmK0Lr2.jpg',
+            'image' => 'product/66beb6e9bfb4a3ebda71b4122ba4bc08.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -126,7 +126,7 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Zara Wemon Product1',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'image' => 'product/6c0a407d9ed7b1bc94bb6cd29b8aa722.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -137,7 +137,7 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Zara Wemon Product2',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'image' => 'product/7ed6d1a6779a62cf4df219c84ee91a02.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -148,7 +148,7 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Zara Wemon Product3',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'image' => 'product/53dc7c10517c15408d504f5f3f8b0a22.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -159,7 +159,7 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Zara kids Product1',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'image' => 'product/50b0f58b05d713311ce5e99fb850f338.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -170,7 +170,7 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Zara kids Product2',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'image' => 'product/1473720732_1_1_1.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -180,7 +180,7 @@ class DatabaseSeeder extends Seeder
 
         Product::create([
             'name' => 'Zara Kids Product3',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'image' => 'product/3183800707_1_1_1.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -189,8 +189,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'Nike Men Product1',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'name' => 'H&M Men Product1',
+            'image' => 'product/0069381705_1_1_1.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -199,8 +199,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'Nike Men Product2',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'name' => 'H&M Men Product2',
+            'image' => 'product/0322165667_1_1_1.jpg',
             'price' => rand(800, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -210,8 +210,8 @@ class DatabaseSeeder extends Seeder
 
 
         Product::create([
-            'name' => 'Nike Men Product3',
-            'image' => 'product/DbBdOLz8gpHxpJ0chvNsoXqPaq5wAZ52SBmK0Lr2.jpg',
+            'name' => 'H&M Men Product3',
+            'image' => 'product/0952165800_1_1_1.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -220,8 +220,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'Nike Wemon Product1',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'name' => 'H&M Wemon Product1',
+            'image' => 'product/0888961401_2_1_1.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -230,8 +230,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'Nike Wemon Product2',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'name' => 'H&M Wemon Product2',
+            'image' => 'product/1104110800_1_1_1.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -240,8 +240,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'Nike Wemon Product3',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'name' => 'H&M Wemon Product3',
+            'image' => 'product/2351010800_2_1_1.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -250,8 +250,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'Nike kids Product1',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'name' => 'H&M kids Product1',
+            'image' => 'product/9006793807_15_1_1.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -260,8 +260,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'Nike kids Product2',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'name' => 'H&M kids Product2',
+            'image' => 'product/d1bad2683f12d74fbd7d23e545fbc0b3.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -270,8 +270,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'Nike Kids Product3',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'name' => 'H&M Kids Product3',
+            'image' => 'product/e5ceea4f3821611f46708786aecc8a1d.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -280,8 +280,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'Adidas Men Product1',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'name' => 'Prada Men Product1',
+            'image' => 'product/5070770401_1_1_1.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -290,8 +290,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'Adidas Men Product2',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'name' => 'Prada Men Product2',
+            'image' => 'product/0322165667_1_1_1.jpg',
             'price' => rand(800, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -300,8 +300,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'Adidas Men Product3',
-            'image' => 'product/DbBdOLz8gpHxpJ0chvNsoXqPaq5wAZ52SBmK0Lr2.jpg',
+            'name' => 'Prada Men Product3',
+            'image' => 'product/7545403250_1_1_1.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -310,8 +310,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'Adidas Wemon Product1',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'name' => 'Prada Wemon Product1',
+            'image' => 'product/4360244712_9_1_1.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -320,8 +320,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'Adidas Wemon Product2',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'name' => 'Prada Wemon Product2',
+            'image' => 'product/3360010808_1_1_1.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -330,8 +330,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'Adidas Wemon Product3',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'name' => 'Prada Wemon Product3',
+            'image' => 'product/best-zara-items-2020-288836-1603298850620-main.1200x0c.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -340,8 +340,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'Adidas kids Product1',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'name' => 'Prada kids Product1',
+            'image' => 'product/d7c25e63a644a762369aefd4d4490b8c.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -350,8 +350,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'Adidas kids Product2',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'name' => 'Prada kids Product2',
+            'image' => 'product/d1bad2683f12d74fbd7d23e545fbc0b3.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -360,8 +360,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'name' => 'Adidas Kids Product3',
-            'image' => 'product/e5V57M2KdoGlgYvkSQqLgu4CqIwf1pLBNZEvNJE7.jpg',
+            'name' => 'Prada Kids Product3',
+            'image' => 'product/83d44da9cbb2aabb31e899c4ce91fa16.jpg',
             'price' => rand(700, 1000),
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
@@ -403,8 +403,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Nike Admin1',
-            'email' => 'nikeadmin1@gmail.com',
+            'name' => 'H&M Admin1',
+            'email' => 'H&Madmin1@gmail.com',
             'password' => bcrypt('123456789'),
             'email_verified_at' => NOW(),
             'address' => 'Australia',
@@ -414,8 +414,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Nike Employee1',
-            'email' => 'nikeemployee1@gmail.com',
+            'name' => 'H&M Employee1',
+            'email' => 'H&Memployee1@gmail.com',
             'password' => bcrypt('123456789'),
             'email_verified_at' => NOW(),
             'address' => 'Australia',
@@ -425,8 +425,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Adidas Admin1',
-            'email' => 'adidasadmin1@gmail.com',
+            'name' => 'Prada Admin1',
+            'email' => 'Pradaadmin1@gmail.com',
             'password' => bcrypt('123456789'),
             'email_verified_at' => NOW(),
             'address' => 'Australia',
@@ -436,8 +436,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Adidas Employee1',
-            'email' => 'adidasemployee1@gmail.com',
+            'name' => 'Prada Employee1',
+            'email' => 'Pradaemployee1@gmail.com',
             'password' => bcrypt('123456789'),
             'email_verified_at' => NOW(),
             'address' => 'Australia',

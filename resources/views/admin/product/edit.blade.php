@@ -95,9 +95,9 @@
                         {{-- Category_id --}}
                         <div class="form-group">
                             <div class="custom-file">
-                                <label>Choose Category</label>
+                                <label>Choose Store</label>
                                 <select name="category" class="form-control @error('category') is-invalid @enderror">
-                                    <option value="">Select category</option>
+                                    <option value="">Select Store</option>
                                     @foreach (App\Models\Category::all() as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
@@ -113,9 +113,9 @@
                         {{-- Subcategory_id --}}
                         <div class="form-group">
                             <div class="custom-file">
-                                <label>Choose Subcategory</label>
+                                <label>Choose Section</label>
                                 <select name="subcategory" class="form-control @error('subcategory') is-invalid @enderror">
-                                    <option value="">Select</option>
+                                    <option value="">Select Section</option>
                                     
                                 </select>
                             </div>

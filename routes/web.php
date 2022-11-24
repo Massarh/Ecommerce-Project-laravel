@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FrontProductListController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,7 +29,7 @@ use Illuminate\Support\Facades\Auth;
 // FrontProductListController
 Route::get('/', [FrontProductListController::class, 'index']);
 Route::get('/product/{id}', [FrontProductListController::class, 'show'])->name('product.view'); // change 'product.show' to 'product.view' because We used "product.show" in the product folder
-Route::get('/category/{slug}', [FrontProductListController::class, 'allproduct'])->name('product.list');
+Route::get('/store/{slug}', [FrontProductListController::class, 'allproduct'])->name('product.list');
 // to search product
 Route::get('/all/products', [FrontProductListController::class, 'moreProducts'])->name('more.product');
 
@@ -44,28 +45,29 @@ Route::get('/orders', [CartController::class, 'order'])->name('order')->middlewa
 // END CartController
 
 // UserController XX -> CategoryController
-Route::get('/users-categories', [CategoryController::class, 'categoriesWithUser'])->name('getCategoriesWithUser');
+Route::get('/users-stores', [CategoryController::class, 'categoriesWithUser'])->name('getCategoriesWithUser');
 
 
 /** Auth */
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 /** Auth */
 
-Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function () {
 
+Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function () {
+    
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('dashboard');
-    Route::resource('category', CategoryController::class);
+    Route::resource('store', CategoryController::class);
     // subcategory
-    Route::get('subcategory/category/{categoryId}', [SubcategoryController::class, 'getSubcategoryByCatId'])->name('subcategory.getSubcategoryByCatId');
-    Route::resource('subcategory', SubcategoryController::class);
+    Route::get('section/store/{storeId}', [SubcategoryController::class, 'getSubcategoryByCatId'])->name('section.getSubcategoryByCatId');
+    Route::resource('section', SubcategoryController::class);
 
     // product
-    Route::get('product/subcategory/{subcategoryId}', [ProductController::class, 'getProductBySubId'])->name('product.getProductBySubId');
-    // Route::get('product/category', [ProductController::class, 'getProductByCatId'])->name('product.getProductByCatId');
+    Route::get('product/section/{sectionId}', [ProductController::class, 'getProductBySubId'])->name('product.getProductBySubId');
+    // Route::get('product/store', [ProductController::class, 'getProductByCatId'])->name('product.getProductByCatId');
     Route::resource('product', ProductController::class);
 
     Route::get('/orders', [CartController::class, 'userOrder'])->name('order.index');
@@ -78,10 +80,13 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
     Route::post('/slider', [SliderController::class, 'store'])->name('slider.store');
     Route::delete('/slider', [SliderController::class, 'destroy'])->name('slider.destroy');
     */
+    /* profile */
+    Route::get('profile',[HomeController::class,'showUserProfile'])->name('profile');
+    
 });
 
 // 
-Route::get('subcategories/{id}', [ProductController::class, 'loadSubCategories']);
+Route::get('sections/{id}', [ProductController::class, 'loadSubCategories']);
 
 
 

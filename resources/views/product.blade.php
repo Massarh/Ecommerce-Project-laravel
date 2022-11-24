@@ -6,27 +6,43 @@
     <main role="main">
 
     {{-- dynamic Slider --}}
-        <div class="container" >
-            <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-                
-                @foreach($sliders as $key=>$slider)
-                <div class="carousel-inner">
-                    <div class="carousel-item {{$key == 0 ? 'active' : ''}}">
-                        <img src="{{Storage::url($slider->image)}}" height="400" style="width: 100%">
+    <div>
+        <div style="margin-top: 0px" id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                @foreach ($sliders as $key => $slider)
+                    <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                        <img src="{{ Storage::url($slider->image) }}" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <b>
+                                <h1 style="color: rgb(255, 255, 255) ; font-size: 85px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">We are so happy to see you here</h1>
+                            </b>
+                            <h4 >beauty, clarity, functionality and sustainability.</h4>
+                        </div>
                     </div>
-                </div>
                 @endforeach
 
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
+        </divclass=>
+        {{-- slider --}}
 
     {{-- carousel --}}
     <h1 class="pt-5">Latest products</h1>

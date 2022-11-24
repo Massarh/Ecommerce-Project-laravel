@@ -30,7 +30,7 @@
                             <th>Description</th>
                             <th>Additional_info</th>
                             <th>Price</th>
-                            <th>Category</th>
+                            <th>Store</th>
                             <th> </th>
                             <th> </th>
                         </tr>

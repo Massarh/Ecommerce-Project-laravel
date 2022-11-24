@@ -39,7 +39,7 @@
                             </tr>
                         @endforeach
                     @else 
-                        <td>No categories to display</td>
+                        <td>No store to display</td>
                     @endif
                 </tbody>
                 </table>

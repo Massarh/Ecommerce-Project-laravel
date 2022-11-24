@@ -30,4 +30,8 @@ class HomeController extends Controller
         // if logining (User) -> (main page)
         return redirect()->to('/');
     }
+
+    public function showUserProfile(){
+        return view('admin.profile');
+    }
 }

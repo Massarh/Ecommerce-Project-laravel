@@ -4,11 +4,11 @@
     <!-- Container Fluid-->
     <div class="container-fluid" id="container-wrapper">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Subcategory Tables</h1>
+        <h1 class="h3 mb-0 text-gray-800">Section Tables</h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-            <li class="breadcrumb-item">Subcategory</li>
-            <li class="breadcrumb-item active" aria-current="page">Subcategory Tables</li>
+            <li class="breadcrumb-item">Section</li>
+            <li class="breadcrumb-item active" aria-current="page">Section Tables</li>
         </ol>
         </div>
 
@@ -17,7 +17,7 @@
             <!-- Simple Tables -->
             <div class="card">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold" style="color:  #344f63">All Subcategory</h6>
+                <h6 class="m-0 font-weight-bold" style="color:  #344f63">All Section</h6>
             </div>
             <div class="table-responsive">
                 <table class="table align-items-center table-flush">
@@ -25,7 +25,7 @@
                     <tr>
                         <th>SN</th>
                         <th>Name</th>
-                        <th>Category</th>
+                        <th>Store</th>
                         <th>Action</th>
                         @if(auth()->user()->user_role=='admin')
                             <th></th>
@@ -52,7 +52,7 @@
                                 @if(auth()->user()->user_role=='admin')
                                     <!-- Button Edit -->
                                     <td>  
-                                        <a href=" {{route('subcategory.edit', [$subcategory->id])}} ">
+                                        <a href=" {{route('section.edit', [$subcategory->id])}} ">
                                             <button class="btn" style="background-color:#198754; color:white;">Edit</button>
                                         </a>
                                     </td>
@@ -68,7 +68,7 @@
                                         <!-- Modal -->
                                         <div class="modal fade" id="exampleModal{{$subcategory->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
-                                                <form action=" {{ route('subcategory.destroy', [$subcategory->id]) }} " method="POST">
+                                                <form action=" {{ route('section.destroy', [$subcategory->id]) }} " method="POST">
                                                     @csrf
                                                     @method('DELETE') 
                                                     <div class="modal-content">
@@ -92,7 +92,7 @@
                             </tr>
                         @endforeach
                     @else 
-                        <td>No Subcategory created yet</td>
+                        <td>No Section created yet</td>
                     @endif
                     
                 </tbody>

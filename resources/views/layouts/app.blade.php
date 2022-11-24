@@ -29,7 +29,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="position: sticky; top:0px; z-index: 10;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <b style="font-family: fangsong; font-size:25px">PLAZA</b>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -82,9 +82,17 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    {{-- Order --}}
-                                    <a class="dropdown-item" href="{{route('order')}}">Order</a>
-                                    {{-- Order --}}
+                                    
+                                    <!-- to access for admin panel -->
+                                    @if(auth()->user()->user_role=='superadmin' || auth()->user()->user_role=='admin' || auth()->user()->user_role=='employee')
+
+                                        <a class="dropdown-item" href="{{route('dashboard')}}">
+                                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Go to admin panel
+                                        </a>
+                                    @endif
+
+                                    <!-- Logout -->
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">

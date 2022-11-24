@@ -62,7 +62,7 @@ class CategoryController extends Controller
 
         //return view('/test',compact('image')); // public/files/G82chwJKSfQo24cNu6rmwADCVQuiZPLg9GocgG8L.png
         notify()->success('Category created successfully');
-        return redirect()->route('category.index');
+        return redirect()->route('store.index');
     }
 
     // ----------------------------------------------------------------------------
@@ -103,7 +103,7 @@ class CategoryController extends Controller
 
         //Notification 
         notify()->success('Category updated successfully');
-        return redirect()->route('category.index');
+        return redirect()->route('store.index');
 
         //  way 2
         // $category = Category::find($id);
@@ -126,7 +126,7 @@ class CategoryController extends Controller
         // }
 
         // notify()->success('Category updated successfully');
-        // return redirect()->route('category.index');
+        // return redirect()->route('store.index');
     }
 
     // ----------------------------------------------------------------------------
@@ -138,11 +138,11 @@ class CategoryController extends Controller
         $category->delete();
         Storage::delete($filename); // Delete the image from a folder files [public\storage\files\...]
         notify()->success('Category deleteed successfully');
-        return redirect()->route('category.index');
+        return redirect()->route('store.index');
         // $category = Category::find($id);
         // $category->delete();
         // notify()->success('Category deleteed successfully');
-        // return redirect()->route('category.index');
+        // return redirect()->route('store.index');
     }
 
 

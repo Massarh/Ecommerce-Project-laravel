@@ -3,39 +3,60 @@
 @section('content')
     <!-- Container Fluid-->
     <div class="container-fluid" id="container-wrapper">
+        <!-- breadcrumb -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Order Tables</h1>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-            <li class="breadcrumb-item">Order</li>
-            <li class="breadcrumb-item active" aria-current="page">Order Tables</li>
-        </ol>
+            <h1 class="h3 mb-0 text-gray-800">Order Tables</h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+                <li class="breadcrumb-item">Order</li>
+                <li class="breadcrumb-item active" aria-current="page">Order Tables</li>
+            </ol>
         </div>
 
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                {{-- carts represent orders and each order (cart) have array of items --}}
-                @foreach($carts as $cart)
-                <div class="card mb-3">
-                    <div class="card-body">
-                        @foreach($cart->items as $item)
-                            <span class="float-right"> 
-                                <img src="{{ Storage::url($item['image']) }}" width="100">
-                            </span>
-                            <p>Name: {{$item['name']}}</p>
-                            <p>Price: {{$item['price']}}</p>
-                            <p>Qty: {{$item['qty']}}</p>
-                        @endforeach
-                    </div>
+        <div class="row">
+            <div class="col-lg-12 mb-4">
+                <!-- Simple Tables -->
+                <div class="card">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold " style="color:  #344f63"> </h6>
                 </div>
-                <p>
-                    <button type="button" class="btn btn-warning">
-                        <span class="badge badge-light">
-                            {{$cart->totalPrice}}
-                        </span>
-                    </button>
-                </p>
-                @endforeach
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>SN</th>
+                                <th>Image</th>
+                                <th>Store</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <?php $i=1 ?>
+
+                            @foreach($carts as $cart)
+                            
+                                @foreach($cart->items as $item)
+                                    <tr>
+                                        <td>{{$i++}}</td> 
+                                        {{-- <td>{{ $order->user }}</td> --}}
+                                        <td><img src="{{ Storage::url($item['image']) }}" width="100"></td>
+                                        <td>---</td>
+                                        <td>{{$item['name']}}</td>
+                                        <td>{{$item['price']}}</td>
+                                        <td> {{$item['qty']}}</td>
+                                    </tr>
+                                @endforeach
+                            
+                            @endforeach
+                            
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+                <div class="card-footer"></div>
             </div>
         </div>
 

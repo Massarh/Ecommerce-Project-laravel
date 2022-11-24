@@ -38,8 +38,7 @@
                                 <td><a href="#">{{ $key+1 }}</a></td> 
                                 {{-- relationship between Order and User --}}
                                 <td>{{ $order->user->name }}</td>
-                                <td>---</td>
-                                {{-- <td>{{ $order->user->email }}</td> --}}
+                                <td>{{ $order->user->email }}</td>
                                 <td>{{ date( 'd-M-y', strtotime($order->created_at))}}</td>
                                 <td><a href="{{route('user.order', [$order->user_id, $order->id])}}">
                                     <button class="btn btn-info">View Order</button>

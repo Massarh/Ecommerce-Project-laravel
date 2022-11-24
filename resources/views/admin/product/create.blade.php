@@ -39,18 +39,8 @@
                             @enderror
                         </div>
 
-                        {{-- Description --}}
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea name="description" id="summernote" class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
-                            @error('description')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
                         {{-- Image --}}
+                        <label>Choose image</label>
                         <div class="form-group">
                             <div class="custom-file">
                                 <label for="customFile" class="custom-file-label">Choose file</label>
@@ -74,44 +64,63 @@
                             @enderror
                         </div>
 
-                        {{-- Additional information --}}
-                        <div class="form-group">
-                            <label for="additional_info">Additional information</label>
-                            <textarea id="summernote1" name="additional_info" class="form-control @error('additional_info') is-invalid @enderror">{{ old('additional_info') }}</textarea>
-                            @error('additional_info')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        {{-- Category_id --}}
-                        <div class="form-group">
-                            <div class="custom-file">
-                                <label>Choose Category</label>
-                                <select name="category" class="form-control @error('category') is-invalid @enderror">
-                                    <option value="">Select category</option>
-                                    @foreach (App\Models\Category::all() as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('category')
+                        <div class="row">
+                                
+                            {{-- Description --}}
+                            <div class="form-group col-6">
+                                <label for="description">Description</label>
+                                <textarea name="description" id="summernote" class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
+                                @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
+
+                            {{-- Additional information --}}
+                            <div class="form-group col-6">
+                                <label for="additional_info">Additional information</label>
+                                <textarea id="summernote1" name="additional_info" class="form-control @error('additional_info') is-invalid @enderror">{{ old('additional_info') }}</textarea>
+                                @error('additional_info')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
                         </div>
 
-                        {{-- Subcategory_id --}}
-                        <div class="form-group">
-                            <div class="custom-file">
-                                <label>Choose Subcategory</label>
-                                <select name="subcategory" class="form-control @error('subcategory') is-invalid @enderror">
-                                    <option value="">Select</option>
-                                    
-                                </select>
+                        <div class="row">
+
+                            {{-- Category_id --}}
+                            <div class="form-group col-6">
+                                <div class="custom-file">
+                                    <label>Choose Category</label>
+                                    <select name="category" class="form-control @error('category') is-invalid @enderror">
+                                        <option value="">Select category</option>
+                                        @foreach (App\Models\Category::all() as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('category')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
+
+                            {{-- Subcategory_id --}}
+                            <div class="form-group col-6">
+                                <div class="custom-file">
+                                    <label>Choose Subcategory</label>
+                                    <select name="subcategory" class="form-control @error('subcategory') is-invalid @enderror">
+                                        <option value="">Select</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+
                         </div>
 
                         {{-- Submit button --}}

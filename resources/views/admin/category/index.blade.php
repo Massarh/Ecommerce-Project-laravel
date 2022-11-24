@@ -4,11 +4,11 @@
     <!-- Container Fluid-->
     <div class="container-fluid" id="container-wrapper">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Category Tables</h1>
+        <h1 class="h3 mb-0 text-gray-800">Store Tables</h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}"">Home</a></li>
-            <li class="breadcrumb-item">Category</li>
-            <li class="breadcrumb-item active" aria-current="page">Category Tables</li>
+            <li class="breadcrumb-item">Store</li>
+            <li class="breadcrumb-item active" aria-current="page">Store Tables</li>
         </ol>
         </div>
 
@@ -17,7 +17,7 @@
             <!-- Simple Tables -->
             <div class="card">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold " style="color:  #344f63">All Category </h6>
+                <h6 class="m-0 font-weight-bold " style="color:  #344f63">All Store </h6>
             </div>
             <div class="table-responsive">
                 <table class="table align-items-center table-flush">
@@ -27,6 +27,9 @@
                         <th>Image</th>
                         <th>Name</th>
                         <th>Description</th>
+                        @if(auth()->user()->user_role=='superadmin')
+                            <th>Email</th>
+                        @endif
                         <th>Action</th>
                         <th></th>
                     </tr>
@@ -43,7 +46,7 @@
                                     <td>{{ $category->description }}</td>
 {{-- ? --}}
                                     <td> 
-                                        <a href=" {{route('category.edit', [$category->id])}} ">
+                                        <a href=" {{route('store.edit', [$category->id])}} ">
                                             <button class="btn " style="background-color:#198754; color:white;">Edit</button>
                                         </a>
                                     </td>
@@ -56,7 +59,7 @@
                                         <!-- Modal -->
                                         <div class="modal fade" id="exampleModal{{$category->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
-                                                <form action=" {{ route('category.destroy', [$category->id]) }} " method="POST">
+                                                <form action=" {{ route('store.destroy', [$category->id]) }} " method="POST">
                                                     @csrf
                                                     @method('DELETE') 
                                                     <div class="modal-content">
@@ -79,7 +82,7 @@
                             {{-- @endforeach --}}
 {{-- ? --}}
                         @else 
-                            <td>No Category created yet</td>
+                            <td>No Store created yet</td>
                         @endif
                     @endif
                     
@@ -92,15 +95,17 @@
                                     <td><img src="{{ Storage::url($category->image) }}" alt=".." width="100"></td>
                                     <td>{{ $category->name }}</td>
                                     <td>{{ $category->description }}</td>
+                                    <td> {{App\Models\User::where('category_id', $category->id)->where('user_role', 'admin')->first()->email}} </td>
+
                                     <td> 
-                                        <a href=" {{route('subcategory.getSubcategoryByCatId',[ $category->id])}} ">
-                                            <button class="btn " style="background-color:#198754; color:white;">departments</button>
+                                        <a href=" {{route('section.getSubcategoryByCatId',[ $category->id])}} ">
+                                            <button class="btn " style="background-color:#198754; color:white;">section</button>
                                         </a>
                                     </td>
                                 </tr>
                             @endforeach
                         @else 
-                            <td>No Category created yet</td>
+                            <td>No Store created yet</td>
                         @endif
 
                     @endif
