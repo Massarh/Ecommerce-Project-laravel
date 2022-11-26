@@ -6,7 +6,57 @@
 
     }
 }
+/* Filter Date */
+/* Date sm*/
+@media (max-width: 640px) {
+    .card .calendar-parent {
+        display:flex!important; 
+        flex-direction:column!important; 
+        align-items: flex-start;
+    }
+    .card .calendar-parent .calendar-child {
+        display: flex;
+        flex-wrap:nowrap; 
+        justify-content:start;
+        align-items: flex-start;
+        margin-top: 10px;
+    }
+    .card .calendar-parent .calendar-child .margin-to {
+        margin-right: 22px!important;
+    }
+}
+/* Date md*/
+@media (min-width: 640px) {
+    .card .calendar-parent {
+        display:flex!important; 
+        flex-direction:row!important; 
+        justify-content:space-between;
+        align-items: baseline;
+    }
+    .card .calendar-parent .calendar-child {
+        display: flex;
+        flex-wrap:nowrap; 
+        
+    }
+}
 
+/* Sidebar */
+@media (max-width: 850px) {
+    .sidebar {
+        width: 0!important;
+        overflow: hidden;
+        transition: all .3s ease;
+        -webkit-transition: all .3s ease;
+    }
+}
+@media (max-width: 850px){
+    .sidebar.toggled {
+        width: 14rem!important;
+        transition: all .3s ease-in-out;
+        -webkit-transition: all .3s ease-in-out;
+    }
+}
+/* Payment */
 .StripeElement {
     box-sizing: border-box;
 

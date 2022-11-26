@@ -40,11 +40,13 @@
             
             <thead>
                 <tr>
-                    <th scope="col">#</th> {{--scope="col"??--}}
+                    {{-- <th scope="col"> </th> scope="col"?? --}}
                     <th scope="col">Image</th>
                     <th scope="col">Product</th>
+                    <th scope="col">Price Per Item</th>
+                    <th scope="col">Quantity</th>
                     <th scope="col">Price</th>
-                    <th scope="col">totalQuantity</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -53,11 +55,12 @@
                 @php $i=1 @endphp {{--i is Index--}}
                 @foreach($cart->items as $product)
                 <tr>
-                    <th scope="row">{{$i++}}</th>
+                    {{-- <th scope="row">{{$i++}}</th> --}}
                     <td><img src="{{ Storage::url($product['image']) }}" width="100"></td>
                     <td>{{$product['name']}}</td>
-                    <td>$ {{$product['price']}}</td>
+                    <td>${{$product['price']}}</td>
                     <td>{{ $product['qty'] }}</td>
+                    <td>${{ $product['price']*$product['qty'] }}</td>
                     
                 </tr>
                 @endforeach

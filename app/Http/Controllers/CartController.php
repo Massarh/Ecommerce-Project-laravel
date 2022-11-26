@@ -6,6 +6,9 @@ use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\User;
+use App\Models\OrderItem;
+use App\Models\Category;
+
 use Illuminate\Http\Request;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Illuminate\Support\Facades\Mail;
@@ -20,8 +23,8 @@ class CartController extends Controller
         } else {
             $cart = new Cart();
         }
+        //how product is exist
         $cart->add($product);
-        // dd($cart);
 
         session()->put('cart', $cart);
         notify()->success('Product added to cart!');
@@ -88,20 +91,37 @@ class CartController extends Controller
         ]);
 
         $chargeId = $charge['id'];
-        // ************/
+        // 
         if(session()->has('cart')){
             $cart = new Cart(session()->get('cart'));
         }else{
             $cart = null;
         } 
         Mail::to(auth()->user()->email)->send(new Sendmail($cart));
-
-
+// ORDER
         if ($chargeId) {
-            auth()->user()->orders()->create([ // orders() in App\Models\User.php
-                'cart' => serialize(session()->get('cart')) //serialize()??
+            //should be edited
+            $cart=session()->get('cart') ;
+            $order= Order::create([ 
+                'user_id'=>auth()->user()->id,
+                'total_price'=>$cart->totalPrice,
+                'total_quantity'=>$cart->totalQuantity
             ]);
+            // return $order;
 
+            foreach ($cart->items as $item) { // rep createMany
+
+                OrderItem::create([ // بعمل كريات بحسب عدد الايتم
+                    'name'=>$item['name'], // from Cart model only [db ما وصلت ال]
+                    'price'=>$item['price'],
+                    'quantity'=>$item['qty'],
+                    'order_id'=>$order->id, // from db [db انشئت من]
+                    'category_id'=>$item['categoryId'],
+                    'image'=>$item['image'],
+
+                ]);
+            }
+            
             session()->forget('cart');
             notify()->success('Transaction completed!');
             return redirect()->to('/');
@@ -132,14 +152,45 @@ class CartController extends Controller
         return view('admin.order.index', compact('orders'));
     }
 
-    public function viewUserOrder( $userid, $orderid)
+// Cart[ORDER]
+    public function viewUserOrder($orderid)
     {
-        // return $orderid;
-        // $user = User::find($userid);
-        $orders = Order::where('id', $orderid)->get();
-        $carts = $orders->transform(function ($cart, $key) {
-            return unserialize($cart->cart);
-        });
-        return view('admin.order.show', compact('carts'));
+         //should be edit
+        $order = Order::with('orderItem')->where('id', $orderid)->first();
+        // return $order->orderItem[0]->category;
+        return view('admin.order.show', compact('order'));
+    }
+
+    public function storeOrder()
+    {
+        //should be edit
+        $categories = Category::has('orderItem')->with(['user' => function ($query) { // call back function
+            $query->where('user_role', 'admin');
+            $query->orderBy('created_at', 'desc');
+        }])->get();
+        return view('admin.order.store-order', compact('categories'));
+    }
+
+
+    public function viewStoreItem($categoryId, Request $request)
+    {
+        if ($request->fromdate && $request->todate) {
+            $storeItems=OrderItem::whereBetween('created_at', [$request->fromdate." 00:00:00", $request->todate." 23:59:59"])
+            ->where('category_id',$categoryId)->get();
+
+        } elseif ($request->fromdate) {
+            $storeItems=OrderItem::where('created_at', '>=', $request->fromdate." 00:00:00")
+            ->where('category_id',$categoryId)->get();
+
+        } elseif ($request->todate) {
+            $storeItems=OrderItem::where('created_at', '<=', $request->todate." 23:59:59")
+            ->where('category_id',$categoryId)->get();
+
+        } else {
+            $storeItems=OrderItem::where('category_id',$categoryId)->get();
+        }
+
+        // return  $storeItems;
+        return view('admin.order.store-order-item', compact('storeItems'));
     }
 }

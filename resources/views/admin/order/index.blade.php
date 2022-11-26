@@ -24,7 +24,7 @@
                 <thead class="thead-light">
                     <tr>
                         <th>SN</th>
-                        <th>Name</th>
+                        <th>Customer Name</th>
                         <th>Email</th>
                         <th>Date</th>
                         <th>View</th>
@@ -40,7 +40,7 @@
                                 <td>{{ $order->user->name }}</td>
                                 <td>{{ $order->user->email }}</td>
                                 <td>{{ date( 'd-M-y', strtotime($order->created_at))}}</td>
-                                <td><a href="{{route('user.order', [$order->user_id, $order->id])}}">
+                                <td><a href="{{route('user.order', [$order->id])}}">
                                     <button class="btn btn-info">View Order</button>
                                 </a></td>
                             </tr>

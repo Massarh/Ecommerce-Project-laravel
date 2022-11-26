@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+// here
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -103,9 +103,9 @@ class FrontProductListController extends Controller
         if($request->min && $request->max){
         $product = Product::whereBetween('price', [$request->min, $request->max])->where('category_id', $categoryId)->get();
         } elseif ($request->min) {
-        $product= Product::where('price', '<', $request->min)->where('category_id', $categoryId)->get();
+        $product= Product::where('price', '>=', $request->min)->where('category_id', $categoryId)->get();
         } else { // $request->max
-        $product = Product::where('price', '>', $request->max)->where('category_id', $categoryId)->get();
+        $product = Product::where('price', '<=', $request->max)->where('category_id', $categoryId)->get();
         }
 
         return $product;

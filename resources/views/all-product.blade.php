@@ -5,10 +5,10 @@
 <div class="container">
     <form action="{{route('more.product')}}" method="GET">
         <div class="form-row mb-3">
-            <div class="col-md-10">
+            <div class="col-md-10" style="display: inline-block;">
                 <input type="text" name="search" class="form-control" placeholder="search...">
             </div>
-            <div class="col-md">
+            <div class="col-md-2" style="display: inline-block;">
                 <button type="submit" class="btn btn-secondary">Search</button>
             </div>
         </div>

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Subcategory;
 use App\Models\User;
+use App\Models\OrderItem;
 
 class Category extends Model
 {
@@ -25,5 +26,9 @@ class Category extends Model
 
     public function user() {
         return $this->hasMany(User::class);
+    }
+// ORDER
+    public function orderItem() {
+        return $this->hasMany(OrderItem::class);
     }
 }

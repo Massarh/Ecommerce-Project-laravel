@@ -60,6 +60,11 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('dashboard');
+
+    // add.admin
+    Route::get('/add-admin', function () {
+        return view('admin.add-admin-and-employee.add-admin');
+    })->name('add.admin');
     Route::resource('store', CategoryController::class);
     // subcategory
     Route::get('section/store/{storeId}', [SubcategoryController::class, 'getSubcategoryByCatId'])->name('section.getSubcategoryByCatId');
@@ -67,20 +72,17 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
 
     // product
     Route::get('product/section/{sectionId}', [ProductController::class, 'getProductBySubId'])->name('product.getProductBySubId');
-    // Route::get('product/store', [ProductController::class, 'getProductByCatId'])->name('product.getProductByCatId');
     Route::resource('product', ProductController::class);
 
     Route::get('/orders', [CartController::class, 'userOrder'])->name('order.index');
-    Route::get('/orders/{userid}/{orderid}', [CartController::class, 'viewUserOrder'])->name('user.order');  // {id} is user id
+    /*  ORDER */
+    Route::get('/store-order', [CartController::class, 'storeOrder'])->name('order.store');
+    Route::get('/orders/{orderid}', [CartController::class, 'viewUserOrder'])->name('user.order');  // {id} is user id
+    Route::get('/store-order-item/{categoryId}', [CartController::class, 'viewStoreItem'])->name('item.order');   
     // Slider Admin
     Route::resource('slider', SliderController::class);
-    /*
-    Route::get('/slider', [SliderController::class, 'index'])->name('slider.index');
-    Route::get('/slider/create', [SliderController::class, 'create'])->name('slider.create');
-    Route::post('/slider', [SliderController::class, 'store'])->name('slider.store');
-    Route::delete('/slider', [SliderController::class, 'destroy'])->name('slider.destroy');
-    */
-    /* profile */
+
+    /*  PROFILE ADMIN */
     Route::get('profile',[HomeController::class,'showUserProfile'])->name('profile');
     
 });
