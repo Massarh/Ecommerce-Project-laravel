@@ -9,6 +9,8 @@
 
 <div class="row mb-3">
 
+    @if(auth()->user()->user_role=='superadmin')
+
     <!--Number of Category Card -->
     <div class="col-12 mb-4">
     <div class="card h-100">
@@ -23,33 +25,40 @@
             </div>
             </div>
             <div class="col-auto">
-            <i class="fas fa-calendar fa-2x text-primary"></i>
+            {{-- <i class="fas fa-calendar fa-2x text-primary"></i> --}}
+            <i class="fas fa-store fa-2x text-primary"></i>
+
             </div>
         </div>
         </div>
     </div>
     </div>
 
-    <!--Number of Products Card -->
-    <div class="col-12 mb-4">
-    <div class="card h-100">
-        <div class="card-body">
-        <div class="row align-items-center">
-            <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-uppercase mb-1">Products</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800">{{App\Models\Product::get()->count()}}</div>
-            <div class="mt-2 mb-0 text-muted text-xs">
-                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                <span>Since last month</span>
-            </div>
-            </div>
-            <div class="col-auto">
-            <i class="fas fa-calendar fa-2x text-primary"></i>
+    @endif
+    
+    @if(auth()->user()->user_role=='admin' || auth()->user()->user_role=='employee')
+        <!--Number of Products Card -->
+        <div class="col-12 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-uppercase mb-1">Products</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{App\Models\Product::where('category_id', auth()->user()->category_id)->get()->count()}}</div>
+                            {{-- {{auth()->user()->category_id}} --}}
+                            <div class="mt-2 mb-0 text-muted text-xs">
+                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                                <span>Since last month</span>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar fa-2x text-primary"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
-    </div>
-    </div>
+    @endif
 
     <!-- Number of Orders Card -->
     <div class="col-12 mb-4">
@@ -78,8 +87,8 @@
         <div class="card-body">
         <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-uppercase mb-1">New User</div>
-            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{App\Models\User::get()->count()}}</div>
+            <div class="text-xs font-weight-bold text-uppercase mb-1">Number Of Customer</div>
+            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{App\Models\User::where('user_role', 'customer')->get()->count()}}</div>
             <div class="mt-2 mb-0 text-muted text-xs">
                 <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
                 <span>Since last month</span>
@@ -92,7 +101,54 @@
         </div>
     </div>
     </div>
+
+    @if(auth()->user()->user_role=='superadmin')
+
+    <!-- Number of Admin & Employee Card  -->
+    <div class="col-12 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-uppercase mb-1">Number of Admin</div>
+                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{App\Models\User::where('user_role', 'admin')->get()->count()}}</div>
+                <div class="mt-2 mb-0 text-muted text-xs">
+                    {{-- <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
+                    <span>Since last month</span> --}}
+                </div>
+                </div>
+                <div class="col-auto">
+                {{-- <i class="fas fa-users fa-2x text-info"></i> --}}
+                <i class="fas fa-user-secret fa-2x text-info"></i>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Number of Employee Card  -->
+    <div class="col-12 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-uppercase mb-1">Number of Employee</div>
+                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{App\Models\User::where('user_role', 'employee')->get()->count()}}</div>
+                <div class="mt-2 mb-0 text-muted text-xs">
+                    {{-- <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
+                    <span>Since last month</span> --}}
+                </div>
+                </div>
+                <div class="col-auto">
+                {{-- <i class="fas fa-users fa-2x text-info"></i> --}}
+                <i class="fas fa-user-tie fa-2x text-info"></i>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
     
+    @endif
     {{--     
         <!-- Pending Requests Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">

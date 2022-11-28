@@ -42,7 +42,7 @@
         </div>
     </li>
 
-    @if(auth()->user()->user_role=='admin'||auth()->user()->user_role=='employee')
+    @if((auth()->user()->user_role=='admin'||auth()->user()->user_role=='employee') && (auth()->user()->category_id))
 
     <!-- Section -->
     <li class="nav-item">

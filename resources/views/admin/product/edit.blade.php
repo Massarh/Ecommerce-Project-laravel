@@ -143,7 +143,7 @@
                 if(catId) {
                     $.ajax({
 
-                        url:'/subcategories/'+catId,
+                        url:'/sections/'+catId,
                         type: "GET",
                         dataType: "json",
                         success:function(data) {

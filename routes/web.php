@@ -84,10 +84,10 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
 
     /*  PROFILE ADMIN */
     Route::get('profile',[HomeController::class,'showUserProfile'])->name('profile');
-    
+
 });
 
-// 
+// using in ajax
 Route::get('sections/{id}', [ProductController::class, 'loadSubCategories']);
 
 
