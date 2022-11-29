@@ -65,7 +65,7 @@ class CartController extends Controller
         } else {
             session()->put('cart', $cart);
         }
-        notify()->success('Cart updated!');
+        notify()->success('Product deleted of cart!');
         return redirect()->back();
     }
 

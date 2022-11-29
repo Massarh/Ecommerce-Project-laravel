@@ -39,6 +39,7 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
+        if(auth()->user()->user_role=='admin'){
         $request->validate([
             'name'        => 'required|unique:categories',
             'description' => 'required',
@@ -55,21 +56,13 @@ class CategoryController extends Controller
             'image'       => $image
         ]);
         // to update category_id in user
-        if(auth()->user()->user_role=='admin'|| auth()->user()->user_role=='employee'){
             User::where('id', auth()->user()->id)
             ->update(['category_id' => $category->id]);
+
+            //return view('/test',compact('image')); // public/files/G82chwJKSfQo24cNu6rmwADCVQuiZPLg9GocgG8L.png
+            notify()->success('Stroe created successfully');
+            return redirect()->route('store.index');
         }
-
-        //return view('/test',compact('image')); // public/files/G82chwJKSfQo24cNu6rmwADCVQuiZPLg9GocgG8L.png
-        notify()->success('Category created successfully');
-        return redirect()->route('store.index');
-    }
-
-    // ----------------------------------------------------------------------------
-
-    public function show($id)
-    {
-        //
     }
 
     // ----------------------------------------------------------------------------
@@ -102,7 +95,7 @@ class CategoryController extends Controller
         $category->save();
 
         //Notification 
-        notify()->success('Category updated successfully');
+        notify()->success('Store updated successfully');
         return redirect()->route('store.index');
 
         //  way 2
@@ -135,14 +128,11 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $filename = $category->image;
+        
         $category->delete();
         Storage::delete($filename); // Delete the image from a folder files [public\storage\files\...]
-        notify()->success('Category deleteed successfully');
+        notify()->success('Store deleteed successfully');
         return redirect()->route('store.index');
-        // $category = Category::find($id);
-        // $category->delete();
-        // notify()->success('Category deleteed successfully');
-        // return redirect()->route('store.index');
     }
 
 

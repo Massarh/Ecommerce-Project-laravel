@@ -61,7 +61,7 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
         return view('admin.dashboard');
     })->name('dashboard');
 
-    // add.admin
+    // Add Admin
     Route::get('/add-admin', function () {
         return view('admin.add-admin-and-employee.add-admin');
     })->name('add.admin');
@@ -86,6 +86,8 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
     Route::get('profile',[HomeController::class,'showUserProfile'])->name('profile');
 
 });
+// add admin
+Route::post('/create-admin', [UserController::class, 'createAdmin'])->name('create.admin');
 
 // using in ajax
 Route::get('sections/{id}', [ProductController::class, 'loadSubCategories']);

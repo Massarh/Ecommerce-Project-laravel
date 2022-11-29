@@ -107,7 +107,7 @@ class ProductController extends Controller
         $filename = $product->image;
         $product->delete();
         Storage::delete($filename); // Delete the image from a folder product [public\storage\product\...]
-        notify()->success('Product deleteed successfully');
+        notify()->success('Product deleted successfully');
         return redirect()->route('product.index');
     }
 

@@ -30,27 +30,53 @@
                         @if(auth()->user()->user_role=='superadmin')
                             <th>Email</th>
                         @endif
-                        <th>Action</th>
-                        <th></th>
+                        @if(auth()->user()->user_role=='superadmin'||auth()->user()->user_role=='admin')
+                            <th>Action</th>
+                        @endif
+                        @if(auth()->user()->user_role=='superadmin')
+                            <th></th>
+                        @endif
                     </tr>
                 </thead>
+
                 <tbody>
 
+                    <!-- Admin & Employee -->
                     @if (auth()->user()->user_role=='admin'||auth()->user()->user_role=='employee')
                         @if ($category)
-                            {{-- @foreach ($categories as $key=>$category) --}}
-                                <tr>
-                                    <td>1</td> 
-                                    <td><img src="{{ Storage::url($category->image) }}" alt=".." width="100"></td>
-                                    <td>{{ $category->name }}</td>
-                                    <td>{{ $category->description }}</td>
-{{-- ? --}}
+                            <tr>
+                                <td>1</td> 
+                                <td><img src="{{ Storage::url($category->image) }}" alt=".." width="100"></td>
+                                <td>{{ $category->name }}</td>
+                                <td>{{ $category->description }}</td>
+                                @if(auth()->user()->user_role=='admin')   
                                     <td> 
                                         <a href=" {{route('store.edit', [$category->id])}} ">
                                             <button class="btn " style="background-color:#198754; color:white;">Edit</button>
                                         </a>
                                     </td>
-                                    <td>
+                                @endif
+                            </tr>
+                                
+                            @else 
+                                <td>No Store created yet</td>
+                            @endif
+                        @endif
+                        
+                    <!-- Superadmin -->
+                    @if(auth()->user()->user_role=='superadmin')
+                        
+                        @if (count($categories)>0)
+                            @foreach ($categories as $key=>$category) 
+                                <tr>
+                                    <td><a href="#">{{ $key+1 }}</a></td> 
+                                    <td><img src="{{ Storage::url($category->image) }}" alt=".." width="100"></td>
+                                    <td>{{ $category->name }}</td>
+                                    <td>{{ $category->description }}</td>
+                                    <td> {{App\Models\User::where('category_id', $category->id)->where('user_role', 'admin')->first()->email}} </td>
+                                    
+                                    <!-- Delete Button-->
+                                    <td> 
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$category->id}}">
                                             Delete 
@@ -64,7 +90,7 @@
                                                     @method('DELETE') 
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete?</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete store? All the sections, products, employees and admins that related to {{$category->name}} store will be removed.</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -78,25 +104,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                </tr>
-                            {{-- @endforeach --}}
-{{-- ? --}}
-                        @else 
-                            <td>No Store created yet</td>
-                        @endif
-                    @endif
-                    
-                    @if(auth()->user()->user_role=='superadmin')
-                        
-                        @if (count($categories)>0)
-                            @foreach ($categories as $key=>$category) 
-                                <tr>
-                                    <td><a href="#">{{ $key+1 }}</a></td> 
-                                    <td><img src="{{ Storage::url($category->image) }}" alt=".." width="100"></td>
-                                    <td>{{ $category->name }}</td>
-                                    <td>{{ $category->description }}</td>
-                                    <td> {{App\Models\User::where('category_id', $category->id)->where('user_role', 'admin')->first()->email}} </td>
-
+                                    <!-- section Button-->
                                     <td> 
                                         <a href=" {{route('section.getSubcategoryByCatId',[ $category->id])}} ">
                                             <button class="btn " style="background-color:#198754; color:white;">section</button>

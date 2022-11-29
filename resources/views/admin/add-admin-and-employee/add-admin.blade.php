@@ -5,10 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('create.admin') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -61,10 +60,28 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label class='col-md-4 col-form-label text-md-end'>Choose User Role</label>
+                            <div class='col-md-6'>
+                            <select name="userRole"  class="form-control @error('userRole') is-invalid @enderror">
+                                <option value="{{ old('userRole') }}">Select User Role</option>
+
+                                    <option {{old('userRole')=="admin" ? 'selected' : '' }} value="admin">Admin</option>
+                                    <option  {{old('userRole')=="employee" ? 'selected' : '' }} value="employee">Employee</option>
+
+                                </select>
+                                @error('userRole')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            </div>
+                        </div>
+
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    Submit
                                 </button>
                             </div>
                         </div>
