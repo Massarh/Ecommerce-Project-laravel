@@ -56,15 +56,11 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function () {
-    
+
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('dashboard');
 
-    // Add Admin
-    Route::get('/add-admin', function () {
-        return view('admin.add-admin-and-employee.add-admin');
-    })->name('add.admin');
     Route::resource('store', CategoryController::class);
     // subcategory
     Route::get('section/store/{storeId}', [SubcategoryController::class, 'getSubcategoryByCatId'])->name('section.getSubcategoryByCatId');
@@ -78,16 +74,22 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
     /*  ORDER */
     Route::get('/store-order', [CartController::class, 'storeOrder'])->name('order.store');
     Route::get('/orders/{orderid}', [CartController::class, 'viewUserOrder'])->name('user.order');  // {id} is user id
-    Route::get('/store-order-item/{categoryId}', [CartController::class, 'viewStoreItem'])->name('item.order');   
+    Route::get('/store-order-item/{categoryId}', [CartController::class, 'viewStoreItem'])->name('item.order');
     // Slider Admin
     Route::resource('slider', SliderController::class);
 
     /*  PROFILE ADMIN */
-    Route::get('profile',[HomeController::class,'showUserProfile'])->name('profile');
+    Route::get('profile', [HomeController::class, 'showUserProfile'])->name('profile');
 
+    // Add Admin/Employee
+    Route::post('/create-admin-or-employee', [UserController::class, 'createAdminOrEmployee'])->name('create.admin');
+    Route::get('/add-admin', function () {
+        return view('admin.admin-and-employee.add-admin');
+    })->name('add.admin');
+    Route::get('/view-store', [UserController::class, 'viewStore'])->name('view.store');
+    Route::get('/view-admin-or-employee/{categoryId}', [UserController::class, 'viewAdminAndEmployee'])->name('view.admin');
+    Route::delete('/delete-admin-or-employee/{userId}', [UserController::class, 'deleteAdminOrEmployee'])->name('delete.admin');
 });
-// add admin
-Route::post('/create-admin', [UserController::class, 'createAdmin'])->name('create.admin');
 
 // using in ajax
 Route::get('sections/{id}', [ProductController::class, 'loadSubCategories']);

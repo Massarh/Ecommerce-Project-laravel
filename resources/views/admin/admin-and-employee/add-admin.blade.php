@@ -60,6 +60,7 @@
                             </div>
                         </div>
 
+                        {{-- choose user role --}}
                         <div class="row mb-3">
                             <label class='col-md-4 col-form-label text-md-end'>Choose User Role</label>
                             <div class='col-md-6'>
@@ -75,6 +76,24 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                            </div>
+                        </div>
+
+                        {{-- choose Category --}}
+                        <div class="row mb-3">
+                            <label class='col-md-4 col-form-label text-md-end'>Choose Category</label>
+                            <div class='col-md-6'>
+                                <select name="categoryId"  class="form-control @error('categoryId') is-invalid @enderror">
+                                    <option value="{{ old('categoryId') }}">Select category</option>
+                                    @foreach (App\Models\Category::all() as $category)
+                                        <option {{old('categoryId')== $category->id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('categoryId')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
 
