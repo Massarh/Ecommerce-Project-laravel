@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('password');
 
             // new
+            $table->string('image')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('address')->nullable();
             $table->enum('user_role',['superadmin','admin','employee','customer'])->default('customer'); 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -30,8 +31,5 @@ class HomeController extends Controller
         // if logining (User) -> (main page)
         return redirect()->to('/');
     }
-
-    public function showUserProfile(){
-        return view('admin.profile');
-    }
+    
 }

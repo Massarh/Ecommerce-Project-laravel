@@ -159,12 +159,12 @@
         <div id="collapseBootstrap7" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Add Admin Or Employee</h6>
-                <a class="collapse-item" href=" {{ route('view.store') }}">View</a>
+                <a class="collapse-item" href=" {{ route('store.view') }}">View</a>
                 <a class="collapse-item" href=" {{ route('add.admin') }}">Create</a>
+                <a class="collapse-item" href=" {{ route('newAdmin.view')}}">New Admin</a>
             </div>
         </div>
     </li>
-
 
     @endif
 

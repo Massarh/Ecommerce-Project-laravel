@@ -40,20 +40,9 @@
                             @enderror
                         </div>
 
-                        {{-- Description --}}
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea name="description" id="summernote" class="form-control @error('description') is-invalid @enderror">{!! $product->description !!}
-                            </textarea>
-                            @error('description')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
                         {{-- Image --}}
                         <div class="form-group">
+                            <label>Choose image</label> 
                             <div class="custom-file">
                                 <label for="customFile" class="custom-file-label">Choose file</label>
                                 <input id="customFile" name="image" type="file" class="custom-file-input @error('image') is-invalid @enderror">
@@ -80,29 +69,25 @@
                             @enderror
                         </div>
 
-                        {{-- Additional information --}}
-                        <div class="form-group">
-                            <label for="additional_info">Additional information</label>
-                            <textarea id="summernote1" name="additional_info" class="form-control @error('additional_info') is-invalid @enderror">{!! $product->additional_info !!}
-                            </textarea>
-                            @error('additional_info')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
+                        <div class="row">
+                            {{-- Description --}}
+                            <div class="form-group col-6">
+                                <label for="description">Description</label>
+                                <textarea name="description" id="summernote" class="form-control @error('description') is-invalid @enderror">{!! $product->description !!}
+                                </textarea>
+                                @error('description')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                        {{-- Category_id --}}
-                        <div class="form-group">
-                            <div class="custom-file">
-                                <label>Choose Store</label>
-                                <select name="category" class="form-control @error('category') is-invalid @enderror">
-                                    <option value="">Select Store</option>
-                                    @foreach (App\Models\Category::all() as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('category')
+                            {{-- Additional information --}}
+                            <div class="form-group col-6">
+                                <label for="additional_info">Additional information</label>
+                                <textarea id="summernote1" name="additional_info" class="form-control @error('additional_info') is-invalid @enderror">{!! $product->additional_info !!}
+                                </textarea>
+                                @error('additional_info')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -110,16 +95,38 @@
                             </div>
                         </div>
 
-                        {{-- Subcategory_id --}}
-                        <div class="form-group">
-                            <div class="custom-file">
-                                <label>Choose Section</label>
-                                <select name="subcategory" class="form-control @error('subcategory') is-invalid @enderror">
-                                    <option value="">Select Section</option>
-                                    
-                                </select>
+                        <div class="row">
+                            {{-- Store [Category_id] --}} 
+                            <?php $category = App\Models\Category::find(auth()->user()->category_id) ?>
+
+                            <div class="form-group col-6">
+                                <label for="stroeName">Your Store</label>
+                                <input id="category" name="category" type="text"
+                                    class="form-control @error('category') is-invalid @enderror" aria-describedby=""
+                                    value="{{$category->name}}" readonly>
+
+                                @error('category')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
-                        </div>
+
+                            {{-- Section [Subcategory_id] --}}
+                            <?php $subcategories = App\Models\Subcategory::where('category_id', auth()->user()->category_id)->get() ?>
+
+                            <div class="form-group col-6">
+                                <div class="custom-file">
+                                    <label>Choose Section</label>
+                                    <select name="subcategory" class="form-control @error('subcategory') is-invalid @enderror">
+                                        <option value="">Select</option>
+
+                                        @foreach ($subcategories as $subcategory)
+                                        <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
 
                         {{-- Submit button --}}
                         <button type="submit" class="btn btn-primary" style="background-color: #344f63">Submit</button>
@@ -132,7 +139,7 @@
     </div>
 
     {{--To associate a category-field and a subcategory --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script type="text/javascript">
 
         $("document").ready(function() {
@@ -161,6 +168,6 @@
                 }
             });
         });
-    </script>
+    </script> --}}
 
 @endsection

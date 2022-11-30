@@ -75,6 +75,13 @@
                                     <td>{{ $category->description }}</td>
                                     <td> {{App\Models\User::where('category_id', $category->id)->where('user_role', 'admin')->first()->email}} </td>
                                     
+                                    <!-- section Button-->
+                                    <td> 
+                                        <a href=" {{route('section.getSubcategoryByCatId',[ $category->id])}} ">
+                                            <button class="btn " style="background-color:#198754; color:white;">section</button>
+                                        </a>
+                                    </td>
+
                                     <!-- Delete Button-->
                                     <td> 
                                         <!-- Button trigger modal -->
@@ -104,12 +111,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <!-- section Button-->
-                                    <td> 
-                                        <a href=" {{route('section.getSubcategoryByCatId',[ $category->id])}} ">
-                                            <button class="btn " style="background-color:#198754; color:white;">section</button>
-                                        </a>
-                                    </td>
+                                    
                                 </tr>
                             @endforeach
                         @else 

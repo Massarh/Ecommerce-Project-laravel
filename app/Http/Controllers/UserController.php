@@ -7,6 +7,8 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
+
 
 class UserController extends Controller
 {
@@ -21,7 +23,6 @@ class UserController extends Controller
 
     public function createAdminOrEmployee(Request $request)
     {
-
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             //unique users mean that the email is not exist in the database(new email).
@@ -72,5 +73,68 @@ class UserController extends Controller
             notify()->error('cannot delete the last admin in this store,please create a new admin before you try to delete him.');
         }
         return redirect()->back();
+    }
+
+    //--------------------------------------------------------
+
+    public function viewNewAdmin()
+    {
+        $newAdminsAndEmployees = User::where("user_role", "admin")->where('category_id', null)
+        ->orWhere("user_role", "employee")->where('category_id', null)->get();
+        // return $newAdminsAndEmployees;
+        return view('admin.admin-and-employee.view-new-admin', compact('newAdminsAndEmployees'));
+    }
+
+    //--------------------------------------------------------
+
+    public function showUserProfile()
+    {
+        $user = auth()->user();
+        return view('admin.profile.profile', compact('user'));
+    }
+
+    //--------------------------------------------------------
+
+    public function editProfile()
+    {
+        $user = User::find(auth()->user()->id);
+        return view('admin.profile.edit', compact('user'));
+    }
+
+    //--------------------------------------------------------
+
+    public function updateProfile(Request $request)
+    {
+
+        $request->validate([
+            'name'    => ['nullable', 'max:255'],
+            'phone_number' => ['nullable', 'digits:10', 'numeric'],
+            'address' => ['nullable', 'max:255'],
+            'image'   => ['nullable'], //, 'mimes:png,jpg'
+        ]);
+
+        $filteredRequest = collect(request()->all())->filter()->except(
+            '_token',
+            '_method',
+            'image'
+        );
+
+        
+        if ($request->file('image')) {
+
+            $user = User::where('id', auth()->user()->id)->first();
+            Storage::delete($user->image);
+            
+            $image = $request->file('image')->store('public/user');
+            User::where('id', auth()->user()->id)
+            ->update([
+                'image'=>$image
+            ]);
+        }
+
+        User::where('id', auth()->user()->id)
+            ->update([...$filteredRequest]);
+        notify()->success('User updated successfully');
+        return redirect()->route('profile');
     }
 }

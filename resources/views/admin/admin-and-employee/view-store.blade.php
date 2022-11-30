@@ -52,8 +52,8 @@
                                         <td></td>
                                         <td></td>
                                         <td>
-                                            <a href=" {{route('view.admin',[ $category->id])}} ">
-                                                <button class="btn " style="background-color:#198754; color:white;">view admins/employees</button>
+                                            <a href=" {{route('admin.view',[ $category->id])}} ">
+                                                <button class="btn" style="background-color:#198754; color:white;">view admins/employees</button>
                                             </a>
                                         </td>
                                     </tr>

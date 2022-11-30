@@ -79,16 +79,19 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
     Route::resource('slider', SliderController::class);
 
     /*  PROFILE ADMIN */
-    Route::get('profile', [HomeController::class, 'showUserProfile'])->name('profile');
+    Route::get('profile', [UserController::class, 'showUserProfile'])->name('profile');
+    Route::get('profile/edit', [UserController::class, 'editProfile'])->name('profile.edit');
+    Route::put('profile/update', [UserController::class, 'updateProfile'])->name('profile.update');
 
-    // Add Admin/Employee
-    Route::post('/create-admin-or-employee', [UserController::class, 'createAdminOrEmployee'])->name('create.admin');
+    /* Add Admin/Employee */
+    Route::post('/create-admin-or-employee', [UserController::class, 'createAdminOrEmployee'])->name('admin.create');
     Route::get('/add-admin', function () {
         return view('admin.admin-and-employee.add-admin');
     })->name('add.admin');
-    Route::get('/view-store', [UserController::class, 'viewStore'])->name('view.store');
-    Route::get('/view-admin-or-employee/{categoryId}', [UserController::class, 'viewAdminAndEmployee'])->name('view.admin');
-    Route::delete('/delete-admin-or-employee/{userId}', [UserController::class, 'deleteAdminOrEmployee'])->name('delete.admin');
+    Route::get('/view-store', [UserController::class, 'viewStore'])->name('store.view');
+    Route::get('/view-new-admin', [UserController::class, 'viewNewAdmin'])->name('newAdmin.view');
+    Route::get('/view-admin-or-employee/{categoryId}', [UserController::class, 'viewAdminAndEmployee'])->name('admin.view');
+    Route::delete('/delete-admin-or-employee/{userId}', [UserController::class, 'deleteAdminOrEmployee'])->name('admin.delete');
 });
 
 // using in ajax

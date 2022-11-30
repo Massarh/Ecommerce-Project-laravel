@@ -7,7 +7,7 @@
             <div class="card">
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('create.admin') }}">
+                    <form method="POST" action="{{ route('admin.create') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -79,12 +79,12 @@
                             </div>
                         </div>
 
-                        {{-- choose Category --}}
+                        {{-- choose Store --}}
                         <div class="row mb-3">
-                            <label class='col-md-4 col-form-label text-md-end'>Choose Category</label>
+                            <label class='col-md-4 col-form-label text-md-end'>Choose Store</label>
                             <div class='col-md-6'>
                                 <select name="categoryId"  class="form-control @error('categoryId') is-invalid @enderror">
-                                    <option value="{{ old('categoryId') }}">Select category</option>
+                                    <option value="{{ old('categoryId') }}">Select Store</option>
                                     @foreach (App\Models\Category::all() as $category)
                                         <option {{old('categoryId')== $category->id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach

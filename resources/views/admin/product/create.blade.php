@@ -43,10 +43,10 @@
                     </div>
 
                     {{-- Image --}}
-                    <label>Choose image</label>
                     <div class="form-group">
+                        <label>Choose image</label>
                         <div class="custom-file">
-                            <label for="customFile" class="custom-file-label">Choose file</label>
+                            <label for="customFile" class="custom-file-label">Choose image</label>
                             <input id="customFile" name="image" type="file"
                                 class="custom-file-input @error('image') is-invalid @enderror">
                             @error('image')
@@ -100,32 +100,36 @@
 
                     <div class="row">
 
-                        {{-- Category_id --}}
-                        <div class="form-group col-6">
-                            <div class="custom-file">
-                                <label>Choose Category</label>
-                                <select name="category" class="form-control @error('category') is-invalid @enderror">
-                                    <option value="">Select category</option>
-                                    @foreach (App\Models\Category::all() as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('category')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
+                        {{-- Store [Category_id] --}} 
+                        <?php $category = App\Models\Category::find(auth()->user()->category_id) ?>
 
-                        {{-- Subcategory_id --}}
+                        <div class="form-group col-6">
+                            <label for="stroeName">Your Store</label>
+                            <input id="category" name="category" type="text"
+                                class="form-control @error('category') is-invalid @enderror" aria-describedby=""
+                                value="{{$category->name}}" readonly>
+
+                            @error('category')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        
+
+                        {{-- Section [Subcategory_id] --}}
+                        <?php $subcategories = App\Models\Subcategory::where('category_id', auth()->user()->category_id)->get() ?>
+
                         <div class="form-group col-6">
                             <div class="custom-file">
-                                <label>Choose Subcategory</label>
+                                <label>Choose Section</label>
                                 <select name="subcategory"
                                     class="form-control @error('subcategory') is-invalid @enderror">
                                     <option value="">Select</option>
 
+                                    @foreach ($subcategories as $subcategory)
+                                    <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -143,7 +147,7 @@
 </div>
 
 {{--To associate a category-field and a subcategory --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript">
     $("document").ready(function() {
 
@@ -171,6 +175,6 @@
                 }
             });
         });
-</script>
+</script> --}}
 
 @endsection
