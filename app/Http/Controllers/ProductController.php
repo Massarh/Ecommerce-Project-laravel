@@ -125,9 +125,23 @@ class ProductController extends Controller
     ////////////////////////////////////////////////////////////
     public function test()
     {
+        // $mas=[
+        //     [
+        //     "name"=>"me2",
+        //     "category_id"=>1,
+        //     "created_at"=>now(),
+        //     "updated_at"=>now()
+        //     ],
+        //   [
+        //     "name"=>"me3",
+        //     "category_id"=>1,
+        //     "created_at"=>now(),
+        //     "updated_at"=>now()
+        //   ]
+        //   ];
+
+        //       return  Subcategory::insert($mas);
         // test get eloquent queries
-
-
 
         $category = Category::first();
         //   return $category;

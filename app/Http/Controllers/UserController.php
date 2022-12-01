@@ -62,7 +62,7 @@ class UserController extends Controller
 
     //--------------------------------------------------------
 
-    public function deleteAdminOrEmployee($userId)
+    public function deleteAdminOrEmployee($userId,Request $request)
     {
         $adminOrEmployee = User::find($userId);
         $numberOfAdmin = User::where("category_id", $adminOrEmployee->category_id)->where("user_role", "admin")->count();
@@ -70,7 +70,8 @@ class UserController extends Controller
 
             $adminOrEmployee->delete();
         } else {
-            notify()->error('cannot delete the last admin in this store,please create a new admin before you try to delete him.');
+        // notify()->error('cannot delete the last admin in this store,please create a new admin before you try to delete him.');
+        $request->session()->flash('status', 'cannot delete the last admin in this store,please create a new admin before you try to delete him.');
         }
         return redirect()->back();
     }

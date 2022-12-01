@@ -19,6 +19,16 @@
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold " style="color: #344f63">Admins And Employees </h6>
                 </div>
+                
+                @if(session()->has('status'))
+                <div style="background-color:#ef5b69" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>{{session()->get('status')}}</strong> 
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+
                 <div class="table-responsive">
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">

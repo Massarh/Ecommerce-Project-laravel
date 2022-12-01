@@ -107,20 +107,23 @@ class CartController extends Controller
                 'total_price'=>$cart->totalPrice,
                 'total_quantity'=>$cart->totalQuantity
             ]);
-            // return $order;
+            $newCart=[];
+            
+            foreach ($cart->items as $item) { 
+            array_push($newCart,
+            [
+            'name'=>$item['name'],
+            'price'=>$item['price'],
+            'quantity'=>$item['qty'],
+            'category_id'=>$item['categoryId'],
+            'image'=>$item['image'],
+            'order_id'=>$order->id,
+            'created_at'=>now(),
+            'updated_at'=>now(),
+            ]);
+        }
 
-            foreach ($cart->items as $item) { // rep createMany
-
-                OrderItem::create([ // بعمل كريات بحسب عدد الايتم
-                    'name'=>$item['name'], // from Cart model only [db ما وصلت ال]
-                    'price'=>$item['price'],
-                    'quantity'=>$item['qty'],
-                    'order_id'=>$order->id, // from db [db انشئت من]
-                    'category_id'=>$item['categoryId'],
-                    'image'=>$item['image'],
-
-                ]);
-            }
+        OrderItem::insert($newCart);
             
             session()->forget('cart');
             notify()->success('Transaction completed!');
