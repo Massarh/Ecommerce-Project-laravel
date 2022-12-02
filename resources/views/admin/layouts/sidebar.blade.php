@@ -63,6 +63,8 @@
         </div>
     </li>
 
+    @if(App\Models\Subcategory::where('category_id',auth()->user()->category_id)->count())
+
     <!-- Product -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap2"
@@ -80,6 +82,25 @@
             </div>
         </div>
     </li>
+    @endif
+
+    <!-- Store Order Items -->
+    @if(App\Models\OrderItem::where('category_id',auth()->user()->category_id)->count())
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap6"
+            aria-expanded="true" aria-controls="collapseBootstrap6">
+                <i class="far fa-fw fa-window-maximize"></i>
+                <span>Store Order Items</span>
+            </a>
+            <div id="collapseBootstrap6" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Store Order Items</h6>
+                    <a class="collapse-item" href=" {{ route('item.order', [auth()->user()->category_id]) }}">View</a>
+                </div>
+            </div>
+        </li>
+    @endif
+    
     @endif
 
     {{-- Superadmin --}}
@@ -102,28 +123,12 @@
         </div>
     </li>
 
-    <!-- Company -->
-    {{-- <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap4"
-            aria-expanded="true" aria-controls="collapseBootstrap4">
-            <i class="far fa-fw fa-window-maximize"></i>
-            <span>Company</span>
-        </a>
-        <div id="collapseBootstrap4" class="collapse" aria-labelledby="headingBootstrap"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Company</h6>
-                <a class="collapse-item" href=" {{ route('getCategoriesWithUser') }}">View all companies</a>
-            </div>
-        </div>
-    </li> --}}
-
     <!-- Order -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap5"
             aria-expanded="true" aria-controls="collapseBootstrap5">
             <i class="far fa-fw fa-window-maximize"></i>
-            <span>User Order</span>
+            <span>Users Orders</span>
         </a>
         <div id="collapseBootstrap5" class="collapse" aria-labelledby="headingBootstrap"
             data-parent="#accordionSidebar">
@@ -139,11 +144,11 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap6"
         aria-expanded="true" aria-controls="collapseBootstrap6">
         <i class="far fa-fw fa-window-maximize"></i>
-        <span>Store Orders</span>
+        <span>Store Order Items</span>
         </a>
         <div id="collapseBootstrap6" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Store Orders</h6>
+                <h6 class="collapse-header">Store Order Items</h6>
                 <a class="collapse-item" href=" {{ route('order.store') }}">View</a>
             </div>
         </div>
@@ -154,14 +159,14 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap7"
         aria-expanded="true" aria-controls="collapseBootstrap7">
         <i class="far fa-fw fa-window-maximize"></i>
-        <span>Admin / Employee</span>
+        <span>Admins / Employees</span>
         </a>
         <div id="collapseBootstrap7" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Add Admin Or Employee</h6>
-                <a class="collapse-item" href=" {{ route('store.view') }}">View</a>
+                <a class="collapse-item" href=" {{ route('store.view') }}">View Admins / Employees</a>
+                <a class="collapse-item" href=" {{ route('newAdmin.view')}}">View New Admin</a>
                 <a class="collapse-item" href=" {{ route('add.admin') }}">Create</a>
-                <a class="collapse-item" href=" {{ route('newAdmin.view')}}">New Admin</a>
             </div>
         </div>
     </li>

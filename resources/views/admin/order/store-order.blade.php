@@ -4,11 +4,11 @@
     <!-- Container Fluid-->
     <div class="container-fluid" id="container-wrapper">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Store Order Tables</h1>
+        <h1 class="h3 mb-0 text-gray-800">Stores Table</h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}"">Home</a></li>
-            <li class="breadcrumb-item">Store Order</li>
-            <li class="breadcrumb-item active" aria-current="page">Store Order Tables</li>
+            <li class="breadcrumb-item">Store Table</li>
+            <li class="breadcrumb-item active" aria-current="page">Store Orders Table</li>
         </ol>
         </div>
         <div class="row">
@@ -16,7 +16,7 @@
             <!-- Simple Tables -->
             <div class="card">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold " style="color:  #344f63">All Order </h6>
+                <h6 class="m-0 font-weight-bold " style="color:  #344f63">All Stores </h6>
             </div>
             <div class="table-responsive">
                 <table class="table align-items-center table-flush">
@@ -41,7 +41,7 @@
                                 </tr>
                             @endforeach
                         @else 
-                            <td>No any orders to show</td>
+                            <td>No any stores to show</td>
                         @endif
                     </tbody>
                 </table>

@@ -4,11 +4,11 @@
 <!-- Container Fluid-->
 <div class="container-fluid" id="container-wrapper">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Store Order Items</h1>
+        <h1 class="h3 mb-0 text-gray-800">Store Order Items Table</h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}"">Home</a></li>
             <li class=" breadcrumb-item">Store Order Items</li>
-            <li class="breadcrumb-item active" aria-current="page">Store Order Items Tables</li>
+            <li class="breadcrumb-item active" aria-current="page">Store Order Items Table</li>
         </ol>
     </div>
     <div class="row">
@@ -19,7 +19,7 @@
                 <form action="{{route('item.order', [$storeItems[0]->category_id])}}" method="GET">@csrf
                     <div class="card-header py-3 calendar-parent">
 
-                        <h6 class="m-0 font-weight-bold " style="color:  #344f63">All Order Items </h6>
+                        <h6 class="m-0 font-weight-bold " style="color:  #344f63">All {{$storeItems[0]->category->name}} Order Items </h6>
 
                         {{-- Filter Date --}}
                         <div class="calendar-child">

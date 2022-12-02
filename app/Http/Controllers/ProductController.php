@@ -58,7 +58,7 @@ class ProductController extends Controller
             'image'           => $image,
             'price'           => $request->price,
             'additional_info' => $request->additional_info,
-            'category_id'     => $request->category,
+            'category_id'     => auth()->user()->category_id,
             'subcategory_id'  => $request->subcategory
         ]);
         notify()->success('Product created successfully');

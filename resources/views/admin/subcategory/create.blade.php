@@ -38,22 +38,20 @@
                             @enderror
                         </div>
 
-                        {{-- Category --}}
+                        {{-- Store [Category_id] --}} 
+                        <?php $category = App\Models\Category::find(auth()->user()->category_id) ?>
+
                         <div class="form-group">
-                            <div class="custom-file">
-                                <label>Choose Store</label>
-                                <select name="category" class="form-control @error('category') is-invalid @enderror">
-                                    <option value="">Select store</option>
-                                    @foreach (App\Models\Category::all() as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('category')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                            <label for="stroeName">Your Store</label>
+                            <input id="category" name="category" type="text"
+                                class="form-control @error('category') is-invalid @enderror" aria-describedby=""
+                                value="{{$category->name}}" readonly>
+
+                            @error('category')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
 
                         {{-- button --}}

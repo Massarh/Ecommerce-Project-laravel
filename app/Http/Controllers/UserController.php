@@ -23,6 +23,7 @@ class UserController extends Controller
 
     public function createAdminOrEmployee(Request $request)
     {
+        
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             //unique users mean that the email is not exist in the database(new email).
@@ -80,10 +81,10 @@ class UserController extends Controller
 
     public function viewNewAdmin()
     {
-        $newAdminsAndEmployees = User::where("user_role", "admin")->where('category_id', null)
+        $newAdmins = User::where("user_role", "admin")->where('category_id', null)
         ->orWhere("user_role", "employee")->where('category_id', null)->get();
-        // return $newAdminsAndEmployees;
-        return view('admin.admin-and-employee.view-new-admin', compact('newAdminsAndEmployees'));
+        // return $newAdmins;
+        return view('admin.admin-and-employee.view-new-admin', compact('newAdmins'));
     }
 
     //--------------------------------------------------------
@@ -124,7 +125,9 @@ class UserController extends Controller
         if ($request->file('image')) {
 
             $user = User::where('id', auth()->user()->id)->first();
-            Storage::delete($user->image);
+            if ($user->image) {
+                Storage::delete($user->image);
+            }
             
             $image = $request->file('image')->store('public/user');
             User::where('id', auth()->user()->id)

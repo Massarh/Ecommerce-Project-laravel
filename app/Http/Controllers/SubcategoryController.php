@@ -31,11 +31,11 @@ class SubcategoryController extends Controller
         ]);
         Subcategory::create([  /*$a =*/
             'name'=>$request->name,
-            'category_id'=>$request->category // category_id : column name in db
-                                            //category: <select name="category" ...>
+            'category_id'=>auth()->user()->category_id,
+            // category_id : column name in db //category: <select name="category" ...> 
         ]);
         notify()->success('Section created successfully');
-        return redirect()->route('section.getSubcategoryByCatId', [$request->category]);
+        return redirect()->route('section.getSubcategoryByCatId', [auth()->user()->category_id]);
         //return $a; // {"name":"lenove","category_id":"1","updated_at":"2022-10-24T06:39:26.000000Z","created_at":"2022-10-24T06:39:26.000000Z","id":1}
     }
 

@@ -92,39 +92,42 @@ class CartController extends Controller
 
         $chargeId = $charge['id'];
         // 
-        if(session()->has('cart')){
+        if (session()->has('cart')) {
             $cart = new Cart(session()->get('cart'));
-        }else{
+        } else {
             $cart = null;
-        } 
-        Mail::to(auth()->user()->email)->send(new Sendmail($cart));
-// ORDER
-        if ($chargeId) {
-            //should be edited
-            $cart=session()->get('cart') ;
-            $order= Order::create([ 
-                'user_id'=>auth()->user()->id,
-                'total_price'=>$cart->totalPrice,
-                'total_quantity'=>$cart->totalQuantity
-            ]);
-            $newCart=[];
-            
-            foreach ($cart->items as $item) { 
-            array_push($newCart,
-            [
-            'name'=>$item['name'],
-            'price'=>$item['price'],
-            'quantity'=>$item['qty'],
-            'category_id'=>$item['categoryId'],
-            'image'=>$item['image'],
-            'order_id'=>$order->id,
-            'created_at'=>now(),
-            'updated_at'=>now(),
-            ]);
         }
 
-        OrderItem::insert($newCart);
-            
+        // ORDER
+        if ($chargeId) {
+            Mail::to(auth()->user()->email)->send(new Sendmail($cart));
+            //should be edited
+            $cart = session()->get('cart');
+            $order = Order::create([
+                'user_id' => auth()->user()->id,
+                'total_price' => $cart->totalPrice,
+                'total_quantity' => $cart->totalQuantity
+            ]);
+            $newCart = [];
+
+            foreach ($cart->items as $item) {
+                array_push(
+                    $newCart,
+                    [
+                        'name' => $item['name'],
+                        'price' => $item['price'],
+                        'quantity' => $item['qty'],
+                        'category_id' => $item['categoryId'],
+                        'image' => $item['image'],
+                        'order_id' => $order->id,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]
+                );
+            }
+
+            OrderItem::insert($newCart);
+
             session()->forget('cart');
             notify()->success('Transaction completed!');
             return redirect()->to('/');
@@ -144,9 +147,9 @@ class CartController extends Controller
         return view('order', compact('carts'));
     }
 
-//////////////////////////////////////////////////////////////
-/////////////////For Admin///////////////////////////////////
-////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////
+    /////////////////For Admin///////////////////////////////////
+    ////////////////////////////////////////////////////////////
 
     // For Admin
     public function userOrder()
@@ -155,10 +158,10 @@ class CartController extends Controller
         return view('admin.order.index', compact('orders'));
     }
 
-// Cart[ORDER]
+    // Cart[ORDER]
     public function viewUserOrder($orderid)
     {
-         //should be edit
+        //should be edit
         $order = Order::with('orderItem')->where('id', $orderid)->first();
         // return $order->orderItem[0]->category;
         return view('admin.order.show', compact('order'));
@@ -178,19 +181,16 @@ class CartController extends Controller
     public function viewStoreItem($categoryId, Request $request)
     {
         if ($request->fromdate && $request->todate) {
-            $storeItems=OrderItem::whereBetween('created_at', [$request->fromdate." 00:00:00", $request->todate." 23:59:59"])
-            ->where('category_id',$categoryId)->get();
-
+            $storeItems = OrderItem::whereBetween('created_at', [$request->fromdate . " 00:00:00", $request->todate . " 23:59:59"])
+                ->where('category_id', $categoryId)->get();
         } elseif ($request->fromdate) {
-            $storeItems=OrderItem::where('created_at', '>=', $request->fromdate." 00:00:00")
-            ->where('category_id',$categoryId)->get();
-
+            $storeItems = OrderItem::where('created_at', '>=', $request->fromdate . " 00:00:00")
+                ->where('category_id', $categoryId)->get();
         } elseif ($request->todate) {
-            $storeItems=OrderItem::where('created_at', '<=', $request->todate." 23:59:59")
-            ->where('category_id',$categoryId)->get();
-
+            $storeItems = OrderItem::where('created_at', '<=', $request->todate . " 23:59:59")
+                ->where('category_id', $categoryId)->get();
         } else {
-            $storeItems=OrderItem::where('category_id',$categoryId)->get();
+            $storeItems = OrderItem::where('category_id', $categoryId)->get();
         }
 
         // return  $storeItems;
