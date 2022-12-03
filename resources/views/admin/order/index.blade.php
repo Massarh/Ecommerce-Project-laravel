@@ -7,8 +7,7 @@
         <h1 class="h3 mb-0 text-gray-800">Orders Table</h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}"">Home</a></li>
-            <li class="breadcrumb-item">Order</li>
-            <li class="breadcrumb-item active" aria-current="page">Orders Table</li>
+            <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Orders Table</li>
         </ol>
         </div>
 

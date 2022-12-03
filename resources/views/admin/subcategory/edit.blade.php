@@ -27,6 +27,7 @@
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold" style="color: #344f63">Update Section</h6>
                     </div>
+                    {{-- Name --}}
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">Name</label>
@@ -37,24 +38,21 @@
                                 </span>
                             @enderror
                         </div>
+
+                        {{-- Store [Category_id] --}} 
+                        <?php $category = App\Models\Category::find(auth()->user()->category_id) ?>
+
                         <div class="form-group">
-                            <div class="custom-file">
-                                <label>Choose Category</label>
-                                <select name="category" class="form-control @error('category') is-invalid @enderror">
-                                    <option value="">Select category</option>
-                                    @foreach (App\Models\Category::all() as $category)
-                                        <option value="{{ $category->id }}" 
-                                            @if($subcategory->category_id == $category->id) Selected @endif>
-                                            {{ $category->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @error('category')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                            <label for="stroeName">Your Store</label>
+                            <input id="category" name="category" type="text"
+                                class="form-control @error('category') is-invalid @enderror" aria-describedby=""
+                                value="{{$category->name}}" readonly>
+
+                            @error('category')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
 
                         <button type="submit" class="btn btn-primary" style="background-color:  #344f63">Update</button>

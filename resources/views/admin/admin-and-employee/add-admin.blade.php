@@ -6,7 +6,7 @@
     <h1 class="h3 mb-0 ml-4 text-gray-800">Admin / Employee</h1>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Admin / Employee</li> <!-- what is aria? Accessible Rich Internet Applications (ARIA) -->
+        <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Create Admin / Employee</li> <!-- what is aria? Accessible Rich Internet Applications (ARIA) -->
     </ol>
 </div>
 <!-- Breadcrumb -->
@@ -14,6 +14,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold" style="color:  #344f63">Create Admin / Employee</h6>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.create') }}">
@@ -108,7 +111,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" style="background-color:  #344f63">
                                     Submit
                                 </button>
                             </div>

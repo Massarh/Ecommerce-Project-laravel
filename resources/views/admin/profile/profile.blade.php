@@ -40,7 +40,7 @@
                         <h5 class="my-3">{{$user->name}}</h5>
                         <p class="text-muted mb-1">{{$user->user_role}}</p>
                         <p class="text-muted mb-4">{{$user->address}}</p>
-                        <div class="d-flex justify-content-center mb-2">
+                        <div class="d-flex justify-content-center mb-2 ">
                             {{-- <button type="button" class="btn btn-primary">Follow</button> --}}
                             <button type="button" class="btn btn-outline-primary ms-1"><a href="{{route('profile.edit')}}">Edit</a></button>
                         </div>

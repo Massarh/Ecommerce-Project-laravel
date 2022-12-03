@@ -6,7 +6,7 @@
         <h1 class="h3 mb-0 ml-4 text-gray-800">Store</h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Store</li> <!-- what is aria? Accessible Rich Internet Applications (ARIA) -->
+            <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Store</li> <!-- what is aria? Accessible Rich Internet Applications (ARIA) -->
         </ol>
     </div>
     <!-- Breadcrumb -->

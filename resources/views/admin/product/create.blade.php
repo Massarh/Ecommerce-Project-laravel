@@ -116,7 +116,6 @@
                             @enderror
                         </div>
                         
-
                         {{-- Section [Subcategory_id] --}}
                         <?php $subcategories = App\Models\Subcategory::where('category_id', auth()->user()->category_id)->get() ?>
 
@@ -125,10 +124,10 @@
                                 <label>Choose Section</label>
                                 <select name="subcategory"
                                     class="form-control @error('subcategory') is-invalid @enderror">
-                                    <option value="">Select</option>
+                                    <option value="{{old('subcategory')}}">Select</option>
 
                                     @foreach ($subcategories as $subcategory)
-                                    <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
+                                    <option {{old('subcategory') == $subcategory->id ? 'selected' : '' }} value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

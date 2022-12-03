@@ -41,7 +41,10 @@ class UserController extends Controller
             'category_id' => $request['categoryId'],
         ]);
 
-        return redirect()->route('dashboard');
+        if($request['categoryId']) {
+            return redirect()->route('admin.view', $request['categoryId']);
+        }
+        return redirect()->route('newAdmin.view');
     }
 
     //--------------------------------------------------------
@@ -115,12 +118,13 @@ class UserController extends Controller
             'image'   => ['nullable'], //, 'mimes:png,jpg'
         ]);
 
+        // collect(request()->all())->filter() dosenot show null vale
+        // except(...) prevents showing same vales
         $filteredRequest = collect(request()->all())->filter()->except(
             '_token',
             '_method',
             'image'
         );
-
         
         if ($request->file('image')) {
 

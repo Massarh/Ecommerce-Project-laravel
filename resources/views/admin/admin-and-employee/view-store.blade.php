@@ -7,8 +7,7 @@
         <h1 class="h3 mb-0 text-gray-800">Stores Table</h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}"">Home</a></li>
-            <li class=" breadcrumb-item">Store</li>
-            <li class="breadcrumb-item active" aria-current="page">Store Tables</li>
+            <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Stores Table</li>
         </ol>
     </div>
 
@@ -53,7 +52,7 @@
                                         <td></td>
                                         <td>
                                             <a href=" {{route('admin.view',[ $category->id])}} ">
-                                                <button class="btn" style="background-color:#198754; color:white;">view admins/employees</button>
+                                                <button class="btn" style="background-color:#198754; color:white;">view admins&employees</button>
                                             </a>
                                         </td>
                                     </tr>

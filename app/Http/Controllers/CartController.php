@@ -108,8 +108,8 @@ class CartController extends Controller
                 'total_price' => $cart->totalPrice,
                 'total_quantity' => $cart->totalQuantity
             ]);
-            $newCart = [];
 
+            $newCart = [];
             foreach ($cart->items as $item) {
                 array_push(
                     $newCart,

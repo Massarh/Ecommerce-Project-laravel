@@ -126,14 +126,33 @@
     </div>
     {{-- end carousel --}}
 
+    {{-- category --}}
     <h2 class="pt-5">Category</h2>
+        <div class="row">
+            @foreach (App\Models\Category::all() as $category)
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="{{ Storage::url($category->image) }}" height="300" style="width: 100%"> {{-- using height & width To make all images the same size --}}
+                    <div class="card-body">
+                        <p><b>{{ $category->name }}</b></p>
+                        <p class="card-text">
+                            {!! Str::limit($category->description, 120) !!} 
+                            {{-- ^ In order to limit the length of a string directly in your blade files --}}
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a href="{{route('product.list',[$category->slug])}}"> 
+                                <button type="button" class="btn btn-sm btn-outline-success">View Products</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
 
-    @foreach (App\Models\Category::all() as $cat)
-        <a href="{{ route('product.list', [$cat->slug]) }}" class="">
-            <button class="btn btn-secondary">{{ $cat->name }}</button>
-        </a>
-    @endforeach
-
+    {{-- product --}}
     <div class="album py-5 bg-light">
         <div class="container">
             <h2>Products</h2>

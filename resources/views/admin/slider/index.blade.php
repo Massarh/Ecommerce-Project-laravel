@@ -7,8 +7,8 @@
             <h1 class="h3 mb-0 text-gray-800">Sliders Table</h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                <li class="breadcrumb-item">Tables</li>
-                <li class="breadcrumb-item active" aria-current="page">Sliders Table</li>
+                <li class="breadcrumb-item"><a href="{{route('slider.create')}}">Create Slider</a></li>
+                <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Sliders Table</li>
             </ol>
         </div>
 

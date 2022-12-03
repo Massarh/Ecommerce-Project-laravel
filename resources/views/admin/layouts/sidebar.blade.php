@@ -32,10 +32,8 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Store</h6>
                 <a class="collapse-item" href=" {{ route('store.index') }}">View</a>
-                @if(auth()->user()->user_role=='admin')
-                    @if(is_null(App\Models\User::with("category")->where('id', auth()->user()->id)->first()->category))
+                @if((auth()->user()->user_role=='admin') && (!auth()->user()->category_id))
                         <a class="collapse-item" href=" {{ route('store.create') }} ">Create</a>
-                    @endif
                 @endif
 
             </div>
@@ -55,9 +53,10 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Section</h6>
-
                 <a class="collapse-item" href=" {{ route('section.getSubcategoryByCatId',[auth()->user()->category_id])}} ">View</a>
-                <a class="collapse-item" href=" {{ route('section.create') }}">Create</a>
+                @if(auth()->user()->user_role=='admin')
+                    <a class="collapse-item" href=" {{ route('section.create') }}">Create</a>
+                @endif
 
             </div>
         </div>
@@ -78,7 +77,9 @@
                 <h6 class="collapse-header">Products</h6>
                 <a class="collapse-item"
                     href=" {{ route('product.index') }} ">View</a>
-                <a class="collapse-item" href=" {{ route('product.create') }} ">Create</a>
+                    @if(auth()->user()->user_role=='admin')
+                        <a class="collapse-item" href=" {{ route('product.create') }} ">Create</a>
+                    @endif
             </div>
         </div>
     </li>
@@ -159,14 +160,14 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap7"
         aria-expanded="true" aria-controls="collapseBootstrap7">
         <i class="far fa-fw fa-window-maximize"></i>
-        <span>Admins / Employees</span>
+        <span>Admins & Employees</span>
         </a>
         <div id="collapseBootstrap7" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Add Admin Or Employee</h6>
-                <a class="collapse-item" href=" {{ route('store.view') }}">View Admins / Employees</a>
-                <a class="collapse-item" href=" {{ route('newAdmin.view')}}">View New Admin</a>
+                <h6 class="collapse-header">Admin & Employee</h6>
+                <a class="collapse-item" href=" {{ route('store.view') }}">View</a>
                 <a class="collapse-item" href=" {{ route('add.admin') }}">Create</a>
+                <a class="collapse-item" href=" {{ route('newAdmin.view')}}">View New Admin</a>
             </div>
         </div>
     </li>

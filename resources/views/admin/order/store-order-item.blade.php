@@ -4,11 +4,11 @@
 <!-- Container Fluid-->
 <div class="container-fluid" id="container-wrapper">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Store Order Items Table</h1>
+        <h1 class="h3 mb-0 text-gray-800">Order Items Table</h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}"">Home</a></li>
-            <li class=" breadcrumb-item">Store Order Items</li>
-            <li class="breadcrumb-item active" aria-current="page">Store Order Items Table</li>
+            <li class=" breadcrumb-item"><a href="{{route('order.store')}}"">Stores Table </a></li>
+            <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Order Items Table</li>
         </ol>
     </div>
     <div class="row">
@@ -18,9 +18,14 @@
             <div class="card">
                 <form action="{{route('item.order', [$storeItems[0]->category_id])}}" method="GET">@csrf
                     <div class="card-header py-3 calendar-parent">
+                        
+                        @if(auth()->user()->user_role=='superadmin')
+                        <h6 class="m-0 font-weight-bold" style="color:  #344f63">All {{$storeItems[0]->category->name}} Order Items </h6>
+                        @endif
 
-                        <h6 class="m-0 font-weight-bold " style="color:  #344f63">All {{$storeItems[0]->category->name}} Order Items </h6>
-
+                        @if(auth()->user()->user_role=='admin' || auth()->user()->user_role=='employee')
+                        <h6 class="m-0 font-weight-bold" style="color:  #344f63">All Order Items </h6>
+                        @endif
                         {{-- Filter Date --}}
                         <div class="calendar-child">
                             <label for="date" class="col-form-label" style="margin-right: 10px">From</label>

@@ -19,7 +19,7 @@
 <script src="{{asset('admin/js/demo/chart-area-demo.js')}}"></script>
 {{-- include summernote css/js --}}
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-{{-- Page level plugins --}}
+{{-- Page level plugins --}} <!-- Show & Search in product page  -->
 <script src="{{asset('admin/vendor/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('admin/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
 
