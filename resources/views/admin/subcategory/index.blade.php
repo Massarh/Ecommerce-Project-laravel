@@ -61,7 +61,7 @@
                                 @if(auth()->user()->user_role=='superadmin')
                                     <td>  
                                         <a href=" {{route('product.getProductBySubId', [$subcategory->id])}} ">
-                                            <button class="btn" style="background-color:#198754; color:white;">products</button>
+                                            <button class="btn" style="background-color: #2f526b; color:white;">products</button>
                                         </a>
                                     </td>
                                 @endif

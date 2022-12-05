@@ -22,7 +22,7 @@
                         <img src="{{ Storage::url($slider->image) }}" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <b>
-                                <h1 style="color: rgb(255, 255, 255) ; font-size: 85px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">We are so happy to see you here</h1>
+                                <h1 style="color: rgb(255, 255, 255) ; font-size: 50px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">We are so happy to see you here</h1>
                             </b>
                             <h4 >beauty, clarity, functionality and sustainability.</h4>
                         </div>
@@ -41,92 +41,10 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        </divclass=>
-        {{-- slider --}}
-
-    {{-- carousel --}}
-    <h1 class="pt-5">Latest products</h1>
-
-    <div class="jumbotron" {{--style="padding: 4rem 2rem; margin-bottom: 2rem; background-color: #e9ecef; border-radius: 0.3rem;"--}}>
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="row">
-
-                        @foreach ($randomActiveProducts as $product)
-                            <div class="col-3">
-                                {{-- <div class="card mb-4 shadow-sm"> --}}
-                                        <img src="{{ Storage::url($product->image) }}" height="200" style="width: 100%; border-radius: 50%; display:inline-block"> {{-- using height & width To make all images the same size --}}
-                                    <p style="text-align: center; margin-top: 3px"><b>{{ $product->name }}</b></p>
-                                    {{-- <div class="card-body">
-                                        <p class="card-text">
-                                            {!! Str::limit($product->description, 120) !!} 
-                                            {{-- ^ In order to limit the length of a string directly in your blade files --}
-                                        </p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <a href="{{ route('product.view', [$product->id]) }}"> {{-- to go to 'show.blade.php' file --}
-                                                    <button type="button" class="btn btn-sm btn-outline-success">View</button>
-                                                </a>
-                                                <a href="{{ route('add.cart', [$product->id]) }}">
-                                                    <button type="button" class="btn btn-sm btn-outline-primary">Add to cart</button>
-                                                </a>
-                                            </div>
-                                            <small class="text-muted">${{ $product->price }}</small>
-                                        </div>
-                                    </div> --}}
-                                {{-- </div> --}}
-                            </div>
-                        @endforeach
-                        
-                    </div>
-                </div>
-
-                <div class="carousel-item">
-                    <div class="row">
-                        
-                        @foreach ($randomItemProducts as $product)
-                            <div class="col-3">
-                                {{-- <div class="card mb-4 shadow-sm"> --}}
-                                    <img src="{{ Storage::url($product->image) }}" height="200" style="width: 100%; border-radius: 50%; display:inline-block "> {{-- using height & width To make all images the same size --}}
-                                    <p style="text-align: center; margin-top: 3px"><b>{{ $product->name }}</b></p>
-                                    {{-- <div class="card-body">
-                                        <p class="card-text">
-                                            {!! Str::limit($product->description, 120) !!} 
-                                            {{-- ^ In order to limit the length of a string directly in your blade files --}
-                                        </p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <a href="{{ route('product.view', [$product->id]) }}"> {{-- to go to 'show.blade.php' file --}
-                                                <button type="button" class="btn btn-sm btn-outline-success">View</button>
-                                                </a>
-                                                <a href="{{ route('add.cart', [$product->id]) }}">
-                                                    <button type="button" class="btn btn-sm btn-outline-primary">Add to cart</button>
-                                                </a>
-                                            </div>
-                                            <small class="text-muted">${{ $product->price }}</small>
-                                        </div>
-                                    </div> --}}
-                                {{-- </div> --}}
-                            </div>
-                        @endforeach
-                        
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button> 
-        </div>
     </div>
-    {{-- end carousel --}}
+    {{-- slider --}}
 
-    {{-- category --}}
+    {{-- Category --}}
     <h2 class="pt-5">Category</h2>
         <div class="row">
             @foreach (App\Models\Category::all() as $category)
@@ -197,13 +115,122 @@
     
 </div>
 
-<footer class="text-muted">
-    <div class="container">
-        <p class="float-right">
-            <a href="#">Back to top</a>
-        </p>
-        <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-        <p>New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="/docs/4.6/getting-started/introduction/">getting started guide</a>.</p>
-    </div>
-</footer>
+{{-- Footer Home page --}}
+<div class="footer-clean">
+    <footer>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-4 col-md-3 item">
+                    <h3>Company info</h3>
+                    <ul>
+                        <li><a href="#">about Go-plaza</a></li>
+                        <li><a href="#">Social Responsibility</a></li>
+                        <li><a href="#">Supply Chain</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 col-md-3 item">
+                    <h3>Help and suport</h3>
+                    <ul>
+                        <li><a href="#">How To Order</a></li>
+                        <li><a href="#">Development</a></li>
+                        <li><a href="#">Hosting</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
+                    <p class="copyright">Plaza team © 2022</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+<style>
+    .footer-clean {
+        padding:50px 0;
+        background-color:#fff;
+        color:#4b4c4d;
+    }
+    
+    .footer-clean h3 {
+        margin-top:0;
+        margin-bottom:12px;
+        font-weight:bold;
+        font-size:16px;
+    }
+    
+    .footer-clean ul {
+        padding:0;
+        list-style:none;
+        line-height:1.6;
+        font-size:14px;
+        margin-bottom:0;
+    }
+    
+    .footer-clean ul a {
+        color:inherit;
+        text-decoration:none;
+        opacity:0.8;
+    }
+    
+    .footer-clean ul a:hover {
+        opacity:1;
+    }
+    
+    .footer-clean .item.social {
+        text-align:right;
+    }
+    
+    @media (max-width:767px) {
+        .footer-clean .item {
+        text-align:center;
+        padding-bottom:20px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .footer-clean .item.social {
+        text-align:center;
+        }
+    }
+    
+    .footer-clean .item.social > a {
+        font-size:24px;
+        width:40px;
+        height:40px;
+        line-height:40px;
+        display:inline-block;
+        text-align:center;
+        border-radius:50%;
+        border:1px solid #ccc;
+        margin-left:10px;
+        margin-top:22px;
+        color:inherit;
+        opacity:0.75;
+    }
+    
+    .footer-clean .item.social > a:hover {
+        opacity:0.9;
+    }
+    
+    @media (max-width:991px) {
+        .footer-clean .item.social > a {
+        margin-top:40px;
+        }
+    }
+    
+    @media (max-width:767px) {
+        .footer-clean .item.social > a {
+        margin-top:10px;
+        }
+    }
+    
+    .footer-clean .copyright {
+        margin-top:14px;
+        margin-bottom:0;
+        font-size:13px;
+        opacity:0.6;
+    }
+</style>
 @endsection

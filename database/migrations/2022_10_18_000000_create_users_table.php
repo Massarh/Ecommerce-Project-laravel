@@ -29,7 +29,7 @@ return new class extends Migration
                 //categories table الي ب id لل data type لانه لازم يكون بنفس unsignedBigInteger() نوعه category حددنا انه 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
                 /**
-                references('id') -> id in categories table
+                references('id') -> "PK" id in categories table
                 on('categories') -> id الجدول الي متخذين منه 
                 onDelete('cascade') -> fk بالجدول الاساسي بنحذف ال pk اذا انحذف ال
                 */

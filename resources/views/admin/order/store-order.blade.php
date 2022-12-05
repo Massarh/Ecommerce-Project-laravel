@@ -36,7 +36,8 @@
                                     {{-- relationship between category and User --}}
                                     <td>{{ $category->name }}</td>
                                     <td>{{ $category->user[0]->email }}</td> 
-                                    <td><a href="{{route('item.order', [$category->id])}}"> <button class="btn btn-info">View Order Items</button>
+                                    <td><a href="{{route('item.order', [$category->id])}}"> <button class="btn"  style="background-color: #2f526b;
+                                        color: white;">View Order Items</button>
                                     </a></td> 
                                 </tr>
                             @endforeach

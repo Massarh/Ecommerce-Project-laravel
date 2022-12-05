@@ -19,9 +19,10 @@
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold " style="color: #344f63">All {{$adminsAndEmployees[0]->category->name}} Admins & Employees</h6>
                 </div>
-                
+            
                 @if(session()->has('status'))
                 <div style="background-color:#ef5b69" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <i class="fas fa-exclamation-triangle pr-2"></i>
                     <strong>{{session()->get('status')}}</strong> 
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>

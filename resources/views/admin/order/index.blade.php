@@ -40,7 +40,8 @@
                                 <td>{{ $order->user->email }}</td>
                                 <td>{{ date( 'd-M-y', strtotime($order->created_at))}}</td>
                                 <td><a href="{{route('user.order', [$order->id])}}">
-                                    <button class="btn btn-info">View Order</button>
+                                    <button class="btn" style="background-color: #2f526b;
+                                    color: white;">View Order</button>
                                 </a></td>
                             </tr>
                         @endforeach

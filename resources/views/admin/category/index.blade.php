@@ -91,7 +91,7 @@
                                     <!-- section Button-->
                                     <td> 
                                         <a href=" {{route('section.getSubcategoryByCatId',[ $category->id])}} ">
-                                            <button class="btn " style="background-color:#198754; color:white;">section</button>
+                                            <button class="btn " style="background-color: #2f526b; color:white;">section</button>
                                         </a>
                                     </td>
 

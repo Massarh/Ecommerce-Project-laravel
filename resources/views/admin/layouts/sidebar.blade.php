@@ -176,7 +176,7 @@
 
 
     {{-- to access for cstomer side --}}
-    <li class="nav-item mt-3">
+    <li class="nav-item mt-4">
         <a class="dropdown-item" href="/" >
             
             {{-- <i class="fas fa-store-alt"></i> --}}
@@ -198,9 +198,4 @@
         </form>
 
     </li>
-
-
-    {{--
-    <hr class="sidebar-divider">
-    <div class="version" id="version-ruangadmin"></div> --}}
 </ul>
