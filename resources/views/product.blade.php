@@ -73,7 +73,7 @@
     {{-- product --}}
     <div class="album py-5 bg-light">
         <div class="container">
-            <h2>Products</h2>
+            <h2>Top Selling Products</h2>
             <div class="row">
                 @foreach ($products as $product)
 
@@ -103,9 +103,11 @@
 
                 @endforeach
             </div>
-            <a href="{{route('more.product')}}" >
-                <button style="text-align: center;" class="btn btn-success">More Product</button>
-            </a>
+            <div style="display:flex;justify-content:center">
+                <a href="{{route('more.product')}}" >
+                    <button style="text-align: center;" class="btn btn-success">All Product</button>
+                </a>
+            </div>
         </div>
     </div>
 

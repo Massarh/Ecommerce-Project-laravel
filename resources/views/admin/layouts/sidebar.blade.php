@@ -174,17 +174,6 @@
 
     @endif
 
-
-    {{-- to access for cstomer side --}}
-    <li class="nav-item mt-4">
-        <a class="dropdown-item" href="/" >
-            
-            {{-- <i class="fas fa-store-alt"></i> --}}
-            <i class="fas fa-shopping-bag"></i>
-            Go to shopping
-        </a>
-    </li>
-
     {{-- Logout --}}
     <li class="nav-item mt-4">
 

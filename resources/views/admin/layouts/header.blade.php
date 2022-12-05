@@ -17,7 +17,7 @@
     {{-- include summernote css/js --}}
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     {{-- Style --}}
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/admin-panel-style.css')}}">
 
     
 

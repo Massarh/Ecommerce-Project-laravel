@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\User;
 use App\Models\OrderItem;
 use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
@@ -122,8 +123,9 @@ class CartController extends Controller
                         'order_id' => $order->id,
                         'created_at' => now(),
                         'updated_at' => now(),
-                    ]
-                );
+                    ]);
+                DB::table('products')->where('id', '=',$item['id'])
+                ->increment('number_of_sold' ,$item['qty'] );
             }
 
             OrderItem::insert($newCart);

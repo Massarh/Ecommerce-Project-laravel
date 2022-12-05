@@ -13,8 +13,7 @@ class FrontProductListController extends Controller
 
     public function index() // NOT understanding (explain in 143 video)
     {
-        $products = Product::latest()->limit(9)->get();
-        $randomActiveProducts = Product::inRandomOrder()->limit(3)->get();
+        $products = Product::orderBy('number_of_sold','desc')->limit(9)->get();        $randomActiveProducts = Product::inRandomOrder()->limit(3)->get();
                 //return $randomActiveProducts ; // output:: array-object
         $randomActiveProductIds = [];
         foreach ($randomActiveProducts as $product) {
@@ -37,14 +36,15 @@ class FrontProductListController extends Controller
     {
         $product = Product::find($id);
         //تحت العنصر الي فاتحه id لعرض العناصر الي الهم نفس 
-        $productFormSameCategories = Product::inRandomOrder()
-        ->where('category_id', $product->category_id)
-        ->whereBetween('price', [$product->price-50, $product->price+50]) // Massarh
+        $productFromSameSubcategoryAndTopSelling = Product::
+          where('subcategory_id',$product->subcategory_id) 
         ->where('id', '!=',$product->id) 
-        ->limit(3)
+        ->orderBy('number_of_sold','desc') 
+        ->limit(4)
         ->get();
+// return $productFromSameSubcategoryAndTopSelling;
 
-        return view('show', compact('product', 'productFormSameCategories'));
+        return view('show', compact('product', 'productFromSameSubcategoryAndTopSelling'));
     }
 
     // ----------------------------------------------------------------------------

@@ -47,12 +47,12 @@
         </div>
     </div>
 
-    @if (count($productFormSameCategories)>0)
+    @if (count($productFromSameSubcategoryAndTopSelling)>0)
         
     <div class="jumbotron" style="padding: 4rem 2rem; margin-bottom: 2rem; background-color: #e9ecef; border-radius: 0.3rem;">
         <h3>You may like</h3>
         <div class="row">
-            @foreach ($productFormSameCategories as $product)
+            @foreach ($productFromSameSubcategoryAndTopSelling as $product)
 
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">

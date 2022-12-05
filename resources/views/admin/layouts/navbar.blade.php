@@ -160,14 +160,21 @@
             <img class="img-profile rounded-circle" src="{{ Storage::url(auth()->user()->image) }}" style="max-width: 60px">
             <span class="ml-2 d-none d-lg-inline text-white small">{{auth()->user()->name}}</span>
         </a>
+
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
             
+            <!-- to access for cstomer side -->
+            <a class="dropdown-item" href="/" >
+                <i class="fas fa-shopping-bag text-gray-400"></i>
+                Go to shopping
+            </a>
+
             <!-- Profile -->
             <a class="dropdown-item" href="{{route('profile')}}">
                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                 Profile
             </a>
-
+            
             <!-- Settings -->
             {{-- <a class="dropdown-item" href="#">
                 <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
