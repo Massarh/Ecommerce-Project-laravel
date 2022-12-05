@@ -1,8 +1,587 @@
-* {
-    /* background-color: white; */
-}
-
 .card-body {
 
     border: solid 0.5px #0000003d;
+}
+
+.alaa {
+    text-align: center;
+    font-family: garamond !important;
+    font-family: Serif;
+    font-style: italic!important;
+    font-size: 75px;
+    font-weight: 500;
+    margin-bottom: 25px;
+    margin-top: -22px;
+}
+
+/* ************************************ */
+
+body {
+    box-sizing: border-box;
+    margin: 0px;
+    font-family: 'Poppins', sans-serif !important;
+
+}
+
+.nav-txt {
+    font-family: 'Poppins', sans-serif !important;
+    min-height: 70px;
+    /* position: fixed !important; */
+    /* background-color: rgba(255, 255, 255, 0) !important; */
+    background-color: transparent;
+}
+
+.link {
+    text-decoration: none;
+
+    margin-left: 40%;
+}
+
+.link-signup {
+    text-decoration: none;
+
+    margin-left: 30%;
+}
+
+.link-signup:hover {
+    color: #fca311 !important;
+}
+
+.link:hover {
+    color: #fca311 !important;
+}
+
+.text-nav {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: bold !important;
+    font-size: 16pt !important;
+    margin-left: 22px;
+    color: white !important;
+}
+
+.text-nav2 {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 16pt !important;
+    margin-left: 22px;
+    color: #14213d !important
+}
+
+.logo-icon {
+    position: absolute;
+    left: 2.5%;
+    top: 27%;
+}
+
+.logo {
+    position: absolute;
+    left: 5.5%;
+    top: 30%;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: bold;
+    font-size: 16pt !important;
+
+}
+
+.bg-image {
+    margin: 0px;
+    background-image: url("https://images-ext-1.discordapp.net/external/nLavfkSrT7XgFyd3ac9S5QPBYkqbzikzqhvVFzAiTJw/https/miro.medium.com/max/2560/1%2A2SDFmeWqZqwgHhXBAw-pOA.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 650px;
+    opacity: 0.8;
+}
+
+.nav-text {
+    color: #14213d !important;
+    background-color: #fca311 !important;
+}
+
+.button-color {
+    background-color: #14213d !important;
+    color: #fca311 !important;
+}
+
+.text-color {
+    color: #14213d !important;
+}
+
+.book-btn {
+    left: 37.8%;
+    background-color: rgba(255, 255, 255, 0.904);
+}
+
+.bg-card {
+    margin: 0px;
+    width: 100%;
+    height: 650px;
+    background-color: #e5e5e5 !important;
+}
+
+.profile-card {
+    margin: 0px;
+    width: 100%;
+    height: 651px;
+    background-color: white !important;
+}
+
+.bio {
+    width: 67.55%;
+    height: 47.6%;
+    max-width: 67.55%;
+    overflow-wrap: break-word;
+    letter-spacing: 1px;
+    left: 28.4%;
+    bottom: 49.8%;
+}
+
+.guide-btn {
+    top: 46% !important;
+    left: 76%;
+    box-shadow: 1px 1px 5px #14213d;
+}
+
+.card1-p {
+    max-height: 95% !important;
+    /* background-color:rgba(255, 255, 255, 0.363); */
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+.guide-table {
+    max-height: 37.5%;
+    background-color: white;
+    overflow-y: scroll;
+    width: 68%;
+    position: absolute;
+    top: 57.2%;
+    left: 25.8%;
+}
+
+.des-text {
+    max-height: 250px;
+    overflow-y: scroll;
+}
+
+.guide-form {
+    left: 17%;
+    border-radius: 10px;
+    width: 1000px !important;
+    box-shadow: 4px 4px 200px black;
+    /* bottom: 100px */
+}
+
+.booking-form {
+    left: 32%;
+    border-radius: 10px;
+    box-shadow: 4px 4px 200px black;
+}
+
+.user-form {
+    left: 32%;
+    border-radius: 10px;
+    box-shadow: 4px 4px 200px black;
+
+    width: 580px;
+}
+
+
+
+.user-card-p {
+    width: 95%;
+    height: 95%;
+}
+
+.user-table {
+    max-height: 35%;
+    background-color: white;
+    overflow-y: scroll;
+    top: 60%;
+    width: 94%;
+}
+
+.guide-card-summary {
+    /* box-shadow:0px 0px 0px 3px gray inset; */
+    left: 25%;
+    top: 50px;
+    border: 3px solid #14213d !important;
+}
+
+.tourist-card-summary {
+    left: 51%;
+    bottom: 270px;
+    border: 3px solid #14213d !important;
+}
+
+.done-card-summary {
+    width: 784px;
+    bottom: 235.5px;
+    left: 25%;
+    height: 140px;
+    flex-direction: row !important;
+    justify-content: space-evenly;
+    background-color: #14213d !important;
+}
+
+/* slider--------------------- */
+
+.auto-slider {
+    position: absolute;
+    left: 40.2%;
+    top: 10px;
+    box-sizing: content-box;
+    display: inline-block;
+    padding: 10px 10px 20px;
+    background: #fff;
+    /* max-width: 1014px;
+  min-width: 1014px; */
+    width: 750px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 4px;
+    height: 235px;
+    /* box-shadow: 1px 1px 5px orange; */
+}
+
+div#slider {
+    overflow: hidden;
+}
+
+div#slider figure img {
+    width: 20%;
+    float: left;
+}
+
+div#slider figure {
+    position: relative;
+    width: 500%;
+    margin: 0;
+    left: 0;
+    text-align: left;
+    font-size: 0;
+    animation: 25s sliding ease infinite;
+}
+
+@keyframes sliding {
+    0% {
+        left: 0%;
+    }
+
+    20% {
+        left: -100%;
+    }
+
+    40% {
+        left: -200%;
+    }
+
+    60% {
+        left: -300%;
+    }
+
+    80% {
+        left: -400%;
+    }
+
+    100% {
+        left: 0%;
+    }
+}
+
+@keyframes indicating {
+    from {
+        left: -100%;
+    }
+
+    to {
+        left: 0;
+    }
+}
+
+.guides {
+    left: 70%;
+    border-bottom: none;
+    width: 731px;
+    margin-top: 0.25%;
+    /* min-height: 600px;
+  max-height: 600px; */
+    height: 588.6px;
+    overflow-y: scroll;
+    border-right: 3px solid #fca311;
+    padding-top: 15px;
+}
+
+.mapbox {
+    left: 47.6%;
+    top: 9.81%;
+    width: 805px;
+}
+
+
+
+.cancel-form {
+    box-shadow: 5px 5px 50px black;
+    font-weight: bold !important;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.back-btn {
+    background-color: rgb(74, 207, 74) !important;
+    color: white !important;
+}
+
+.guide-map {
+    cursor: cell !important;
+}
+
+.search-in-list {
+    top: 10.5px !important;
+}
+
+.slider-cont {
+    position: absolute;
+    top: 52%;
+    left: 38%;
+}
+
+.membership {
+    position: absolute;
+    height: 200px;
+    left: 75%;
+    top: 11%;
+}
+
+.guide-card {
+    width: 72%;
+    height: 47.6%;
+    left: 28.4%;
+    bottom: 49.8%;
+}
+
+.guide-membership {
+    position: absolute;
+    height: 95px;
+    /* left:32.5%; */
+    left: 90%;
+    /* top:34.5%; */
+    bottom: 82.5%;
+}
+
+
+/* here & guidelist line 9 */
+.personal-card {
+    border-width: 0px !important;
+    background-color: rgba(255, 255, 255, 0.007) !important;
+
+}
+
+
+
+.new-guide {
+    background-color: #14213d;
+    color: white;
+    width: 50px;
+    font-size: 14pt;
+    font-weight: bold;
+    padding-left: 4.5px;
+    padding-bottom: 3px;
+    border-radius: 7px;
+}
+
+.rating-page {
+    width: 100%;
+    height: 651px;
+    background-image: url("https://images-ext-1.discordapp.net/external/nLavfkSrT7XgFyd3ac9S5QPBYkqbzikzqhvVFzAiTJw/https/miro.medium.com/max/2560/1%2A2SDFmeWqZqwgHhXBAw-pOA.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.feedback {
+    position: absolute;
+    left: 55%;
+    top: 30%;
+    color: black;
+    font-size: 40pt;
+
+
+}
+
+.done-btn {
+    background-color: #fca311 !important;
+    color: white !important;
+}
+
+.big-card-summary {
+    width: 100%;
+    height: 620px;
+}
+
+/* .video-home{
+  max-height: 10%;
+} */
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 119.9%;
+
+    background: #03a9f4;
+    mix-blend-mode: overlay;
+}
+
+
+
+
+
+
+
+
+/* body {
+  background: #e6e6e6;
+} */
+
+.pin {
+    width: 30px;
+    height: 30px;
+    border-radius: 50% 50% 50% 0;
+    background: orange;
+    position: absolute;
+    transform: rotate(-45deg);
+    left: 50%;
+    top: 50%;
+    margin: -30px 0 0 -10px;
+}
+
+.pin:after {
+    content: "";
+    width: 14px;
+    height: 14px;
+    margin: 8px 0 0 8px;
+    background: white;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.bounce {
+    animation-name: bounce;
+    animation-fill-mode: both;
+    animation-duration: 1s;
+}
+
+.pulse {
+    border-radius: 50%;
+    height: 14px;
+    width: 14px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: 11px 0px 0px -12px;
+    transform: rotateX(55deg);
+    z-index: -2;
+}
+
+.pulse:after {
+    content: "";
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    margin: -13px 0 0 -13px;
+    animation: pulsate 1s ease-out;
+    animation-iteration-count: infinite;
+    opacity: 0;
+    box-shadow: 0 0 1px 2px white;
+    animation-delay: 1.1s;
+}
+
+@keyframes pulsate {
+    0% {
+        transform: scale(0.1, 0.1);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.2, 1.2);
+        opacity: 0;
+    }
+}
+
+@keyframes bounce {
+    0% {
+        opacity: 0;
+        transform: translateY(-2000px) rotate(-45deg);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(30px) rotate(-45deg);
+    }
+
+    80% {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(-45deg);
+    }
+}
+
+
+
+
+.top-card {
+    border-radius: 15px;
+    height: 412px;
+}
+
+
+
+.info-box {
+
+    /* box-shadow: 2px 2px 15px rgb(255, 255, 255); */
+    background-color: rgba(255, 255, 255, 0.192);
+    width: 90%;
+    left: 5%;
+
+}
+
+.box-title {
+    font-weight: bold;
+    font-size: 1.7em;
+
+}
+
+
+.title-one {
+
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+
+    letter-spacing: 3.5px;
+    margin-left: 17.5%;
+
+}
+
+.map-price {
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+
+}
+
+.r-stars {
+    position: absolute;
+    left: 72%;
+    top: 67%
+}
+
+.footer-txt {
+    letter-spacing: 2px;
 }

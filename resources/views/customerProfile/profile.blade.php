@@ -10,9 +10,8 @@
         background: linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1))
     }
 </style>
-
-
-@extends('admin.layouts.main')
+@include('navLayout.navbar')
+@extends('layouts.app')
 
 @section('content')
 <section style="background-color: #eee;">

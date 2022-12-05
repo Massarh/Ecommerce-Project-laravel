@@ -78,10 +78,7 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
     // Slider Admin
     Route::resource('slider', SliderController::class);
 
-    /*  PROFILE ADMIN */
-    Route::get('profile', [UserController::class, 'showUserProfile'])->name('profile');
-    Route::get('profile/edit', [UserController::class, 'editProfile'])->name('profile.edit');
-    Route::put('profile/update', [UserController::class, 'updateProfile'])->name('profile.update');
+    
 
     /* Add Admin/Employee */
     Route::post('/create-admin-or-employee', [UserController::class, 'createAdminOrEmployee'])->name('admin.create');
@@ -97,7 +94,13 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
 // using in ajax
 Route::get('sections/{id}', [ProductController::class, 'loadSubCategories']);
 
+/*  PROFILE ADMIN */
+Route::get('profile', [UserController::class, 'showUserProfile'])->name('profile');
+Route::get('profile/edit', [UserController::class, 'editProfile'])->name('profile.edit');
+Route::put('profile/update', [UserController::class, 'updateProfile'])->name('profile.update');
 
-
-// Route::get('/index/test',[CategoryController::class, 'store']);
 Route::get('/index/test', [ProductController::class, 'test']);
+
+Route::get('/test', function () {
+    return view('test');
+});

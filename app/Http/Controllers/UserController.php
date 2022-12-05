@@ -95,7 +95,11 @@ class UserController extends Controller
     public function showUserProfile()
     {
         $user = auth()->user();
-        return view('admin.profile.profile', compact('user'));
+        if(auth()->user()->user_role == 'superadmin' || auth()->user()->user_role == 'admin' || auth()->user()->user_role == 'employee') {
+            return view('admin.profile.profile', compact('user'));
+        }elseif(auth()->user()->user_role == 'customer') {
+            return view('customerProfile.profile', compact('user'));
+        }
     }
 
     //--------------------------------------------------------
@@ -103,7 +107,12 @@ class UserController extends Controller
     public function editProfile()
     {
         $user = User::find(auth()->user()->id);
-        return view('admin.profile.edit', compact('user'));
+        if(auth()->user()->user_role == 'superadmin' || auth()->user()->user_role == 'admin' || auth()->user()->user_role == 'employee') {
+            return view('admin.profile.edit', compact('user'));
+
+        }elseif(auth()->user()->user_role == 'customer') {
+            return view('customerProfile.edit', compact('user'));
+        }
     }
 
     //--------------------------------------------------------
