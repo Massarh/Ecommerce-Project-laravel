@@ -27,7 +27,7 @@
             <div class="card">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 @if(auth()->user()->user_role=='superadmin')
-                <h6 class="m-0 font-weight-bold" style="color: #344f63">All {{$subcategories[0]->category->name}} Sections </h6>
+                <h6 class="m-0 font-weight-bold" style="color: #344f63">All {{$category->name}} Sections </h6>
                 @endif
 
                 @if(auth()->user()->user_role=='admin' || auth()->user()->user_role=='employee')

@@ -62,7 +62,7 @@ class FrontProductListController extends Controller
             $products = $this->filterByPrice($request);
         } else {  
             // main page في category اول مره بدخل عن طريق الكبس على كبسه 
-            $products = Product::where('category_id', $category->id)->get();
+            $products = Product::where('category_id', $categoryId)->get();
         }
         $subcategories = Category::find($categoryId)->subcategory()->get();
         
