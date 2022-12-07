@@ -40,9 +40,8 @@ class FrontProductListController extends Controller
           where('subcategory_id',$product->subcategory_id) 
         ->where('id', '!=',$product->id) 
         ->orderBy('number_of_sold','desc') 
-        ->limit(4)
+        ->limit(3)
         ->get();
-// return $productFromSameSubcategoryAndTopSelling;
 
         return view('show', compact('product', 'productFromSameSubcategoryAndTopSelling'));
     }
@@ -58,15 +57,15 @@ class FrontProductListController extends Controller
         if($request->subcategory) {  // filter products
             $products = $this->filterProducts($request, $categoryId);
             $filterSubCategories = $this->getSubcategoriesId($request);  
-            // return $filterSubCategories; //output:: [1,2,3]
-            // return $products;
+            
         } elseif ($request->min||$request->max) {
             $products = $this->filterByPrice($request);
-        } else {  // main page في category اول مره بدخل عن طريق الكبس على كبسه 
+        } else {  
+            // main page في category اول مره بدخل عن طريق الكبس على كبسه 
             $products = Product::where('category_id', $category->id)->get();
         }
-        $subcategories = Subcategory::where('category_id', $category->id)->get();
-
+        $subcategories = Category::find($categoryId)->subcategory()->get();
+        
         return view('category', compact('products', 'subcategories', 'slug', 'filterSubCategories','categoryId'));
 
     }

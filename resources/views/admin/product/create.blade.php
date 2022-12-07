@@ -117,7 +117,7 @@
                         </div>
                         
                         {{-- Section [Subcategory_id] --}}
-                        <?php $subcategories = App\Models\Subcategory::where('category_id', auth()->user()->category_id)->get() ?>
+                        <?php $subcategories = App\Models\Category::find(auth()->user()->category_id)->get() ?>
 
                         <div class="form-group col-6">
                             <div class="custom-file">

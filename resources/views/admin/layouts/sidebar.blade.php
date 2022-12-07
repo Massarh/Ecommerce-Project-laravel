@@ -62,19 +62,19 @@
         </div>
     </li>
 
-    @if(App\Models\Subcategory::where('category_id',auth()->user()->category_id)->count())
+    @if(App\Models\Category::find(auth()->user()->category_id)->subcategory()->count())
 
     <!-- Product -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap2"
             aria-expanded="true" aria-controls="collapseBootstrap2">
             <i class="far fa-fw fa-window-maximize"></i>
-            <span>Products</span>
+            <span>All Products</span>
         </a>
         <div id="collapseBootstrap2" class="collapse" aria-labelledby="headingBootstrap"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Products</h6>
+                <h6 class="collapse-header">All Products</h6>
                 <a class="collapse-item"
                     href=" {{ route('product.index') }} ">View</a>
                     @if(auth()->user()->user_role=='admin')

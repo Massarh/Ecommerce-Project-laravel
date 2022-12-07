@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Category;
 use App\Models\Subcategory;
+use App\Models\CategorySubcategory;
 use App\Models\Product;
 use App\Models\User;
 
@@ -49,51 +50,67 @@ class DatabaseSeeder extends Seeder
 
         // Subcategory
         Subcategory::create([
-            'name' => 'Zara Men',
-            'category_id' => 1
+            'name' => 'Men',
+            
         ]);
 
         Subcategory::create([
-            'name' => 'Zara Wemon',
-            'category_id' => 1
+            'name' => 'Wemon',
+            
         ]);
 
         Subcategory::create([
-            'name' => 'Zara Kids',
-            'category_id' => 1
+            'name' => 'Kid',
         ]);
 
-        Subcategory::create([
-            'name' => 'H&M Men',
-            'category_id' => 2
+        CategorySubcategory::create([
+            'category_id' =>1 ,
+            'subcategory_id' => 1,
         ]);
 
-        Subcategory::create([
-            'name' => 'H&M Wemon',
-            'category_id' => 2
+        CategorySubcategory::create([
+            'category_id' =>1 ,
+            'subcategory_id' => 2,
         ]);
 
-        Subcategory::create([
-            'name' => 'H&M Kids',
-            'category_id' => 2
+         CategorySubcategory::create([
+            'category_id' =>1 ,
+            'subcategory_id' => 3,
         ]);
 
-        Subcategory::create([
-            'name' => 'Prada Men',
-            'category_id' => 3
+         CategorySubcategory::create([
+            'category_id' =>2 ,
+            'subcategory_id' => 1,
         ]);
 
-        Subcategory::create([
-            'name' => 'Prada Wemon',
-            'category_id' => 3
+         CategorySubcategory::create([
+            'category_id' =>2 ,
+            'subcategory_id' => 2,
+        ]); 
+        
+        CategorySubcategory::create([
+            'category_id' =>2 ,
+            'subcategory_id' => 3,
+        ]);
+        
+        CategorySubcategory::create([
+            'category_id' =>3,
+            'subcategory_id' => 1,
+        ]);
+        
+        CategorySubcategory::create([
+            'category_id' =>3 ,
+            'subcategory_id' => 2,
+        ]);
+        
+        CategorySubcategory::create([
+            'category_id' =>3 ,
+            'subcategory_id' => 3,
         ]);
 
-        Subcategory::create([
-            'name' => 'Prada Kids',
-            'category_id' => 3
-        ]);
 
-        // Product
+
+       // Product
         Product::create([
             'name' => 'Zara Men Product1',
             'image' => 'product/5e6c4921541cdbb458e1eae641981cd0.jpg',
@@ -195,7 +212,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
             'category_id' => 2,
-            'subcategory_id' => 4
+            'subcategory_id' => 1
         ]);
 
         Product::create([
@@ -205,7 +222,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
             'category_id' => 2,
-            'subcategory_id' => 4
+            'subcategory_id' => 1
         ]);
 
 
@@ -216,7 +233,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
             'category_id' => 2,
-            'subcategory_id' => 4
+            'subcategory_id' => 1
         ]);
 
         Product::create([
@@ -226,7 +243,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
             'category_id' => 2,
-            'subcategory_id' => 5
+            'subcategory_id' => 2
         ]);
 
         Product::create([
@@ -236,7 +253,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
             'category_id' => 2,
-            'subcategory_id' => 5
+            'subcategory_id' => 2
         ]);
 
         Product::create([
@@ -246,7 +263,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
             'category_id' => 2,
-            'subcategory_id' => 5
+            'subcategory_id' => 2
         ]);
 
         Product::create([
@@ -256,7 +273,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
             'category_id' => 2,
-            'subcategory_id' => 6
+            'subcategory_id' => 3
         ]);
 
         Product::create([
@@ -266,7 +283,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
             'category_id' => 2,
-            'subcategory_id' => 6
+            'subcategory_id' => 3
         ]);
 
         Product::create([
@@ -276,7 +293,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
             'category_id' => 2,
-            'subcategory_id' => 6
+            'subcategory_id' => 3
         ]);
 
         Product::create([
@@ -286,7 +303,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
             'category_id' => 3,
-            'subcategory_id' => 7
+            'subcategory_id' => 1
         ]);
 
         Product::create([
@@ -296,7 +313,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
             'category_id' => 3,
-            'subcategory_id' => 7
+            'subcategory_id' => 1
         ]);
 
         Product::create([
@@ -306,7 +323,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
             'category_id' => 3,
-            'subcategory_id' => 7
+            'subcategory_id' => 1
         ]);
 
         Product::create([
@@ -316,7 +333,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
             'category_id' => 3,
-            'subcategory_id' => 8
+            'subcategory_id' => 2
         ]);
 
         Product::create([
@@ -326,7 +343,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
             'category_id' => 3,
-            'subcategory_id' => 8
+            'subcategory_id' => 2
         ]);
 
         Product::create([
@@ -336,7 +353,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
             'category_id' => 3,
-            'subcategory_id' => 8
+            'subcategory_id' => 2
         ]);
 
         Product::create([
@@ -346,7 +363,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
             'category_id' => 3,
-            'subcategory_id' => 9
+            'subcategory_id' => 3
         ]);
 
         Product::create([
@@ -356,7 +373,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
             'category_id' => 3,
-            'subcategory_id' => 9
+            'subcategory_id' => 3
         ]);
 
         Product::create([
@@ -366,7 +383,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'This is the description of a product',
             'additional_info' => 'This is additional info',
             'category_id' => 3,
-            'subcategory_id' => 9
+            'subcategory_id' => 3
         ]);
 
         // User 

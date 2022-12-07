@@ -67,7 +67,7 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
     Route::resource('section', SubcategoryController::class);
 
     // product
-    Route::get('product/section/{sectionId}', [ProductController::class, 'getProductBySubId'])->name('product.getProductBySubId');
+    Route::get('product/store/{storeId}/section/{sectionId}', [ProductController::class, 'getProductBySubId'])->name('product.getProductBySubId');
     Route::resource('product', ProductController::class);
 
     Route::get('/orders', [CartController::class, 'userOrder'])->name('order.index');

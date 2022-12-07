@@ -46,6 +46,7 @@
                         @endif
                         @if(auth()->user()->user_role=='admin')
                             <th></th>
+                            <th></th>
                         @endif
                     </tr>
                 </thead>
@@ -53,18 +54,19 @@
 
                     @if (count($subcategories)>0)
                         @foreach ($subcategories as $key=>$subcategory)
+                        <!-- category is function name in \AppModels\Subcategory -->
                             <tr>
                                 <td><a href="#">{{ $key+1 }}</a></td> {{-- $key+1 to increment the $key --}}
                                 <td>{{ $subcategory->name }}</td>
-                                <td>{{ $subcategory->category->name}}</td> <!-- category is function name in \AppModels\Subcategory -->
+                                <td>{{ $category->name}}</td> <!-- category is function name in \AppModels\Subcategory -->
                                 
-                                @if(auth()->user()->user_role=='superadmin')
+                                
                                     <td>  
-                                        <a href=" {{route('product.getProductBySubId', [$subcategory->id])}} ">
+                                        <a href=" {{route('product.getProductByCatAndSubId', ['storeId'=>$category->id,'sectionId'=>$subcategory->id])}}">
                                             <button class="btn" style="background-color: #2f526b; color:white;">products</button>
                                         </a>
                                     </td>
-                                @endif
+                                
                                 
                                 @if(auth()->user()->user_role=='admin')
                                     <!-- Button Edit -->

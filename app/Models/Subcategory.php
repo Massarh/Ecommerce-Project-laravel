@@ -11,11 +11,11 @@ class Subcategory extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'category_id'
+        'name'
     ];
 
     public function category() {
-        return $this->belongsTo(Category::class);
+        return $this->belongsToMany(Category::class)->withTimestamps();
     }
 
     public function product() {
