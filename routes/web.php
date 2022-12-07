@@ -104,3 +104,8 @@ Route::get('/index/test', [ProductController::class, 'test']);
 Route::get('/test', function () {
     return view('test');
 });
+
+
+Route::get('/alaa', function () {
+    return view('alaa');
+});

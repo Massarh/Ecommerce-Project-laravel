@@ -20,9 +20,9 @@
 </script>
 <style>
     .navbar-fixed-top.scrolled {
-    background-color: #000 !important;
-    transition: background-color 200ms linear;
-}
+        background-color: #000 !important;
+        transition: background-color 200ms linear;
+    }
 </style>
 {{-- Nav --}}
 {{-- navbar navbar-expand-md navbar-light bg-white --}}
@@ -169,72 +169,83 @@
 {{-- slider --}}
 
 
-<div class="container">
+<div class="container-fluid">
     <main role="main">
 
         {{-- Category --}}
-        <div style="display:flex;justify-content:center;" class="pt-5" >
-            <h4 style="font-size:18px; color: #4180b8; font-family:Quicksand;font-family:Sans-serif;">WHAT’S GOOD HERE</h4>
+        <div style="display:flex;justify-content:center;" class="pt-5">
+            <h4 style="font-size:18px; color: #A6A6A6; font-family:Quicksand;font-family:Sans-serif;">WHAT’S GOOD HERE
+            </h4>
         </div>
-        <div style="display:flex;justify-content:center">
-        <h2 class="alaa">Browse our stores</h2>
+        <div style="display:flex; justify-content:center">
+            <h2 class="fontStyleHint">Browse our stores</h2>
         </div>
-        <div class="row">
+
+        <div class="row align-items-end custom-media"> {{-- style="margin-left: 104px; margin-right: 104px;" --}}
             @foreach (App\Models\Category::all() as $category)
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="{{ Storage::url($category->image) }}" height="300" style="width: 100%"> {{-- using height
-                    & width To make all images the same size --}}
-                    <div class="card-body">
-                        <p><b>{{ $category->name }}</b></p>
-                        <p class="card-text">
-                            {!! Str::limit($category->description, 120) !!}
-                            {{-- ^ In order to limit the length of a string directly in your blade files --}}
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <a href="{{route('product.list',[$category->slug])}}">
-                                    <button type="button" class="btn btn-sm btn-outline-success">View Products</button>
-                                </a>
-                            </div>
-                        </div>
+            <div class="col-md-6 col-lg-4 mb-4">
+
+                <div class="card border-0" style="width: 317px; margin: auto;">
+                    <img src="{{ Storage::url($category->image) }}" class="card-img-top" alt="...">
+                    <div class="card-body p-0" style="border-width: 1px 0px 0px 0px;">
+                        <a href="{{route('product.list',[$category->slug])}}">
+                            <button class="card-footer"
+                                style="background-color: #000; color:#fff;  border-radius: 0px; width:100%;">View</button>
+                        </a>
                     </div>
                 </div>
+
             </div>
             @endforeach
         </div>
 
+        {{-- --}}
+
+        <div class="row align-items-center mt-5 padding-xs" style="background: #272424; color:#fff; min-height:350px">
+            <div class="col-md-8 col-12 p-0 align-self-center" style="text-align: center;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+                    class="bi bi-instagram" viewBox="0 0 16 16">
+                    <path
+                        d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                </svg>
+                <h2 style="font-family: garamond Serif; font-style: italic!important;">
+                    @go_ plaza</h2>
+                <p style="max-width: 550px; display: inline-block; font-size: 20px;">Like what you see? Shop the looks from your fave influencer of the moment
+                    straight from the ‘Gram.
+                </p>
+                <div class="display-button" style="">
+                    <a class="btn mt-2 button-margin"
+                        style="background-color: #000; color:#fff; border-radius: 0px; --bs-btn-padding-x: 19;">Shop
+                        instagram</a>
+                    <a class="btn mt-2"
+                        style="background-color: #000; color:#fff; border-radius: 0px; --bs-btn-padding-x: 50;">follow</a>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-12">
+                <img src="{{asset('storage/files/goplaza.png')}}"  class="instagram-image">
+            </div>
+
+        </div>
+        {{-- --}}
+
         {{-- product --}}
-        <div class="album py-5">
-            <div class="container">
-                <h2>Top Selling Products</h2>
-                <div class="row">
+        <div class="album py-5 mt-5">
+            <div class="container-fluid">
+                <div style="display:flex; justify-content:center">
+                    <h2 class="fontStyleHint">Top Selling Products</h2>
+                </div>
+                <div class="row custom-media">
                     @foreach ($products as $product)
 
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img src="{{ Storage::url($product->image) }}" height="300" style="width: 100%"> {{-- using
-                            height & width To make all images the same size --}}
-                            <div class="card-body">
-                                <p><b>{{ $product->name }}</b></p>
-                                <p class="card-text">
-                                    {!! Str::limit($product->description, 120) !!}
-                                    {{-- ^ In order to limit the length of a string directly in your blade files --}}
-                                </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a href="{{route('product.view',[$product->id])}}"> {{-- to go to
-                                            'show.blade.php' file --}}
-                                            <button type="button" class="btn btn-sm btn-outline-success">View</button>
-                                        </a>
-                                        <a href="{{ route('add.cart', [$product->id]) }}">
-                                            <button type="button" class="btn btn-sm btn-outline-primary">Add to
-                                                cart</button>
-                                        </a>
-                                    </div>
-                                    <small class="text-muted">${{ $product->price }}</small>
-                                </div>
-                            </div>
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div style="width: 317px; margin: auto;">
+                            <a href="{{route('product.view',[$product->id])}}">
+                                <img src="{{ Storage::url($product->image) }}" style="width: 317px; height: 317px;">
+                            </a>
+                            
+                            <p style="margin-bottom: 0px !important;">{{ $product->name }}</p>
+                            <p style="margin-bottom: 0px !important;">${{ $product->price }}</p>
                         </div>
                     </div>
 
@@ -242,9 +253,9 @@
                 </div>
                 <div style="display:flex;justify-content:center">
                     <a href="{{route('more.product')}}">
-                        <button style="text-align: center; background: #233342;
-                        border: #233342; border-radius: 4px; --bs-btn-padding-x: 50;" 
-                        class="btn btn-success">All Product</button>
+                        <button style="text-align: center; background: #000;
+                        border: #000; border-radius: 4px; --bs-btn-padding-x: 50;" class="btn btn-success">All
+                            Products</button>
                     </a>
                 </div>
             </div>
