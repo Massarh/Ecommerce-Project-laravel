@@ -145,6 +145,8 @@ class ProductController extends Controller
 
         //       return  Subcategory::insert($mas);
 
+        $product = Product::where('name', "")->get();
+        return $product;
         // .......................................................................
 
         // test get eloquent queries

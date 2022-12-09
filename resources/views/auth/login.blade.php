@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-@lang('translation.Login')
+@lang('Login')
 @endsection
 
 @section('css')
@@ -23,7 +23,7 @@
                 <div class="col-xl-9">
                     <div class="auth-full-bg pt-lg-5 p-4">
                         <div class="w-100">
-                            <div class="bg-overlay"></div>
+                            <div class="bg-overlay" style="background-color: #1A1A1A"></div>
                             <div class="d-flex h-100 flex-column">
 
                                 <div class="p-4 mt-auto">
@@ -33,7 +33,7 @@
 
                                                 <h4 class="mb-3" style="color: #fff"><i
                                                         class="bx bxs-quote-alt-left text-black h1 align-middle me-3"></i><span
-                                                        class="text-black">5k</span>+ Satisfiable item</h4>
+                                                        class="text-black">1k</span>+ Satisfiable item</h4>
 
                                                 <div dir="ltr" style="color: #fff">
                                                     <div class="owl-carousel owl-theme auth-review-carousel"
