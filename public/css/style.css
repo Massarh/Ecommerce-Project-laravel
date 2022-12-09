@@ -81,9 +81,14 @@
 }
 
 /* ************************************ */
-/* Category File */
-/* Filter Price */
-
+/* Profile */
+/* bg profile */
+.profile-bg {
+    background: url("../../logo/bg-auth-overlay1.png") !important;
+    background-size: cover !important;
+    background-repeat: no-repeat!important;
+    background-position: center !important;
+}
 
 
 /* ************************************ */
