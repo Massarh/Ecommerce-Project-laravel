@@ -99,13 +99,20 @@ Route::get('profile', [UserController::class, 'showUserProfile'])->name('profile
 Route::get('profile/edit', [UserController::class, 'editProfile'])->name('profile.edit');
 Route::put('profile/update', [UserController::class, 'updateProfile'])->name('profile.update');
 
+/*  TEST */
 Route::get('/index/test', [ProductController::class, 'test']);
 
 Route::get('/test', function () {
     return view('test');
 });
 
-
 Route::get('/alaa', function () {
     return view('alaa');
 });
+
+Route::get('/test-style', function () {
+    return view('test-style');
+});
+
+// vendor-scripts.blade.php
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');

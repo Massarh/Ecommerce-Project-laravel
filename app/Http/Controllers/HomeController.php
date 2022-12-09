@@ -31,5 +31,11 @@ class HomeController extends Controller
         // if logining (User) -> (main page)
         return redirect()->to('/');
     }
+
+// vendor-scripts.blade.php
+    // public function root()
+    // {
+    //     return view('index');
+    // }
     
 }

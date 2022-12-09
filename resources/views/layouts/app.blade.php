@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title> @yield('title') | Go-plaza</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,6 +18,18 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico') }}">
+
+    @yield('css')
+
+    <!-- Bootstrap Css -->
+    <link href="{{ URL::asset('/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="{{ URL::asset('/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="{{ URL::asset('/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 
     {{-- Notification --}}  <!--ليشش css بتضرب-->
     {{-- @notifyCss 
@@ -31,6 +43,6 @@
             @yield('content')
         </main>
     </div>
+    @include('layouts.vendor-scripts')
 </body>
-
 </html>
