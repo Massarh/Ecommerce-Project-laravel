@@ -22,7 +22,7 @@
             <div class="card-body" style="border: 0;">
                 <div class="table-responsive">
                     <table class="table align-middle mb-0 table-nowrap">
-                        <thead style="background-color: #1A1A1A; color:#fff">
+                        <thead style="background-color: #fff; color:#1A1A1A">
                             <tr>
                                 <th>Image</th>
                                 <th>Product</th>
@@ -59,7 +59,7 @@
                                     <td>
                                         <form action="{{route('cart.remove', $product['id'])}}" method="POST">
                                             @csrf
-                                            <button class="btn" style="color: #dc3545;"><i class="mdi mdi-trash-can font-size-18"></i></button>
+                                            <button class="btn" style="color: #dc3545;"><i class="mdi mdi-trash-can font-size-20"></i></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -70,11 +70,13 @@
                     </table>
                 </div>
                 <div class="row mt-4">
+                    
                     <div class="col-sm-6">
-                        <a href="/" class="btn" style="background-color: #646464; color:#fff">
-                            <i class="mdi mdi-arrow-left me-1"></i> Continue Shopping </a>
-                    </div> <!-- end col -->
+                        <a href="/" class="btn text-muted d-none d-sm-inline-block btn-link">
+                            <i class="mdi mdi-arrow-left me-1"></i> Go Back to Shopping </a>
+                    </div> 
                     <div class="col-sm-6">
+
                         <div class="text-sm-end mt-2 mt-sm-0">
                             <a href="{{route('cart.checkout', $cart->totalPrice)}}" class="btn" style="background-color: #1A1A1A; color:#fff">
                                 <i class="mdi mdi-cart-arrow-right me-1"></i> Checkout </a>
