@@ -125,7 +125,7 @@ class ProductController extends Controller
     //////////////////////////////////////////////////////////////
     ///////////////  For Test   /////////////////////////////////
     ////////////////////////////////////////////////////////////
-    public function test()
+    public function test(Request $request)
     {
 
         // $mas=[
@@ -145,8 +145,16 @@ class ProductController extends Controller
 
         //       return  Subcategory::insert($mas);
 
-        $product = Product::where('name', "")->get();
-        return $product;
+        // $product = Product::where('name', "")->get();
+        // return $product;
+        $name=$request->input('name');
+        dd($name) ;
+        
+        $products = Product::when($name, function ($query, $name) {
+                            $query->where('name', $name);
+                        })
+                        ->get();
+        return $products;
         // .......................................................................
 
         // test get eloquent queries
