@@ -201,7 +201,7 @@
 
         {{-- --}}
 
-        <div class="row align-items-center mt-5 padding-xs" style="background: #272424; color:#fff; min-height:350px">
+        <div class="row align-items-center mt-5 padding-xs" style="background: #272424; color:#fff; min-height:550px">
             <div class="col-md-8 col-12 p-0 align-self-center" style="text-align: center;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
                     class="bi bi-instagram" viewBox="0 0 16 16">
@@ -241,11 +241,11 @@
                     <div class="col-md-6 col-lg-4 mb-4">
                         <div style="width: 317px; margin: auto;">
                             <a href="{{route('product.view',[$product->id])}}">
-                                <img src="{{ Storage::url($product->image) }}" style="width: 317px; height: 317px;">
+                                <img src="{{ Storage::url($product->image) }}" style="width: 317px;">
                             </a>
                             
                             <p style="margin-bottom: 0px !important;">{{ $product->name }}</p>
-                            <p style="margin-bottom: 0px !important;">${{ $product->price }}</p>
+                            <p style="margin-bottom: 0px !important;">{{ $product->price }} JOD</p>
                         </div>
                     </div>
 
@@ -273,16 +273,16 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-sm-4 col-md-3 item">
-                    <h3>Company info</h3>
+                    <h3>COMPANY INFO</h3>
                     <ul>
-                        <li><a href="#">about Go-plaza</a></li>
+                        <li><a href="#">About Us</a></li>
                         <li><a href="#">Social Responsibility</a></li>
                         <li><a href="#">Supply Chain</a></li>
                         <li><a href="#">Careers</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-4 col-md-3 item">
-                    <h3>Help and suport</h3>
+                    <h3>HELP AND SUPPORT</h3> 
                     <ul>
                         <li><a href="#">How To Order</a></li>
                         <li><a href="#">Development</a></li>
