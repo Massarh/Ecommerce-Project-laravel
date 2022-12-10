@@ -37,9 +37,9 @@
     @notifyJs --}}
 </head>
 <body>
-    <div id="app">
+    <div id="app" style="background-color: white;">
         
-        <main class="pb-4" style="background-color: white;">
+        <main class="pb-4">
             @yield('content')
         </main>
     </div>

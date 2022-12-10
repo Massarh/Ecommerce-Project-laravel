@@ -13,7 +13,8 @@ class FrontProductListController extends Controller
 
     public function index() // NOT understanding (explain in 143 video)
     {
-        $products = Product::orderBy('number_of_sold','desc')->limit(9)->get();        $randomActiveProducts = Product::inRandomOrder()->limit(3)->get();
+        $products = Product::orderBy('number_of_sold','desc')->limit(9)->get();        
+        $randomActiveProducts = Product::inRandomOrder()->limit(3)->get();
                 //return $randomActiveProducts ; // output:: array-object
         $randomActiveProductIds = [];
         foreach ($randomActiveProducts as $product) {

@@ -33,7 +33,7 @@
                 <div class="row ">
 
                     <div class="col-sm-4">
-                        <div class="avatar-md  mb-4" style="margin-top: -26px; width:5rem; height: 5rem ">
+                        <div class="avatar-md profile-user-wid mb-4">
                             <img src="{{ $user->image ? Storage::url($user->image) : URL::asset('/logo/man.png') }}"
                                 alt="" class="img-thumbnail rounded-circle">
                         </div>
@@ -184,8 +184,8 @@
                         </form>
                     </div>
                 </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
         @endsection
         @section('script')

@@ -5,8 +5,8 @@
 @section('title') @lang('Checkout') @endsection
 
 @section('css')
-    <!-- select2 css -->
-    <link href="{{ URL::asset('/assets/libs/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
+<!-- select2 css -->
+<link href="{{ URL::asset('/assets/libs/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 {{-- CSS from "stripe DOCS"--}}
 
@@ -42,16 +42,15 @@
 
 @section('content')
 
-    <div class="checkout-tabs">
-        <div class="row justify-content-center">
-            
-            <div class="col-xl-10 col-sm-9">
-                <div class="card">
-                    <div class="card-body" >
+<div class="checkout-tabs">
+    <div class="row justify-content-center">
 
-                        {{-- Order Summary class="tab-pane fade"--}}
-                        <div  id="v-pills-confir" role="tabpanel"
-                        aria-labelledby="v-pills-confir-tab">
+        <div class="col-xl-10 col-sm-9">
+            <div class="card">
+                <div class="card-body" style="border: 0 !important;">
+
+                    {{-- Order Summary class="tab-pane fade"--}}
+                    <div id="v-pills-confir" role="tabpanel" aria-labelledby="v-pills-confir-tab">
                         <div class="card shadow-none mb-0">
                             <div class="card-body" style="border:0">
                                 <h4 class="card-title mb-4">Order Summary</h4>
@@ -72,14 +71,13 @@
                                             @foreach($cart->items as $product)
                                             <tr>
                                                 <th scope="row">
-                                                    <img
-                                                        src="{{ Storage::url($product['image']) }}"
-                                                        alt="product-img" title="product-img" class="avatar-md">
+                                                    <img src="{{ Storage::url($product['image']) }}" alt="product-img"
+                                                        title="product-img" class="avatar-md">
                                                 </th>
                                                 <td>{{$product['name']}}</td>
                                                 <td>{{ $product['qty'] }}</td>
                                                 <td>${{ $product['price']*$product['qty'] }}</td>
-            
+
                                             </tr>
                                             @endforeach
                                             <tr>
@@ -94,7 +92,6 @@
                                             </tr>
 
                                             @endif
-                                            
 
                                         </tbody>
                                     </table>
@@ -104,61 +101,146 @@
                         </div>
                     </div>
 
-                        <div class="card-header">Checkout</div>
-        <div class="card-body">
-            {{-- {{ route('cart.charge') }} or /charge --}}
-            <form action="/charge" method="POST" id="payment-form">
-                @csrf
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" name="name" id="name" class="form-control" required="" value="{{auth()->user()->name}}" readonly>
-                </div>
-                
-                <div class="form-group">
-                    <label>Adress</label>
-                    <input type="text" name="address" id="address" class="form-control" required="">
-                </div>
+                    {{-- Shipping & Payment information --}}
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body" style="border: 0 !important;">
+                                <div class="tab-content" id="v-pills-tabContent">
+                                    <div class="tab-pane fade show active" id="v-pills-shipping" role="tabpanel"
+                                        aria-labelledby="v-pills-shipping-tab">
+                                        <div>
+                                            <h4 class="card-title">Delivery information</h4>
+                                            <p class="card-title-desc">Fill all information below</p>
 
-                <div class="form-group">
-                    <label>City</label>
-                    <input type="text" name="city" id="city" class="form-control" required="">
-                </div>
+                                            <form action="/charge" method="POST" id="payment-form">
+                                                @csrf
 
-                <div class="form-group">
-                    <label>State</label>
-                    <input type="text" name="state" id="state" class="form-control" required="">
-                </div>
+                                                <!-- Name -->
+                                                <div class="form-group row mb-4">
+                                                    <label for="name" class="col-md-2 col-form-label">Name</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" name="name" id="name" class="form-control"
+                                                            required value="{{auth()->user()->name}}"
+                                                            placeholder="Enter your name">
+                                                    </div>
+                                                </div>
 
-                <div class="form-group">
-                    <label>Postal code</label>
-                    <input type="text" name="postalcode" id="postalcode" class="form-control" required="">
-                </div>
+                                                <!-- Address -->
+                                                <div class="form-group row mb-4">
+                                                    <label for="address" class="col-md-2 col-form-label">Address</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" name="address" id="address"
+                                                            class="form-control" placeholder="Enter your address"
+                                                            required>
+                                                    </div>
+                                                </div>
 
-                <input type="hidden" name="amount" value="{{$amount}}">
-                
-                {{-- Stripe DOCS --}}
-                <div class="">
-                    <label for="card-element">Credit or debit card</label>
-                    <div id="card-element">
-                    <!-- A Stripe Element will be inserted here. -->
+                                                <!-- City -->
+                                                <div class="form-group row mb-4">
+                                                    <label for="city" class="col-md-2 col-form-label">City</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" name="city" id="city" class="form-control"
+                                                            placeholder="Enter your city" required>
+                                                    </div>
+                                                </div>
+
+                                                <!-- State -->
+                                                <div class="form-group row mb-4">
+                                                    <label for="state" class="col-md-2 col-form-label">State</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" name="state" id="state" class="form-control"
+                                                            placeholder="Enter your state" required>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Postal code -->
+                                                <div class="form-group row mb-4">
+                                                    <label for="postalcode" class="col-md-2 col-form-label">Postal
+                                                        code</label>
+                                                    <div class="col-md-10">
+                                                        <input type="text" name="postalcode" id="postalcode"
+                                                            class="form-control" placeholder="Enter your postalcode"
+                                                            required>
+                                                    </div>
+                                                </div>
+
+                                                <input type="hidden" name="amount" value="{{$amount}}">
+
+                                                {{-- Payment information --}}
+                                                <div class="mt-5" id="v-pills-payment" role="tabpanel"
+                                                    aria-labelledby="v-pills-payment-tab">
+                                                    <h4 class="card-title">Payment information</h4>
+                                                    <div>
+                                                        <div class="form-check form-check-inline font-size-16">
+                                                            <input class="form-check-input" type="radio"
+                                                                name="paymentoptionsRadio" value="credit"
+                                                                id="paymentoptionsRadio1" checked>
+                                                            <label class="form-check-label font-size-13"
+                                                                for="paymentoptionsRadio1"><i
+                                                                    class="fab fa-cc-mastercard me-1 font-size-20 align-top"></i>
+                                                                Credit / Debit Card</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                {{-- Stripe DOCS --}}
+                                                <div class="stripe">
+                                                    <label for="card-element"></label>
+                                                    <div id="card-element">
+                                                        <!-- A Stripe Element will be inserted here. -->
+                                                    </div>
+                                                    <!-- Used to display form errors. -->
+                                                    <div id="card-errors" role="alert"></div>
+                                                </div>
+
+                                                <div class="text-end mt-4">
+                                                    <button class="btn" type="submit"
+                                                        style="background-color:#1A1A1A; color:#fff">
+                                                        <i class="mdi mdi-truck-fast me-1"></i> Deliver 
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-sm-6">
+                                <a href="{{url()->previous()}}" class="btn text-muted d-none d-sm-inline-block btn-link">
+                                    <i class="mdi mdi-arrow-left me-1"></i> Back to Shopping Cart </a>
+                            </div> <!-- end col -->
+                            
+                        </div> <!-- end row -->
                     </div>
-
-                    <!-- Used to display form errors. -->
-                    <div id="card-errors" role="alert"></div>
+                    {{-- --}}
                 </div>
-    
-                <button class="btn btn-primary mt-4" type="submit">Submit Payment</button>
-            </form>
-                </div> <!-- end row -->
             </div>
         </div>
-    </div>
-    <!-- end row -->
+        <!-- end row -->
+
+
+{{--  --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $("document").ready(function() {
+
+            $('input[name="paymentoptionsRadio"]').on('change', function() { 
+                var redioValue = $(this).val(); 
+
+                // const boxes = document.getElementsByClassName("stripe");
+                // $(boxes[0]).toggle();
+                // console.log(boxes[0])
+            });
+        });
+</script>
 
 {{-- JS from "stripe DOCS"--}}
 <script src="https://js.stripe.com/v3/"></script>
 <script type="text/javascript">
-// Create a Stripe client.
+    // Create a Stripe client.
 window.onload = function() { // 5.05m 162?
     // window.alert(env('STRIPE_API_KEY'));
         //Publishable key => pk_test_51M1qiJDRUJBpF05ymVjiWupEbgPznTBc7W9rAGLcf2GZJpRW0lc9R5cgt0Z8i1ZDjHfFpoOzjozZlsEMUIN7gI3E00ekojxtnZ
@@ -242,15 +324,6 @@ window.onload = function() { // 5.05m 162?
     }
 
 }
-</script>
+        </script>
 
-@endsection
-
-@section('script')
-    <!-- select 2 plugin -->
-    <script src="{{ URL::asset('/assets/libs/select2/select2.min.js') }}"></script>
-
-    <!-- init js -->
-    <script src="{{ URL::asset('/assets/js/pages/ecommerce-select2.init.js') }}"></script>
-@endsection
-
+        @endsection
