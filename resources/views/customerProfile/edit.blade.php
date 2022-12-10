@@ -65,7 +65,7 @@
 
                         <!-- Image -->
                         <div class="row mb-3">
-                            <label for="address" class="col-md-4 col-form-label text-md-end">{{ __('Image') }}</label>
+                            <label for="image" class="col-md-4 col-form-label text-md-end">{{ __('Image') }}</label>
 
                             <div class="col-md-6">
                                 <div class="custom-file">

@@ -22,7 +22,7 @@
                 <div class="row" style="background-color: #1a1a1a">
                     <div class="col-7">
                         <div class="text-primary p-3">
-                            <h5 style="color: #ffffff">Happy to see you <i class="mdi mdi-heart text-danger"></i></h5>
+                            <h5 style="color: #ffffff">Happy to see you <i class="mdi mdi-heart text-white"></i></h5>
                         </div>
                     </div>
                     <div class="col-5 align-self-end">
@@ -32,9 +32,10 @@
             </div>
             <div class="card-body pt-0">
                 <div class="row ">
-                    <div class="col-sm-4"> {{-- NOTE --}}
+
+                    <div class="col-sm-4">
                         <div class="avatar-md profile-user-wid mb-4">
-                            <img src="{{ Storage::url($user->image) ? Storage::url($user->image) : URL::asset('/logo/man.png') }}"
+                            <img src="{{ $user->image ? Storage::url($user->image) : URL::asset('/logo/man.png') }}"
                                 alt="" class="img-thumbnail rounded-circle">
                         </div>
                         <h5 class="font-size-15 text-truncate">{{ $user->name }}</h5>
@@ -46,8 +47,9 @@
 
                             <div class="row">
                                 <div class="col-6">
-                                    <h5 class="font-size-15">125</h5>
-                                    <p class="text-muted mb-0">Projects</p>
+                                    <h5 class="font-size-15">{{$user->order ? $user->order->count() : '0'}}
+                                    </h5>
+                                    <p class="text-muted mb-0">Order</p>
                                 </div>
                                 <div class="col-6">
                                     <h5 class="font-size-15">$1245</h5>
@@ -56,7 +58,7 @@
                             </div>
                             <div class="mt-4">
                                 <a href="" class="btn waves-effect waves-light btn-sm" style="background-color: #1a1a1a; color:#ffffff;
-                                border-radius: 4px; --bs-btn-padding-x: 50;" data-bs-toggle="modal"
+                                border-radius: 4px; --bs-btn-padding-x: 40;" data-bs-toggle="modal"
                                     data-bs-target=".update-profile">Edit Profile</a>
                             </div>
                         </div>
@@ -111,57 +113,74 @@
                         <h5 class="modal-title" id="myLargeModalLabel">Edit Profile</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+
                     <div class="modal-body">
-                        <form class="form-horizontal" method="POST" enctype="multipart/form-data" id="update-profile">
+                        <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                             @csrf
-                            <input type="hidden" value="{{ Auth::user()->id }}" id="data_id">
-                            <div class="mb-3">
-                                <label for="useremail" class="form-label">Email</label>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                    id="useremail" value="{{ Auth::user()->email }}" name="email"
-                                    placeholder="Enter email" autofocus>
-                                <div class="text-danger" id="emailError" data-ajax-feedback="email"></div>
-                            </div>
+                            @method('PUT')
 
                             <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                    value="{{ Auth::user()->name }}" id="username" name="name" autofocus
-                                    placeholder="Enter username">
-                                <div class="text-danger" id="nameError" data-ajax-feedback="name"></div>
+                                <label for="name" class="form-label">Username</label>
+                                <input id="name" name="name" type="text"
+                                    class="form-control @error('name') is-invalid @enderror" value="{{ $user->name }}"
+                                    autofocus placeholder="Enter name" autocomplete="name">
+
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
 
+                            <!-- Phone Number -->
                             <div class="mb-3">
-                                <label for="userdob">Date of Birth</label>
-                                <div class="input-group" id="datepicker1">
-                                    <input type="text" class="form-control @error('dob') is-invalid @enderror"
-                                        placeholder="dd-mm-yyyy" data-date-format="dd-mm-yyyy"
-                                        data-date-container='#datepicker1' data-date-end-date="0d"
-                                        value="{{ date('d-m-Y', strtotime(Auth::user()->dob)) }}"
-                                        data-provide="datepicker" name="dob" autofocus id="dob">
-                                    <span class="input-group-text"><i class="mdi mdi-calendar"></i></span>
-                                </div>
-                                <div class="text-danger" id="dobError" data-ajax-feedback="dob"></div>
+                                <label for="phone_number" class="form-label">Phone Number</label>
+                                <input id="phone_number" name="phone_number" type="text"
+                                    class="form-control @error('phone_number') is-invalid @enderror"
+                                    value="{{ $user->phone_number }}" autofocus placeholder="07********"
+                                    autocomplete="new-phone_number">
+
+                                @error('phone_number')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
 
+                            <!-- Address -->
                             <div class="mb-3">
-                                <label for="avatar">Profile Picture</label>
+                                <label for="address" class="form-label">Address</label>
+                                <input id="address" name="address" type="text"
+                                    class="form-control @error('phone') is-invalid @enderror"
+                                    value="{{ $user->address }}" autofocus
+                                    autocomplete="new-address">
+
+                                @error('address')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+
+                            <!-- Image -->
+                            <div class="mb-3">
+                                <label for="image">Profile Picture</label>
                                 <div class="input-group">
-                                    <input type="file" class="form-control @error('avatar') is-invalid @enderror"
-                                        id="avatar" name="avatar" autofocus>
-                                    <label class="input-group-text" for="avatar">Upload</label>
+                                    <input type="file" id="image" name="image"
+                                        class="form-control @error('image') is-invalid @enderror" autofocus>
+                                    <label class="input-group-text" for="image">Upload</label>
                                 </div>
-                                <div class="text-start mt-2">
-                                    <img src="{{ asset(Auth::user()->avatar) }}" alt=""
-                                        class="rounded-circle avatar-lg">
-                                </div>
-                                <div class="text-danger" role="alert" id="avatarError" data-ajax-feedback="avatar">
-                                </div>
+
+                                @error('image')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
 
-                            <div class="mt-3 d-grid">
-                                <button class="btn btn-primary waves-effect waves-light UpdateProfile"
-                                    data-id="{{ Auth::user()->id }}" type="submit">Update</button>
+                            <div class="mt-3 d-flex justify-content-center">
+                                <button class="btn" type="submit"
+                                    style="background-color: #1a1a1a; color:#ffffff; border-radius: 4px; --bs-btn-padding-x: 50;">Update</button>
                             </div>
                         </form>
                     </div>
@@ -178,7 +197,7 @@
 
         <!-- profile init -->
         <script src="{{ URL::asset('/assets/js/pages/profile.init.js') }}"></script>
-
+{{-- 
         <script>
             $('#update-profile').on('submit', function(event) {
         event.preventDefault();
@@ -215,6 +234,6 @@
             }
         });
     });
-        </script>
+        </script> --}}
 
         @endsection

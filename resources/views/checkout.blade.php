@@ -2,10 +2,15 @@
 
 @extends('layouts.app')
 
-@section('content')
+@section('title') @lang('Checkout') @endsection
 
+@section('css')
+    <!-- select2 css -->
+    <link href="{{ URL::asset('/assets/libs/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 {{-- CSS from "stripe DOCS"--}}
-{{-- <style>
+
+<style>
     .StripeElement {
         box-sizing: border-box;
 
@@ -33,49 +38,73 @@
     .StripeElement--webkit-autofill {
         background-color: #fefde5 !important;
     }
-</style> --}}
+</style>
 
-<div class="container">
-<div class="row">
-    <div class="col-md-6">
-        <table id="cart" class="table table-hover">
+@section('content')
+
+    <div class="checkout-tabs">
+        <div class="row justify-content-center">
             
-            <thead>
-                <tr>
-                    {{-- <th scope="col"> </th> scope="col"?? --}}
-                    <th scope="col">Image</th>
-                    <th scope="col">Product</th>
-                    <th scope="col">Price Per Item</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Price</th>
+            <div class="col-xl-10 col-sm-9">
+                <div class="card">
+                    <div class="card-body" >
 
-                </tr>
-            </thead>
-            <tbody>
-                @if($cart)
-                {{-- Foreach To display product in cart --}}
-                @php $i=1 @endphp {{--i is Index--}}
-                @foreach($cart->items as $product)
-                <tr>
-                    {{-- <th scope="row">{{$i++}}</th> --}}
-                    <td><img src="{{ Storage::url($product['image']) }}" width="100"></td>
-                    <td>{{$product['name']}}</td>
-                    <td>${{$product['price']}}</td>
-                    <td>{{ $product['qty'] }}</td>
-                    <td>${{ $product['price']*$product['qty'] }}</td>
-                    
-                </tr>
-                @endforeach
-                @endif
+                        {{-- Order Summary class="tab-pane fade"--}}
+                        <div  id="v-pills-confir" role="tabpanel"
+                        aria-labelledby="v-pills-confir-tab">
+                        <div class="card shadow-none mb-0">
+                            <div class="card-body" style="border:0">
+                                <h4 class="card-title mb-4">Order Summary</h4>
 
-            </tbody>
-        </table>	
-        <hr>
-        Total Price: ${{$cart->totalPrice}}
-    </div>
-    <div class="col-md-6">
-    <div class="card">
-        <div class="card-header">Checkout</div>
+                                <div class="table-responsive">
+                                    <table class="table align-middle mb-0 table-nowrap">
+                                        <thead style="background-color: #fff; color:#1A1A1A">
+                                            <tr>
+                                                <th scope="col">Image</th>
+                                                <th scope="col">Product</th>
+                                                <th scope="col">Quantity</th>
+                                                <th scope="col">Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if($cart)
+
+                                            @foreach($cart->items as $product)
+                                            <tr>
+                                                <th scope="row">
+                                                    <img
+                                                        src="{{ Storage::url($product['image']) }}"
+                                                        alt="product-img" title="product-img" class="avatar-md">
+                                                </th>
+                                                <td>{{$product['name']}}</td>
+                                                <td>{{ $product['qty'] }}</td>
+                                                <td>${{ $product['price']*$product['qty'] }}</td>
+            
+                                            </tr>
+                                            @endforeach
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td>
+                                                    <h6 class="m-0 ">Total Price: </h6>
+                                                </td>
+                                                <td style="font-weight: 500;">
+                                                    ${{$cart->totalPrice}}
+                                                </td>
+                                            </tr>
+
+                                            @endif
+                                            
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="card-header">Checkout</div>
         <div class="card-body">
             {{-- {{ route('cart.charge') }} or /charge --}}
             <form action="/charge" method="POST" id="payment-form">
@@ -120,12 +149,11 @@
     
                 <button class="btn btn-primary mt-4" type="submit">Submit Payment</button>
             </form>
-
+                </div> <!-- end row -->
+            </div>
         </div>
     </div>
-    </div>
-</div>
-</div>
+    <!-- end row -->
 
 {{-- JS from "stripe DOCS"--}}
 <script src="https://js.stripe.com/v3/"></script>
@@ -218,4 +246,11 @@ window.onload = function() { // 5.05m 162?
 
 @endsection
 
-{{-- TEST-payment.blabe.php --}}
+@section('script')
+    <!-- select 2 plugin -->
+    <script src="{{ URL::asset('/assets/libs/select2/select2.min.js') }}"></script>
+
+    <!-- init js -->
+    <script src="{{ URL::asset('/assets/js/pages/ecommerce-select2.init.js') }}"></script>
+@endsection
+
