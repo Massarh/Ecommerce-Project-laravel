@@ -36,7 +36,7 @@
         <x:notify-messages />
     @notifyJs --}}
 </head>
-<body>
+<body style="background-color: white;">
     <div id="app" style="background-color: white;">
         
         <main class="pb-4">

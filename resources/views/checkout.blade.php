@@ -47,7 +47,7 @@
 
         <div class="col-xl-10 col-sm-9">
             <div class="card">
-                <div class="card-body" style="border: 0 !important;">
+                <div class="card-body" style="border: 0 !important; box-shadow: 1px 1px 1px 1px #e4e4e4">
 
                     {{-- Order Summary class="tab-pane fade"--}}
                     <div id="v-pills-confir" role="tabpanel" aria-labelledby="v-pills-confir-tab">

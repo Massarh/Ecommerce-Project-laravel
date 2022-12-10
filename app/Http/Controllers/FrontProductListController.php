@@ -41,7 +41,7 @@ class FrontProductListController extends Controller
           where('subcategory_id',$product->subcategory_id) 
         ->where('id', '!=',$product->id) 
         ->orderBy('number_of_sold','desc') 
-        ->limit(3)
+        ->limit(4)
         ->get();
 
         return view('show', compact('product', 'productFromSameSubcategoryAndTopSelling'));
