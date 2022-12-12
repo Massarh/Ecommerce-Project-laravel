@@ -24,14 +24,14 @@
         transition: background-color 200ms linear;
     }
 </style>
+
 {{-- Nav --}}
-{{-- navbar navbar-expand-md navbar-light bg-white --}}
-<nav class="navbar navbar-expand-md" style="position: absolute; top:0; z-index: 10; background-color: transparent;width:100vw
-        " id="main-nav">
-    <div class="container">
+<nav class="navbar navbar-expand-md"
+    style="position: absolute; top:0; z-index: 10; background-color: transparent; width:100vw" id="main-nav">
+    <div class="container-fluid">
         <div>
             <a class="navbar-brand" href="{{ url('/') }}">
-                <b style="font-family: fangsong; font-size:25px;">PLAZA</b>
+                <b style="font-family: fangsong; font-size:25px; ">PLAZA</b>
             </a>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -46,16 +46,8 @@
             </ul>
 
             <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto" >
                 <!-- Authentication Links -->
-
-                {{-- Order --}}
-                @if(Auth::check())
-                <li class="nav-link">
-                    <a class="dropdown-item" href="{{route('order')}}">Order</a>
-                </li>
-                @endif
-                {{-- Order --}}
 
                 {{-- Shopping Cart --}}
                 <a href="{{ route('cart.show') }}" class="nav-link">
@@ -80,11 +72,11 @@
                 </li>
                 @endif
 
-                @if (Route::has('register'))
+                {{-- @if (Route::has('register'))
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                 </li>
-                @endif
+                @endif --}}
                 @else
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -127,6 +119,7 @@
         </div>
     </div>
 </nav>
+
 {{-- dynamic Slider --}}
 <div>
     <div style="margin-top: 0px;" id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
@@ -190,7 +183,7 @@
                     <div class="card-body p-0" style="border-width: 1px 0px 0px 0px;">
                         <a href="{{route('product.list',[$category->slug])}}">
                             <button class="card-footer"
-                                style="background-color: #000; color:#fff;  border-radius: 0px; width:100%;">View</button>
+                                style="background-color: #1a1a1a; color:#fff;  border-radius: 0px; width:100%;">View</button>
                         </a>
                     </div>
                 </div>
@@ -210,7 +203,8 @@
                 </svg>
                 <h2 style="font-family: garamond Serif; font-style: italic!important;">
                     @go_ plaza</h2>
-                <p style="max-width: 550px; display: inline-block; font-size: 20px;">Like what you see? Shop the looks from your fave influencer of the moment
+                <p style="max-width: 550px; display: inline-block; font-size: 20px;">Like what you see? Shop the looks
+                    from your fave influencer of the moment
                     straight from the ‘Gram.
                 </p>
                 <div class="display-button" style="">
@@ -223,7 +217,7 @@
             </div>
 
             <div class="col-md-4 col-12">
-                <img src="{{asset('storage/files/goplaza.png')}}"  class="instagram-image">
+                <img src="{{asset('storage/files/goplaza.png')}}" class="instagram-image">
             </div>
 
         </div>
@@ -243,7 +237,7 @@
                             <a href="{{route('product.view',[$product->id])}}">
                                 <img src="{{ Storage::url($product->image) }}" style="width: 317px;">
                             </a>
-                            
+
                             <p style="margin-bottom: 0px !important;">{{ $product->name }}</p>
                             <p style="margin-bottom: 0px !important;">{{ $product->price }} JOD</p>
                         </div>
@@ -282,7 +276,7 @@
                     </ul>
                 </div>
                 <div class="col-sm-4 col-md-3 item">
-                    <h3>HELP AND SUPPORT</h3> 
+                    <h3>HELP AND SUPPORT</h3>
                     <ul>
                         <li><a href="#">How To Order</a></li>
                         <li><a href="#">Development</a></li>

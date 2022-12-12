@@ -1,9 +1,8 @@
 
-{{--navbar navbar-expand-md navbar-light bg-white shadow-sm --}}
 <nav class="navbar navbar-expand-md navbar-light bg-white" style="position: sticky; top:0px; z-index: 10;">
-    <div class="container">
+    <div class="container-fluid">        
         <div style="">
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a class="navbar-brand" href="{{ url('/') }}" style="margin-left: 30px;">
                 <b style="font-family: fangsong; font-size:25px;">PLAZA</b>
             </a>
         </div>
@@ -22,19 +21,11 @@
             <ul class="navbar-nav ms-auto">
                 <!-- Authentication Links -->
 
-                <!-- Order -->
-                @if(Auth::check())
-                <li class="nav-link">
-                    <a class="dropdown-item" href="{{route('order')}}">Order</a>
-                </li>
-                @endif
-                <!-- Order -->
-
                 <!-- Shopping Cart -->
                 <a href="{{ route('cart.show') }}" class="nav-link">
                     <!-- <i class="fas fa-shopping-bag fa-lg"></i> -->
                     <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
                             class="bi bi-bag" viewBox="0 0 16 16">
                             <path
                                 d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
@@ -53,15 +44,15 @@
                 </li>
                 @endif
 
-                @if (Route::has('register'))
+                {{-- @if (Route::has('register'))
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                 </li>
-                @endif
+                @endif --}}
                 @else
 
                 <!-- Profile -->
-                <li class="nav-link">
+                {{-- <li class="nav-link">
                     <a class="dropdown-item" href="{{route('profile')}}">
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         Profile
@@ -75,7 +66,7 @@
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
                         {{ __('Logout') }}
                     </a>
-                </li>
+                </li> --}}
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
@@ -99,7 +90,18 @@
                         </a>
                         @endif
 
-                        
+                        <!-- Profile -->
+                            <a class="dropdown-item" href="{{route('profile')}}">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Profile
+                            </a>
+
+                        <!-- Logout -->
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
+                                {{ __('Logout') }}
+                            </a>
                     </div>
                 </li>
                 @endguest

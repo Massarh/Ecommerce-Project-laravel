@@ -41,7 +41,13 @@
 </style>
 
 @section('content')
-
+<div class="row mt-4">
+    <div class="col-sm-6">
+        <a href="{{url()->previous()}}" class="btn text-muted d-none d-sm-inline-block btn-link">
+            <i class="mdi mdi-arrow-left me-1"></i> Back to Shopping Bag </a>
+    </div> <!-- end col -->
+    
+</div> <!-- end row -->
 <div class="checkout-tabs">
     <div class="row justify-content-center">
 
@@ -207,13 +213,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row mt-4">
-                            <div class="col-sm-6">
-                                <a href="{{url()->previous()}}" class="btn text-muted d-none d-sm-inline-block btn-link">
-                                    <i class="mdi mdi-arrow-left me-1"></i> Back to Shopping Cart </a>
-                            </div> <!-- end col -->
-                            
-                        </div> <!-- end row -->
+                        
                     </div>
                     {{-- --}}
                 </div>

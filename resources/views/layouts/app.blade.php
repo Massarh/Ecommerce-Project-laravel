@@ -47,7 +47,7 @@
 </head>
 
 <body style="background-color: white;">
-    <div id="app" style="background-color: white;">
+    <div id="app">
 
         <main class="pb-4">
             @yield('content')

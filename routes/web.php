@@ -41,10 +41,14 @@ Route::post('/product/{product}', [CartController::class, 'removeCart'])->name('
 //payment 
 Route::get('/checkout/{amount}', [CartController::class, 'checkout'])->name('cart.checkout')->middleware('auth'); // must login
 Route::post('/charge', [CartController::class, 'charge'])->name('cart.charge');
+
+// Order
 Route::get('/orders', [CartController::class, 'order'])->name('order')->middleware('auth');
+Route::get('/order-items/{orderId}', [CartController::class, 'orderItems'])->name('orderItems')->middleware('auth');
+
 // END CartController
 
-// UserController XX -> CategoryController
+//CategoryController
 Route::get('/users-stores', [CategoryController::class, 'categoriesWithUser'])->name('getCategoriesWithUser');
 
 
@@ -52,9 +56,9 @@ Route::get('/users-stores', [CategoryController::class, 'categoriesWithUser'])->
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-/** Auth */
 
 
+/** Admin Panel */
 Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function () {
 
     Route::get('/dashboard', function () {
@@ -79,7 +83,6 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
     Route::resource('slider', SliderController::class);
 
     
-
     /* Add Admin/Employee */
     Route::post('/create-admin-or-employee', [UserController::class, 'createAdminOrEmployee'])->name('admin.create');
     Route::get('/add-admin', function () {
@@ -99,15 +102,13 @@ Route::get('profile', [UserController::class, 'showUserProfile'])->name('profile
 Route::get('profile/edit', [UserController::class, 'editProfile'])->name('profile.edit');
 Route::put('profile/update', [UserController::class, 'updateProfile'])->name('profile.update');
 
+
+
 /*  TEST */
 Route::get('/index/test', [ProductController::class, 'test']);
 
 Route::get('/test', function () {
     return view('test');
-});
-
-Route::get('/alaa', function () {
-    return view('alaa');
 });
 
 Route::get('/test-style', function () {

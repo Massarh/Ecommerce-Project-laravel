@@ -92,7 +92,7 @@ class CartController extends Controller
         ]);
 
         $chargeId = $charge['id'];
-        
+
         if (session()->has('cart')) {
             $cart = new Cart(session()->get('cart'));
         } else {
@@ -123,9 +123,10 @@ class CartController extends Controller
                         'order_id' => $order->id,
                         'created_at' => now(),
                         'updated_at' => now(),
-                    ]);
-                DB::table('products')->where('id', '=',$item['id'])
-                ->increment('number_of_sold' ,$item['qty'] );
+                    ]
+                );
+                DB::table('products')->where('id', '=', $item['id'])
+                    ->increment('number_of_sold', $item['qty']);
             }
 
             OrderItem::insert($newCart);
@@ -145,6 +146,13 @@ class CartController extends Controller
         return view('order', compact('orders'));
     }
 
+    public function orderItems($orderId)
+    {
+        $order = Order::find($orderId);
+
+        $orderItems = OrderItem::where('order_id', $orderId)->get();
+        return view('order-item', compact('orderItems', 'order'));
+    }
 
     //////////////////////////////////////////////////////////////
     /////////////////For Admin///////////////////////////////////

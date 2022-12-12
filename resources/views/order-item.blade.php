@@ -6,28 +6,32 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            @foreach($orders as $order)
-            <div class="card mb-3">
-                <div class="card-body">
-                    @foreach($order->orderItem as $item)
-                        <span class="float-right">
-                            <img src="{{ Storage::url($item['image']) }}" width="100">
-                        </span>
-                        <p>Name: {{$item['name']}}</p>
-                        <p>Price:<span>JOD</span>{{$item['price']}}</p>
-                        <p>Qty: {{$item['quantity']}}</p>
-                    @endforeach
-                <p>
-                    <button type="button" class="btn btn-warning">
-                        <span class="badge badge-light">
-                            <span>JOD</span>{{$order->total_price}}
-                        </span>
-                    </button>
-                </p>
+        <div class="col-md-8 col-md-10">
+            <p style="font-weight: 600; font-size: 14px">order number # {{$order->id}}</p>
+            <p style="font-weight: 600; font-size: 14px">Date & time : {{$order->created_at}}</p>
+
+            <p style="font-weight: 700; font-size: 18px">Products</p>
+            @foreach($orderItems as $item)
+            <hr style="border-top: 1px solid rgb(189 189 189);">
+
+            <div style="display: flex ; justify-content: space-between">
+                <span class="float-right">
+                    <img src="{{ Storage::url($item->image) }}" style="width:6rem; height:7rem;">
+                </span>
+                <div style="display: grid; justify-content: end; font-weight: 600; font-size: 14px">
+                    <p>{{$item->name}}</p>
+                    <p>Quantity: {{$item->quantity}}</p>
+                    <p>Price: {{$item->price * $item->quantity}} <span>JOD</span></p>
                 </div>
             </div>
             @endforeach
+            <hr style="border-top: 3px solid #000;">
+
+            <div style="display: flex; justify-content: space-between; margin-top: 16px;font-weight: 600; font-size: 18px">
+                <p>Total price : </p>
+                    
+                <p>{{$order->total_price}} JOD </p>
+            </div>
         </div>
     </div>
 </div>

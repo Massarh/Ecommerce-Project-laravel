@@ -25,11 +25,13 @@
 
 @section('content')
 
-{{-- @component('components.breadcrumb')
-@slot('li_1') Ecommerce @endslot
-@slot('title') Cart @endslot
-@endcomponent --}}
 
+<div class="row">
+    <div class="col">
+        <a href="/" class="btn text-muted d-none d-sm-inline-block btn-link">
+            <i class="mdi mdi-arrow-left me-1"></i> Go Back to Shopping </a>
+    </div>
+</div>
 <div class="row ">
     <div class="col-xl">
         <div class="card">
@@ -40,9 +42,8 @@
                             <tr>
                                 <th>Image</th>
                                 <th>Product</th>
-                                <th>Price</th>
                                 <th>Quantity</th>
-                                <th colspan="2">Total</th>
+                                <th colspan="2">Price</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -56,7 +57,6 @@
                                         title="product-img" class="avatar-md" />
                                 </td>
                                 <td>{{$product['name']}}</td>
-                                <td>$ {{$product['price']}} </td>
                                 <td>
                                     <div class="checkout">
                                         <button type="button" class="decrease-btn">-</button>
@@ -67,7 +67,7 @@
                                 </td>
 
                                 <td>
-                                    $ {{$product['price'] * $product['qty'] }}
+                                    $ {{$product['price'] * $product['qty'] }} JOD
                                 </td>
                                 <td>
                                     <form action="{{route('cart.remove', $product['id'])}}" method="POST">
@@ -85,12 +85,7 @@
                     </table>
                 </div>
                 <div class="row mt-4">
-
-                    <div class="col-sm-6">
-                        <a href="/" class="btn text-muted d-none d-sm-inline-block btn-link">
-                            <i class="mdi mdi-arrow-left me-1"></i> Go Back to Shopping </a>
-                    </div>
-                    <div class="col-sm-6">
+                    <div class="col"  style="display: grid ; justify-content: end">
 
                         <div class="text-sm-end mt-2 mt-sm-0">
                             <a href="{{route('cart.checkout', $cart->totalPrice)}}" class="btn"
