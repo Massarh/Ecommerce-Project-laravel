@@ -5,27 +5,26 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            @foreach($carts as $cart)
+        <div class="col-12">
+            @foreach($orders as $order)
             <div class="card mb-3">
-                <div class="card-body">
-                @foreach($cart->items as $item)
-                    <span class="float-right">
-                        <img src="{{ Storage::url($item['image']) }}" width="100">
+                <div class="card-body" style="border: 0px !important; background-color: #86868614; border-radius: 7px;">
+                    <div style="display: flex ; justify-content: space-between">
+                        <p>order number #{{$order->id}}</p>
+                        <a href="#" style="color:#1a1a1a">Order Details > </a>
+                    </div>
+                    <p>Date & time : {{$order->created_at}}</p>
+                    <p>Total price : {{$order->total_price}} JOD</p>
+                    @foreach($order->orderItem as $item)
+                    <span style="margin-right: 10px !important;">
+                        <img src="{{ Storage::url($item['image']) }}" style="width:4rem; height:5rem;">
                     </span>
-                    <p>Name: {{$item['name']}}</p>
-                    <p>Price: {{$item['price']}}</p>
-                    <p>Qty: {{$item['qty']}}</p>
-                @endforeach
+                    @endforeach
+                    <hr style="border-top: 1px solid rgb(189 189 189);  ">
+                    <p class="mt-3" style="font-weight: 700;">{{$order->orderItem->count()}} product(s)</p>
+
                 </div>
             </div>
-            <p>
-                <button type="button" class="btn btn-warning">
-                    <span class="badge badge-light">
-                        {{$cart->totalPrice}}
-                    </span>
-                </button>
-            </p>
             @endforeach
         </div>
     </div>

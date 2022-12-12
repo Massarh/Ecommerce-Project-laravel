@@ -3,6 +3,11 @@
 
 @extends('layouts.app')
 
+@section('css')
+    <!-- ION Slider -->
+    <link href="{{ URL::asset('/assets/libs/ion-rangeslider/ion-rangeslider.min.css') }}" rel="stylesheet" type="text/css" />
+@endsection
+
 @section('content')
 
     <div class="container">
@@ -17,7 +22,10 @@
             </div>
         </form>
     </div>
-
+    <div class="mt-4 pt-3">
+        <h5 class="font-size-14 mb-3">Price</h5>
+        <input type="text" id="pricerange">
+    </div>
     
     <div class="album py-5 mt-5">
         <div class="container-fluid">
@@ -44,3 +52,11 @@
 
     {{$products->links()}} {{-- to make  --}}
 @endsection
+
+    @section('script')
+    <!-- Ion Range Slider-->
+    <script src="{{ URL::asset('/assets/libs/ion-rangeslider/ion-rangeslider.min.js') }}"></script>
+    
+    <!-- init js -->
+    <script src="{{ URL::asset('/assets/js/pages/product-filter-range.init.js') }}"></script>
+    @endsection

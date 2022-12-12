@@ -39,7 +39,7 @@ class CartController extends Controller
         } else {
             $cart = null;
         }
-        // dd($cart->items);
+        // dd($cart);
         return view('cart', compact('cart'));
     }
 
@@ -92,7 +92,7 @@ class CartController extends Controller
         ]);
 
         $chargeId = $charge['id'];
-        // 
+        
         if (session()->has('cart')) {
             $cart = new Cart(session()->get('cart'));
         } else {
@@ -142,12 +142,9 @@ class CartController extends Controller
     public function order()
     {
         $orders = auth()->user()->orders;
-        //  return $orders; //[{..},{..}]
-        $carts = $orders->transform(function ($cart, $key) {
-            return unserialize($cart->cart);
-        });
-        return view('order', compact('carts'));
+        return view('order', compact('orders'));
     }
+
 
     //////////////////////////////////////////////////////////////
     /////////////////For Admin///////////////////////////////////
