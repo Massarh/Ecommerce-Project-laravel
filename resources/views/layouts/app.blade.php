@@ -9,7 +9,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title> @yield('title') | Go-plaza</title>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -21,7 +20,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico') }}">
+    {{-- <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico') }}"> --}}
 
     @yield('css')
 

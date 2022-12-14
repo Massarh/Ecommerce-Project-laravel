@@ -9,10 +9,18 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title" key="t-menu">@lang('Menu')</li>
 
+                <!-- Dashboard -->
+                <li>
+                    <a href="{{ route('dashboard') }}" class="waves-effect">
+                        <i class="bx bx-home-circle"></i>
+                        <span key="dashboard">Dashboard</span>
+                    </a>
+                </li>
+
                 <!-- Store -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-home-circle"></i>
+                        <i class="bx bx-layout"></i>
                         <span key="store">Store</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
@@ -135,6 +143,7 @@
 
                         <li><a href="{{ route('store.view') }}" key="t-light-sidebar">View</a></li>
                         <li><a href="{{ route('add.admin') }}" key="t-light-sidebar">Create</a></li>
+                        <li><a href="{{ route('newAdmin.view')}}" key="t-light-sidebar">View New Admin</a></li>
 
                     </ul>
                 </li>
