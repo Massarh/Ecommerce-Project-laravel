@@ -1,33 +1,41 @@
 @include('admin.layouts.header')
 
-<div id="wrapper">
+<div id="layout-wrapper">
+
+    <!-- TopBar -->
+    @include('admin.layouts.navbar')
 
     <!-- Sidebar -->
     @include('admin.layouts.sidebar')
-    <!-- Sidebar -->
 
-    <div id="content-wrapper" class="d-flex flex-column">
-        <div id="content">
-
-            <!-- TopBar -->
-            @include('admin.layouts.navbar')
-            <!-- Topbar -->
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="main-content">
+        <div class="page-content">
 
             <!-- Container Fluid-->
-            @include('admin.layouts.container')
-            <!---Container Fluid-->
-            
-        </div>
+            <div class="container-fluid">
+                @include('admin.layouts.container')
+            </div>
 
+            @notifyCss
+            <x:notify-messages />
+            @notifyJs
+
+        </div>
         <!-- Footer -->
         @include('admin.layouts.footer')
-        <!-- Footer -->
 
     </div>
 </div>
 
+<!-- Right Sidebar -->
+@include('admin.layouts.right-sidebar')
+
+@include('layouts.vendor-scripts')
 
 <!-- Scroll to top -->
 <a class="scroll-to-top rounded" href="#page-top">
-  <i class="fas fa-angle-up"></i>
+    <i class="fas fa-angle-up"></i>
 </a>

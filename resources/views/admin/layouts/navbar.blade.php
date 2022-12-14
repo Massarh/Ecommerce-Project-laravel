@@ -1,198 +1,76 @@
-<nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top" style="position:static; z-index:-1; background-color:  #2a3f4e"> {{-- edit (bg-color) --}}
-    <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
-        <i class="fa fa-bars"></i>
-    </button>
-    <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown no-arrow">
-        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            {{-- <i class="fas fa-search fa-fw"></i> --}}
-        </a>
-        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-            aria-labelledby="searchDropdown">
-            <form class="navbar-search">
-            <div class="input-group">
-                <input type="text" class="form-control bg-light border-1 small" placeholder="What do you want to look for?"
-                aria-label="Search" aria-describedby="basic-addon2" style="border-color: #3f51b5;">
-                <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                    <i class="fas fa-search fa-sm"></i>
+<header id="page-topbar">
+    <div class="navbar-header">
+        <div class="d-flex">
+            <!-- LOGO -->
+            <div class="navbar-brand-box">
+                <a href="index" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="{{ URL::asset('/assets/images/logo.svg') }}" alt="" height="22">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="{{ URL::asset('logo/dark.png')}}" alt="" height="17">
+                    </span>
+                </a>
+
+                <a href="index" class="logo logo-light">
+                    <span class="logo-sm">
+                        <img src="{{ URL::asset('/assets/images/logo-light.svg') }}" alt="" height="22">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="{{ URL::asset('logo/light.png')}}" alt="" height="17">
+                    </span>
+                </a>
+            </div>
+
+            <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect" id="vertical-menu-btn">
+                <i class="fa fa-fw fa-bars"></i>
+            </button>
+        </div>
+        {{-- ------------------------------------------------------ --}}
+
+        <div class="d-flex">
+
+            {{-- --}}
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="rounded-circle header-profile-user"
+                        src="{{ isset(Auth::user()->image) ? asset(Auth::user()->image) : asset('/assets/images/users/image-1.jpg') }}"
+                        alt="Header image">
+                    <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{ucfirst(Auth::user()->name)}}</span>
+                    <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
-                </div>
-            </div>
-            </form>
-        </div>
-        </li>
-        <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            {{-- <i class="fas fa-bell fa-fw"></i> --}}
-            {{-- <span class="badge badge-danger badge-counter">3+</span> --}}
-        </a>
-        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-            aria-labelledby="alertsDropdown">
-            <h6 class="dropdown-header">
-            Alerts Center
-            </h6>
-            <a class="dropdown-item d-flex align-items-center" href="#">
-            <div class="mr-3">
-                <div class="icon-circle bg-primary">
-                <i class="fas fa-file-alt text-white"></i>
-                </div>
-            </div>
-            <div>
-                <div class="small text-gray-500">December 12, 2019</div>
-                <span class="font-weight-bold">A new monthly report is ready to download!</span>
-            </div>
-            </a>
-            <a class="dropdown-item d-flex align-items-center" href="#">
-            <div class="mr-3">
-                <div class="icon-circle bg-success">
-                <i class="fas fa-donate text-white"></i>
-                </div>
-            </div>
-            <div>
-                <div class="small text-gray-500">December 7, 2019</div>
-                $290.29 has been deposited into your account!
-            </div>
-            </a>
-            <a class="dropdown-item d-flex align-items-center" href="#">
-            <div class="mr-3">
-                <div class="icon-circle bg-warning">
-                <i class="fas fa-exclamation-triangle text-white"></i>
-                </div>
-            </div>
-            <div>
-                <div class="small text-gray-500">December 2, 2019</div>
-                Spending Alert: We've noticed unusually high spending for your account.
-            </div>
-            </a>
-            <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-        </div>
-        </li>
-        <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            {{-- <i class="fas fa-envelope fa-fw"></i> --}}
-            {{-- <span class="badge badge-warning badge-counter">2</span> --}}
-        </a>
-        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-            aria-labelledby="messagesDropdown">
-            <h6 class="dropdown-header">
-            Message Center
-            </h6>
-            <a class="dropdown-item d-flex align-items-center" href="#">
-            <div class="dropdown-list-image mr-3">
-                <img class="rounded-circle" src="{{asset('admin/img/man.png')}}" style="max-width: 60px" alt="">
-                <div class="status-indicator bg-success"></div>
-            </div>
-            <div class="font-weight-bold">
-                <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been
-                having.</div>
-                <div class="small text-gray-500">Udin Cilok · 58m</div>
-            </div>
-            </a>
-            <a class="dropdown-item d-flex align-items-center" href="#">
-            <div class="dropdown-list-image mr-3">
-                <img class="rounded-circle" src="{{asset('admin/img/girl.png')}}" style="max-width: 60px" alt="">
-                <div class="status-indicator bg-default"></div>
-            </div>
-            <div>
-                <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people
-                say this to all dogs, even if they aren't good...</div>
-                <div class="small text-gray-500">Jaenab · 2w</div>
-            </div>
-            </a>
-            <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-        </div>
-        </li>
-        <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            {{-- <i class="fas fa-tasks fa-fw"></i> --}}
-            {{-- <span class="badge badge-success badge-counter">3</span> --}}
-        </a>
-        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-            aria-labelledby="messagesDropdown">
-            <h6 class="dropdown-header">
-            Task
-            </h6>
-            <a class="dropdown-item align-items-center" href="#">
-            <div class="mb-3">
-                <div class="small text-gray-500">Design Button
-                <div class="small float-right"><b>50%</b></div>
-                </div>
-                <div class="progress" style="height: 12px;">
-                <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-            </div>
-            </a>
-            <a class="dropdown-item align-items-center" href="#">
-            <div class="mb-3">
-                <div class="small text-gray-500">Make Beautiful Transitions
-                <div class="small float-right"><b>30%</b></div>
-                </div>
-                <div class="progress" style="height: 12px;">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="30"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-            </div>
-            </a>
-            <a class="dropdown-item align-items-center" href="#">
-            <div class="mb-3">
-                <div class="small text-gray-500">Create Pie Chart
-                <div class="small float-right"><b>75%</b></div>
-                </div>
-                <div class="progress" style="height: 12px;">
-                <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-            </div>
-            </a>
-            <a class="dropdown-item text-center small text-gray-500" href="#">View All Taks</a>
-        </div>
-        </li>
-        <div class="topbar-divider d-none d-sm-block"></div>
-        <li class="nav-item dropdown no-arrow">
-        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            <img class="img-profile rounded-circle" src="{{ Storage::url(auth()->user()->image) }}" style="max-width: 60px">
-            <span class="ml-2 d-none d-lg-inline text-white small">{{auth()->user()->name}}</span>
-        </a>
 
-        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-            
-            <!-- to access for cstomer side -->
-            <a class="dropdown-item" href="/" >
-                <i class="fas fa-shopping-bag text-gray-400"></i>
-                Go to shopping
-            </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <!-- item-->
+                    <a class="dropdown-item" href="{{route('profile')}}"><i
+                            class="bx bx-user font-size-16 align-middle me-1"></i> <span
+                            key="t-profile">@lang('Profile')</span></a>
 
-            <!-- Profile -->
-            <a class="dropdown-item" href="{{route('profile')}}">
-                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                Profile
-            </a>
-            
-            <!-- Settings -->
-            {{-- <a class="dropdown-item" href="#">
-                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                Settings
-            </a> --}}
-            {{-- <a class="dropdown-item" href="#">
-            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-            Activity Log
-            </a> --}}
+                    <div class="dropdown-divider"></div>
 
-            <!-- Logout -->
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-            document.getElementById('logout-form').submit();">
-            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-            Logout
-            </a>
+                    <a class="dropdown-item" href="/"><i class="fas fa-shopping-bag font-size-16 align-middle me-1"></i>
+                        <span key="t-my-wallet">@lang('Go to shopping')</span></a>
+
+                    <div class="dropdown-divider"></div>
+
+                    <a class="dropdown-item text-danger" href="javascript:void();"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                            class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span
+                            key="t-logout">@lang('Logout')</span></a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+            </div>
+
+            {{-- thems --}}
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+                    <i class="bx bx-cog bx-spin"></i>
+                </button>
+            </div>
+
         </div>
-        </li>
-    </ul>
-</nav>
+    </div>
+</header>

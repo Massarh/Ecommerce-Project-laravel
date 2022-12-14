@@ -18,7 +18,7 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     {{-- Style --}}
     <link rel="stylesheet" href="{{asset('css/admin-panel-style.css')}}">
-
+    
     @yield('css')
 
     <!-- Bootstrap Css -->
@@ -28,12 +28,7 @@
     <!-- App Css-->
     <link href="{{ URL::asset('/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 
-
-
+    
 </head>
 
-<body id="page-top">
-
-    {{-- @notifyCss 
-        <x:notify-messages />
-    @notifyJs --}}
+<body data-sidebar="dark">

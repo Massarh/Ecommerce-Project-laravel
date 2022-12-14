@@ -1,30 +1,36 @@
-    @include('admin.layouts.header')
+@include('admin.layouts.header')
 
-    <div id="wrapper">
+<div id="layout-wrapper">
 
-        <!-- Sidebar -->
-        @include('admin.layouts.sidebar')
-        <!-- Sidebar -->
+    <!-- TopBar -->
+    @include('admin.layouts.navbar')
 
-        <div id="content-wrapper" class="d-flex flex-column">
-            <div id="content">
+    <!-- Sidebar -->
+    @include('admin.layouts.sidebar')
 
-                <!-- TopBar -->
-                @include('admin.layouts.navbar')
-                <!-- Topbar -->
+    <!-- ================================================= -->
+    <!-- Start right Content here -->
+    <!-- ================================================== -->
+    <div class="main-content">
+        <div class="page-content">
 
-                <!-- Container Fluid-->
-                {{-- @include('admin.layouts.container') --}}
-                @yield('content') 
-                <!---Container Fluid-->
-                @notifyCss 
-                    <x:notify-messages />
-                @notifyJs 
+            <!-- Container Fluid-->
+            <div class="container-fluid">
+                @yield('content')
             </div>
 
-            <!-- Footer -->
-            @include('admin.layouts.footer')
-            <!-- Footer -->
-
+            @notifyCss
+            <x:notify-messages />
+            @notifyJs
+            
         </div>
+        <!-- Footer -->
+        @include('admin.layouts.footer')
+
     </div>
+</div>
+
+<!-- Right Sidebar -->
+@include('admin.layouts.right-sidebar')
+
+@include('layouts.vendor-scripts')
