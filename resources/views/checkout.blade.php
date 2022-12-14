@@ -324,6 +324,6 @@ window.onload = function() { // 5.05m 162?
     }
 
 }
-        </script>
+</script>
 
-        @endsection
+@endsection

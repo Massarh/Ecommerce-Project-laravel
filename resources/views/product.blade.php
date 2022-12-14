@@ -8,10 +8,10 @@
         
             document.getElementById("main-nav").style.background = "white";
             document.getElementById("main-nav").style.position = "sticky";
-            document.getElementById("main-nav").style.transition= "all 0.5s";
+            document.getElementById("main-nav").style.transition= "all 0.9s";
             
             if ($(this).scrollTop()  == 0 ) {
-                console.log('massarh');
+                console.log('up');
                 document.getElementById("main-nav").style.background = "transparent";
                 document.getElementById("main-nav").style.position = "absolute";
             }
@@ -27,11 +27,11 @@
 
 {{-- Nav --}}
 <nav class="navbar navbar-expand-md"
-    style="position: absolute; top:0; z-index: 10; background-color: transparent; width:100vw" id="main-nav">
-    <div class="container-fluid">
+    style="position: absolute; top:0; z-index: 10; background-color: transparent; width: 100vw" id="main-nav">
+    <div class="container-fluid" style="margin-top: -11px; margin-bottom: -11px;">
         <div>
-            <a class="navbar-brand" href="{{ url('/') }}">
-                <b style="font-family: fangsong; font-size:25px; ">PLAZA</b>
+            <a class="navbar-brand" href="{{ url('/') }}" style="margin-left: 50px">
+                <b style="font-family: fangsong; font-size:36px;">PLAZA</b>
             </a>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -39,19 +39,19 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left:auto">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-right: 50px">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
 
             </ul>
 
             <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ms-auto" >
+            <ul class="navbar-nav ms-auto" style="font-family: fangsong;font-size: 17px">
                 <!-- Authentication Links -->
 
-                {{-- Shopping Cart --}}
+                <!-- Shopping Cart -->
                 <a href="{{ route('cart.show') }}" class="nav-link">
-                    {{-- <i class="fas fa-shopping-bag fa-lg"></i> --}}
+                    <!-- <i class="fas fa-shopping-bag fa-lg"></i> -->
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                             class="bi bi-bag" viewBox="0 0 16 16">
@@ -63,7 +63,7 @@
                         </sup>
                     </span>
                 </a>
-                {{-- Shopping Cart --}}
+                <!-- Shopping Cart -->
 
                 @guest
                 @if (Route::has('login'))
@@ -78,13 +78,19 @@
                 </li>
                 @endif --}}
                 @else
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }}
                     </a>
 
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"
+                        style="background-color: #ffffffab!important; margin-top:3px">
 
                         <!-- to access for admin panel -->
                         @if(auth()->user()->user_role=='superadmin' || auth()->user()->user_role=='admin' ||
@@ -97,21 +103,17 @@
                         @endif
 
                         <!-- Profile -->
-                        <a class="dropdown-item" href="{{ route('profile') }}">
+                        <a class="dropdown-item" href="{{route('profile')}}">
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             Profile
                         </a>
 
                         <!-- Logout -->
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
+                                                    document.getElementById('logout-form').submit();">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
                             {{ __('Logout') }}
                         </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
                     </div>
                 </li>
                 @endguest
@@ -136,12 +138,8 @@
             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                 <img src="{{ Storage::url($slider->image) }}" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <b>
-                        <h1
-                            style="color: rgb(255, 255, 255) ; font-size: 50px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
-                            We are so happy to see you here</h1>
-                    </b>
-                    <h4>beauty, clarity, functionality and sustainability.</h4>
+
+                    <h4></h4>
                 </div>
             </div>
             @endforeach
@@ -209,10 +207,10 @@
                 </p>
                 <div class="display-button" style="">
                     <a class="btn mt-2 button-margin"
-                        style="background-color: #000; color:#fff; border-radius: 0px; --bs-btn-padding-x: 19;">Shop
+                        style="background-color: #fff; color:#1a1a1a; border-radius: 0px; --bs-btn-padding-x: 19; font-weight: 800;">Shop
                         instagram</a>
                     <a class="btn mt-2"
-                        style="background-color: #000; color:#fff; border-radius: 0px; --bs-btn-padding-x: 50;">follow</a>
+                        style="background-color: #fff; color:#1a1a1a; border-radius: 0px; --bs-btn-padding-x: 50; font-weight: 800;">follow</a>
                 </div>
             </div>
 

@@ -7,7 +7,6 @@ Website: https://themesbrand.com/
 Contact: themesbrand@gmail.com
 File: Main Css File
 */
-
 :root {
   --bs-heading-bg: #fff;
   --bs-topbar-search-bg: #f3f3f9;
@@ -4057,8 +4056,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before {
   border-radius: 50%;
 }
 .auth-full-bg .bg-overlay {
-  /* background: url("../images/bg-auth-overlay1.png"); */
-  background: url("../../logo/bg-auth-overlay1.png");
+  background: url("../images/bg-auth-overlay.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

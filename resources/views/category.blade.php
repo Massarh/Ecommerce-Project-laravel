@@ -9,7 +9,7 @@
         <div class="col-md-2">
             
         <form action="{{ route('product.list', [$slug]) }}" method="GET">
-            {{-- foreach subcategories--}}
+            
             @foreach ($subcategories as $subcategory)
                 {{-- Checkbox --}}
             <p><input type="checkbox" name="subcategory[]" value="{{ $subcategory->id }}"
@@ -19,7 +19,7 @@
                 > {{ $subcategory->name }}</p>
 
             @endforeach
-            {{-- endforeach --}}
+            
             <input type="submit" value="Filter" class="btn btn-success">
         </form>
         <hr>

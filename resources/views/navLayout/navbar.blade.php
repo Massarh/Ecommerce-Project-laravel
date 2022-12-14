@@ -1,9 +1,9 @@
 
 <nav class="navbar navbar-expand-md navbar-light bg-white" style="position: sticky; top:0px; z-index: 10;">
-    <div class="container-fluid">        
-        <div style="">
-            <a class="navbar-brand" href="{{ url('/') }}" style="margin-left: 30px;">
-                <b style="font-family: fangsong; font-size:25px;">PLAZA</b>
+    <div class="container-fluid" style="margin-top: -11px; margin-bottom: -11px;">        
+        <div>
+            <a class="navbar-brand" href="{{ url('/') }}" style="margin-left: 50px">
+                <b style="font-family: fangsong; font-size:36px;">PLAZA</b>
             </a>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -11,14 +11,13 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-right: 50px">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
-
             </ul>
 
             <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto" style="font-family: fangsong;font-size: 17px">
                 <!-- Authentication Links -->
 
                 <!-- Shopping Cart -->
@@ -51,34 +50,17 @@
                 @endif --}}
                 @else
 
-                <!-- Profile -->
-                {{-- <li class="nav-link">
-                    <a class="dropdown-item" href="{{route('profile')}}">
-                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Profile
-                    </a>
-                </li>
-
-                <!-- Logout -->
-                <li class="nav-link">
-                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
-                        {{ __('Logout') }}
-                    </a>
-                </li> --}}
-
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
 
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown" >
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }}
                     </a>
 
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="background-color: #ffffffab!important; margin-top:3px">
 
                         <!-- to access for admin panel -->
                         @if(auth()->user()->user_role=='superadmin' || auth()->user()->user_role=='admin' ||

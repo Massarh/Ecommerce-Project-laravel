@@ -46,14 +46,15 @@
     @notifyJs --}}
 </head>
 
-<body style="background-color: white;">
-    <div id="app">
+<body style="background-color: white; overflow-x:hidden">
+    <div id="app" >
 
-        <main class="pb-4">
+        <main class="main-n pb-4">
             @yield('content')
         </main>
     </div>
     @include('layouts.vendor-scripts')
 </body>
+
 
 </html>
