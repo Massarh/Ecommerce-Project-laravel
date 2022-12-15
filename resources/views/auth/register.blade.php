@@ -1,3 +1,4 @@
+<x-loading-indicatore />
 @extends('layouts.app')
 
 @section('title')

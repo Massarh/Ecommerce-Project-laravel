@@ -115,10 +115,19 @@ class ProductController extends Controller
 
     // ----------------------------------------------------------------------------
     // To associate a category-field and a subcategory
-    public function loadSubCategories(Request $request, $id)
+    public function loadSubCategories(Request $request)
     {
-        // {"1":"lenove","3":"dell","4":"mac"}
-        $subcategories = Category::find('category_id')->subcategory()->pluck('name', 'id')->get();
+
+        $categoryId=$request->categoryId;
+        if($categoryId){
+
+            $subcategories = Category::find($categoryId)->subcategory()->get()->pluck('name', 'id');
+        }else{
+
+            //when user click on select in category dropdown menu
+            $subcategories = Subcategory::get()->pluck('name', 'id');
+        }
+
         return response()->json($subcategories);
     }
 

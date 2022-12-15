@@ -22,27 +22,20 @@
     <!-- App favicon -->
     {{-- <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico') }}"> --}}
 
-    @yield('css')
-
-    <!-- Bootstrap Css -->
-    <link href="{{ URL::asset('/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet"
-        type="text/css" />
-
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
         integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous">
     </script>
-    <!-- Icons Css -->
-    <link href="{{ URL::asset('/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <!-- App Css-->
-    <link href="{{ URL::asset('/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+    
+    @include('layouts.head-css')
 
-    {{-- Notification --}}
-    <!--ليشش css بتضرب-->
+    {{-- Notification --}} <!--ليشش css بتضرب-->
     {{-- @notifyCss
     <x:notify-messages />
     @notifyJs --}}
+
+    <livewire:styles />
 </head>
 
 <body style="background-color: white; overflow-x:hidden">
@@ -53,6 +46,8 @@
         </main>
     </div>
     @include('layouts.vendor-scripts')
+
+    <livewire:scripts />
 </body>
 
 

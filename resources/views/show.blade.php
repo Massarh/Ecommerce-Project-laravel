@@ -1,3 +1,4 @@
+<x-loading-indicatore />
 @include('navLayout.navbar')
 
 @extends('layouts.app')

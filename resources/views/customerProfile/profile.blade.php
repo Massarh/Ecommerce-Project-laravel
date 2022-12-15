@@ -1,4 +1,6 @@
+<x-loading-indicatore />
 @include('navLayout.navbar')
+
 @extends('layouts.app')
 @section('title')
 @lang('Profile')

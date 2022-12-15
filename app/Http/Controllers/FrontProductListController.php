@@ -11,24 +11,24 @@ use App\Models\Slider;
 class FrontProductListController extends Controller
 {
 
-    public function index() // NOT understanding (explain in 143 video)
+    public function index()
     {
-        $products = Product::orderBy('number_of_sold','desc')->limit(9)->get();        
+        $products = Product::orderBy('number_of_sold', 'desc')->limit(9)->get();
         $randomActiveProducts = Product::inRandomOrder()->limit(3)->get();
-                //return $randomActiveProducts ; // output:: array-object
+        //return $randomActiveProducts ; // output:: array-object
         $randomActiveProductIds = [];
         foreach ($randomActiveProducts as $product) {
             array_push($randomActiveProductIds, $product->id);
         }
-                //return $randomActiveProductIds ; // output:: [1,3,2] كل ما اعمل ريفرش بتغير ترتيبهم
-        $randomItemProducts = Product::where('id', '!=',$randomActiveProductIds)->limit(3)->get(); // output::[{obj},{obj}]
+        //return $randomActiveProductIds ; // output:: [1,3,2] كل ما اعمل ريفرش بتغير ترتيبهم
+        $randomItemProducts = Product::where('id', '!=', $randomActiveProductIds)->limit(3)->get(); // output::[{obj},{obj}]
         // $randomItemProducts = Product::whereNotIn('id',$randomActiveProductIds)->limit(3)->get(); // output:: []
         // return $randomItemProducts;
 
         # Sliders #
         $sliders = Slider::get();
 
-        return view('product', compact('products', 'randomItemProducts' ,'randomActiveProducts', 'sliders'));
+        return view('product', compact('products', 'randomItemProducts', 'randomActiveProducts', 'sliders'));
     }
 
     // ----------------------------------------------------------------------------
@@ -37,12 +37,11 @@ class FrontProductListController extends Controller
     {
         $product = Product::find($id);
         //تحت العنصر الي فاتحه id لعرض العناصر الي الهم نفس 
-        $productFromSameSubcategoryAndTopSelling = Product::
-          where('subcategory_id',$product->subcategory_id) 
-        ->where('id', '!=',$product->id) 
-        ->orderBy('number_of_sold','desc') 
-        ->limit(4)
-        ->get();
+        $productFromSameSubcategoryAndTopSelling = Product::where('subcategory_id', $product->subcategory_id)
+            ->where('id', '!=', $product->id)
+            ->orderBy('number_of_sold', 'desc')
+            ->limit(4)
+            ->get();
 
         return view('show', compact('product', 'productFromSameSubcategoryAndTopSelling'));
     }
@@ -51,80 +50,81 @@ class FrontProductListController extends Controller
 
     public function allproduct($slug, Request $request)
     {
+        // subcategoryIds
+        $filterSubCategories = [];
+        $price = null;
+        $minPrice = null;
+        $maxPrice = null;
         $category = Category::where('slug', $slug)->first();
         $categoryId = $category->id;
-        $filterSubCategories=null;
-
-        if($request->subcategory) {  // filter products
-            $products = $this->filterProducts($request, $categoryId);
-            $filterSubCategories = $this->getSubcategoriesId($request);  
-            
-        } elseif ($request->min||$request->max) {
-            $products = $this->filterByPrice($request);
-        } else {  
-            // main page في category اول مره بدخل عن طريق الكبس على كبسه 
-            $products = Product::where('category_id', $categoryId)->get();
+        $search = $request->search;
+        if ($request->subcategory) {  // filter products
+            foreach ($request->subcategory as $key => $subcategoryId) {
+                array_push($filterSubCategories, (int)$subcategoryId);
+            }
         }
+        if ($request->price) {
+            $price = explode(";", $request->price);
+            $minPrice = (int)$price[0];
+            $maxPrice = (int)$price[1];
+            $price = [$minPrice, $maxPrice];
+        }
+
         $subcategories = Category::find($categoryId)->subcategory()->get();
-        
-        return view('category', compact('products', 'subcategories', 'slug', 'filterSubCategories','categoryId'));
+        // this fun wil return all products that related to certain category if there is no query parameter
+        $products = Product::where('category_id', $categoryId)
+            ->when($price, function ($query, $price) {
+                $query->whereBetween('price', $price);
+            })->when($filterSubCategories, function ($query, $filterSubCategories) {
+                $query->whereIn('subcategory_id', $filterSubCategories);
+            })->when($search, function ($query, $search) {
+                /*SELECT count(*) AS aggregate FROM `products` WHERE `name` LIKE % This IS % OR `description` LIKE % This IS %*/
+                $query->where(function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('description', 'like', '%' . $search . '%')
+                        ->orWhere('additional_info', 'like', '%' . $search . '%');
+                });
+            })->paginate(16);
 
+        $price = $request->price;
+        //  return $products;
+        return view('category', compact('products', 'subcategories',  'filterSubCategories', 'price', 'search', 'slug'));
     }
 
     // ----------------------------------------------------------------------------
-
-    public function filterProducts(Request $request, $categoryId) // we should show the product that related for the chosen subcategory and chosen category
-    {
-        $products = Product::whereIn('subcategory_id', $request->subcategory) //:with('category')
-        ->where('category_id', $categoryId)
-        ->get();
-        return $products;
-    }
-
-     // ----------------------------------------------------------------------------
-    
-    public function getSubcategoriesId(Request $request) 
-    {
-        $subId = [];
-
-        $subcategories = Subcategory::whereIn('id', $request->subcategory)->get();
-        foreach( $subcategories as $sub) {
-            array_push($subId, $sub->id);
-        }
-        return $subId;
-    }
-
-    // ----------------------------------------------------------------------------
-    
-    public function filterByPrice(Request $request) 
-    {
-        $categoryId = $request->categoryId;
-
-        if($request->min && $request->max){
-        $product = Product::whereBetween('price', [$request->min, $request->max])->where('category_id', $categoryId)->get();
-        } elseif ($request->min) {
-        $product= Product::where('price', '>=', $request->min)->where('category_id', $categoryId)->get();
-        } else { // $request->max
-        $product = Product::where('price', '<=', $request->max)->where('category_id', $categoryId)->get();
-        }
-
-        return $product;
-    }
-
-    // ----------------------------------------------------------------------------
-// to search product
+    // to search product
     public function moreProducts(Request $request)
     {
-        if ($request->search) {
-            $products = Product::where('name', 'like', '%'.$request->search.'%')
-            ->orWhere('description', 'like', '%'.$request->search.'%')
-            ->orWhere('additional_info', 'like', '%'.$request->search.'%')
-            ->paginate(50); // SQL
-            return view('all-product', compact("products"));
-            /*SELECT count(*) AS aggregate FROM `products` WHERE `name` LIKE % This IS % OR `description` LIKE % This IS %*/
-        }
-        $products = Product::latest()->paginate(50);
-        return view('all-product', compact("products"));
-    }
+        $price = null;
+        $minPrice = null;
+        $maxPrice = null;
 
+        if ($request->price) {
+            $price = explode(";", $request->price);
+            $minPrice = (int)$price[0];
+            $maxPrice = (int)$price[1];
+            $price = [$minPrice, $maxPrice];
+        }
+        $search = $request->search;
+        $categoryId = $request->category;
+        $subcategoryId = $request->subcategory;
+
+        // this fun wil return all products if there is no query parameter
+        $products = Product::when($categoryId, function ($query, $categoryId) {
+            $query->where('category_id', $categoryId);
+        })->when($price, function ($query, $price) {
+            $query->whereBetween('price', $price);
+        })->when($subcategoryId, function ($query, $subcategoryId) {
+            $query->where('subcategory_id', $subcategoryId);
+        })->when($search, function ($query, $search) {
+            /*SELECT count(*) AS aggregate FROM `products` WHERE `name` LIKE % This IS % OR `description` LIKE % This IS %*/
+            $query->where(function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('description', 'like', '%' . $search . '%')
+                    ->orWhere('additional_info', 'like', '%' . $search . '%');
+            });
+        })->paginate(16);
+        $price = $request->price;
+        return view('all-product', compact("products", "search", "price", "categoryId", "subcategoryId"));
+    }
 }

@@ -1,3 +1,4 @@
+<x-loading-indicatore />
 <style>
     .decrease-btn,
     .increase-btn {
@@ -58,10 +59,22 @@
                                 </td>
                                 <td>{{$product['name']}}</td>
                                 <td>
-                                    <div class="checkout">
-                                        <button type="button" class="decrease-btn">-</button>
-                                        <input type="text" class="quantity" value="{{$product['qty']}}">
-                                        <button type="button" class="increase-btn">+</button>
+                                    <div class="checkout" style="margin-top:18px">
+                                        <form action="{{route('cart.update', $product['id'])}}" method="POST">
+                                            @csrf
+                                            <button id="{{$product['id']}}" type="button"
+                                                class="decrease-btn">-</button>
+                                            <input id="{{$product['id']}}" name="qty" type="text" class="quantity"
+                                                value="{{ $product['qty'] }}">
+                                            <button type="button" id="{{$product['id']}}"
+                                                class="increase-btn">+</button>
+
+                                            <button type="submit"
+                                                style="border:none;background-color:transparent;cursor:pointer;margin-left:4px;color: #1e1e1e"
+                                                class="fa fa-refresh"></button>
+
+                                        </form>
+
                                     </div>
 
                                 </td>
@@ -85,7 +98,7 @@
                     </table>
                 </div>
                 <div class="row mt-4">
-                    <div class="col"  style="display: grid ; justify-content: end">
+                    <div class="col" style="display: grid ; justify-content: end">
 
                         <div class="text-sm-end mt-2 mt-sm-0">
                             <a href="{{route('cart.checkout', $cart->totalPrice)}}" class="btn"
@@ -105,27 +118,25 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script>
     $(document).ready(function() {
-$(".checkout").on("input", ".quantity", function() {
-var price = +$(".price").data("price");
-var quantity = +$(this).val();
-$("#total").text("$" + price * quantity);
-})
-
-var $buttonPlus = $('.increase-btn');
-var $buttonMin = $('.decrease-btn');
-var $quantity = $('.quantity');
-
-/For plus and minus buttons/
-$buttonPlus.click(function() {
-$quantity.val(parseInt($quantity.val()) + 1).trigger('input');
-});
-
-$buttonMin.click(function() {
-$quantity.val(Math.max(parseInt($quantity.val()) - 1, 0)).trigger('input');
-});
-})
+        /*For plus and minus buttons*/
+        $('.increase-btn').click(function(e) {
+            var idForClickedButton = e.target.id;
+            console.log( idForClickedButton);
+            console.log( $(`input#${idForClickedButton}.quantity`));
+            $(`input#${idForClickedButton}.quantity`).val(parseInt($(`input#${idForClickedButton}.quantity`).val()) + 1);
+        });
+        
+        $('.decrease-btn').click(function(e) {
+            var idForClickedButton = e.target.id;
+            if($(`input#${idForClickedButton}.quantity`).val()>1){
+                $(`input#${idForClickedButton}.quantity`).val(Math.max(parseInt($(`input#${idForClickedButton}.quantity`).val()) - 1, 0));
+            }
+            // .trigger('input');
+        });
+    })
 </script>
 <!-- end row -->
 

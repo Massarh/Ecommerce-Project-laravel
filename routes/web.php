@@ -94,8 +94,8 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
     Route::delete('/delete-admin-or-employee/{userId}', [UserController::class, 'deleteAdminOrEmployee'])->name('admin.delete');
 });
 
-// using in ajax
-Route::get('sections/{id}', [ProductController::class, 'loadSubCategories']);
+// using in ajax in all products page
+Route::get('sections', [ProductController::class, 'loadSubCategories']);
 
 /*  PROFILE ADMIN */
 Route::get('profile', [UserController::class, 'showUserProfile'])->name('profile');
