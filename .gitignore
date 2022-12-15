@@ -1,7 +1,10 @@
 /node_modules
 /public/build
 /public/hot
+
 /public/assets
+/resources/js/pages
+
 # /public/storage
 /storage/*.key
 /vendor
