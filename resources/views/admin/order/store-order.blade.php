@@ -1,58 +1,65 @@
 @extends('admin.layouts.main')
 
+@section('title') @lang('stores orders') @endsection
+
 @section('content')
-    <!-- Container Fluid-->
-    <div class="container-fluid" id="container-wrapper">
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Stores Table</h1>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-            <li class="breadcrumb-item"  aria-current="page" style="text-decoration-line: underline;">Stores Table</li>
-            {{-- <li class="breadcrumb-item active" aria-current="page">Stores Table</li> --}}
-        </ol>
-        </div>
-        <div class="row">
-        <div class="col-lg-12 mb-4">
-            <!-- Simple Tables -->
-            <div class="card">
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold " style="color:  #344f63">All Stores Purchased From</h6>
-            </div>
-            <div class="table-responsive">
-                <table class="table align-items-center table-flush">
-                    <thead class="thead-light">
-                        <tr>
-                            <th>SN</th>
-                            <th>Store Name</th>
-                            <th>Email</th>
-                            <th>View</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if (count($categories)>0)
-                            @foreach ($categories as $key=>$category)
-                                <tr>
-                                    <td><a href="#">{{ $key+1 }}</a></td> 
-                                    {{-- relationship between category and User --}}
-                                    <td>{{ $category->name }}</td>
-                                    <td>{{ $category->user[0]->email }}</td> 
-                                    <td><a href="{{route('item.order', [$category->id])}}"> <button class="btn"  style="background-color: #2f526b;
-                                        color: white;">View Order Items</button>
-                                    </a></td> 
-                                </tr>
-                            @endforeach
-                        @else 
-                            <td>No any stores to show</td>
-                        @endif
-                    </tbody>
-                </table>
-            </div>
-            <div class="card-footer"></div>
+<!-- Breadcrumb -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18">Stores Table</h4>
+
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}"">Home</a></li>
+                    <li class="breadcrumb-item active" style="text-decoration-line: underline;">Stores Table</li>
+                </ol>
             </div>
         </div>
-        </div>
-        <!--Row-->
     </div>
-    <!---Container Fluid-->
-    
+</div>
+<!-- Breadcrumb -->
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <table class="table align-middle table-nowrap">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Store Name</th>
+                                <th>Email</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            @if (count($categories)>0)
+                                @foreach ($categories as $key=>$category)
+                                    <tr>
+                                        <td><a href="#">{{ $key+1 }}</a></td> 
+                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $category->user[0]->email }}</td> 
+                                        <td><a href="{{route('item.order', [$category->id])}}"> <button class="btn"  style="background-color: #232838;
+                                            color: white;">View Order Items</button>
+                                        </a></td> 
+                                    </tr>
+                                @endforeach
+                            @else 
+                                <td>No any stores to show</td>
+                            @endif
+                            
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!---Container Fluid-->
 @endsection
