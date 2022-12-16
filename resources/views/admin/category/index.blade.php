@@ -3,7 +3,7 @@
 @section('title') @lang('Store') @endsection
 
 @section('content')
-<!-- start page title -->
+<!-- Breadcrumb -->
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
@@ -32,12 +32,12 @@
         </div>
     </div>
 </div>
-<!-- end page title -->
+<!-- Breadcrumb -->
 
 <div class="row">
     <div class="col-12">
         <div class="card">
-
+            
             <div class="card-body">
 
                 <div class="table-responsive">
@@ -72,7 +72,7 @@
                                         @if(auth()->user()->user_role=='admin')   
                                             <td> 
                                                 <a href=" {{route('store.edit', [$category->id])}} ">
-                                                    <button class="btn " style="background-color:#198754; color:white;">Edit</button>
+                                                    <button style="color:#198754; "><i class="fas fa-edit"></i></button>
                                                 </a>
                                             </td>
                                         @endif
@@ -82,7 +82,6 @@
                                     <td>No Store created yet</td>
                                 @endif
                             @endif
-                            
 
                             <!-- Superadmin -->
                             @if(auth()->user()->user_role=='superadmin')
@@ -99,14 +98,14 @@
                                             <!-- section Button-->
                                             <td> 
                                                 <a href=" {{route('section.getSubcategoryByCatId',[ $category->id])}} ">
-                                                    <button class="btn" style="background-color: #1a1a1a; color:white; padding: 6px">section</button>
+                                                    <button class="btn" style="background-color: #232838; color:white; padding: 6px">section</button>
                                                 </a>
                                             </td>
 
                                             <!-- Delete Button-->
                                             <td> 
                                                 <!-- Button trigger modal -->
-                                                <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal{{$category->id}}" style="color: #dc3545;border:none">
+                                                <button type="button" data-toggle="modal" data-target="#exampleModal{{$category->id}}" style="color: #dc3545;border:none">
                                                     <i class="mdi mdi-trash-can font-size-20"></i> 
                                                 </button>
                                                 
