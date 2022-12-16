@@ -96,7 +96,7 @@
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-layout"></i>
+                        <i class="far fa-image"></i>
                         <span key="sliders">Sliders</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">

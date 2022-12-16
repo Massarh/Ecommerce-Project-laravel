@@ -46,9 +46,11 @@
                                 <th>Description</th>
                                 <th>Additional_info</th>
                                 <th>Price</th>
+                                @if(auth()->user()->user_role=='superadmin')
                                 <th>Store</th>
+                                @endif
                                 @if(auth()->user()->user_role=='admin')
-                                <th> </th>
+                                <th>Action</th>
                                 <th> </th>
                                 @endif
                             </tr>
@@ -63,7 +65,9 @@
                                 <td>{!! $product->description !!}</td>
                                 <td>{!! $product->additional_info !!}</td>
                                 <td>${{ $product->price }}</td>
+                                @if(auth()->user()->user_role=='superadmin')
                                 <td>{{ $product->category->name }}</td>
+                                @endif
 
                                 @if(auth()->user()->user_role=='admin')
                                     <td>

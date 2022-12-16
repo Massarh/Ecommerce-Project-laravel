@@ -43,9 +43,7 @@
                                 <th>SN</th>
                                 <th>Name</th>
                                 <th>Store</th>
-                                @if(auth()->user()->user_role=='admin' || auth()->user()->user_role=='superadmin')
                                 <th>Action</th>
-                                @endif
                                 @if(auth()->user()->user_role=='admin')
                                 <th></th>
                                 <th></th>

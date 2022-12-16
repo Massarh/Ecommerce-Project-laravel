@@ -22,9 +22,9 @@
             <div class="row g-0">
 
                 <div class="col-xl-9">
-                    <div class="auth-full-bg pt-lg-5 p-4">
+                    <div class="auth-full-bg pt-lg-5 p-4" style="background-color: #1A1A1A">
                         <div class="w-100">
-                            <div class="bg-overlay" style="background-color: #1A1A1A"></div>
+                            <div class="bg-overlay" ></div>
                             <div class="d-flex h-100 flex-column">
 
                                 <div class="p-4 mt-auto">
