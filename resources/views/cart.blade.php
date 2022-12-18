@@ -55,7 +55,7 @@
                             <tr>
                                 <td>
                                     <img src="{{ Storage::url($product['image']) }}" alt="product-img"
-                                        title="product-img" class="avatar-md" />
+                                        title="product-img" class="avatar-md"  style="width:200px; height:300px"/>
                                 </td>
                                 <td>{{$product['name']}}</td>
                                 <td>

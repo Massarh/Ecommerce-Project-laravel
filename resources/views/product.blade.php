@@ -35,12 +35,13 @@
                 <b style="font-family: fangsong; font-size:36px;">PLAZA</b>
             </a>
         </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarExample01"
+            aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation"
+            style="margin-right: 15px;">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-right: 50px">
+        <div class="collapse navbar-collapse" id="navbarExample01" style="margin-right: 90px">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
 

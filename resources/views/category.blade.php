@@ -28,11 +28,9 @@
 
     .no-product-style {
         height: 50px;
-        width: 70%;
+        width: 100%;
         max-width: 300px;
-
-        background-color: #1a1a1a !important;
-        color: white;
+        color: #1a1a1a;
     }
 
     @media (max-width: 768px) {
@@ -40,10 +38,11 @@
             width: 294px !important;
             margin: auto !important;
         }
+    }
 
+    @media (min-width: 768px) {
         .no-product-style {
-            margin-top: 150px;
-            margin-left: 160px;
+            margin-left: 50px;
         }
     }
 

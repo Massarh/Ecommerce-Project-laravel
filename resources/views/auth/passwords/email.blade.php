@@ -127,6 +127,11 @@
                                                 <p>Remember It ? <a href="{{ url('login') }}"
                                                         class="font-weight-medium text-primary"> Sign In here</a> </p>
                                             </div>
+
+                                            <div class="mt-5 text-center">
+                                                <a href="/"><i class="fa-solid fa-house" style="font-size: 25px ;color:#1a1a1a;"></i></a>
+                                                <div><a href="/" style="color: #1a1a1a;font-size:11px ; ">Explore Home page</a></div>
+                                            </div>
                                         </div>
                                     </div>
 

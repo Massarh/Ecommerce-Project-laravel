@@ -59,7 +59,7 @@
                     <div class="mb-3">
                         <label>Choose image</label>
                         <div class="custom-file">
-                            <label for="customFile" class="custom-file-label">Choose image</label>
+                            <label for="customFile" class="custom-file-label" style="background-color: transparent !important;">Choose image</label>
                             <input id="customFile" name="image" type="file"
                                 class="custom-file-input @error('image') is-invalid @enderror">
                             @error('image')

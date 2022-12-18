@@ -20,7 +20,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <!-- App favicon -->
-    {{-- <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico') }}"> --}}
+    <link rel="shortcut icon" href="{{ URL::asset('logo/logo.jpeg') }}">
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 

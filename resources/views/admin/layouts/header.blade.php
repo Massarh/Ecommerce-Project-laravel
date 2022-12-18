@@ -19,7 +19,7 @@
     {{-- Style --}}
     <link rel="stylesheet" href="{{asset('css/admin-panel-style.css')}}">
     
-    @include('layouts.head-css')
+    @include('admin.layouts.head-css')
 
     
 </head>

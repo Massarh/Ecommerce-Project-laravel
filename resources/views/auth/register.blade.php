@@ -93,7 +93,7 @@
 
                                     <div>
                                         <h5 style="color: #1A1A1A">Register account</h5>
-                                        <p class="text-muted">Get your free Skote account now.</p>
+                                        <p class="text-muted">Get your free account now.</p>
                                     </div>
 
                                     <div class="mt-4">
@@ -156,22 +156,7 @@
                                                 @enderror
                                             </div>
 
-                                            {{-- Image --}}
-                                            {{-- <div class="mb-3">
-                                                <label for="avatar">Profile Picture</label>
-                                                <div class="input-group">
-                                                    <input type="file"
-                                                        class="form-control @error('avatar') is-invalid @enderror"
-                                                        id="inputGroupFile02" name="avatar" autofocus required>
-                                                    <label class="input-group-text"
-                                                        for="inputGroupFile02">Upload</label>
-                                                </div>
-                                                @error('avatar')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
-                                            </div> --}}
+                                        
 
                                             <div class="mt-4 d-grid">
                                                 <button class="btn waves-effect waves-light" type="submit"
@@ -211,6 +196,11 @@
                                         <div class="mt-3 text-center">
                                             <p>Already have an account ? <a href="{{ url('login') }}"
                                                     class="fw-medium text-primary"> Login</a> </p>
+                                        </div>
+
+                                        <div class="mt-5 text-center">
+                                            <a href="/"><i class="fa-solid fa-house" style="font-size: 25px ;color:#1a1a1a;"></i></a>
+                                            <div><a href="/" style="color: #1a1a1a;font-size:11px ; ">Explore Home page</a></div>
                                         </div>
 
                                     </div>

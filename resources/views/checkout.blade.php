@@ -79,7 +79,8 @@
                                             <tr>
                                                 <th scope="row">
                                                     <img src="{{ Storage::url($product['image']) }}" alt="product-img"
-                                                        title="product-img" class="avatar-md">
+                                                        title="product-img" class="avatar-md" style="width: 70px ;height:103px">
+                                                        
                                                 </th>
                                                 <td>{{$product['name']}}</td>
                                                 <td>{{ $product['qty'] }}</td>
