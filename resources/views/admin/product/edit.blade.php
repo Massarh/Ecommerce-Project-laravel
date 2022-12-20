@@ -65,7 +65,7 @@
                             <div class="custom-file">
                                 <label for="customFile" class="custom-file-label">Choose file</label>
                                 <input id="customFile" name="image" type="file"
-                                    class="custom-file-input @error('image') is-invalid @enderror">
+                                    class="custom-file-input @error('image') is-invalid @enderror  bg-color-transparent">
                                 
                                 @error('image')
                                 <span class="invalid-feedback" role="alert">
@@ -126,8 +126,8 @@
 
                         <div class="mb-3 col-6">
                             <label for="stroeName">My Store</label>
-                            <input id="category" name="category" type="text"
-                                class="form-control @error('category') is-invalid @enderror" aria-describedby=""
+                            <input id="category" name="category" type="text" aria-describedby=""
+                                class="form-control @error('category') is-invalid @enderror bg-color-transparent" 
                                 value="{{$category->name}}" readonly>
 
                             @error('category')

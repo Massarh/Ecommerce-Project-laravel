@@ -59,7 +59,7 @@
                     <div class="mb-3">
                         <label>Choose image</label>
                         <div class="custom-file">
-                            <label for="customFile" class="custom-file-label" style="background-color: transparent !important;">Choose image</label>
+                            <label for="customFile" class="custom-file-label bg-color-transparent">Choose image</label>
                             <input id="customFile" name="image" type="file"
                                 class="custom-file-input @error('image') is-invalid @enderror">
                             @error('image')
@@ -118,8 +118,8 @@
 
                         <div class="mb-3 col-6">
                             <label for="stroeName">My Store</label>
-                            <input id="category" name="category" type="text"
-                                class="form-control @error('category') is-invalid @enderror" aria-describedby=""
+                            <input id="category" name="category" type="text" aria-describedby=""
+                                class="form-control @error('category') is-invalid @enderror bg-color-transparent" 
                                 value="{{$category->name}}" readonly>
 
                             @error('category')

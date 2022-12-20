@@ -69,7 +69,7 @@
 
                             <div class="col-md-6">
                                 <div class="custom-file">
-                                    <label for="customFile" class="custom-file-label">Choose Image</label>
+                                    <label for="customFile" class="custom-file-label bg-color-transparent">Choose Image</label>
                                     <input id="customFile" name="image" type="file"
                                         class="custom-file-input @error('image') is-invalid @enderror">
 

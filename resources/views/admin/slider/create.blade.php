@@ -19,7 +19,8 @@
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Create Slider</li> <!-- what is aria? Accessible Rich Internet Applications (ARIA) -->
+                    <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">
+                        Create Slider</li> <!-- what is aria? Accessible Rich Internet Applications (ARIA) -->
                 </ol>
             </div>
         </div>
@@ -29,9 +30,9 @@
 <div class="row justify-content-center">
 
     @if (Session::has('message')) {{-- to show the message --}}
-        <div class="alert alert-success">
-            {{ Session::get('message') }}
-        </div>
+    <div class="alert alert-success">
+        {{ Session::get('message') }}
+    </div>
     @endif
 
     <div class="col-lg-10">
@@ -44,14 +45,15 @@
                     <div class="mb-3">
                         <label for="name">Choose Image</label>
                         <div class="custom-file">
-                            <label for="customFile" class="custom-file-label">Choose file</label>
-                            <input id="customFile" name="image" type="file" class="custom-file-input @error('image') is-invalid @enderror">
-                            
+                            <label for="customFile" class="custom-file-label bg-color-transparent">Choose file</label>
+                            <input id="customFile" name="image" type="file"
+                                class="custom-file-input @error('image') is-invalid @enderror bg-color-transparent">
+
                             <img src="" value="{{ old('image') }}">
                             @error('image')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
                             @enderror
                         </div>
                     </div>
@@ -61,7 +63,7 @@
                         <button type="submit" class="btn"
                             style="background-color:  #232838;; color: #fff">Submit</button>
                     </div>
-                        
+
                 </form>
 
             </div>

@@ -62,8 +62,8 @@
 
                             <div class="mb-3">
                                 <label for="stroeName">My Store</label>
-                                <input id="category" name="category" type="text"
-                                    class="form-control @error('category') is-invalid @enderror" aria-describedby=""
+                                <input id="category" name="category" type="text" aria-describedby=""
+                                    class="form-control @error('category') is-invalid @enderror bg-color-transparent" 
                                     value="{{$category->name}}" readonly>
 
                                 @error('category')

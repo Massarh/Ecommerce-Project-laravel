@@ -1,3 +1,7 @@
+.bg-color-transparent {
+    background-color: transparent !important;
+}
+
 /* Medium */
 @media (max-width: 768px) {
     .card-aside-img {

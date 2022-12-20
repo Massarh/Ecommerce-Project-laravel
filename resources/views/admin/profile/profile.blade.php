@@ -156,7 +156,7 @@
                         <div class="input-group">
                             <input type="file" id="image" name="image"
                                 class="form-control @error('image') is-invalid @enderror" autofocus>
-                            <label class="input-group-text" for="image">Upload</label>
+                            <label class="input-group-text bg-color-transparent" for="image">Upload</label>
                         </div>
                         @error('image')
                         <span class="invalid-feedback" role="alert">

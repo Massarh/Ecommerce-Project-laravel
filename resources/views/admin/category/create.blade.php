@@ -74,10 +74,10 @@
                             <div class="mb-3">
                                 <label for="name">Choose Image</label>
                                 <div class="custom-file">
-                                    <label for="customFile" class="custom-file-label">Choose Image</label>
+                                    <label for="customFile" class="custom-file-label bg-color-transparent">Choose Image</label>
                                     <input id="customFile" name="image" type="file"
                                         class="custom-file-input @error('image') is-invalid @enderror">
-                                    {{-- <img src="" value="{{ old('image') }}"> --}}
+                                    
                                     @error('image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
