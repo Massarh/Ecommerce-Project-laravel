@@ -27,49 +27,49 @@ class DatabaseSeeder extends Seeder
             'image' => 'files/hm.jpg'
         ]);
         Category::create([
-            'name' => 'Prada', //2
-            'slug' => 'Prada',
-            'description' => 'Today the Prada brand offers mens and womens leather goods, clothing and footwear, combining contemporary, innovative and sophisticated design with the uniqueness of handcrafted products. Prada also operates in the eyewear and fragrance sector.',
+            'name' => 'PRADA', //2
+            'slug' => 'PRADA',
+            'description' => 'Today the Prada brand offers men and women leather goods, clothing and footwear, combining contemporary, innovative and sophisticated design with the uniqueness of handcrafted products. Prada also operates in the eyewear and fragrance sector.',
             'image' => 'files/Prada.jpg'
         ]);
 
         Category::create([
-            'name' => 'Zara', //3
-            'slug' => 'Zara',
-            'description' => 'is a Spanish multi-national retail clothing chain. It specialises in fast fashion, and sells clothing, accessories, shoes, beauty products and perfumes. The head office is in Arteixo, in A Coruña in Galicia.It is the largest constituent company of the Inditex group. ',
+            'name' => 'ZARA', //3
+            'slug' => 'ZARA',
+            'description' => 'Zara is a Spanish multi-national retail clothing chain. It specialises in fast fashion, and sells clothing, accessories, shoes, beauty products and perfumes. The head office is in Arteixo, in A Coruña in Galicia.It is the largest constituent company of the Inditex group. ',
             'image' => 'files/zara.png'
         ]);
 
         Category::create([
-            'name' => 'Mango', //4
-            'slug' => 'Mango',
-            'description' => 'MANGO was founded in 1984 by brothers Isak Andic and Nahman Andic, the brand opened its first store in Barcelonas Paseo de Gracia. The name MANGO was chosen because it sounds the same in the majority of languages around the world.',
+            'name' => 'MANGO', //4
+            'slug' => 'MANGO',
+            'description' => 'Mango was founded in 1984 by brothers Isak Andic and Nahman Andic, the brand opened its first store in Barcelonas Paseo de Gracia. The name Mango was chosen because it sounds the same in the majority of languages around the world.',
             'image' => 'files/mango.png'
         ]);
 
         Category::create([
-            'name' => 'PrettyLittleThing', //5
-            'slug' => 'PrettyLittleThing',
-            'description' => 'PrettyLittleThing is a UK-based fast-fashion retailer, aimed at 16-24-year-old women. The company is owned by Boohoo Group and operates in the UK, Ireland, Australia, US, France, Middle East and North Africa. ',
-            'image' => 'files/PrettyLittleThings.png'
+            'name' => 'PRETTY LITTLE THING', //5
+            'slug' => 'PRETTY LITTLE THING',
+            'description' => 'Pretty Little Thing is a UK-based fast-fashion retailer, aimed at 16-24-year-old women. The company is owned by Boohoo Group and operates in the UK, Ireland, Australia, US, France, Middle East and North Africa. ',
+            'image' => 'files/PrettyLittleThings.jpeg'
         ]);
 
         Category::create([
-            'name' => 'Dolce & Gabbana', //6
-            'slug' => 'Dolce & Gabbana',
+            'name' => 'DOLCE & GABBANA', //6
+            'slug' => 'DOLCE & GABBANA',
             'description' => 'also known by initials D&G, is an Italian luxury fashion house founded in 1985 in Legnano by Italian designers Domenico Dolce and Stefano Gabbana.The house specializes in ready-to-wear, handbags, accessories, and cosmetics and licenses its name and branding to Luxottica for eyewear.',
             'image' => 'files/D&G.jpg'
         ]);
 
         Category::create([
-            'name' => 'Christian Dior', //8
-            'slug' => 'Christian Dior',
-            'description' => 'Christian Dior SE commonly known as Dior (stylized DIOR), is a French luxury fashion house controlled and chaired by French businessman Bernard Arnault, who also heads LVMH, the worlds largest luxury group',
+            'name' => 'CHRISTIAN DIOR', //7
+            'slug' => 'CHRISTIAN DIOR',
+            'description' => 'Christian Dior SE commonly known as Dior (stylized Dior), is a French luxury fashion house controlled and chaired by French businessman Bernard Arnault, who also heads LVMH, the worlds largest luxury group',
             'image' => 'files/Christian Dior.jpg'
         ]);
 
         /*  Category::create([
-            'name' => 'Gucci ', //7
+            'name' => 'Gucci ', //8
             'slug' => 'Gucci ',
             'description' => 'is an Italian high-end luxury fashion house based in Florence, Italy. Its product lines include handbags, ready-to-wear, footwear, accessories, and home decoration; and it licenses its name and branding to Coty, Inc.',
             'image' => 'files/gucci.png'
@@ -79,25 +79,25 @@ class DatabaseSeeder extends Seeder
 
         // Subcategory 
         Subcategory::create([ //1
-            'name' => 'Men',
+            'name' => 'MEN',
         ]);
         Subcategory::create([ //2
-            'name' => 'Wemon',
+            'name' => 'WOMEN',
         ]);
         Subcategory::create([ //3
-            'name' => 'Kid',
+            'name' => 'KIDS',
         ]);
         Subcategory::create([ //4
-            'name' => 'bags',
+            'name' => 'BAGS',
         ]);
         Subcategory::create([ //5
-            'name' => 'accessories',
+            'name' => 'ACCESSORIES',
         ]);
         Subcategory::create([ //6
-            'name' => 'shoes',
+            'name' => 'SHOES',
         ]);
         Subcategory::create([ //7
-            'name' => 'hats',
+            'name' => 'HATS',
         ]);
 
 
@@ -107,7 +107,7 @@ class DatabaseSeeder extends Seeder
         //Connectors
 
         /************************************** */
-        //h&m has men women and kids 
+        //h&m has men women 
         CategorySubcategory::create([
             'category_id' => 1,
             'subcategory_id' => 1,
@@ -129,7 +129,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         /***************************************/
-        //zara 
+        //zara has men, women, kids and shoes 
         CategorySubcategory::create([
             'category_id' => 3,
             'subcategory_id' => 1,
@@ -148,7 +148,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         /***************************************/
-        //Mango 
+        //Mango has women ,bags and shoes 
         CategorySubcategory::create([
             'category_id' => 4,
             'subcategory_id' => 2,
@@ -163,7 +163,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         /***************************************/
-        //prettylittilethings 
+        //pretty littile things has kids ,bags, accessories,shoes and hats 
         CategorySubcategory::create([
             'category_id' => 5,
             'subcategory_id' => 3,
@@ -185,7 +185,7 @@ class DatabaseSeeder extends Seeder
             'subcategory_id' => 7,
         ]);
         /***************************************/
-        //D&G 
+        //Dolce & Gabbana  has men ,wemon ,kids and accessories
         CategorySubcategory::create([
             'category_id' => 6,
             'subcategory_id' => 1,
@@ -204,7 +204,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
         /***************************************/
-        //gucci 
+        //DIOR has men.
+        CategorySubcategory::create([
+            'category_id' => 7,
+            'subcategory_id' => 1,
+        ]);
+
+/***************************************/
+        //gucci HAS MEN ,WEMON ,BAGS AND SHOES
         /*CategorySubcategory::create([
     'category_id' =>7,
     'subcategory_id' =>1,
@@ -222,19 +229,8 @@ class DatabaseSeeder extends Seeder
         'subcategory_id' => 6,
     ]);*/
 
-        /***************************************/
-        //DIOR 
-        CategorySubcategory::create([
-            'category_id' => 7,
-            'subcategory_id' => 1,
-        ]);
-
-
-
-
-
-
-        //PRODUCTS
+/***************************************/
+         //PRODUCTS
 
         //HM PRODUCTS 
         Product::create([
@@ -364,15 +360,7 @@ class DatabaseSeeder extends Seeder
             'category_id' => 1,
             'subcategory_id' => 2
         ]);
-        Product::create([
-            'name' => 'H&M women Product8',
-            'image' => 'product/HM women (8).jpg',
-            'price' => 13.60,
-            'description' => 'This is the description of a product',
-            'additional_info' => 'This is additional info',
-            'category_id' => 1,
-            'subcategory_id' => 2
-        ]);
+      
         Product::create([
             'name' => 'H&M women Product9',
             'image' => 'product/HM women (9).jpg',
@@ -1145,15 +1133,7 @@ class DatabaseSeeder extends Seeder
             'category_id' => 4,
             'subcategory_id' => 2
         ]);
-        Product::create([
-            'name' => 'Mango women Product6',
-            'image' => 'product/mango women (6).jpg',
-            'price' => 14.24,
-            'description' => 'This is the description of a product',
-            'additional_info' => 'This is additional info',
-            'category_id' => 4,
-            'subcategory_id' => 2
-        ]);
+       
         Product::create([
             'name' => 'Mango women Product7',
             'image' => 'product/mango women (7).jpg',
@@ -1209,15 +1189,7 @@ class DatabaseSeeder extends Seeder
             'category_id' => 4,
             'subcategory_id' => 4
         ]);
-        Product::create([
-            'name' => 'Mango bags Product5',
-            'image' => 'product/mango bags (5).jpg',
-            'price' => 10.05,
-            'description' => 'This is the description of a product',
-            'additional_info' => 'This is additional info',
-            'category_id' => 4,
-            'subcategory_id' => 4
-        ]);
+      
         Product::create([
             'name' => 'Mango bags Product6',
             'image' => 'product/mango bags (6).jpg',
@@ -1607,7 +1579,7 @@ class DatabaseSeeder extends Seeder
 
         // User 
         User::create([
-            'name' => 'Super Admin1',
+            'name' => 'Super ADMIN',
             'email' => 'superadmin1@gmail.com',
             'password' => bcrypt('123456789'),
             'email_verified_at' => NOW(),
@@ -1616,64 +1588,146 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'superadmin'
         ]);
         User::create([
-            'name' => 'Zara Admin1',
+            'name' => 'H&M ADMIN1',
+            'email' => 'h&madmin1@gmail.com',
+            'password' => bcrypt('123456789'),
+            'email_verified_at' => NOW(),
+            'address' => 'Australia',
+            'phone_number' => '0777899878',
+            'user_role' => 'admin',
+            'category_id' => '1'
+        ]);
+        User::create([
+            'name' => 'H&M EMPLOYEE1',
+            'email' => 'h&memployee1@gmail.com',
+            'password' => bcrypt('123456789'),
+            'email_verified_at' => NOW(),
+            'address' => 'Australia',
+            'phone_number' => '0777777777',
+            'user_role' => 'employee',
+            'category_id' => '1'
+        ]);
+        User::create([
+            'name' => 'PRADA ADMIN1',
+            'email' => 'pradaadmin1@gmail.com',
+            'password' => bcrypt('123456789'),
+            'email_verified_at' => NOW(),
+            'address' => 'Australia',
+            'phone_number' => '0777777777',
+            'user_role' => 'admin',
+            'category_id' => '2'
+        ]);
+        User::create([
+            'name' => 'PRADA EMPLOYEE1',
+            'email' => 'pradaemployee1@gmail.com',
+            'password' => bcrypt('123456789'),
+            'email_verified_at' => NOW(),
+            'address' => 'Australia',
+            'phone_number' => '0777777777',
+            'user_role' => 'employee',
+            'category_id' => '2'
+        ]);
+        User::create([
+            'name' => 'ZARA ADMIN1',
             'email' => 'zaraadmin1@gmail.com',
             'password' => bcrypt('123456789'),
             'email_verified_at' => NOW(),
             'address' => 'Australia',
             'phone_number' => '0789317598',
             'user_role' => 'admin',
-            'category_id' => '1'
+            'category_id' => '3'
         ]);
         User::create([
-            'name' => 'Zara Employee1',
+            'name' => 'ZARA EMPLOYEE1',
             'email' => 'zaraemployee1@gmail.com',
             'password' => bcrypt('123456789'),
             'email_verified_at' => NOW(),
             'address' => 'Australia',
             'phone_number' => '0778965741',
             'user_role' => 'employee',
-            'category_id' => '1'
-        ]);
-        User::create([
-            'name' => 'H&M Admin1',
-            'email' => 'H&Madmin1@gmail.com',
-            'password' => bcrypt('123456789'),
-            'email_verified_at' => NOW(),
-            'address' => 'Australia',
-            'phone_number' => '0777899878',
-            'user_role' => 'admin',
-            'category_id' => '2'
-        ]);
-        User::create([
-            'name' => 'H&M Employee1',
-            'email' => 'H&Memployee1@gmail.com',
-            'password' => bcrypt('123456789'),
-            'email_verified_at' => NOW(),
-            'address' => 'Australia',
-            'phone_number' => '0777777777',
-            'user_role' => 'employee',
-            'category_id' => '2'
-        ]);
-        User::create([
-            'name' => 'Prada Admin1',
-            'email' => 'Pradaadmin1@gmail.com',
-            'password' => bcrypt('123456789'),
-            'email_verified_at' => NOW(),
-            'address' => 'Australia',
-            'phone_number' => '0777777777',
-            'user_role' => 'admin',
             'category_id' => '3'
         ]);
+      
+       
         User::create([
-            'name' => 'Prada Employee1',
-            'email' => 'Pradaemployee1@gmail.com',
+            'name' => 'MANGO ADMIN1',
+            'email' => 'mangoadmin1@gmail.com',
             'password' => bcrypt('123456789'),
             'email_verified_at' => NOW(),
             'address' => 'Australia',
-            'phone_number' => '0777777777',
+            'phone_number' => '0789317598',
+            'user_role' => 'admin',
+            'category_id' => '4'
+        ]);
+        User::create([
+            'name' => 'MANGO EMPLOYEE1',
+            'email' => 'mangoemployee1@gmail.com',
+            'password' => bcrypt('123456789'),
+            'email_verified_at' => NOW(),
+            'address' => 'Australia',
+            'phone_number' => '0778965741',
             'user_role' => 'employee',
-            'category_id' => '3'
+            'category_id' => '4'
+        ]);
+        User::create([
+            'name' => 'PRETTY LITTLE THING ADMIN1',
+            'email' => 'prettylittlethingadmin1@gmail.com',
+            'password' => bcrypt('123456789'),
+            'email_verified_at' => NOW(),
+            'address' => 'Australia',
+            'phone_number' => '0789317598',
+            'user_role' => 'admin',
+            'category_id' => '5'
+        ]);
+        User::create([
+            'name' => 'PRETTY LITTLE THING EMPLOYEE1',
+            'email' => 'prettylittlethingemployee1@gmail.com',
+            'password' => bcrypt('123456789'),
+            'email_verified_at' => NOW(),
+            'address' => 'Australia',
+            'phone_number' => '0778965741',
+            'user_role' => 'employee',
+            'category_id' => '5'
+        ]);
+        User::create([
+            'name' => 'DOLCE & GABBANA ADMIN1',
+            'email' => 'dolce&gabbanaadmin1@gmail.com',
+            'password' => bcrypt('123456789'),
+            'email_verified_at' => NOW(),
+            'address' => 'Australia',
+            'phone_number' => '0789317598',
+            'user_role' => 'admin',
+            'category_id' => '6'
+        ]);
+        User::create([
+            'name' => 'DOLCE & GABBANA EMPLOYEE1',
+            'email' => 'dolce&gabbanaemployee1@gmail.com',
+            'password' => bcrypt('123456789'),
+            'email_verified_at' => NOW(),
+            'address' => 'Australia',
+            'phone_number' => '0778965741',
+            'user_role' => 'employee',
+            'category_id' => '6'
+        ]);
+        User::create([
+            'name' => 'CHRISTIAN DIOR ADMIN1',
+            'email' => 'christiandioradmin1@gmail.com',
+            'password' => bcrypt('123456789'),
+            'email_verified_at' => NOW(),
+            'address' => 'Australia',
+            'phone_number' => '0789317598',
+            'user_role' => 'admin',
+            'category_id' => '7'
+        ]);
+        User::create([
+            'name' => 'CHRISTIAN DIOR EMPLOYEE1',
+            'email' => 'christiandioremployee1@gmail.com',
+            'password' => bcrypt('123456789'),
+            'email_verified_at' => NOW(),
+            'address' => 'Australia',
+            'phone_number' => '0778965741',
+            'user_role' => 'employee',
+            'category_id' => '7'
         ]);
         User::create([
             'name' => 'customer1',

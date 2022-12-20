@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use App\Models\Subcategory;
 use App\Models\Category;
@@ -118,11 +118,11 @@ class ProductController extends Controller
     public function loadSubCategories(Request $request)
     {
 
-        $categoryId=$request->categoryId;
-        if($categoryId){
+        $categoryId = $request->categoryId;
+        if ($categoryId) {
 
             $subcategories = Category::find($categoryId)->subcategory()->get()->pluck('name', 'id');
-        }else{
+        } else {
 
             //when user click on select in category dropdown menu
             $subcategories = Subcategory::get()->pluck('name', 'id');
@@ -154,41 +154,12 @@ class ProductController extends Controller
 
         //       return  Subcategory::insert($mas);
 
-        // $product = Product::where('name', "")->get();
-        // return $product;
-        $name=$request->input('name');
-        dd($name) ;
-        
-        $products = Product::when($name, function ($query, $name) {
-                            $query->where('name', $name);
-                        })
-                        ->get();
-        return $products;
         // .......................................................................
 
         // test get eloquent queries
-
-
-        // $category = Category::with('subcategory')->find(1);
-        //  return $category;
-
-        // .......................................................................
-
-
-        // $Subcategory = Subcategory::with('category')->find(1);
-        //  return $Subcategory;
-
-        // .....................................................................
-
-
-        // $subcategory = Category::find(1)->subcategory()->orderBy('name')->get();
-        //  return $subcategory;
-
-        // .......................................................................
-
-
-        // $category = Category::first();
-        //   return $category;
+        // done
+        //   $category = Category::first();
+        //   return $category->subcategory;
         // --------------------------------------------------------------------------
 
         // $category = Category::find(3);
@@ -196,14 +167,23 @@ class ProductController extends Controller
 
         // --------------------------------------------------------------------------
 
-
         // $category = Category::get();
         //    return $category;
 
         // --------------------------------------------------------------------------
 
+        // $categories = DB::table('categories')
+        // ->select('name','id')
+        // ->get();
 
-        // $category = Category::orderBy('id', 'desc')->get();
+        // return $categories;
+
+        // --------------------------------------------------------------------------
+
+        // $category = Category::orderBy('id', 'desc')
+        // ->select('name','id')
+        // ->where('id','>',2)
+        // ->get();
         //  return $category;
         // ----------------------------------------------------------------------
 
@@ -214,13 +194,40 @@ class ProductController extends Controller
 
         // --------------------------------------------------------------------------
 
-        // $category = category::where('name', 'Zara')
-        // ->orWhere('name', 'Nike')->get();
-        //    return $category;
+        // $category = Category::
+        //  where('name', 'prada')
+        //  ->orWhere('name', 'h&m')
+        //  ->get();
+        //  return $category;
 
         // --------------------------------------------------------------------------
 
-        // $category = category::where('updated_at', null)->get();
+        //  $category = Category::
+        //     where('name', 'prad')
+        //     ->orWhere(function($query) {
+        //         $query->where('id','>', '5')
+        //              ->where('name', 'CHRISTIAN DIOR'); 
+        //     })
+        //     ->get();
+
+        //   return $category;
+        // --------------------------------------------------------------------------
+        // select * from category where name = 'prada' and (id > 5 or name = 'CHRISTIAN DIOR')
+        // $category = Category::
+        // where('id','<', 1)
+
+        // ->where(function ($query) {
+        //     $query->where('id', '>', '5')
+        //           ->orWhere('name', 'CHRISTIAN DIOR');
+        // })
+        // ->get();
+
+
+        //  return $category;
+
+        // --------------------------------------------------------------------------
+
+        // $category = category::where('updated_at', Null)->get();
 
         // return $category;
 
@@ -230,52 +237,83 @@ class ProductController extends Controller
 
         // return $category;
 
+        // ..............................................................................
 
-        // ...............................................................................
-        // $name = 'Zara';
-        //    $status=$name==null?null:$name;
-        //    return $status;
-        // $category = category::$name!=null?where('name',$name):''->get();
-        // return $category;
+        // $a = Category::find(1)->subcategory;
+        //  return $a;
+
+        // .....................................................................
+
+        // $a = Category::find(1)->subcategory()->orderBy('name','desc')->get();
+        // return $a;
+
+        // .......................................................................
+
+        // $number=5;
+        // $plaza=null;
+
+        //     $products = Product::when($number, function ($query, $number) {
+        //                         $query->where('id',"<",$number);
+        //                     })->when($plaza, function ($query, $plaza) {
+        //                         $query->orderBy('id','desc');
+        //                     })
+        //                 ->get();
+        // return $products;
+
 
         // --------------------------------------------------------------------------
         // $price = Product::where('name', 'like', '%me%')->sum('price');
         //    return $price;
 
         // --------------------------------------------------------------------------
-        // $category = Category::whereBetween('id', [1, 2])->get();
+        // $category = Category::whereBetween('id', [1, 3])->get();
         // return $category;
 
         // --------------------------------------------------------------------------
-        // $category = Category::whereNotBetween('id', [1, 2])->get();
+        // $category = Category::whereNotBetween('id', [1, 3])->get();
         // return $category;
 
         // --------------------------------------------------------------------------
 
-        // $category = Category::whereIn('id', [1, 3])->get();
+        // $category = Category::whereIn('id', [1,2,3])->get();
         // return $category;
 
         // .......................................................................
 
-        // $category = Category::whereNotIn('id', [1, 3])->get();
+        // $category = Category::whereNotIn('id', [1, 2,3])->get();
         // return $category;
+
         // --------------------------------------------------------------------------
 
-        // $category = Category::whereNull('created_at')->get();
+        // $category = Category::whereNull('updated_at')->get();
         // return $category;
 
         // .................................................................
 
-        // $category = Category::whereNotNull('created_at')->get();
+        // $category = Category::whereNotNull('updated_at')->get();
         //  return $category;
+
         // --------------------------------------------------------------------------
 
-        // $category = Category::whereDate('created_at', '2022-11-24')->get();
+        // $category = Category::whereDate('created_at', '2022-11-18')->get();
         // return $category;
+
         // --------------------------------------------------------------------------
-        //it is an array because you can put multiple condtions
-        // $category = Category::whereColumn([['updated_at', '=', 'created_at']])->get();
+
+        // $category = Category::whereDay('created_at', '18')->get();
+        // return $category;
+
+        // --------------------------------------------------------------------------
+
+        // $category = Category::whereMonth('created_at', '11')->get();
+        // return $category;
+
+        // --------------------------------------------------------------------------
+
+        // //it is an array because you can put multiple condtions
+        // $category = Category::whereColumn([['updated_at', '!=', 'created_at']])->get();
         //  return $category;
+
         // --------------------------------------------------------------------------
 
         // $category = Category::with('product')->get();
@@ -292,30 +330,50 @@ class ProductController extends Controller
         // return $category;
 
         // ------------------------------------------------------------------------
+        // start
+        // $category = Category::with('subcategory')->first(); 
+        //  return $category;
 
-        // $category = Category::with('orderItem', 'subcategory')->get();
+        // ..............................................................................
+
+        //  $category = Subcategory::with('product')->get(); 
+        //  return $category;
+
+        // .......................................................................
+        // $product = Product::with('subcategory')->get(); 
+        //   return $product;
+
+        // .......................................................................
+
+        // $Subcategory = Subcategory::with('category')->where('id','>',5)->orderBy('id','desc')->get();
+        //  return $Subcategory;
+
+        // .....................................................................
+        // end
+
+        // $category = Category::with('user', 'subcategory','product')->find(1);
         // return $category;
 
         // ------------------------------------------------------------------------
         // $category = Category::with(['product'  => function ($query) {
 
-
-        //      $query->with('subcategory');
+        //     $query->with('subcategory');
         // }])->find(1);
+
         //    return $category;
 
         // --------------------------------------------------------------------------
-        //strange
+        // //strange
         // $category = Category::with(['subcategory'  => function ($query) {
 
-        //     $query->where('subcategory_id',1);
+        //     $query->where('subcategory_id',2);
         // }])->find(1);
         //    return $category;
 
 
         // --------------------------------------------------------------------------
 
-        // $category = Category::withCount('product')->find(2);
+        // $category = Category::withCount('product')->get();
         //   return $category;
 
         // --------------------------------------------------------------------------
@@ -324,12 +382,19 @@ class ProductController extends Controller
         // $category = Category::with('product:id,name,category_id')->find(1);
         //  return $category;
 
+        // .......................................................................
+        // $category = Category::with(['product'  => function ($query) {
+        // $query->select('id','name','category_id');
+
+        // }])->find(1);
+        //    return $category;
+
         // --------------------------------------------------------------------------
 
         // $category = Category::with(['product'  => function ($query) {
-        // $query->where('name', 'Zara Men Product1');
+
         // $query->orderBy('id', 'desc');
-        // }])->find(1);
+        // }])->where('id','<',3)->get();
         //    return $category;
 
         // --------------------------------------------------------------------------
@@ -341,30 +406,25 @@ class ProductController extends Controller
         // ------------------------------------------------------------------------
 
         // $category = category::whereHas('subcategory', function (Builder $query) {
-        // $query->where('name', 'like', '%zara%');
+        // $query->where('name', 'men');
         // })->get();
         // return $category;
 
         // ------------------------------------------------------------------------
 
         // $category = category::whereDoesntHave('subcategory', function (Builder  $query) {
-        // $query->where('name', 'like', '%zara%');
+        // $query->where('name', 'men');
         // })->get();
         // return $category;
 
 
         // ------------------------------------------------------------------------
+        // gorgeous
         // $category = Category::whereHas('subcategory.product', function (Builder $query) {
         // $query->where('name', 'Zara Men Product1');
         // })->get();
 
         // return $category;
-
-
-
-
-
-
 
         // ........................................................
         // whereDate / whereMonth / whereDay / whereYear / whereTime
