@@ -6,6 +6,7 @@
 <!-- Breadcrumb -->
 <div class="row">
     <div class="col-12">
+        {!! Toastr::message() !!}
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
             @if(auth()->user()->user_role=='superadmin')
             <h4 class="mb-sm-0 font-size-18">Stores Table</h4>

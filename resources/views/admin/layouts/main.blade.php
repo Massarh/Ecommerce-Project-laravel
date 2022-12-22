@@ -19,9 +19,6 @@
                 @yield('content')
             </div>
 
-            @notifyCss
-            <x:notify-messages />
-            @notifyJs
             
         </div>
         <!-- Footer -->
@@ -33,4 +30,4 @@
 <!-- Right Sidebar -->
 @include('admin.layouts.right-sidebar')
 
-@include('layouts.vendor-scripts')
+@include('admin.layouts.vendor-scripts')

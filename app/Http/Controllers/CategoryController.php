@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
+use Brian2694\Toastr\Facades\Toastr;
 
 class CategoryController extends Controller
 {
@@ -32,6 +33,7 @@ class CategoryController extends Controller
     public function create()
     {
         $category = Category::all();
+        
         return view('admin.category.create', compact('category'));
     }
 
@@ -60,7 +62,8 @@ class CategoryController extends Controller
             ->update(['category_id' => $category->id]);
 
             //return view('/test',compact('image')); // public/files/G82chwJKSfQo24cNu6rmwADCVQuiZPLg9GocgG8L.png
-            notify()->success('Stroe created successfully');
+            // notify()->success('Stroe created successfully');
+            Toastr::success('created', 'success');
             return redirect()->route('store.index');
         }
     }
@@ -95,31 +98,9 @@ class CategoryController extends Controller
         $category->save();
 
         //Notification 
-        notify()->success('Store updated successfully');
+        // notify()->success('Store updated successfully');
+        Toastr::success('update', 'success');
         return redirect()->route('store.index');
-
-        //  way 2
-        // $category = Category::find($id);
-        // $filename = $category->image; // 
-        // if ($request->file('image')) //image is name input in file edit
-        // { // to edit the image of folder files-in-public
-        //     $image = $request->file('image')->store('public/files');
-        //     Storage::delete($filename); //$category->image
-
-        //     //to updated with image
-        //     $category->name        =  $request->name;
-        //     $category->description =  $request->description;
-        //     $category->image       =  $image;
-        //     $category->save();
-        // } else {
-        //     //to updated without image
-        //     $category->name        =  $request->name;
-        //     $category->description =  $request->description;
-        //     $category->save();
-        // }
-
-        // notify()->success('Category updated successfully');
-        // return redirect()->route('store.index');
     }
 
     // ----------------------------------------------------------------------------
@@ -131,7 +112,8 @@ class CategoryController extends Controller
         
         $category->delete();
         Storage::delete($filename); // Delete the image from a folder files [public\storage\files\...]
-        notify()->success('Store deleteed successfully');
+        // notify()->success('Store deleteed successfully');
+        Toastr::success('deleted', 'success');
         return redirect()->route('store.index');
     }
 

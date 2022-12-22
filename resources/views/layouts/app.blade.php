@@ -18,22 +18,20 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ URL::asset('logo/logo.jpeg') }}">
-
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
         integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous">
     </script>
+
+    {{-- messege toastr--}}
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+
     
     @include('layouts.head-css')
-
-    {{-- Notification --}} <!--ليشش css بتضرب-->
-    {{-- @notifyCss
-    <x:notify-messages />
-    @notifyJs --}}
 
     <livewire:styles />
 </head>

@@ -181,6 +181,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        // Notify 
+        Brian2694\Toastr\ToastrServiceProvider::class,
 
         Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
         /*
@@ -212,6 +214,9 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
+
+        // Notify 
+        'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
     ])->toArray(),
 
 ];
