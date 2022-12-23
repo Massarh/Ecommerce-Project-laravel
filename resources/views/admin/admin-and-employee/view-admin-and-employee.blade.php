@@ -63,7 +63,7 @@
                                 
                                 <td>
                                     <!-- Button trigger modal -->
-                                    <button type="button" data-toggle="modal" data-target="#exampleModal{{$adminOrEmployee->id}}" style="color: #dc3545;border:none">
+                                    <button class="bg-color-btn" type="button" data-toggle="modal" data-target="#exampleModal{{$adminOrEmployee->id}}" style="color: #dc3545;border:none">
                                         <i class="mdi mdi-trash-can font-size-20"></i> 
                                     </button>
 

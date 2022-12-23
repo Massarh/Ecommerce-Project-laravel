@@ -51,7 +51,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'PRETTY LITTLE THING', //5
             'slug' => 'PRETTY LITTLE THING',
             'description' => 'Pretty Little Thing is a UK-based fast-fashion retailer, aimed at 16-24-year-old women. The company is owned by Boohoo Group and operates in the UK, Ireland, Australia, US, France, Middle East and North Africa. ',
-            'image' => 'files/PrettyLittleThings.jpeg'
+            'image' => 'files/PrettyLittleThings.png'
         ]);
 
         Category::create([

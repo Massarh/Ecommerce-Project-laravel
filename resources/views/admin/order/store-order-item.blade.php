@@ -48,9 +48,9 @@
                         </div>
     
                         <div class="d-flex justify-content-between ">
-                            <button class="mr-3" style=" color:#2a3f4e"><i class="fas fa-search fa-fw"></i></button>
-                            <a  href="{{route('item.order', [$storeItems[0]->category_id])}}">
-                                <button style="color:#2a3f4e"><i class="fas fa-sync"></i></button>
+                            <button class="mr-3 bg-color-btn h6" ><i class="fas fa-search fa-fw"></i></button>
+                            <a class="h6 mt-2" href="{{route('item.order', [$storeItems[0]->category_id])}}">
+                                <button class="bg-color-btn h6" ><i class="fas fa-sync"></i></button>
                             </a>
                         </div>
                         {{-- Filter Date --}}

@@ -2,6 +2,11 @@
     background-color: transparent !important;
 }
 
+.bg-color-btn {
+    border: 0 solid;
+    background-color: transparent;
+}
+
 /* Medium */
 @media (max-width: 768px) {
     .card-aside-img {

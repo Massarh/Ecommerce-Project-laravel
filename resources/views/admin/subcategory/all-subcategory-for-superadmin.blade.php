@@ -57,21 +57,17 @@
                                 <td><a href="#">{{ $key+1 }}</a></td>
                                 <td>{{ $subcategory->name }}</td>
 
-
-
-
-
                                 <!-- Button Edit -->
                                 <td>
                                     <a href=" {{route('section.edit', [$subcategory->id])}} ">
-                                        <button class="" style="color:#198754;"><i class="fas fa-edit"></i></button>
+                                        <button class="bg-color-btn" style="color:#198754;"><i class="fas fa-edit"></i></button>
                                     </a>
                                 </td>
 
                                 <!-- Button Delete -->
                                 <td>
                                     <!-- Button trigger modal -->
-                                    <button type="button" data-toggle="modal"
+                                    <button type="button" data-toggle="modal" class="bg-color-btn"
                                         data-target="#exampleModal{{$subcategory->id}}"
                                         style="color: #dc3545;border:none">
                                         <i class="mdi mdi-trash-can font-size-20"></i>
