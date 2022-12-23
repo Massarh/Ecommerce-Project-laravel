@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Sendmail;
+use Brian2694\Toastr\Facades\Toastr;
 
 class CartController extends Controller
 {
@@ -28,7 +29,8 @@ class CartController extends Controller
         $cart->add($product);
 
         session()->put('cart', $cart);
-        notify()->success('Product added to cart!');
+
+        Toastr::success('Product added to cart', 'success');
         return redirect()->back();
     }
 
@@ -52,7 +54,8 @@ class CartController extends Controller
         $cart = new Cart(session()->get('cart'));
         $cart->updateQty($product->id, $request->qty); // qty from FORM in cart.blade.php
         session()->put('cart', $cart);
-        notify()->success('Cart updated!');
+        
+        Toastr::success('Cart updated', 'success');
         return redirect()->back();
     }
 
@@ -66,7 +69,8 @@ class CartController extends Controller
         } else {
             session()->put('cart', $cart);
         }
-        notify()->success('Product deleted of cart!');
+        
+        Toastr::success('Product deleted of cart', 'success');
         return redirect()->back();
     }
 
@@ -132,7 +136,8 @@ class CartController extends Controller
             OrderItem::insert($newCart);
 
             session()->forget('cart');
-            notify()->success('Transaction completed!');
+// hereeeeee
+            Toastr::success('Transaction completed!', 'success');
             return redirect()->to('/');
         } else {
             return redirect()->back();

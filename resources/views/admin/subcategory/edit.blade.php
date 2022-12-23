@@ -45,7 +45,8 @@
                 <form action="{{ route('section.update', [$oldSubcategory->id]) }}" method="POST">
                     @csrf
                     @method('PUT')
-
+                    {!! Toastr::message() !!}
+                    
                     <div class="form-group mb-4 ">
                         <label for="">Choose Section</label>
                         <select name="subcategory" class="form-control @error('subcategory') is-invalid @enderror">

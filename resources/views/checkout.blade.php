@@ -105,7 +105,8 @@
 
                     {{-- Shipping & Payment information --}}
                     <div class="col">
-                        <div class="card">
+                        <div class="card">]
+
                             <div class="card-body" style="border: 0 !important;">
                                 <div class="tab-content" id="v-pills-tabContent">
                                     <div class="tab-pane fade show active" id="v-pills-shipping" role="tabpanel"
@@ -116,7 +117,8 @@
 
                                             <form action="/charge" method="POST" id="payment-form">
                                                 @csrf
-
+                                                {{--  hereeeeee --}}
+                                                {!! Toastr::message() !!}
                                                 <!-- Name -->
                                                 <div class="form-group row mb-4">
                                                     <label for="name" class="col-md-2 col-form-label">Name</label>

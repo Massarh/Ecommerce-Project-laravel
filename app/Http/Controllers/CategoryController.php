@@ -61,9 +61,7 @@ class CategoryController extends Controller
             User::where('id', auth()->user()->id)
             ->update(['category_id' => $category->id]);
 
-            //return view('/test',compact('image')); // public/files/G82chwJKSfQo24cNu6rmwADCVQuiZPLg9GocgG8L.png
-            // notify()->success('Stroe created successfully');
-            Toastr::success('created', 'success');
+            Toastr::success('Stroe created successfully', 'success');
             return redirect()->route('store.index');
         }
     }
@@ -98,8 +96,7 @@ class CategoryController extends Controller
         $category->save();
 
         //Notification 
-        // notify()->success('Store updated successfully');
-        Toastr::success('update', 'success');
+        Toastr::success('Store updated successfully', 'success');
         return redirect()->route('store.index');
     }
 
@@ -112,8 +109,7 @@ class CategoryController extends Controller
         
         $category->delete();
         Storage::delete($filename); // Delete the image from a folder files [public\storage\files\...]
-        // notify()->success('Store deleteed successfully');
-        Toastr::success('deleted', 'success');
+        Toastr::success('Store deleteed successfully', 'success');
         return redirect()->route('store.index');
     }
 

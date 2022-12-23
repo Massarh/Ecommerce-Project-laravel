@@ -23,6 +23,7 @@
 
 <div class="row">
     <div class="col-12">
+        {!! Toastr::message() !!}
         <div class="card">
             @if(session()->has('status'))
             <div style="background-color:#ef5b69" class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -54,7 +55,7 @@
                             @if (count($subcategories)>0)
                             @foreach ($subcategories as $key=>$subcategory)
                             <tr>
-                                <td><a href="#">{{ $key+1 }}</a></td>
+                                <td>{{ $key+1 }}</td>
                                 <td>{{ $subcategory->name }}</td>
 
                                 <!-- Button Edit -->

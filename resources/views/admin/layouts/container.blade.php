@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0 font-size-18">Dashboard</h4>
+            <h6 class="mb-sm-0 font-size-18">Dashboard</h6>
         </div>
     </div>
 </div>
@@ -25,7 +25,7 @@
                     <h5 class="font-size-14 mb-0">Number of Stores</h5>
                 </div>
                 <div class="text-muted mt-4">
-                    <h4>{{App\Models\Category::get()->count()}}</h4>
+                    <h6>{{App\Models\Category::get()->count()}}</h6>
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
                     <h5 class="font-size-14 mb-0">Products</h5>
                 </div>
                 <div class="text-muted mt-4">
-                    <h4>{{App\Models\Product::where('category_id', auth()->user()->category_id)->get()->count()}}</h4>
+                    <h6>{{App\Models\Product::where('category_id', auth()->user()->category_id)->get()->count()}}</h6>
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@
                     <h5 class="font-size-14 mb-0">Order Items</h5>
                 </div>
                 <div class="text-muted mt-4">
-                    <h4>{{App\Models\OrderItem::where('category_id', auth()->user()->category_id)->get()->count()}}</h4>
+                    <h6>{{App\Models\OrderItem::where('category_id', auth()->user()->category_id)->get()->count()}}</h6>
                 </div>
             </div>
         </div>
@@ -86,7 +86,7 @@
                     <h5 class="font-size-14 mb-0">Orders</h5>
                 </div>
                 <div class="text-muted mt-4">
-                    <h4>{{App\Models\Order::get()->count()}}</h4>
+                    <h6>{{App\Models\Order::get()->count()}}</h6>
                 </div>
             </div>
         </div>
@@ -106,7 +106,7 @@
                     <h5 class="font-size-14 mb-0">Number Of Customer</h5>
                 </div>
                 <div class="text-muted mt-4">
-                    <h4>{{App\Models\User::where('user_role', 'customer')->get()->count()}}</h4>
+                    <h6>{{App\Models\User::where('user_role', 'customer')->get()->count()}}</h6>
                 </div>
             </div>
         </div>
@@ -127,7 +127,7 @@
                     <h5 class="font-size-14 mb-0">Number of Admin</h5>
                 </div>
                 <div class="text-muted mt-4">
-                    <h4>{{App\Models\User::where('user_role', 'admin')->get()->count()}}</h4>
+                    <h6>{{App\Models\User::where('user_role', 'admin')->get()->count()}}</h6>
                 </div>
             </div>
         </div>
@@ -146,7 +146,7 @@
                     <h5 class="font-size-14 mb-0">Number of Employee</h5>
                 </div>
                 <div class="text-muted mt-4">
-                    <h4>{{App\Models\User::where('user_role', 'employee')->get()->count()}}</h4>
+                    <h6>{{App\Models\User::where('user_role', 'employee')->get()->count()}}</h6>
                 </div>
             </div>
         </div>

@@ -40,6 +40,7 @@
             <div class="card-body">
                 <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    {!! Toastr::message() !!}
 
                     <!-- Name -->
                     <div class="mb-3">

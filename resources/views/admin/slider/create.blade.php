@@ -40,6 +40,7 @@
             <div class="card-body">
                 <form action="{{ route('slider.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    {!! Toastr::message() !!}
 
                     <!-- Image -->
                     <div class="mb-3">

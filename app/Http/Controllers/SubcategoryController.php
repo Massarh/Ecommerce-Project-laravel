@@ -7,6 +7,8 @@ use App\Models\Subcategory;
 use App\Models\Category;
 use App\Models\CategorySubcategory;
 use App\Models\Product;
+use Brian2694\Toastr\Facades\Toastr;
+
 
 class SubcategoryController extends Controller
 {
@@ -83,7 +85,7 @@ class SubcategoryController extends Controller
                 'name'=>$request->name,
             ]);
             
-            notify()->success('Section created successfully');
+            Toastr::success('Section created successfully', 'success');
             return redirect()->route('section.index');
 
         } else if (auth()->user()->user_role=='admin') 
@@ -96,6 +98,7 @@ class SubcategoryController extends Controller
             'category_id'=>auth()->user()->category_id, 
             'subcategory_id'=>$request->subcategory,
             ]);
+            Toastr::success('Section created successfully', 'success');
             return redirect()->route('section.getSubcategoryByCatId', [auth()->user()->category->slug]);
 
         }
@@ -136,7 +139,7 @@ class SubcategoryController extends Controller
             $subcategory->name =$request->name ;
             $subcategory->save();
 
-            notify()->success('Section updated successfully');
+            Toastr::success('Section updated successfully', 'success');
             return redirect()->route('section.index');
 
         } elseif(auth()->user()->user_role === 'admin'){
@@ -147,8 +150,8 @@ class SubcategoryController extends Controller
             $categoryId= auth()->user()->category_id;
             
             // if the admin insert the same subcategory i will not do anything.
-            if($newSubcategoryId==$oldSubcategoryId){
-                notify()->success('nothing to update');
+            if($newSubcategoryId==$oldSubcategoryId){ 
+                Toastr::success('nothing to update', 'success');
                 return redirect()->route('section.getSubcategoryByCatId', [auth()->user()->category->slug]);
         
             };
@@ -173,7 +176,7 @@ class SubcategoryController extends Controller
                     'category_id'=>$categoryId,
                     'subcategory_id' =>  $newSubcategoryId
                 ]);
-                notify()->success('Section updated successfully');
+                Toastr::success('Section updated successfully', 'success');
                 return redirect()->route('section.getSubcategoryByCatId', [auth()->user()->category->slug]);
             }
         }
@@ -194,7 +197,7 @@ class SubcategoryController extends Controller
             {
                 $subcategory->delete();
 
-                notify()->success('Section deleted successfully');
+                Toastr::success('Section deleted successfully', 'success');
                 return redirect()->back(); 
 
             } else {
@@ -214,7 +217,7 @@ class SubcategoryController extends Controller
             //   each delete all objects on products array
             $products->each->delete();
 
-            notify()->success('Section deleted successfully');
+            Toastr::success('Section deleted successfully', 'success');
             return redirect()->route('section.getSubcategoryByCatId', [auth()->user()->category->slug]);
         }
     }

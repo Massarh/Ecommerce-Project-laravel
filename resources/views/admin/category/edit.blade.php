@@ -40,6 +40,7 @@
                 <form action="{{ route('store.update', [$category->id]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
+                    {!! Toastr::message() !!}
                     
                     <div class="row">
                         <div class="col">

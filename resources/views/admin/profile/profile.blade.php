@@ -114,6 +114,8 @@
                 <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
+                    {!! Toastr::message() !!}
+
                     <div class="mb-3">
                         <label for="name" class="form-label">Username</label>
                         <input id="name" name="name" type="text"

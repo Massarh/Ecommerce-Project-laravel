@@ -36,7 +36,8 @@
                 <form action="{{ route('section.update', [$oldSubcategory->id])}}" method="POST">
                     @csrf
                     @method('PUT')
-
+                    {!! Toastr::message() !!}
+                    
                     <div class="row">
                         <div class="col">
 

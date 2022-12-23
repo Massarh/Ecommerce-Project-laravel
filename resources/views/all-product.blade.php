@@ -110,8 +110,6 @@
                 </div>
 
 
-
-
                 <?php $subcategories = App\Models\Subcategory::get() ?>
 
                 <div class="form-group mb-4 ms-2">

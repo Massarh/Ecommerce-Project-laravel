@@ -31,6 +31,7 @@
 
 <div class="row">
     <div class="col-12">
+        {!! Toastr::message() !!}
         <div class="card">
 
             <div class="card-body">
@@ -58,7 +59,7 @@
                         @if (count($subcategories)>0)
                         @foreach ($subcategories as $key=>$subcategory)
                             <tr>
-                                <td><a href="#">{{ $key+1 }}</a></td> 
+                                <td>{{ $key+1 }}</td> 
                                 <td>{{ $subcategory->name }}</td>
                                 @if(auth()->user()->user_role=='superadmin')
                                 <td>{{ $category->name}}</td>

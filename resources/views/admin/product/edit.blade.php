@@ -43,6 +43,7 @@
                     enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
+                    {!! Toastr::message() !!}
 
                     <!-- Name -->
                     <div class="mb-3">

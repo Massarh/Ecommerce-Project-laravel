@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Slider;
+use Brian2694\Toastr\Facades\Toastr;
 
 class SliderController extends Controller
 {
@@ -31,7 +32,8 @@ class SliderController extends Controller
         Slider::create([
             'image'=>$image
         ]);
-        notify()->success('Image uploaded successfully!');
+
+        Toastr::success('Image uploaded successfully', 'success');
         return redirect()->route('slider.index');
     }
 
@@ -39,7 +41,8 @@ class SliderController extends Controller
 
     public function destroy($id){
         Slider::find($id)->delete();
-        notify()->success('Image deleted successfully!');
+
+        Toastr::success('Image deleted successfully', 'success');
         return redirect()->back();
     }
 }

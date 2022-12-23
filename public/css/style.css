@@ -4,6 +4,11 @@
     border: solid 0.5px #0000003d;
 }
 
+.bg-color-btn {
+    border: 0 solid;
+    background-color: transparent;
+}
+
 .fontStyleHint {
     text-align: center;
     font-family: garamond !important;

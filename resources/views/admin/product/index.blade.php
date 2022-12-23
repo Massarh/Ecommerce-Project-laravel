@@ -35,7 +35,7 @@
         <div class="card">
 
             <div class="card-body">
-
+                {!! Toastr::message() !!}
                 <div class="table-responsive">
                     <table class="table align-middle table-nowrap">
 

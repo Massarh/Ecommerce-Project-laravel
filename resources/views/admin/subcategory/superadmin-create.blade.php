@@ -39,7 +39,8 @@
             <div class="card-body">
                 <form action="{{ route('section.store') }}" method="POST">
                     @csrf
-
+                    {!! Toastr::message() !!}
+                    
                     <div class="row">
                         <div class="col">
 

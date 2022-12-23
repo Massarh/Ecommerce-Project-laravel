@@ -23,15 +23,11 @@
                         <h4 class="mb-2">{{ $user->name }}</h4>
                         <p class="text-muted mb-4">{{ $user->user_role }}
 
-
                             {{-- Edit profile --}}
                             <a href="" data-bs-toggle="modal" data-bs-target=".update-profile"
                                 style="color: #1A1A1A ;text-decoration: none;">
                                 <p class="text-muted mb-4"> Edit profile <i class='far fa-edit'></i> </p>
                             </a>
-
-
-
 
                         <div class="mb-4 pb-2">
                             <a type="button" href="{{route('order')}}" class="btn btn-rounded btn-lg"
@@ -40,9 +36,7 @@
                             </a>
                         </div>
 
-
-                        <div class="flex-container" style=" display: flex;
-            justify-content: space-between; ">
+                        <div class="flex-container" style=" display: flex; justify-content: space-between; ">
                             <div>
                                 <p class="mb-2 h5">{{ $user->created_at->toDateString()}}</p>
                                 <p class="text-muted mb-0">joined at</p>
@@ -52,8 +46,6 @@
                                 <p class="mb-2 h5">{{isset($user->orders) ? $user->orders->count() : '0'}}</p>
                                 <p class="text-muted mb-0">Order count</p>
                             </div>
-
-
 
 
                         </div>
@@ -123,6 +115,8 @@
                 <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
+                    {!! Toastr::message() !!}
+
                     <div class="mb-3">
                         <label for="name" class="form-label">Username</label>
                         <input id="name" name="name" type="text"

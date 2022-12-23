@@ -46,6 +46,7 @@
                             @if($cart)
                             {{-- Foreach To display product in cart --}}
 
+                            {!! Toastr::message() !!}
                             @foreach($cart->items as $product)
                             <tr>
                                 <td>
@@ -71,7 +72,6 @@
                                         </form>
 
                                     </div>
-
                                 </td>
 
                                 <td>
@@ -80,7 +80,8 @@
                                 <td>
                                     <form action="{{route('cart.remove', $product['id'])}}" method="POST">
                                         @csrf
-                                        <button class="btn"
+
+                                        <button class="bg-color-btn"
                                             style="margin-top:1.5px; color: #dc3545;padding-top:20px;"><i
                                                 class="mdi mdi-trash-can font-size-20"></i></button>
                                     </form>

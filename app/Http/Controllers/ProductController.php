@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use App\Models\Subcategory;
 use App\Models\Category;
+use Brian2694\Toastr\Facades\Toastr;
 
 class ProductController extends Controller
 {
@@ -62,7 +63,8 @@ class ProductController extends Controller
             'category_id'     => auth()->user()->category_id,
             'subcategory_id'  => $request->subcategory
         ]);
-        notify()->success('Product created successfully');
+
+        Toastr::success('Product created successfully', 'success');
         return redirect()->route('product.index');
     }
 
@@ -97,7 +99,7 @@ class ProductController extends Controller
         $product->save();
 
         //Notification 
-        notify()->success('Product updated successfully');
+        Toastr::success('Product updated successfully', 'success');
         return redirect()->route('product.index');
     }
 
@@ -109,7 +111,8 @@ class ProductController extends Controller
         $filename = $product->image;
         $product->delete();
         Storage::delete($filename); // Delete the image from a folder product [public\storage\product\...]
-        notify()->success('Product deleted successfully');
+
+        Toastr::success('Product deleted successfully', 'success');
         return redirect()->route('product.index');
     }
 

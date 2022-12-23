@@ -4,6 +4,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+{!! Toastr::message() !!}
+
     <div class="container">
         <div class="row justify-content-center JustCenter" style="margin-bottom: 155px">
             <div class="col-md-6 ">

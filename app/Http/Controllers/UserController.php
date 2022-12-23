@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
-
+use Brian2694\Toastr\Facades\Toastr;
 
 class UserController extends Controller
 {
@@ -162,7 +162,8 @@ class UserController extends Controller
 
         User::where('id', auth()->user()->id)
             ->update([...$filteredRequest]);
-        notify()->success('User updated successfully');
+
+        Toastr::success('User updated successfully', 'success');
         return redirect()->route('profile');
     }
 }
