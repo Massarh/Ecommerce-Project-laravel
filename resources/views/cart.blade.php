@@ -15,6 +15,8 @@
         height: 30px;
         text-align: center;
         border: 1px solid rgb(189 189 189);
+        margin-right: -5px;
+        margin-left: -5px;
     }
 </style>
 
@@ -26,14 +28,7 @@
 
 @section('content')
 
-
-<div class="row">
-    <div class="col">
-        <a href="/" class="btn text-muted d-none d-sm-inline-block btn-link">
-            <i class="mdi mdi-arrow-left me-1"></i> Go Back to Shopping </a>
-    </div>
-</div>
-<div class="row ">
+<div class="row mt-4">
     <div class="col-xl">
         <div class="card">
             <div class="card-body" style="border: 0;">

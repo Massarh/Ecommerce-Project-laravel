@@ -67,7 +67,7 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
 
     Route::resource('store', CategoryController::class);
     // subcategory
-    Route::get('section/store/{storeId}', [SubcategoryController::class, 'getSubcategoryByCatId'])->name('section.getSubcategoryByCatId');
+    Route::get('section/store/{slug}', [SubcategoryController::class, 'getSubcategoryByCatId'])->name('section.getSubcategoryByCatId');
     Route::resource('section', SubcategoryController::class);
 
     // product
@@ -114,6 +114,3 @@ Route::get('/test', function () {
 Route::get('/test-style', function () {
     return view('test-style');
 });
-
-// vendor-scripts.blade.php
-// Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');

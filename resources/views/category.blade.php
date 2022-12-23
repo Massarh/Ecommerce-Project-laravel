@@ -151,6 +151,6 @@
         </div>
     </div>
 </div>
-{{$products->links()}} {{--to make --}}
+{{$products->links()}} {{--to make pagination --}}
 
 @endsection

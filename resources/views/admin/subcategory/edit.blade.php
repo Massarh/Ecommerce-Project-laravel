@@ -28,47 +28,34 @@
 
 <div class="row justify-content-center">
 
-    @if (Session::has('message')) {{-- to show the message --}}
-    <div class="alert alert-success">
-        {{ Session::get('message') }}
-    </div>
-    @endif
-
     <div class="col-lg-10">
         <div class="card">
+
+            @if(session()->has('status'))
+                <div style="background-color:#ef5b69" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <i class="fas fa-exclamation-triangle pr-2"></i>
+                    <strong>{{session()->get('status')}}</strong> 
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+
             <div class="card-body">
-                <form action="{{ route('section.update', [$subcategory->id]) }}" method="POST">
+                <form action="{{ route('section.update', [$oldSubcategory->id]) }}" method="POST">
                     @csrf
                     @method('PUT')
 
-                    <!-- Name -->
-                    <div class="mb-3">
-                        <label for="name">Name</label>
-                        <input id="name" name="name" type="text"
-                            class="form-control @error('name') is-invalid @enderror" aria-describedby=""
-                            value="{{ $subcategory->name }}">
-                        @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
+                    <div class="form-group mb-4 ">
+                        <label for="">Choose Section</label>
+                        <select name="subcategory" class="form-control @error('subcategory') is-invalid @enderror">
+                            <option style="color:rgb(4, 249, 0)" value="{{$oldSubcategory->id}}">{{$oldSubcategory->name}}      (current) </option>
 
-                    <!-- Store -->
-                    <?php $category = App\Models\Category::find(auth()->user()->category_id) ?>
-
-                    <div class="mb-3">
-                        <label for="stroeName">My Store</label>
-                        <input id="category" name="category" type="text"
-                            class="form-control @error('category') is-invalid @enderror" aria-describedby=""
-                            value="{{$category->name}}" readonly>
-
-                        @error('category')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
+                            @foreach($restSubcategories as $key=>$subcategory)
+                            <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
+                            @endforeach
+                        </select>
+                    </div> 
 
                     <!-- Button -->
                     <div class="mb-3">

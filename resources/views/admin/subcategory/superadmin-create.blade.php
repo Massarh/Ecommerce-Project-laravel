@@ -28,6 +28,12 @@
 
 <div class="row justify-content-center">
 
+    @if (Session::has('message')) {{-- to show the message --}}
+    <div class="alert alert-success">
+        {{ Session::get('message') }}
+    </div>
+    @endif
+
     <div class="col-lg-10">
         <div class="card">
             <div class="card-body">
@@ -37,23 +43,24 @@
                     <div class="row">
                         <div class="col">
 
-                            <div class="form-group mb-4 ">
-                                <label for="">Choose Section</label>
-                                <select name="subcategory" class="form-control @error('subcategory') is-invalid @enderror">
-                                    <option value="">select </option>
-
-                                    @foreach($restSubcategories as $key=>$subcategory)
-                                    <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div> 
+                            <!-- Name -->
+                            <div class="mb-3">
+                                <label for="name">Name</label>
+                                <input id="name" name="name" type="text"
+                                    class="form-control @error('name') is-invalid @enderror" aria-describedby=""
+                                    placeholder="Enter name of section" value="{{ old('name') }}">
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
 
                             <!-- Button -->
                             <div class="mb-3">
                                 <button type="submit" class="btn"
-                                    style="background-color:  #232838;; color: #fff">Submit</button>
+                                    style="background-color:  #232838; color: #fff">Submit</button>
                             </div>
-                            
                         </div>
 
                     </div>

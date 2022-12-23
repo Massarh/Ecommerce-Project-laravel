@@ -35,7 +35,7 @@
                 @if((auth()->user()->user_role=='admin'||auth()->user()->user_role=='employee') &&
                 (auth()->user()->category_id))
 
-                <!-- Section -->
+                <!-- -admin and employee Section -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-layout"></i>
@@ -43,7 +43,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
 
-                        <li><a href="{{ route('section.getSubcategoryByCatId',[auth()->user()->category_id])}}"
+                        <li><a href="{{ route('section.getSubcategoryByCatId',[auth()->user()->category->slug])}}"
                                 key="section-view">View</a></li>
 
                         @if(auth()->user()->user_role=='admin')
@@ -93,6 +93,23 @@
 
                 {{-- Superadmin --}}
                 @if(auth()->user()->user_role=='superadmin')
+
+                <!--admin and employee Section -->
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-layout"></i>
+                        <span key="section">Section</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+
+                        <li><a href="{{ route('section.index')}}"
+                                key="section-view">View</a></li>
+
+                        <li><a href="{{ route('section.create') }}" key="section-create">Create</a></li>
+
+                    </ul>
+                </li>
+                {{-- .................................. --}}
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

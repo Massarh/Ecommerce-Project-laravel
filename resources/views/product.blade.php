@@ -137,6 +137,11 @@
                 aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                 aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                aria-label="Slide 5"></button>
+
         </div>
         <div class="carousel-inner">
             @foreach ($sliders as $key => $slider)
@@ -177,8 +182,8 @@
             <h2 class="fontStyleHint">Browse our stores</h2>
         </div>
 
-        <div class="row align-items-end custom-media"> {{-- style="margin-left: 104px; margin-right: 104px;" --}}
-            @foreach (App\Models\Category::all() as $category)
+        <div class="row align-items-end custom-media">
+            @foreach ($categories as $category)
             <div class="col-md-6 col-lg-4 mb-4">
 
                 <div class="card border-0" style="width: 317px; margin: auto;">

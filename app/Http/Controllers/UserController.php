@@ -69,14 +69,25 @@ class UserController extends Controller
     public function deleteAdminOrEmployee($userId,Request $request)
     {
         $adminOrEmployee = User::find($userId);
-        $numberOfAdmin = User::where("category_id", $adminOrEmployee->category_id)->where("user_role", "admin")->count();
-        if ($numberOfAdmin > 1) {
 
+        if ($adminOrEmployee->user_role=='employee'){
+            
             $adminOrEmployee->delete();
-        } else {
-        // notify()->error('cannot delete the last admin in this store,please create a new admin before you try to delete him.');
-        $request->session()->flash('status', 'cannot delete the last admin in this store,please create a new admin before you try to delete him.');
+        } else if ($adminOrEmployee->user_role=='admin'&& $adminOrEmployee->category_id){
+            
+            //  'from admin&employee';
+            $numberOfAdmin = User::where("category_id", $adminOrEmployee->category_id)->where("user_role", "admin")->count();
+            if ($numberOfAdmin > 1) {
+                $adminOrEmployee->delete();
+            } else {
+                $request->session()->flash('status', 'cannot delete the last admin in this store,please create a new admin before you try to delete him.');
+            }
+        } else if($adminOrEmployee->user_role=='admin'&& !$adminOrEmployee->category_id){
+        
+            //  'from new admin';
+            $adminOrEmployee->delete();
         }
+
         return redirect()->back();
     }
 

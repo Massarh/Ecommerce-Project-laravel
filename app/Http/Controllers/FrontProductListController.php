@@ -14,21 +14,10 @@ class FrontProductListController extends Controller
     public function index()
     {
         $products = Product::orderBy('number_of_sold', 'desc')->limit(9)->get();
-        $randomActiveProducts = Product::inRandomOrder()->limit(3)->get();
-        //return $randomActiveProducts ; // output:: array-object
-        $randomActiveProductIds = [];
-        foreach ($randomActiveProducts as $product) {
-            array_push($randomActiveProductIds, $product->id);
-        }
-        //return $randomActiveProductIds ; // output:: [1,3,2] كل ما اعمل ريفرش بتغير ترتيبهم
-        $randomItemProducts = Product::where('id', '!=', $randomActiveProductIds)->limit(3)->get(); // output::[{obj},{obj}]
-        // $randomItemProducts = Product::whereNotIn('id',$randomActiveProductIds)->limit(3)->get(); // output:: []
-        // return $randomItemProducts;
+        $categories=Category::all();
+        $sliders = Slider::limit(5)->get();
 
-        # Sliders #
-        $sliders = Slider::get();
-
-        return view('product', compact('products', 'randomItemProducts', 'randomActiveProducts', 'sliders'));
+        return view('product', compact('products', 'categories','sliders'));
     }
 
     // ----------------------------------------------------------------------------
@@ -64,13 +53,14 @@ class FrontProductListController extends Controller
             }
         }
         if ($request->price) {
+            // split string in ; for two strings in array.('0';'1000'=>['0','1000'])
             $price = explode(";", $request->price);
             $minPrice = (int)$price[0];
             $maxPrice = (int)$price[1];
             $price = [$minPrice, $maxPrice];
         }
 
-        $subcategories = Category::find($categoryId)->subcategory()->get();
+        $subcategories = Category::find($categoryId)->subcategory;
         // this fun wil return all products that related to certain category if there is no query parameter
         $products = Product::where('category_id', $categoryId)
             ->when($price, function ($query, $price) {

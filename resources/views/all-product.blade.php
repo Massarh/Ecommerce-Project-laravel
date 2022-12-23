@@ -173,7 +173,7 @@
 
 
 
-{{$products->links()}} {{--to make --}}
+{{$products->links()}} {{--to make pagination --}}
 @endsection
 
 
