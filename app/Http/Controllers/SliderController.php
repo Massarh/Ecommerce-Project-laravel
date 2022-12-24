@@ -33,7 +33,7 @@ class SliderController extends Controller
             'image'=>$image
         ]);
 
-        Toastr::success('Image uploaded successfully', 'success');
+        Toastr::success('Image created successfully', 'success');
         return redirect()->route('slider.index');
     }
 

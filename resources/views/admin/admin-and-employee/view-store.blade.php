@@ -49,7 +49,7 @@
                             @if (count($categories)>0)
                                 @foreach ($categories as $key=>$category)
                                 <tr>
-                                    <td><a href="#">{{ $key+1 }}</a></td>
+                                    <td>{{ $key+1 }}</td>
                                     <td></td>
 
                                     <td><img src="{{ Storage::url($category->image) }}" alt=".." width="100"></td>

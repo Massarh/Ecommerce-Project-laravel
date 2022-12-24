@@ -187,7 +187,7 @@ class ProductController extends Controller
         // ->select('name','id')
         // ->where('id','>',2)
         // ->get();
-        //  return $category;
+        // return $category;
         // ----------------------------------------------------------------------
 
         // $category = category::where('name', 'Zara')
@@ -198,10 +198,10 @@ class ProductController extends Controller
         // --------------------------------------------------------------------------
 
         // $category = Category::
-        //  where('name', 'prada')
-        //  ->orWhere('name', 'h&m')
-        //  ->get();
-        //  return $category;
+        //     where('name', 'prada')
+        //     ->orWhere('name', 'h&m')
+        //     ->get();
+        //     return $category;
 
         // --------------------------------------------------------------------------
 

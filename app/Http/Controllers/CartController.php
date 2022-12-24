@@ -70,7 +70,6 @@ class CartController extends Controller
             session()->put('cart', $cart);
         }
         
-        Toastr::success('Product deleted of cart', 'success');
         return redirect()->back();
     }
 

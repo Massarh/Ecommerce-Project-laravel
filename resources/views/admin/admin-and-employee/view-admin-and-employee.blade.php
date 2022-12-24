@@ -54,7 +54,7 @@
                             
                             @foreach ($adminsAndEmployees as $key=>$adminOrEmployee)
                             <tr>
-                                <td><a href="#">{{ $key+1 }}</a></td>
+                                <td>{{ $key+1 }}</td>
                                 <td>{{ $adminOrEmployee->name }}</td>
                                 <td>{{ $adminOrEmployee->email }}</td>
                                 <td>{{ $adminOrEmployee->phone_number ? $adminOrEmployee->phone_number :'no phone number yet' }}</td>

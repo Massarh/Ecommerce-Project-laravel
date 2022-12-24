@@ -46,7 +46,7 @@
                             @if($cart)
                             {{-- Foreach To display product in cart --}}
 
-                            {!! Toastr::message() !!}
+                            <div>{!! Toastr::message() !!}</div>
                             @foreach($cart->items as $product)
                             <tr>
                                 <td>

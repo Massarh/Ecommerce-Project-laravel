@@ -43,7 +43,7 @@
 
                             @foreach ($newAdmins as $key=>$admin)
                             <tr>
-                                <td><a href="#">{{ $key+1 }}</a></td>
+                                <td>{{ $key+1 }}</td>
                                 <td>{{ $admin->name }}</td>
                                 <td>{{ $admin->email }}</td>
                                 <td>{{ $admin->user_role }}</td>
