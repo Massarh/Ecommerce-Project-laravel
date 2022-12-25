@@ -1,5 +1,11 @@
 @section('title') @lang('Dashboard') @endsection
-
+<style>
+    .number-align-items {
+        display: flex;
+        justify-content: space-between;
+        width: 85%;
+    }
+</style>
 
 <div class="row">
     <div class="col-12">
@@ -22,11 +28,12 @@
                             <i class="fas fa-store text-primary"></i>
                         </span>
                     </div>
-                    <h5 class="font-size-14 mb-0">Number of Stores</h5>
+                    <div class="number-align-items">
+                        <h5 class="font-size-14 mb-0">Number of Stores</h5>
+                        <h6>{{App\Models\Category::get()->count()}}</h6>
+                    </div>
                 </div>
-                <div class="text-muted mt-4">
-                    <h6>{{App\Models\Category::get()->count()}}</h6>
-                </div>
+
             </div>
         </div>
     </div>
@@ -43,11 +50,15 @@
                             <i class="fas fa-calendar text-primary"></i>
                         </span>
                     </div>
-                    <h5 class="font-size-14 mb-0">Products</h5>
+                    <div class="number-align-items">
+                        <h5 class="font-size-14 mb-0">Products</h5>
+                        <h6 class="font-size-14 mb-0">{{App\Models\Product::where('category_id',
+                            auth()->user()->category_id)->get()->count()}}</h6>
+                    </div>
+
                 </div>
-                <div class="text-muted mt-4">
-                    <h6>{{App\Models\Product::where('category_id', auth()->user()->category_id)->get()->count()}}</h6>
-                </div>
+
+
             </div>
         </div>
     </div>
@@ -62,11 +73,13 @@
                             <i class="fas fa-shopping-cart text-success"></i>
                         </span>
                     </div>
-                    <h5 class="font-size-14 mb-0">Order Items</h5>
+                    <div class="number-align-items">
+                        <h5 class="font-size-14 mb-0">Order Items</h5>
+                        <h6>{{App\Models\OrderItem::where('category_id', auth()->user()->category_id)->get()->count()}}
+                        </h6>
+                    </div>
                 </div>
-                <div class="text-muted mt-4">
-                    <h6>{{App\Models\OrderItem::where('category_id', auth()->user()->category_id)->get()->count()}}</h6>
-                </div>
+
             </div>
         </div>
     </div>
@@ -83,11 +96,12 @@
                             <i class="fas fa-shopping-cart text-success"></i>
                         </span>
                     </div>
-                    <h5 class="font-size-14 mb-0">Orders</h5>
+                    <div class="number-align-items">
+                        <h5 class="font-size-14 mb-0">Orders</h5>
+                        <h6>{{App\Models\Order::get()->count()}}</h6>
+                    </div>
                 </div>
-                <div class="text-muted mt-4">
-                    <h6>{{App\Models\Order::get()->count()}}</h6>
-                </div>
+
             </div>
         </div>
     </div>
@@ -103,10 +117,10 @@
                             <i class="fas fa-users text-info"></i>
                         </span>
                     </div>
-                    <h5 class="font-size-14 mb-0">Number Of Customer</h5>
-                </div>
-                <div class="text-muted mt-4">
-                    <h6>{{App\Models\User::where('user_role', 'customer')->get()->count()}}</h6>
+                    <div class="number-align-items">
+                        <h5 class="font-size-14 mb-0">Number Of Customer</h5>
+                        <h6>{{App\Models\User::where('user_role', 'customer')->get()->count()}}</h6>
+                    </div>
                 </div>
             </div>
         </div>
@@ -124,10 +138,10 @@
                             <i class="fas fa-user-secret text-info"></i>
                         </span>
                     </div>
-                    <h5 class="font-size-14 mb-0">Number of Admin</h5>
-                </div>
-                <div class="text-muted mt-4">
-                    <h6>{{App\Models\User::where('user_role', 'admin')->get()->count()}}</h6>
+                    <div class="number-align-items">
+                        <h5 class="font-size-14 mb-0">Number of Admin</h5>
+                        <h6>{{App\Models\User::where('user_role', 'admin')->get()->count()}}</h6>
+                    </div>
                 </div>
             </div>
         </div>
@@ -143,10 +157,10 @@
                             <i class="fas fa-user-tie text-info"></i>
                         </span>
                     </div>
-                    <h5 class="font-size-14 mb-0">Number of Employee</h5>
-                </div>
-                <div class="text-muted mt-4">
-                    <h6>{{App\Models\User::where('user_role', 'employee')->get()->count()}}</h6>
+                    <div class="number-align-items">
+                        <h5 class="font-size-14 mb-0">Number of Employee</h5>
+                        <h6>{{App\Models\User::where('user_role', 'employee')->get()->count()}}</h6>
+                    </div>
                 </div>
             </div>
         </div>

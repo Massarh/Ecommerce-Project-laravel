@@ -24,6 +24,13 @@
         background-color: #000 !important;
         transition: background-color 200ms linear;
     }
+
+    @media(min-width:1350px) {
+        .slider-image {
+            height:100vh;
+        }
+    }
+    
 </style>
 
 {{-- Nav --}}
@@ -146,7 +153,7 @@
         <div class="carousel-inner">
             @foreach ($sliders as $key => $slider)
             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                <img src="{{ Storage::url($slider->image) }}" class="d-block w-100" alt="...">
+                <img src="{{ Storage::url($slider->image) }}" class="d-block w-100 slider-image" alt="...">
             </div>
             @endforeach
 

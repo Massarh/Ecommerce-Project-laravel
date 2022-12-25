@@ -11,6 +11,14 @@
 @endsection
 
 @section('content')
+
+<style>
+    .note-icon-caret:before {
+        content: "";
+    }
+</style>
+
+
 <!-- Breadcrumb -->
 <div class="row">
     <div class="col-12">

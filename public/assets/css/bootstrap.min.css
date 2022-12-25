@@ -13545,9 +13545,9 @@ a {
   border: 1px solid var(--bs-border-color);
 }
 
-.table-nowrap th, .table-nowrap td {
+/* .table-nowrap th, .table-nowrap td {
   white-space: nowrap;
-}
+} */
 
 .table > :not(:first-child) {
   border-top: 0;

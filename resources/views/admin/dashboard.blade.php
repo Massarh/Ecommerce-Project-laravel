@@ -1,6 +1,7 @@
 @include('admin.layouts.header')
 
-<div id="layout-wrapper">
+<div id="layout-wrapper" style="min-height:100vh; display:flex; flex-direction:column; 
+justify-content:space-between;">
 
     <!-- TopBar -->
     @include('admin.layouts.navbar')
@@ -22,9 +23,9 @@
 
         </div>
         <!-- Footer -->
-        @include('admin.layouts.footer')
-
+        
     </div>
+    @include('admin.layouts.footer')
 </div>
 
 <!-- Right Sidebar -->
