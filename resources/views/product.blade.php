@@ -147,10 +147,6 @@
             @foreach ($sliders as $key => $slider)
             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                 <img src="{{ Storage::url($slider->image) }}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-
-                    <h4></h4>
-                </div>
             </div>
             @endforeach
 
@@ -219,7 +215,7 @@
                     <a class="btn mt-2 button-margin"
                         style="background-color: #fff; color:#1a1a1a; border-radius: 0px; --bs-btn-padding-x: 19; font-weight: 800;">Shop
                         instagram</a>
-                    <a class="btn mt-2"
+                    <a class="btn mt-2" href="https://www.instagram.com/go_plaza/"
                         style="background-color: #fff; color:#1a1a1a; border-radius: 0px; --bs-btn-padding-x: 50; font-weight: 800;">follow</a>
                 </div>
             </div>

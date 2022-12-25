@@ -19,8 +19,12 @@ return new class extends Migration
             $table->string('image');
             $table->string('price');
             $table->integer('quantity');
-            $table->integer('order_id');
-            $table->integer('category_id');
+
+            $table->unsignedBigInteger('order_id');
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

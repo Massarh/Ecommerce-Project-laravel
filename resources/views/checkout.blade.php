@@ -105,7 +105,7 @@
 
                     {{-- Shipping & Payment information --}}
                     <div class="col">
-                        <div class="card">]
+                        <div class="card">
 
                             <div class="card-body" style="border: 0 !important;">
                                 <div class="tab-content" id="v-pills-tabContent">

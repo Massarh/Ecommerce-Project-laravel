@@ -13,7 +13,7 @@ class FrontProductListController extends Controller
 
     public function index()
     {
-        $products = Product::orderBy('number_of_sold', 'desc')->limit(9)->get();
+        $products = Product::orderBy('number_of_sold', 'desc')->limit(12)->get();
         $categories=Category::all();
         $sliders = Slider::limit(5)->get();
 
@@ -47,11 +47,13 @@ class FrontProductListController extends Controller
         $category = Category::where('slug', $slug)->first();
         $categoryId = $category->id;
         $search = $request->search;
-        if ($request->subcategory) {  // filter products
+        // filter products by subcategory
+        if ($request->subcategory) {  
             foreach ($request->subcategory as $key => $subcategoryId) {
                 array_push($filterSubCategories, (int)$subcategoryId);
             }
         }
+        // filter products by price
         if ($request->price) {
             // split string in ; for two strings in array.('0';'1000'=>['0','1000'])
             $price = explode(";", $request->price);

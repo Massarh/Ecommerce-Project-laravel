@@ -1,13 +1,33 @@
-<footer class="sticky-footer" style="margin-top: 170px;">
-    <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-            <span>copyright &copy; <script>
-                    document.write(new Date().getFullYear()); 
-                </script> - developed by
-                <b><a href="#" target="_blank">plaza team</a></b>
-            </span>
-        </div>
+<footer>
+    <div class="mt-4 text-center">
+
+        <ul class="list-inline">
+            <li class="list-inline-item">
+                <a href="https://mail.google.com/mail/u/0/?tab=km#sent?compose=CllgCJqbQczxNCBRtQfZBwMpnxgLpvXSqFHWHctLbwNzNzTBPwGSpkmVtHxLMTwCMFWPrskPpfL"
+                    class="social-list-item bg-success text-white border-success" target="_blank">
+                    <i class="mdi mdi-gmail"></i>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a href="https://www.instagram.com/go_plaza/" target="_blank"
+                    class="social-list-item bg-danger text-white border-danger">
+                    <i class="mdi mdi-instagram"></i>
+                </a>
+            </li>
+            {{-- <li class="list-inline-item">
+                <a href="#" class="social-list-item bg-primary text-white border-primary">
+                    <i class="mdi mdi-facebook"></i>
+                </a>
+            </li> --}}
+        </ul>
     </div>
+
+        
+        <div class="copyright text-center my-auto">
+            <span>developed by <b>plaza team</b> &copy; <script>
+                document.write(new Date().getFullYear()); 
+            </script>
+        </div>
 </footer>
 
 
@@ -19,7 +39,8 @@
 <script src="{{asset('admin/js/demo/chart-area-demo.js')}}"></script>
 {{-- include summernote css/js --}}
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-{{-- Page level plugins --}} <!-- Show & Search in product page  -->
+{{-- Page level plugins --}}
+<!-- Show & Search in product page  -->
 <script src="{{asset('admin/vendor/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('admin/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
 
@@ -41,11 +62,12 @@
         height: 100,
         toolbar: [
             // [groupName, [list of button]]
-            ['style', ['style','bold', 'italic', 'underline', 'clear']],
+            ['style', ['style','bold', 'italic']],
+            ['style', [ 'underline', 'clear']],
             ['font', ['strikethrough']],//, 'superscript', 'subscript'
             ['fontname', ['fontname']],
             ['fontsize', ['fontsize']],
-            // ['para', ['ul', 'ol', 'paragraph']],
+            
         ]
     });
 </script>
@@ -56,11 +78,11 @@
         height: 100,
         toolbar: [
             // [groupName, [list of button]]
-            ['style', ['style','bold', 'italic', 'underline', 'clear']],
+            ['style', ['style','bold', 'italic']],
+            ['style', [ 'underline', 'clear']],
             ['font', ['strikethrough']],//, 'superscript', 'subscript'
             ['fontname', ['fontname']],
             ['fontsize', ['fontsize']],
-            // ['para', ['ul', 'ol', 'paragraph']],
         ]
     });
 </script>

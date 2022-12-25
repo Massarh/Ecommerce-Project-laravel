@@ -64,6 +64,10 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div style="display:flex; justify-content:center">
+    <h2 class="fontStyleHint mt-4" style="font-size: 30px">{{ $slug }}</h2>
+</div>
 {{-- start search --}}
 
 <div class="container">
@@ -80,8 +84,6 @@
     </form>
 
 </div>
-
-
 {{-- end search --}}
 
 {{-- start filter --}}
@@ -97,10 +99,13 @@
                 {{-- foreach subcategories--}}
                 @foreach ($subcategories as $subcategory)
                 {{-- Checkbox --}}
-                <p><input class="ms-2" type="checkbox" name="subcategory[]" value="{{ $subcategory->id }}" {{-- عشان يضل
-                        محدد مين السبكاتيقوري الي محطوط عليه صح بعد ما اكبس على كبسة الفلتر --}} {{-- isset check
-                        variable is not null --}} @if(isset($filterSubCategories)) {{-- searches an array for a specific
-                        value --}} {{ in_array($subcategory->id, $filterSubCategories)?'checked="checked" ' : '' }}
+                <p><input class="ms-2" type="checkbox" name="subcategory[]" value="{{ $subcategory->id }}"
+
+                    {{-- عشان يضل محدد مين السبكاتيقوري الي محطوط عليه صح بعد ما اكبس على كبسة الفلتر --}} 
+                    {{-- isset check variable is not null --}} 
+                    @if(isset($filterSubCategories)) 
+                    {{-- searches an array for a specific value --}} 
+                    {{ in_array($subcategory->id, $filterSubCategories) ? 'checked="checked" ' : '' }}
                     @endif
                     > {{ $subcategory->name }}</p>
 
@@ -110,8 +115,6 @@
                 <label class="ms-2" for="">price</label>
 
                 <div class="price-style mb-5 ms-2" style="max-width:220px;">
-
-
                     <input value="{{ $price ? $price : '0;1000'}}" name="price" type="text" id="pricerange">
                 </div>
 
@@ -121,7 +124,6 @@
             </form>
 
         </div>
-
         {{-- end filter --}}
 
         {{-- start products --}}
