@@ -147,7 +147,12 @@ class CartController extends Controller
     public function order()
     {
         $orders = auth()->user()->orders;
+        if (count($orders)>0) {
         return view('order', compact('orders'));
+        }
+        else {
+        return view('no-items');
+        }
     }
 
     public function orderItems($orderId)

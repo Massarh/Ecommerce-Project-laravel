@@ -88,46 +88,42 @@
         <div class="col-md-2 filter-container mb-5">
             <form action="{{route('more.product')}}" method="GET">
                 <p class="p-style ms-2">Filter Products</p>
-                <?php $categories = App\Models\Category::get() ?>
+
+                {{-- filter by categories --}}
                 <div class="form-group mb-4 ms-2">
                     <label for="">Choose Store</label>
                     <select name="category" class="form-control @error('category') is-invalid @enderror">
                         <option value="">select</option>
 
-                        @foreach($categories as $key=>$category)
+                        @foreach ( $categories as $key=>$category )
 
-                        <option {{ $categoryId==$category->id ? 'selected' : ''}}
+                        <option {{ $categoryId == $category->id ? 'selected' : ''}}
                             value="{{$category->id}}">{{$category->name}}</option>
 
                         @endforeach
                     </select>
-
-                    @error('category')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
                 </div>
 
-
-                <?php $subcategories = App\Models\Subcategory::get() ?>
-
+                {{-- filter by subcategories --}}
                 <div class="form-group mb-4 ms-2">
                     <label for="">Choose Section</label>
                     <select name="subcategory" class="form-control @error('subcategory') is-invalid @enderror">
                         <option value="">select </option>
-                        {{-- f --}}
-                        @foreach($subcategories as $key=>$subcategory)
-                        <option {{ $subcategoryId==$subcategory->id ? 'selected' : ''}}
+
+                        @foreach ( $subcategories as $key=>$subcategory )
+                        <option {{ $subcategoryId == $subcategory->id ? 'selected' : ''}}
                             value="{{$subcategory->id}}">{{$subcategory->name}}</option>
                         @endforeach
-                        {{-- f --}}
+                        
                     </select>
                 </div>
+
+                {{-- filter by price --}}
                 <div class="price-style mb-5 ms-2" style="max-width:220px;">
                     <h5 class="font-size-14 ">Price</h5>
                     <input name="price" type="text" id="pricerange" value="{{ $price ? $price : '0;1000'}}">
                 </div>
+
                 <div class="ms-2 ">
                     <button style="background-color:#1a1a1a;" class="btn btn-secondary" type="submit">Filter</button>
                 </div>

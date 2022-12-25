@@ -28,13 +28,13 @@ use Illuminate\Support\Facades\Auth;
 
 // FrontProductListController
 Route::get('/', [FrontProductListController::class, 'index']);
-Route::get('/product/{id}', [FrontProductListController::class, 'show'])->name('product.view'); // change 'product.show' to 'product.view' because We used "product.show" in the product folder
+Route::get('/product/{productId}', [FrontProductListController::class, 'show'])->name('product.view'); // change 'product.show' to 'product.view' because We used "product.show" in the product folder
 Route::get('/store/{slug}', [FrontProductListController::class, 'allproduct'])->name('product.list');
 // to search product
 Route::get('/all/products', [FrontProductListController::class, 'moreProducts'])->name('more.product');
 
 // CartController
-Route::get('/addToCart/{product}', [CartController::class, 'addToCart'])->name('add.cart');
+Route::get('/addToCart/{productId}', [CartController::class, 'addToCart'])->name('add.cart');
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
 Route::post('/products/{product}', [CartController::class, 'updateCart'])->name('cart.update');
 Route::post('/product/{product}', [CartController::class, 'removeCart'])->name('cart.remove');
@@ -51,6 +51,10 @@ Route::get('/order-items/{orderId}', [CartController::class, 'orderItems'])->nam
 //CategoryController
 Route::get('/users-stores', [CategoryController::class, 'categoriesWithUser'])->name('getCategoriesWithUser');
 
+
+Route::get('/no-items', function () {
+    return view('no-item');
+})->name('noItems');
 
 /** Auth */
 Auth::routes();

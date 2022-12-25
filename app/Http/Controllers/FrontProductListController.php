@@ -22,9 +22,9 @@ class FrontProductListController extends Controller
 
     // ----------------------------------------------------------------------------
 
-    public function show($id)
+    public function show($productId)
     {
-        $product = Product::find($id);
+        $product = Product::find($productId);
         //تحت العنصر الي فاتحه id لعرض العناصر الي الهم نفس 
         $productFromSameSubcategoryAndTopSelling = Product::where('subcategory_id', $product->subcategory_id)
             ->where('id', '!=', $product->id)
@@ -47,12 +47,8 @@ class FrontProductListController extends Controller
         $category = Category::where('slug', $slug)->first();
         $categoryId = $category->id;
         $search = $request->search;
-        // filter products by subcategory
-        if ($request->subcategory) {  
-            foreach ($request->subcategory as $key => $subcategoryId) {
-                array_push($filterSubCategories, (int)$subcategoryId);
-            }
-        }
+        $filterSubCategories = $request->subcategory;
+
         // filter products by price
         if ($request->price) {
             // split string in ; for two strings in array.('0';'1000'=>['0','1000'])
@@ -77,7 +73,7 @@ class FrontProductListController extends Controller
                         ->orWhere('additional_info', 'like', '%' . $search . '%');
                 });
             })->paginate(16);
-
+        
         $price = $request->price;
         //  return $products;
         return view('category', compact('products', 'subcategories',  'filterSubCategories', 'price', 'search', 'slug'));
@@ -101,6 +97,9 @@ class FrontProductListController extends Controller
         $categoryId = $request->category;
         $subcategoryId = $request->subcategory;
 
+        $categories = Category::get();
+        $subcategories = Subcategory::get();
+
         // this fun wil return all products if there is no query parameter
         $products = Product::when($categoryId, function ($query, $categoryId) {
             $query->where('category_id', $categoryId);
@@ -116,7 +115,8 @@ class FrontProductListController extends Controller
                     ->orWhere('additional_info', 'like', '%' . $search . '%');
             });
         })->paginate(16);
+
         $price = $request->price;
-        return view('all-product', compact("products", "search", "price", "categoryId", "subcategoryId"));
+        return view('all-product', compact("products", "categories", "subcategories", "search", "price", "categoryId", "subcategoryId"));
     }
 }

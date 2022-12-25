@@ -18,11 +18,22 @@
             @endif
 
             @if(auth()->user()->user_role=='admin' || auth()->user()->user_role=='employee')
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                <li class="breadcrumb-item">Product</li> 
-                <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Products Table</li>
-            </ol>
+                @if( app('router')->getRoutes()->match(app('request')->create(URL::previous()))->getName() == 'product.getProductByCatAndSubId')
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+                    <li class="breadcrumb-item">Product</li> 
+                    <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Products Table</li>
+                </ol>
+                @endif
+
+                @if( app('router')->getRoutes()->match(app('request')->create(URL::previous()))->getName() == 'section.getSubcategoryByCatId')
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+                    <li class="breadcrumb-item">Section</li>
+                    <li class="breadcrumb-item"><a href="{{route('section.index')}}">Sections Table</a></li> 
+                    <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Products Table</li>
+                </ol>
+                @endif
             @endif
 
         </div>

@@ -15,6 +15,7 @@
 <script src="{{ URL::asset('/assets/js/pages/product-filter-range.init.js') }}"></script>
 @endsection
 <style>
+    
     .search-container {
         margin-top: 80px;
 
@@ -22,7 +23,7 @@
 
     .filter-container {
         margin-bottom: 100px;
-        margin-top: 100px;
+        
 
     }
 
@@ -32,8 +33,23 @@
         max-width: 300px;
         color: #1a1a1a;
     }
+    .search-with-name-store{
+        display:flex; 
+        justify-content:start;
+        align-items:baseline
+    }
+    .font-style-hint{
+        font-family: garamond sans-serif!important;
+        font-style: italic !important;
+        font-weight: 500;
+        text-align: center
+
+    }
 
     @media (max-width: 768px) {
+        .search-with-name-store{
+            display: block;
+        }
         .filter-container {
             width: 294px !important;
             margin: auto !important;
@@ -65,12 +81,15 @@
 
 @section('content')
 
-<div style="display:flex; justify-content:center">
-    <h2 class="fontStyleHint mt-4" style="font-size: 30px">{{ $slug }}</h2>
-</div>
 {{-- start search --}}
 
+<div class="search-with-name-store mt-4">
+<div>
+    <h2 class="font-style-hint ms-2 mt-4" style="font-size: 30px">{{ $slug }}</h2>
+</div>
+
 <div class="container">
+
     <form action="{{route('product.list', [$slug])}}" method="GET">
         <div class="search">
             <div class="" style="display: inline-block">
@@ -84,6 +103,8 @@
     </form>
 
 </div>
+</div>
+
 {{-- end search --}}
 
 {{-- start filter --}}

@@ -416,7 +416,7 @@ class ProductController extends Controller
         // ------------------------------------------------------------------------
 
         // $category = Category::whereHas('subcategory', function (Builder $query) {
-        // $query->where('name', 'men');
+        //     $query->where('name', 'men');
         // })->get();
         // return $category;
 
@@ -426,11 +426,11 @@ class ProductController extends Controller
         //     $query->where('name', 'men');
         //     }])->get();
         //     return $category;
-    
+
         // ------------------------------------------------------------------------
 
         // $category = Category::whereDoesntHave('subcategory', function (Builder  $query) {
-        // $query->where('name', 'men');
+        //     $query->where('name', 'men');
         // })->get();
         // return $category;
 
