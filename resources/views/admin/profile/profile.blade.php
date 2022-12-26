@@ -15,7 +15,7 @@
                 <div style="border-radius: 15px; border: solid 0px ;">
                     <div class="text-center" style="border-radius: 15px; border: solid 0px ">
                         <div class="mt-3 mb-4 " style="display: flex; justify-content: center;">
-                            <img src="{{ $user->image ? Storage::url($user->image) : URL::asset('/logo/man.png') }}"
+                            <img src="{{ isset($user->image) ? asset($user->image) : asset('/logo/user.png')  }}"
                                 alt="" class="rounded-circle img-fluid" style="width: 150px;" />
                         </div>
                         <h4 class="mb-2">{{ $user->name }}</h4>

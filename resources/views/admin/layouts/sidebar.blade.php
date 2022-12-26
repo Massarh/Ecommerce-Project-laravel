@@ -77,7 +77,7 @@
                 <!-- Store Order Items -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-layout"></i>
+                        <i class="mdi mdi-calendar-multiple-check"></i>
                         <span key="store-order-items">Store Order Items</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
@@ -127,7 +127,7 @@
                 <!-- Order -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-layout"></i>
+                        <i class="mdi mdi-package-variant-closed"></i>
                         <span key="users-orders">Users Orders</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
@@ -140,7 +140,7 @@
                 <!-- Store Orders -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-layout"></i>
+                        <i class="mdi mdi-calendar-multiple-check"></i>
                         <span key="store-order-items">Store Order Items</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
@@ -153,7 +153,7 @@
                 <!-- Add Admin -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-layout"></i>
+                        <i class="mdi mdi-account"></i>
                         <span key="admin-employee">Admins & Employees</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
