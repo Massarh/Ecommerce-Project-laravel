@@ -66,7 +66,7 @@
                                 @endif
 
                                 <td>
-                                    <a href=" {{route('product.getProductByCatAndSubId', ['storeId'=>$category->id,'sectionId'=>$subcategory->id])}}">
+                                    <a href=" {{route('product.getProductByCatAndSubId', ['storeSlug'=>$category->slug,'sectionSlug'=>$subcategory->slug])}}">
                                         <button class="btn"
                                             style="background-color: #232838; color:white; padding:5px">products</button>
                                     </a>
@@ -75,7 +75,7 @@
                                 @if(auth()->user()->user_role=='admin')
                                 <!-- Button Edit -->
                                 <td>
-                                    <a href=" {{route('section.edit', [$subcategory->id])}} ">
+                                    <a href=" {{route('section.edit', [$subcategory->slug])}} ">
                                         <button class="bg-color-btn" style="color:#198754;"><i class="fas fa-edit"></i></button>
                                     </a>
                                 </td>

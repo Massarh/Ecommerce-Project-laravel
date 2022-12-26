@@ -121,7 +121,7 @@
                 @foreach ($subcategories as $subcategory)
                 {{-- Checkbox --}}
                 <p><input class="ms-2" type="checkbox" name="subcategory[]" value="{{ $subcategory->id }}"
-
+                    
                     {{-- عشان يضل محدد مين السبكاتيقوري الي محطوط عليه صح بعد ما اكبس على كبسة الفلتر --}} 
                     {{-- isset check variable is not null --}} 
                     @if(isset($filterSubCategories)) 

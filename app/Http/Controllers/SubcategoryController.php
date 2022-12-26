@@ -7,6 +7,7 @@ use App\Models\Subcategory;
 use App\Models\Category;
 use App\Models\CategorySubcategory;
 use App\Models\Product;
+use Illuminate\Support\Str;
 use Brian2694\Toastr\Facades\Toastr;
 
 
@@ -83,6 +84,7 @@ class SubcategoryController extends Controller
         
             $subcategory = Subcategory::create([  
                 'name'=>$request->name,
+                'slug' => Str::slug($request->name),
             ]);
             
             Toastr::success('Section created successfully', 'success');
@@ -106,14 +108,16 @@ class SubcategoryController extends Controller
 
 // ----------------------------------------------------------------------------
 
-    public function edit($subcategoryId)
+    public function edit($subcategorySlug)
     {
         if (auth()->user()->user_role=='superadmin'){
+            $subcategoryId = Subcategory::where('slug', $subcategorySlug)->first()->id;
             $oldSubcategory=Subcategory::find($subcategoryId);
             return view('admin.subcategory.superadmin-edit',compact('oldSubcategory'));
         }
 
         if (auth()->user()->user_role=='admin'){
+            $subcategoryId = Subcategory::where('slug', $subcategorySlug)->first()->id;
             $oldSubcategory=Subcategory::find($subcategoryId);
             $adminSubcategoryIds=[];
             $adminSubcategories=auth()->user()->category->subcategory;

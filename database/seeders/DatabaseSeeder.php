@@ -80,24 +80,31 @@ class DatabaseSeeder extends Seeder
         // Subcategory 
         Subcategory::create([ //1
             'name' => 'MEN',
+            'slug' => 'MEN',
         ]);
         Subcategory::create([ //2
             'name' => 'WOMEN',
+            'slug' => 'WOMEN',
         ]);
         Subcategory::create([ //3
             'name' => 'KIDS',
+            'slug' => 'KIDS',
         ]);
         Subcategory::create([ //4
             'name' => 'BAGS',
+            'slug' => 'BAGS',
         ]);
         Subcategory::create([ //5
             'name' => 'ACCESSORIES',
+            'slug' => 'ACCESSORIES',
         ]);
         Subcategory::create([ //6
             'name' => 'SHOES',
+            'slug' => 'SHOES',
         ]);
         Subcategory::create([ //7
             'name' => 'HATS',
+            'slug' => 'HATS',
         ]);
 
 

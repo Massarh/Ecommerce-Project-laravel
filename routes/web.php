@@ -34,7 +34,7 @@ Route::get('/store/{slug}', [FrontProductListController::class, 'allproduct'])->
 Route::get('/all/products', [FrontProductListController::class, 'moreProducts'])->name('more.product');
 
 // CartController
-Route::get('/addToCart/{productId}', [CartController::class, 'addToCart'])->name('add.cart');
+Route::get('/addToCart/{product}', [CartController::class, 'addToCart'])->name('add.cart');
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
 Route::post('/products/{product}', [CartController::class, 'updateCart'])->name('cart.update');
 Route::post('/product/{product}', [CartController::class, 'removeCart'])->name('cart.remove');
@@ -61,6 +61,9 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+// middleware any action that executed between the request and the response.
+// auth inside middleware => check that the user should be login otherwise he will be redirected to login form.
+// isAdmin inside middleware => check that the user who is login is not a customer otherwise he will be redirected to home page.
 
 /** Admin Panel */
 Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function () {
@@ -75,7 +78,7 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
     Route::resource('section', SubcategoryController::class);
 
     // product
-    Route::get('product/store/{storeId}/section/{sectionId}', [ProductController::class, 'getProductByCatAndSubId'])->name('product.getProductByCatAndSubId');
+    Route::get('product/store/{storeSlug}/section/{sectionSlug}', [ProductController::class, 'getProductByCatAndSubId'])->name('product.getProductByCatAndSubId');
     Route::resource('product', ProductController::class);
 
     Route::get('/orders', [CartController::class, 'userOrder'])->name('order.index');
@@ -86,7 +89,7 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
     // Slider Admin
     Route::resource('slider', SliderController::class);
 
-    
+
     /* Add Admin/Employee */
     Route::post('/create-admin-or-employee', [UserController::class, 'createAdminOrEmployee'])->name('admin.create');
     Route::get('/add-admin', function () {

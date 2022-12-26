@@ -15,8 +15,11 @@ class ProductController extends Controller
 {
 
     // for super admin
-    public function getProductByCatAndSubId($categoryId, $subcategoryId)
+    public function getProductByCatAndSubId($categorySlug, $subcategorySlug)
     {
+        $categoryId = Category::where('slug', $categorySlug)->first()->id;
+        $subcategoryId = Subcategory::where('slug', $subcategorySlug)->first()->id;
+
         $products = Product::where('category_id', $categoryId)
             ->where('subcategory_id', $subcategoryId)->get();
         return view('admin.product.index', compact('products'));

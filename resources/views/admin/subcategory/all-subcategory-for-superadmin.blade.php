@@ -60,7 +60,7 @@
 
                                 <!-- Button Edit -->
                                 <td>
-                                    <a href=" {{route('section.edit', [$subcategory->id])}} ">
+                                    <a href=" {{route('section.edit', [$subcategory->slug])}} ">
                                         <button class="bg-color-btn" style="color:#198754;"><i class="fas fa-edit"></i></button>
                                     </a>
                                 </td>
