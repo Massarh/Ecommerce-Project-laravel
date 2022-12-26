@@ -76,7 +76,7 @@ class FrontProductListController extends Controller
         
         $price = $request->price;
         //  return $products;
-        return view('category', compact('products', 'subcategories',  'filterSubCategories', 'price', 'search', 'slug'));
+        return view('category', compact('products', 'category', 'subcategories', 'filterSubCategories', 'price', 'search', 'slug'));
     }
 
     // ----------------------------------------------------------------------------

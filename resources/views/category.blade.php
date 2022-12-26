@@ -85,7 +85,7 @@
 
 <div class="search-with-name-store mt-4">
 <div>
-    <h2 class="font-style-hint ms-2 mt-4" style="font-size: 30px">{{ $slug }}</h2>
+    <h2 class="font-style-hint ms-2 mt-4" style="font-size: 30px">{{ $category->name }}</h2>
 </div>
 
 <div class="container">
@@ -97,7 +97,7 @@
                     placeholder="search">
             </div>
             <div class="" style="display: inline-block;">
-                <button type="submit" style="background-color:#1a1a1a;" class="btn btn-secondary">Search</button>
+                <button type="submit" style="background-color:#1a1a1a; color: #fff" class="btn">Search</button>
             </div>
         </div>
     </form>
@@ -140,7 +140,7 @@
                 </div>
 
                 <div class="ms-2 ">
-                    <button style="background-color:#1a1a1a;" class="btn btn-secondary" type="submit">Filter</button>
+                    <button style="background-color:#1a1a1a; color: #fff" class="btn" type="submit">Filter</button>
                 </div>
             </form>
 

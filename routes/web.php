@@ -110,11 +110,3 @@ Route::put('profile/update', [UserController::class, 'updateProfile'])->name('pr
 
 /*  TEST */
 Route::get('/index/test', [ProductController::class, 'test']);
-
-Route::get('/test', function () {
-    return view('test');
-});
-
-Route::get('/test-style', function () {
-    return view('test-style');
-});

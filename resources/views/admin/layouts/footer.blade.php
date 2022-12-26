@@ -3,7 +3,7 @@
 
         <ul class="list-inline">
             <li class="list-inline-item">
-                <a href="https://mail.google.com/mail/u/0/?tab=km#sent?compose=CllgCJqbQczxNCBRtQfZBwMpnxgLpvXSqFHWHctLbwNzNzTBPwGSpkmVtHxLMTwCMFWPrskPpfL"
+                <a href="https://mail.google.com/mail/u/0/?tab=km#sent?compose=goplaza.team22@gmail.com"
                     class="social-list-item bg-success text-white border-success" target="_blank">
                     <i class="mdi mdi-gmail"></i>
                 </a>

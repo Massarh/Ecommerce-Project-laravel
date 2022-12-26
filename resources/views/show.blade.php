@@ -31,13 +31,9 @@
                         </span>
                     </p>
                     <a href="{{ route('add.cart', [$product->id]) }}"
-                        style="text-align: center;
-                                            background: #000;
-                                            border: #000;
-                                            border-radius: 4px;
-                                            --bs-btn-padding-x: 80px;
-                                            font-family: Times New Roman"
-                        class="btn btn-success">Add to Bag
+                        style="text-align: center; color:#fff; background: #000; border: #000;
+                                border-radius: 4px; --bs-btn-padding-x: 80px; font-family: Times New Roman"
+                        class="btn">Add to Bag
                     </a>
                 </section>
             </div>

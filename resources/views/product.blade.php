@@ -258,8 +258,8 @@
                 </div>
                 <div style="display:flex;justify-content:center">
                     <a href="{{route('more.product')}}">
-                        <button style="text-align: center; background: #000;
-                        border: #000; border-radius: 4px; --bs-btn-padding-x: 50;" class="btn btn-success">All
+                        <button style="text-align: center; background: #000; color:#fff;
+                        border: #000; border-radius: 4px; --bs-btn-padding-x: 50;" class="btn ">All
                             Products</button>
                     </a>
                 </div>
