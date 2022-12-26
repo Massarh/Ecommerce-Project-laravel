@@ -28,7 +28,7 @@
         <div class="card">
             <!-- Simple Tables -->
             
-                <form action="{{route('item.order', [$storeItems[0]->category_id])}}" method="GET">
+                <form action="{{route('item.order', [$storeItems[0]->category->slug])}}" method="GET">
                     @csrf
                     <div class="card-header py-3 calendar-parent">
                         
@@ -49,7 +49,7 @@
     
                         <div class="d-flex justify-content-between ">
                             <button class="mr-3 bg-color-btn h6" ><i class="fas fa-search fa-fw"></i></button>
-                            <a class="h6 mt-2" href="{{route('item.order', [$storeItems[0]->category_id])}}" style="--bs-link-hover-color: #495057;">
+                            <a class="h6 mt-2" href="{{route('item.order', [$storeItems[0]->category->slug])}}" style="--bs-link-hover-color: #495057;">
                                 <button class="bg-color-btn h6" ><i class="fas fa-sync"></i></button>
                             </a>
                         </div>

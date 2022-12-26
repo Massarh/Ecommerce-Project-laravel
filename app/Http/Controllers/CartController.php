@@ -194,8 +194,21 @@ class CartController extends Controller
     }
 
 
-    public function viewStoreItem($categoryId, Request $request)
+    public function viewStoreItem($categorySlug, Request $request)
     {
+        if(auth()->user()->user_role == 'admin'){
+            $isLegal = auth()->user()->category->slug == $categorySlug;
+            if(!$isLegal) {
+                abort(403);
+            }
+        }
+        
+        $category = Category::where('slug', $categorySlug)->first();
+        if ( !$category ) {
+            abort(404);
+        }
+        $categoryId = $category->id;
+
         if ($request->fromdate && $request->todate) {
             $storeItems = OrderItem::whereBetween('created_at', [$request->fromdate . " 00:00:00", $request->todate . " 23:59:59"])
                 ->where('category_id', $categoryId)->get();

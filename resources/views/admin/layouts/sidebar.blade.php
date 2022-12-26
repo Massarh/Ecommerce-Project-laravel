@@ -82,7 +82,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
 
-                        <li><a href="{{ route('item.order', [auth()->user()->category_id]) }}"
+                        <li><a href="{{ route('item.order', [auth()->user()->category->slug]) }}"
                                 key="t-light-sidebar">View</a></li>
 
                     </ul>
@@ -166,7 +166,7 @@
                 </li>
 
                 @endif
-                {{-- logout --}}
+                
             </ul>
 
         </div>

@@ -85,7 +85,7 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
     /*  ORDER */
     Route::get('/store-order', [CartController::class, 'storeOrder'])->name('order.store');
     Route::get('/orders/{orderid}', [CartController::class, 'viewUserOrder'])->name('user.order');  // {id} is user id
-    Route::get('/store-order-item/{categoryId}', [CartController::class, 'viewStoreItem'])->name('item.order');
+    Route::get('/store-order-item/{categorySlug}', [CartController::class, 'viewStoreItem'])->name('item.order');
     // Slider Admin
     Route::resource('slider', SliderController::class);
 

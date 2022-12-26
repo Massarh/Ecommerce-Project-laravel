@@ -110,14 +110,35 @@ class SubcategoryController extends Controller
 
     public function edit($subcategorySlug)
     {
+        $subcategory = Subcategory::where('slug', $subcategorySlug)->first();
+
         if (auth()->user()->user_role=='superadmin'){
-            $subcategoryId = Subcategory::where('slug', $subcategorySlug)->first()->id;
+            // URL validate 
+            if ( !$subcategory ) {
+                abort(404);
+            }
+            $subcategoryId = $subcategory->id;
+
             $oldSubcategory=Subcategory::find($subcategoryId);
             return view('admin.subcategory.superadmin-edit',compact('oldSubcategory'));
         }
 
-        if (auth()->user()->user_role=='admin'){
-            $subcategoryId = Subcategory::where('slug', $subcategorySlug)->first()->id;
+
+        if (auth()->user()->user_role=='admin') {
+            // URL validate 
+            $subcategories = auth()->user()->category->subcategory;
+            $subcategorySlugs =[];
+            foreach ($subcategories as $key => $subcat) {
+                array_push($subcategorySlugs, $subcat->slug);
+            }
+
+            $isLegal = in_array($subcategorySlug , $subcategorySlugs);
+            if(!$isLegal) {
+                abort(403);
+            }
+
+            $subcategoryId = $subcategory->id;
+            
             $oldSubcategory=Subcategory::find($subcategoryId);
             $adminSubcategoryIds=[];
             $adminSubcategories=auth()->user()->category->subcategory;

@@ -44,7 +44,7 @@
                                         <td>{{ $key+1 }}</td> 
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->user[0]->email }}</td> 
-                                        <td><a href="{{route('item.order', [$category->id])}}"> <button class="btn"  style="background-color: #232838;
+                                        <td><a href="{{route('item.order', [$category->slug])}}"> <button class="btn"  style="background-color: #232838;
                                             color: white;">View Order Items</button>
                                         </a></td> 
                                     </tr>

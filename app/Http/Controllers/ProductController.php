@@ -14,12 +14,32 @@ use Brian2694\Toastr\Facades\Toastr;
 class ProductController extends Controller
 {
 
-    // for super admin
+    
     public function getProductByCatAndSubId($categorySlug, $subcategorySlug)
     {
-        $categoryId = Category::where('slug', $categorySlug)->first()->id;
-        $subcategoryId = Subcategory::where('slug', $subcategorySlug)->first()->id;
+        if (auth()->user()->user_role == 'admin') {
+            // URL validate 
+            $subcategories = auth()->user()->category->subcategory;
+            $subcategorySlugs =[];
+            foreach ($subcategories as $key => $subcategory) {
+                array_push($subcategorySlugs, $subcategory->slug);
+            }
 
+            $isLegal = in_array($subcategorySlug , $subcategorySlugs) && auth()->user()->category->slug == $categorySlug;
+            if(!$isLegal) {
+                abort(403);
+            }
+        }
+        $category = Category::where('slug', $categorySlug)->first();
+        $subcategory = Subcategory::where('slug', $subcategorySlug)->first();
+
+        if ( !(isset($category) && isset($subcategory)) ) {
+            abort(404);
+        }
+
+        $subcategoryId = $subcategory->id;
+        $categoryId = $category->id;
+        
         $products = Product::where('category_id', $categoryId)
             ->where('subcategory_id', $subcategoryId)->get();
         return view('admin.product.index', compact('products'));
@@ -75,6 +95,16 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+        $products = Product::where('category_id', auth()->user()->category_id)->get();
+        $productIds = [];
+        foreach ($products as $prod) {
+            array_push($productIds, $prod->id);
+        }
+        $isLegal = in_array($id , $productIds) ;
+        if(!$isLegal) {
+            abort(403);
+        }
+        
         $product = Product::find($id);
         return view('admin.product.edit', compact('product'));
     }
