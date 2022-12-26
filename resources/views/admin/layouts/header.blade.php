@@ -26,7 +26,7 @@
 
     @include('admin.layouts.head-css')
 
-    
+    @livewireStyles
 </head>
 
 <body data-sidebar="dark">

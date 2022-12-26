@@ -30,5 +30,9 @@ justify-content:space-between;">
 
 <!-- Right Sidebar -->
 @include('admin.layouts.right-sidebar')
-
 @include('admin.layouts.vendor-scripts')
+
+@livewireScripts
+</body>
+
+</html>

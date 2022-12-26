@@ -1,3 +1,4 @@
+<x-loading-indicatore />
 @extends('admin.layouts.main')
 
 @section('title') @lang('store') @endsection

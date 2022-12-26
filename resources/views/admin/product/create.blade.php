@@ -82,7 +82,7 @@
                     <!-- Price -->
                     <div class="mb-3">
                         <label for="price">Price</label>
-                        <input id="price" name="price" type="number"
+                        <input id="price" name="price" type="text"
                             class="form-control @error('price') is-invalid @enderror" aria-describedby=""
                             value="{{ old('price') }}">
                         @error('price')
