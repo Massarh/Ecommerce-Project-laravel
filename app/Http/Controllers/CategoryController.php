@@ -38,32 +38,34 @@ class CategoryController extends Controller
     }
 
     // ----------------------------------------------------------------------------
-
+    // for admin only
     public function store(Request $request)
     {
-        if(auth()->user()->user_role=='admin'){
-        $request->validate([
-            'name'        => 'required|unique:categories',
-            'description' => 'required',
-            'image'       => 'required||mimes:png,jpg', // \/ 
-            // mimes:png,jpg --> لازم يكون قيمتين/نوعين امتداد فقط غير هيك بصير ياخد اوا نوع امتداد كتبته
-        ]);
+        if(auth()->user()->user_role == 'admin'){
+            $request->validate([
+                'name'        => 'required|unique:categories',
+                'description' => 'required',
+                // mimes:png,jpg --> لازم يكون قيمتين/نوعين امتداد فقط غير هيك بصير ياخد اوا نوع امتداد كتبته
+                'image'       => 'required||mimes:png,jpg',  
+            ]);
 
-        $image = $request->file('image')->store('public/files');
-        $category = Category::create([
-            'name'        => $request->name,
-            'slug'        => Str::slug($request->name), // "Str" is class in laravel [contains a lot of function]
-            // slug() is function in Str -> [public static function slug($title, $separator = '-', $language = 'en') { ... }]
-            'description' => $request->description,
-            'image'       => $image
-        ]);
-        // to update category_id in user
+            $image = $request->file('image')->store('public/files');
+            $category = Category::create([
+                'name'        => $request->name,
+                // "Str" is class in laravel [contains a lot of function]
+                'slug'        => Str::slug($request->name), 
+                'description' => $request->description,
+                'image'       => $image
+            ]);
+            
+            // to update category_id in user
             User::where('id', auth()->user()->id)
-            ->update(['category_id' => $category->id]);
+                ->update(['category_id' => $category->id]);
 
             Toastr::success('Stroe created successfully', 'success');
             return redirect()->route('store.index');
         }
+        abort(403);
     }
 
     // ----------------------------------------------------------------------------
@@ -76,41 +78,46 @@ class CategoryController extends Controller
     // ----------------------------------------------------------------------------
 
     public function update(Request $request, $id)
-    { // both ways right
-        //  way 1
-        $category = Category::find($id); //first we find the category
-        $image = $category->image; //then we go to the image of that cat id
+    { 
+        if(auth()->user()->user_role == 'admin'){
+            $request->validate([
+                'name'        => 'required',
+                'description' => 'required',
+            ]);
 
-        if ($request->file('image')) { //new or old imahe condition
+            $category = Category::find($id); 
+            if ($request->file('image')) { 
+                $image = $request->file('image')->store('public/files');
+                Storage::delete($category->image);
+                $category->image= $image;
+            }
 
-            $image = $request->file('image')->store(
-                'public/files'
-            );
+            //things to be updated 
+            $category->name        =  $request->name;
+            $category->description =  $request->description;
+            $category->save();
 
-            Storage::delete($category->image);
+            //Notification 
+            Toastr::success('Store updated successfully', 'success');
+            return redirect()->route('store.index');
         }
-        //things to be updated 
-        $category->name        =  $request->name;
-        $category->description =  $request->description;
-        $category->image       =  $image;
-        $category->save();
-
-        //Notification 
-        Toastr::success('Store updated successfully', 'success');
-        return redirect()->route('store.index');
+        abort(403);
     }
 
     // ----------------------------------------------------------------------------
 
     public function destroy($id)
     {
-        $category = Category::find($id);
-        $filename = $category->image;
-        
-        $category->delete();
-        Storage::delete($filename); // Delete the image from a folder files [public\storage\files\...]
-        Toastr::success('Store deleteed successfully', 'success');
-        return redirect()->route('store.index');
+        if(auth()->user()->user_role == 'superadmin'){
+            $category = Category::find($id);
+            $filename = $category->image;
+            $category->delete();
+            // Delete the image from a folder files [public\storage\files\...]
+            Storage::delete($filename); 
+            Toastr::success('Store deleteed successfully', 'success');
+            return redirect()->route('store.index');
+        }
+        abort(403);    
     }
 
 

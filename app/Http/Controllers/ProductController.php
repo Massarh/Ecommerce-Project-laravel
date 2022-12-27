@@ -14,7 +14,6 @@ use Brian2694\Toastr\Facades\Toastr;
 class ProductController extends Controller
 {
 
-    
     public function getProductByCatAndSubId($categorySlug, $subcategorySlug)
     {
         if (auth()->user()->user_role == 'admin') {
@@ -63,31 +62,34 @@ class ProductController extends Controller
 
     // ----------------------------------------------------------------------------
 
+    // for admin
     public function store(Request $request)
     {
-        $request->validate([
-            'name'            => 'required',
-            'description'     => 'required|min:3',
-            'image'           => 'required|mimes:png,jpg',
-            'price'           => 'required|numeric',
-            'additional_info' => 'required',
-            'subcategory'        => 'required',
-        ]);
+        if(auth()->user()->user_role=='admin'){
+            $request->validate([
+                'name'            => 'required',
+                'description'     => 'required|min:3',
+                'image'           => 'required|mimes:png,jpg',
+                'price'           => 'required|numeric',
+                'additional_info' => 'required',
+                'subcategory'     => 'required',
+            ]);
 
-        $image = $request->file('image')->store('public/product');
-        Product::create([
-            //'name-of-column in bd' => $request-> name-of-fild in form in create file
-            'name'            => $request->name,
-            'description'     => $request->description,
-            'image'           => $image,
-            'price'           => $request->price,
-            'additional_info' => $request->additional_info,
-            'category_id'     => auth()->user()->category_id,
-            'subcategory_id'  => $request->subcategory
-        ]);
+            $image = $request->file('image')->store('public/product');
+            Product::create([
+                'name'            => $request->name,
+                'description'     => $request->description,
+                'image'           => $image,
+                'price'           => $request->price,
+                'additional_info' => $request->additional_info,
+                'category_id'     => auth()->user()->category_id,
+                'subcategory_id'  => $request->subcategory
+            ]);
 
-        Toastr::success('Product created successfully', 'success');
-        return redirect()->route('product.index');
+            Toastr::success('Product created successfully', 'success');
+            return redirect()->route('product.index');
+        }
+        abort(403);
     }
 
     // ----------------------------------------------------------------------------
@@ -112,41 +114,54 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        $product = Product::find($id); //first we find the category
-        // $image = $product->image; //then we go to the image of that cat id
+        if(auth()->user()->user_role=='admin'){  
+            $request->validate([
+                'name'            => 'required',
+                'description'     => 'required|min:3',
+                'price'           => 'required|numeric',
+                'additional_info' => 'required',
+                'subcategory'     => 'required',
+            ]);
+            $product = Product::find($id); 
 
-        if ($request->file('image')) { //new or old imahe condition
+            if ($request->file('image')) { 
+                $image = $request->file('image')->store('public/product');
+                Storage::delete($product->image);
+                $product->image =  $image;
+            }
+            
+            //things to be updated 
+            $product->name          =  $request->name;
+            $product->description   =  $request->description;
+            $product->price         = $request->price;
+            $product->additional_info  = $request->additional_info;
+            $product->subcategory_id   = $request->subcategory;
+            $product->save();
 
-            $image = $request->file('image')->store('public/product');
-            Storage::delete($product->image);
-            $product->image =  $image;
+            //Notification 
+            Toastr::success('Product updated successfully', 'success');
+            return redirect()->route('product.index');
         }
-        //to updated 
-        $product->name          =  $request->name;
-        $product->description   =  $request->description;
-        $product->image         =  $image;
-        $product->price         = $request->price;
-        $product->additional_info  = $request->additional_info;
-        $product->category_id      = auth()->user()->category_id;
-        $product->subcategory_id   = $request->subcategory;
-        $product->save();
-
-        //Notification 
-        Toastr::success('Product updated successfully', 'success');
-        return redirect()->route('product.index');
+        abort(403);  
     }
 
     // ----------------------------------------------------------------------------
 
+    // for admin only
     public function destroy($id)
     {
-        $product = Product::find($id);
-        $filename = $product->image;
-        $product->delete();
-        Storage::delete($filename); // Delete the image from a folder product [public\storage\product\...]
+        if(auth()->user()->user_role=='admin')
+        {
+            $product = Product::find($id);
+            $filename = $product->image;
+            $product->delete();
+            // Delete the image from a folder product [public\storage\product\...]
+            Storage::delete($filename); 
 
-        Toastr::success('Product deleted successfully', 'success');
-        return redirect()->route('product.index');
+            Toastr::success('Product deleted successfully', 'success');
+            return redirect()->route('product.index');
+        }
+        abort(403);
     }
 
     // ----------------------------------------------------------------------------

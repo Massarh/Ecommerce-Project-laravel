@@ -61,10 +61,10 @@
                     <div class="row">
 
                         <!-- Image -->
-                        <div class="mb-1 ">
-                            <label>Choose image</label>
+                        <div class="mb-3 col-12">
+                            <label>Choose Image</label>
                             <div class="custom-file">
-                                <label for="customFile" class="custom-file-label">Choose file</label>
+                                <label for="customFile" class="custom-file-label">Choose Image</label>
                                 <input id="customFile" name="image" type="file"
                                     class="custom-file-input @error('image') is-invalid @enderror  bg-color-transparent">
 
@@ -80,7 +80,7 @@
                     <!-- Image -->
                     <div class="row">
                         <div class="mb-3 col-2 offset-sm-5">
-                            <img id="img" src="{{Storage::url($product->image) }}" style="width:5rem; height:7rem">
+                            <img id="img" src="{{Storage::url($product->image) }}" style="width:6rem; height:7rem">
                         </div>
                     </div>
 
@@ -172,23 +172,18 @@
             var input = this;
             var url  = $(this).val(); 
             var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
-            if (input.files && input.files[0]&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) 
-                    {
-                        //  The FileReader function returns the file’s contents
-                        var reader = new FileReader();
+            if (input.files && input.files[0]) 
+            {
+                //  The FileReader function returns the file’s contents
+                var reader = new FileReader();
 
-                        reader.onload = function (e) {
-                            console.log(e);
-                        $('#img').attr('src', e.target.result);
-                        }
-                    // The readAsDataURL method is used to read the contents of the specified File.
-                    reader.readAsDataURL(input.files[0]);
-                    }
-                    else
-                    {
-                        //you must put a photo in public
-                    $('#img').attr('src', '/assets/no_preview.png');
-                    }
+                reader.onload = function (e) {
+                    console.log(e);
+                $('#img').attr('src', e.target.result);
+                }
+                // The readAsDataURL method is used to read the contents of the specified File.
+                reader.readAsDataURL(input.files[0]);
+            }
         });
     });
 

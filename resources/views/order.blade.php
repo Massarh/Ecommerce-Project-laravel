@@ -22,7 +22,7 @@
                     </span>
                     @endforeach
                     <hr style="border-top: 1px solid rgb(189 189 189);">
-                    <p class="mt-3" style="font-weight: 700;">{{$order->orderItem->count()}} product(s)</p>
+                    <p class="mt-3" style="font-weight: 700;">{{$order->total_quantity}} product(s)</p>
 
                 </div>
             </div>

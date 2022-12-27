@@ -74,7 +74,7 @@
 
                             <div class="row">
                                 <!-- Image -->
-                                <div class="mb-3 col-10">
+                                <div class="mb-3 col-12">
                                     <label for="name">Choose Image</label>
                                     <div class="custom-file">
                                         <label for="customFile" class="custom-file-label  bg-color-transparent">Choose Image</label>
@@ -88,13 +88,18 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-2">
-                                    <img src=" {{ Storage::url($category->image) }} " width="100" style="align-items: end">
+                                
+                            </div>
+
+                            <!-- Image -->
+                            <div class="row">
+                                <div class="mb-3 col-2 offset-sm-5">
+                                    <img id="img" src="{{Storage::url($category->image) }}" style="width:6rem; height:7rem">
                                 </div>
                             </div>
 
                             <!-- Button -->
-                            <div class="mb-3" style=" margin-top: 20px">
+                            <div class="mb-3 mt-5">
                                 <button type="submit" class="btn"
                                     style="background-color:  #232838;; color: #fff;">Submit</button>
                             </div>
@@ -112,6 +117,30 @@
 <!-- end row -->
 
 @endsection
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $("document").ready(function() {
+        $('.custom-file-input').on('change', function() {
+            var input = this;
+            var url  = $(this).val(); 
+            var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+            if (input.files && input.files[0]) 
+                    {
+                        //  The FileReader function returns the file’s contents
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            console.log(e);
+                        $('#img').attr('src', e.target.result);
+                        }
+                    // The readAsDataURL method is used to read the contents of the specified File.
+                    reader.readAsDataURL(input.files[0]);
+                    }
+                    
+        });
+    });
+</script>
+
 @section('script')
 <!-- select 2 plugin -->
 <script src="{{ URL::asset('/assets/libs/select2/select2.min.js') }}"></script>

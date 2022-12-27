@@ -91,6 +91,7 @@
 <div class="container">
 
     <form action="{{route('product.list', [$slug])}}" method="GET">
+        @csrf 
         <div class="search">
             <div class="" style="display: inline-block">
                 <input value="{{ $search ? $search: ''}}" type="text" name="search" class="form-control"
@@ -114,6 +115,7 @@
         <div class="col-md-2 filter-container mb-5">
 
             <form action="{{ route('product.list', [$slug]) }}" method="GET">
+                @csrf 
                 <p class="p-style ms-2">Filter Products</p>
                 <label class=" ms-2" for="">choose section</label>
 

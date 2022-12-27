@@ -60,6 +60,9 @@
                                 @if(auth()->user()->user_role=='superadmin')
                                 <th>Store</th>
                                 @endif
+                                @if(auth()->user()->user_role=='admin' || auth()->user()->user_role=='employee')
+                                <th>Section</th>
+                                @endif
                                 @if(auth()->user()->user_role=='admin')
                                 <th>Action</th>
                                 <th> </th>
@@ -78,6 +81,10 @@
                                 <td>${{ $product->price }}</td>
                                 @if(auth()->user()->user_role=='superadmin')
                                 <td>{{ $product->category->name }}</td>
+                                @endif
+
+                                @if(auth()->user()->user_role=='admin' || auth()->user()->user_role=='employee')
+                                <td>{{ $product->subcategory->name }}</td>
                                 @endif
 
                                 @if(auth()->user()->user_role=='admin')

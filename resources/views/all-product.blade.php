@@ -67,6 +67,7 @@
 
 <div class="container">
     <form action="{{route('more.product')}}" method="GET">
+        @csrf 
         <div class="search">
             <div class="" style="display: inline-block">
                 <input value="{{ $search ? $search: ''}}" type="text" name="search" class="form-control"
@@ -87,6 +88,7 @@
     <div class="row">
         <div class="col-md-2 filter-container mb-5">
             <form action="{{route('more.product')}}" method="GET">
+                @csrf 
                 <p class="p-style ms-2">Filter Products</p>
 
                 {{-- filter by categories --}}
@@ -177,16 +179,19 @@
     $("document").ready(function() {
 
         $('select[name="category"]').on('change', function() { // on change (بصير على) category 
-            var catId = $(this).val(); //catId : category id
+            //catId : dropdown list الي اخترته من ال category id هو
+            var catId = $(this).val(); 
+            console.log(catId);
             
             $.ajax({
-                url:'/sections?categoryId='+catId,
+                url:'/sections?categoryId='+catId, // categoryId -> can be null
                 type: "GET",
                 dataType: "json",
                 success:function(data) {
                     console.log(data);
                     $('select[name="subcategory"]').empty();
                     $('select[name="subcategory"]').append('<option value= >select</option>');
+                    // foreach add subcategory depends category in felid
                     $.each( data, function(key, value){ 
                         //key is a subcategory id, value is a  subcategory name. 
                         
