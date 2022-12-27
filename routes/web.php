@@ -69,7 +69,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function () {
 
     Route::get('/dashboard', function () {
-        return view('admin.dashboard');
+        return view('admin.layouts.container');
     })->name('dashboard');
 
     Route::resource('store', CategoryController::class);

@@ -1,4 +1,9 @@
+@extends('admin.layouts.main')
+
 @section('title') @lang('Dashboard') @endsection
+
+@section('content')
+
 <style>
     .number-align-items {
         display: flex;
@@ -174,6 +179,7 @@
 </div>
 <!-- end row -->
 
+@endsection
 
 @section('script')
 <!-- apexcharts -->
