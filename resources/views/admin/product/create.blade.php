@@ -95,7 +95,7 @@
                     <div class="row">
 
                         <!-- Description -->
-                        <div class="mb-3 col-6">
+                        <div class="mb-3 col-sm-6">
                             <label for="description">Description</label>
                             <textarea name="description" id="summernote"
                                 class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
@@ -107,7 +107,7 @@
                         </div>
 
                         <!-- Additional information -->
-                        <div class="mb-3 col-6">
+                        <div class="mb-3 col-sm-6">
                             <label for="additional_info">Additional information</label>
                             <textarea id="summernote1" name="additional_info"
                                 class="form-control @error('additional_info') is-invalid @enderror">{{ old('additional_info') }}</textarea>
@@ -122,26 +122,10 @@
 
                     <div class="row">
 
-                        <!-- Store [Category_id] -->
-                        <?php $category = App\Models\Category::find(auth()->user()->category_id) ?>
-
-                        <div class="mb-3 col-6">
-                            <label for="stroeName">My Store</label>
-                            <input id="category" name="category" type="text" aria-describedby=""
-                                class="form-control @error('category') is-invalid @enderror bg-color-transparent" 
-                                value="{{$category->name}}" readonly>
-
-                            @error('category')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-
                         <!-- Section -->
                         <?php $subcategories = App\Models\Category::find(auth()->user()->category_id)->subcategory()->get() ?>
 
-                        <div class="mb-3 col-6">
+                        <div class="mb-3 col">
                             <div class="custom-file">
                                 <label>Choose Section</label>
                                 <select name="subcategory"

@@ -57,7 +57,7 @@
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-layout"></i>
+                        <i class="mdi mdi-shopping"></i>
                         <span key="product">All Products</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">

@@ -11,14 +11,6 @@
 @endsection
 
 @section('content')
-
-<style>
-    .note-icon-caret:before {
-        content: "";
-    }
-</style>
-
-
 <!-- Breadcrumb -->
 <div class="row">
     <div class="col-12">
@@ -69,13 +61,13 @@
                     <div class="row">
 
                         <!-- Image -->
-                        <div class="mb-3 col-10">
+                        <div class="mb-1 ">
                             <label>Choose image</label>
                             <div class="custom-file">
                                 <label for="customFile" class="custom-file-label">Choose file</label>
                                 <input id="customFile" name="image" type="file"
                                     class="custom-file-input @error('image') is-invalid @enderror  bg-color-transparent">
-                                
+
                                 @error('image')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -83,30 +75,36 @@
                                 @enderror
                             </div>
                         </div>
+                    </div>
 
-                        <div class="mb-3 col-2">
-                            <img src="{{ Storage::url($product->image) }}" style="width:5rem; height:7rem">
+                    <!-- Image -->
+                    <div class="row">
+                        <div class="mb-3 col-2 offset-sm-5">
+                            <img id="img" src="{{Storage::url($product->image) }}" style="width:5rem; height:7rem">
                         </div>
                     </div>
 
                     <!-- Price -->
                     <div class="mb-3">
                         <label for="price">Price</label>
-                        <input id="price" name="price" type="text" class="form-control @error('price') is-invalid @enderror" aria-describedby="" value="{{ $product->price }}">
+                        <input id="price" name="price" type="text"
+                            class="form-control @error('price') is-invalid @enderror" aria-describedby=""
+                            value="{{ $product->price }}">
                         @error('price')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                     </div>
 
                     <div class="row">
 
                         <!-- Description -->
-                        <div class="mb-3 col-6">
+                        <div class="mb-3 col-sm-6">
                             <label for="description">Description</label>
+
                             <textarea name="description" id="summernote"
-                                class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
+                                class="form-control @error('description') is-invalid @enderror"> {{$product->description }}</textarea>
                             @error('description')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -115,10 +113,10 @@
                         </div>
 
                         <!-- Additional information -->
-                        <div class="mb-3 col-6">
+                        <div class="mb-3 col-sm-6">
                             <label for="additional_info">Additional information</label>
                             <textarea id="summernote1" name="additional_info"
-                                class="form-control @error('additional_info') is-invalid @enderror">{{ old('additional_info') }}</textarea>
+                                class="form-control @error('additional_info') is-invalid @enderror">{{ $product->additional_info  }}</textarea>
                             @error('additional_info')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -129,32 +127,16 @@
                     </div>
 
                     <div class="row">
-
-                        <!-- Store [Category_id] -->
-                        <?php $category = App\Models\Category::find(auth()->user()->category_id) ?>
-
-                        <div class="mb-3 col-6">
-                            <label for="stroeName">My Store</label>
-                            <input id="category" name="category" type="text" aria-describedby=""
-                                class="form-control @error('category') is-invalid @enderror bg-color-transparent" 
-                                value="{{$category->name}}" readonly>
-
-                            @error('category')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-
                         <!-- Section -->
                         <?php $subcategories = App\Models\Category::find(auth()->user()->category_id)->subcategory()->get() ?>
 
-                        <div class="mb-3 col-6">
+                        <div class="mb-3 col">
                             <div class="custom-file">
                                 <label>Choose Section</label>
                                 <select name="subcategory"
                                     class="form-control @error('subcategory') is-invalid @enderror">
-                                    <option value="{{old('subcategory')}}">Select</option>
+                                    <option value="{{$product->subcategory->id}}">{{$product->subcategory->name}}
+                                    </option>
 
                                     @foreach ($subcategories as $subcategory)
                                     <option {{old('subcategory')==$subcategory->id ? 'selected' : '' }} value="{{
@@ -167,7 +149,7 @@
                     </div>
 
                     <!-- Button -->
-                    <div class="mb-3">
+                    <div class="mb-3 mt-5">
                         <button type="submit" class="btn"
                             style="background-color:  #232838;; color: #fff">Submit</button>
                     </div>
@@ -182,6 +164,35 @@
 <!-- end row -->
 
 @endsection
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $("document").ready(function() {
+
+        $('.custom-file-input').on('change', function() {
+            var input = this;
+            var url  = $(this).val(); 
+            var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+            if (input.files && input.files[0]&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) 
+                    {
+                        //  The FileReader function returns the file’s contents
+                        var reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            console.log(e);
+                        $('#img').attr('src', e.target.result);
+                        }
+                    // The readAsDataURL method is used to read the contents of the specified File.
+                    reader.readAsDataURL(input.files[0]);
+                    }
+                    else
+                    {
+                        //you must put a photo in public
+                    $('#img').attr('src', '/assets/no_preview.png');
+                    }
+        });
+    });
+
+</script>
 @section('script')
 <!-- select 2 plugin -->
 <script src="{{ URL::asset('/assets/libs/select2/select2.min.js') }}"></script>

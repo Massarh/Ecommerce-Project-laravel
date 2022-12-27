@@ -47,7 +47,7 @@
                 <div class="d-flex align-items-center mb-3">
                     <div class="avatar-xs me-3">
                         <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-18">
-                            <i class="fas fa-calendar text-primary"></i>
+                            <i class="mdi mdi-shopping text-primary" style=" font-size: 24px;"></i>
                         </span>
                     </div>
                     <div class="number-align-items">
@@ -70,7 +70,9 @@
                 <div class="d-flex align-items-center mb-3">
                     <div class="avatar-xs me-3">
                         <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-18">
-                            <i class="fas fa-shopping-cart text-success"></i>
+                            {{-- <i class="fas fa-shopping-cart text-success"></i> --}}
+                            <i class="mdi mdi-package-variant-closed text-success" style=" font-size: 24px;"></i>
+
                         </span>
                     </div>
                     <div class="number-align-items">
@@ -93,7 +95,8 @@
                 <div class="d-flex align-items-center mb-3">
                     <div class="avatar-xs me-3">
                         <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-18">
-                            <i class="fas fa-shopping-cart text-success"></i>
+                            {{-- <i class="fas fa-shopping-cart text-success"></i> --}}
+                            <i class="mdi mdi-package-variant-closed text-success" style=" font-size: 24px;"></i>
                         </span>
                     </div>
                     <div class="number-align-items">

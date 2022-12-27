@@ -71,7 +71,6 @@ class ProductController extends Controller
             'image'           => 'required|mimes:png,jpg',
             'price'           => 'required|numeric',
             'additional_info' => 'required',
-            'category'        => 'required',
             'subcategory'        => 'required',
         ]);
 
@@ -120,6 +119,7 @@ class ProductController extends Controller
 
             $image = $request->file('image')->store('public/product');
             Storage::delete($product->image);
+            $product->image =  $image;
         }
         //to updated 
         $product->name          =  $request->name;
@@ -127,7 +127,7 @@ class ProductController extends Controller
         $product->image         =  $image;
         $product->price         = $request->price;
         $product->additional_info  = $request->additional_info;
-        $product->category_id      = $request->category;
+        $product->category_id      = auth()->user()->category_id;
         $product->subcategory_id   = $request->subcategory;
         $product->save();
 
