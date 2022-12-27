@@ -26,28 +26,28 @@
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="rounded-circle header-profile-user"
                         src="{{ isset(Auth::user()->image) ? asset(Auth::user()->image) : asset('/logo/user.png') }}"
-                        alt="Header image">
+                        alt="profile image">
                     <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{ucfirst(Auth::user()->name)}}</span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
 
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a class="dropdown-item" href="{{route('profile')}}"><i
-                            class="bx bx-user font-size-16 align-middle me-1"></i> <span
-                            key="t-profile">@lang('Profile')</span></a>
+                    <a class="dropdown-item" href="{{route('profile')}}">
+                        <i class="bx bx-user font-size-16 align-middle me-1"></i>
+                        <span key="t-profile">Profile</span></a>
 
                     <div class="dropdown-divider"></div>
 
                     <a class="dropdown-item" href="/"><i class="fas fa-shopping-bag font-size-16 align-middle me-1"></i>
-                        <span key="t-my-wallet">@lang('Go to shopping')</span></a>
+                        <span key="shopping">Go to shopping</span></a>
 
                     <div class="dropdown-divider"></div>
 
                     <a class="dropdown-item text-danger" href="javascript:void();"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                             class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span
-                            key="t-logout">@lang('Logout')</span></a>
+                            key="t-logout">Logout</span></a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>

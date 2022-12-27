@@ -34,6 +34,8 @@ class CartController extends Controller
         return redirect()->back();
     }
 
+    //--------------------------------------------------------
+
     public function showCart()
     {
         if (session()->has('cart')) {
@@ -44,6 +46,8 @@ class CartController extends Controller
         // dd($cart);
         return view('cart', compact('cart'));
     }
+
+    //--------------------------------------------------------
 
     public function updateCart(Request $request, Product $product)
     {
@@ -59,6 +63,8 @@ class CartController extends Controller
         return redirect()->back();
     }
 
+    //--------------------------------------------------------
+
     public function removeCart(Product $product)
     {
         $cart = new Cart(session()->get('cart'));
@@ -73,6 +79,7 @@ class CartController extends Controller
         return redirect()->back();
     }
 
+    //--------------------------------------------------------
 
     public function checkout($amount)
     {
@@ -83,6 +90,8 @@ class CartController extends Controller
         }
         return view('checkout', compact('amount', 'cart'));
     }
+
+    //--------------------------------------------------------
 
     public function charge(Request $request)
     {
@@ -143,6 +152,10 @@ class CartController extends Controller
         }
     }
 
+    //--------------------------------------------------------
+
+    // for four user_role
+
     // For Loggedin User
     public function order()
     {
@@ -155,6 +168,9 @@ class CartController extends Controller
         }
     }
 
+    //--------------------------------------------------------
+
+    // for four user_role
     public function orderItems($orderId)
     {
         $order = Order::find($orderId);
@@ -167,14 +183,16 @@ class CartController extends Controller
     /////////////////For Admin///////////////////////////////////
     ////////////////////////////////////////////////////////////
 
-    // For Admin
+    // for superadmin only
     public function userOrder()
     {
         $orders = Order::latest()->get();
         return view('admin.order.index', compact('orders'));
     }
 
-    // Cart[ORDER]
+    //--------------------------------------------------------
+
+    // for superadmin only
     public function viewUserOrder($orderid)
     {
         //should be edit
@@ -183,6 +201,9 @@ class CartController extends Controller
         return view('admin.order.show', compact('order'));
     }
 
+    //--------------------------------------------------------
+
+    // for superadmin only
     public function storeOrder()
     {
         //should be edit
@@ -193,7 +214,9 @@ class CartController extends Controller
         return view('admin.order.store-order', compact('categories'));
     }
 
+    //--------------------------------------------------------
 
+    // for superadmin , admin , employee
     public function viewStoreItem($categorySlug, Request $request)
     {
         if(auth()->user()->user_role == 'admin'){

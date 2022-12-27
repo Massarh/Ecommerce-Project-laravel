@@ -9,6 +9,7 @@ use Brian2694\Toastr\Facades\Toastr;
 class SliderController extends Controller
 {
 
+    // for superadmin only
     public function index()
     {
         $sliders = Slider::get();
@@ -17,6 +18,7 @@ class SliderController extends Controller
 
     //--------------------------------------------------------
 
+    // for superadmin only
     public function create()
     {
         return view('admin.slider.create');
@@ -24,6 +26,7 @@ class SliderController extends Controller
 
     //--------------------------------------------------------
 
+    // for superadmin only
     public function store(Request $request){
         $request->validate([
             'image'=>'required|mimes:jpg,png'
@@ -39,6 +42,7 @@ class SliderController extends Controller
 
     //--------------------------------------------------------
 
+    // for superadmin only
     public function destroy($id){
         Slider::find($id)->delete();
 

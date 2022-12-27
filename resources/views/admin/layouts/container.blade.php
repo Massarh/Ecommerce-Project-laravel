@@ -22,29 +22,10 @@
 
 <div class="row">
 
-    @if(auth()->user()->user_role=='superadmin')
-    <!--Number of Category Card -->
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <div class="d-flex align-items-center mb-3">
-                    <div class="avatar-xs me-3">
-                        <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-18">
-                            <i class="fas fa-store text-primary"></i>
-                        </span>
-                    </div>
-                    <div class="number-align-items">
-                        <h5 class="font-size-14 mb-0">Number of Stores</h5>
-                        <h6>{{App\Models\Category::get()->count()}}</h6>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    @endif
+    <!-- Admin and Employee -->
 
     @if(auth()->user()->user_role=='admin' || auth()->user()->user_role=='employee')
+
     <!--Number of Products Card -->
     <div class="col-md-6">
         <div class="card">
@@ -62,8 +43,6 @@
                     </div>
 
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -92,7 +71,30 @@
     </div>
     @endif
 
+    <!-- Superadmin -->
+
     @if(auth()->user()->user_role=='superadmin')
+
+    <!--Number of Category Card -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="avatar-xs me-3">
+                        <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-18">
+                            <i class="fas fa-store text-primary"></i>
+                        </span>
+                    </div>
+                    <div class="number-align-items">
+                        <h5 class="font-size-14 mb-0">Number of Stores</h5>
+                        <h6>{{App\Models\Category::get()->count()}}</h6>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <!-- Number of Orders Card -->
     <div class="col-md-6">
         <div class="card">
@@ -100,7 +102,6 @@
                 <div class="d-flex align-items-center mb-3">
                     <div class="avatar-xs me-3">
                         <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-18">
-                            {{-- <i class="fas fa-shopping-cart text-success"></i> --}}
                             <i class="mdi mdi-package-variant-closed text-success" style=" font-size: 24px;"></i>
                         </span>
                     </div>
@@ -113,28 +114,7 @@
             </div>
         </div>
     </div>
-    @endif
 
-    <!-- New User Card -->
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <div class="d-flex align-items-center mb-3">
-                    <div class="avatar-xs me-3">
-                        <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-18">
-                            <i class="fas fa-users text-info"></i>
-                        </span>
-                    </div>
-                    <div class="number-align-items">
-                        <h5 class="font-size-14 mb-0">Number Of Customer</h5>
-                        <h6>{{App\Models\User::where('user_role', 'customer')->get()->count()}}</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    @if(auth()->user()->user_role=='superadmin')
 
     <!-- Number of Admin Card  -->
     <div class="col-md-6">
@@ -175,6 +155,25 @@
     </div>
 
     @endif
+
+    <!-- New User Card -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="avatar-xs me-3">
+                        <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-18">
+                            <i class="fas fa-users text-info"></i>
+                        </span>
+                    </div>
+                    <div class="number-align-items">
+                        <h5 class="font-size-14 mb-0">Number Of Customer</h5>
+                        <h6>{{App\Models\User::where('user_role', 'customer')->get()->count()}}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 <!-- end row -->

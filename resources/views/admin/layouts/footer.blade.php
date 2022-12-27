@@ -46,25 +46,15 @@
 
 
 
-{{-- onsubmit (ما زبطت معي) --}}
-<script type="text/javascript">
-    function confirmDelete(){
-            return confirm('Are you sure you want to delete?')
-        }
-</script>
-
-{{-- summernote to description --}}
+<!-- summernote to description -->
 <script>
-    // $(document).ready(function() {
-    //     $('#summernote').summernote();
-    //     });
     $('#summernote').summernote({
         height: 100,
         toolbar: [
             // [groupName, [list of button]]
             ['style', ['style','bold', 'italic']],
             ['style', [ 'underline', 'clear']],
-            ['font', ['strikethrough']],//, 'superscript', 'subscript'
+            ['font', ['strikethrough']],
             ['fontname', ['fontname']],
             ['fontsize', ['fontsize']],
             
@@ -72,7 +62,7 @@
     });
 </script>
 
-{{-- summernote to additional_info --}}
+<!-- summernote to additional_info -->
 <script>
     $('#summernote1').summernote({
         height: 100,
@@ -80,7 +70,7 @@
             // [groupName, [list of button]]
             ['style', ['style','bold', 'italic']],
             ['style', [ 'underline', 'clear']],
-            ['font', ['strikethrough']],//, 'superscript', 'subscript'
+            ['font', ['strikethrough']],
             ['fontname', ['fontname']],
             ['fontsize', ['fontsize']],
         ]

@@ -14,6 +14,7 @@ use Brian2694\Toastr\Facades\Toastr;
 class SubcategoryController extends Controller
 {
 
+    // for superadmin only 
     public function  index()
     {
         if (auth()->user()->user_role==='superadmin'){
@@ -26,6 +27,7 @@ class SubcategoryController extends Controller
 
 // ----------------------------------------------------------------------------
 
+    // Superadmin, Admin, Employee [superadmin -> when click on button in store ]
     public function getSubcategoryByCatId($slug)
     {
        // url validation
@@ -51,16 +53,17 @@ class SubcategoryController extends Controller
         return view('admin.subcategory.index', compact('subcategories','category'));
     }
 
-// ----------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------
 
+    // for admin , superadmin 
     public function create()
     {
+        return 'hi';
         if(auth()->user()->user_role=="superadmin")
         {
             return view('admin.subcategory.superadmin-create');
 
-        } elseif(auth()->user()->user_role=="admin")
-        {   
+        } elseif(auth()->user()->user_role=="admin") {   
             $adminSubcategoryIds=[];
                 $adminSubcategories=auth()->user()->category->subcategory;
                 foreach ($adminSubcategories as $key => $adminSubcategory) {
@@ -72,8 +75,9 @@ class SubcategoryController extends Controller
         }
     }
 
-// ----------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------
 
+    // for admin , superadmin 
     public function store(Request $request)
     {
         if (auth()->user()->user_role=='superadmin') 
@@ -90,8 +94,7 @@ class SubcategoryController extends Controller
             Toastr::success('Section created successfully', 'success');
             return redirect()->route('section.index');
 
-        } else if (auth()->user()->user_role=='admin') 
-        {
+        } else if (auth()->user()->user_role=='admin') {
             $request->validate([
                 'subcategory'=>'required',
             ]);
@@ -106,8 +109,9 @@ class SubcategoryController extends Controller
         }
     }
 
-// ----------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------
 
+    // for admin , superadmin 
     public function edit($subcategorySlug)
     {
         $subcategory = Subcategory::where('slug', $subcategorySlug)->first();
@@ -151,8 +155,9 @@ class SubcategoryController extends Controller
         }
     }
 
-// ----------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------
 
+    // for admin , superadmin 
     public function update(Request $request, $oldSubcategoryId)
     {
         if (auth()->user()->user_role==='superadmin')
@@ -207,8 +212,9 @@ class SubcategoryController extends Controller
         }
     }
 
-// ----------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------
 
+    // for admin , superadmin 
     public function destroy($subcategoryId,Request $request)
     {
         // sold sent email to admin here

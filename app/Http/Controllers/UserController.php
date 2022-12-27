@@ -13,7 +13,7 @@ use Brian2694\Toastr\Facades\Toastr;
 class UserController extends Controller
 {
 
-    public function index()
+    public function index() //delete
     {
         $users = User::where('user_role', 'customer')->get();
         return view('admin.user.index', compact('users'));
@@ -21,9 +21,9 @@ class UserController extends Controller
 
     //--------------------------------------------------------
 
+    // for superadmin only
     public function createAdminOrEmployee(Request $request)
     {
-        
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             //unique users mean that the email is not exist in the database(new email).
@@ -49,6 +49,7 @@ class UserController extends Controller
 
     //--------------------------------------------------------
 
+    // for superadmin only
     public function viewStore()
     {
         $categories = Category::get();
@@ -57,6 +58,7 @@ class UserController extends Controller
 
     //--------------------------------------------------------
 
+    // for superadmin only
     public function viewAdminAndEmployee($categoryId)
     {
         $adminsAndEmployees = User::where('category_id', $categoryId)->get();
@@ -66,6 +68,7 @@ class UserController extends Controller
 
     //--------------------------------------------------------
 
+    // for superadmin only
     public function deleteAdminOrEmployee($userId,Request $request)
     {
         $adminOrEmployee = User::find($userId);
@@ -93,6 +96,7 @@ class UserController extends Controller
 
     //--------------------------------------------------------
 
+    // for superadmin only
     public function viewNewAdmin()
     {
         $newAdmins = User::where("user_role", "admin")->where('category_id', null)
@@ -103,6 +107,7 @@ class UserController extends Controller
 
     //--------------------------------------------------------
 
+    // for four user_role
     public function showUserProfile()
     {
         $user = auth()->user();
@@ -127,10 +132,9 @@ class UserController extends Controller
     }
 
     //--------------------------------------------------------
-
+    // for four user_role
     public function updateProfile(Request $request)
     {
-
         $request->validate([
             'name'    => ['nullable', 'max:255'],
             'phone_number' => ['nullable', 'digits:10', 'numeric'],

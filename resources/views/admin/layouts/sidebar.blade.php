@@ -7,7 +7,7 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title" key="t-menu">@lang('Menu')</li>
+                <li class="menu-title" key="t-menu">Menu</li>
 
                 <!-- Dashboard -->
                 <li>
@@ -32,10 +32,11 @@
                     </ul>
                 </li>
 
+                <!-- Admin and Employee -->
                 @if((auth()->user()->user_role=='admin'||auth()->user()->user_role=='employee') &&
                 (auth()->user()->category_id))
 
-                <!-- -admin and employee Section -->
+                <!-- admin and employee Section -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-layout"></i>
@@ -91,10 +92,10 @@
 
                 @endif
 
-                {{-- Superadmin --}}
+                <!-- Superadmin -->
                 @if(auth()->user()->user_role=='superadmin')
 
-                <!--admin and employee Section -->
+                <!-- Superadmin Section -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-layout"></i>
@@ -102,15 +103,13 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
 
-                        <li><a href="{{ route('section.index')}}"
-                                key="section-view">View</a></li>
-
+                        <li><a href="{{ route('section.index')}}" key="section-view">View</a></li>
                         <li><a href="{{ route('section.create') }}" key="section-create">Create</a></li>
 
                     </ul>
                 </li>
-                {{-- .................................. --}}
-
+                
+                <!-- Sliders  -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="far fa-image"></i>
@@ -137,7 +136,7 @@
                     </ul>
                 </li>
 
-                <!-- Store Orders -->
+                <!-- Store Order Items -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-calendar-multiple-check"></i>

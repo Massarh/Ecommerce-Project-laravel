@@ -1,38 +1,39 @@
 @include('admin.layouts.header')
 
-<div id="layout-wrapper" style="min-height:100vh; display:flex; flex-direction:column; 
-justify-content:space-between;">
+<body data-sidebar="dark">
 
-    <!-- TopBar -->
-    @include('admin.layouts.navbar')
+    <div id="layout-wrapper" style="min-height:100vh; display:flex; flex-direction:column; 
+    justify-content:space-between;">
 
-    <!-- Sidebar -->
-    @include('admin.layouts.sidebar')
+        <!-- TopBar -->
+        @include('admin.layouts.navbar')
 
-    <!-- ================================================= -->
-    <!-- Start right Content here -->
-    <!-- ================================================== -->
-    <div class="main-content">
-        <div class="page-content">
+        <!-- Sidebar -->
+        @include('admin.layouts.sidebar')
 
-            <!-- Container Fluid-->
-            <div class="container-fluid">
-                @yield('content')
+        <!-- ================================================= -->
+        <!-- Start right Content here -->
+        <!-- ================================================== -->
+        <div class="main-content">
+            <div class="page-content">
+
+                <!-- Container Fluid-->
+                <div class="container-fluid">
+                    @yield('content')
+                </div>
+
             </div>
-
+            <!-- Footer -->
             
         </div>
-        <!-- Footer -->
-        
+        @include('admin.layouts.footer')
     </div>
-    @include('admin.layouts.footer')
-</div>
 
-<!-- Right Sidebar -->
-@include('admin.layouts.right-sidebar')
-@include('admin.layouts.vendor-scripts')
+    <!-- Right Sidebar -->
+    @include('admin.layouts.right-sidebar')
+    @include('admin.layouts.vendor-scripts')
 
-@livewireScripts
+    @livewireScripts
 </body>
 
 </html>

@@ -29,4 +29,3 @@
     @livewireStyles
 </head>
 
-<body data-sidebar="dark">

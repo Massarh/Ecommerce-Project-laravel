@@ -11,18 +11,19 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class CategoryController extends Controller
 {
+    // Superadmin , Admin , Employee
     public function index()
     {
-        $currentUser=auth()->user();
+        $currentUser = auth()->user();
 
-        if($currentUser->user_role=='admin' || $currentUser->user_role=='employee'){
+        if ($currentUser->user_role == 'admin' || $currentUser->user_role == 'employee') {
             $user = User::with('category')
-            ->where('id', $currentUser->id)
-            ->first();
+                ->where('id', $currentUser->id)
+                ->first();
             $category = $user->category;
             return view('admin.category.index', compact('category'));
-
-        }elseif($currentUser->user_role=='superadmin'){
+        
+        } elseif ($currentUser->user_role == 'superadmin') {
             $categories = Category::get();
             return view('admin.category.index', compact('categories'));
         }
@@ -30,34 +31,35 @@ class CategoryController extends Controller
 
     // ----------------------------------------------------------------------------
 
+    // for admin only
     public function create()
     {
         $category = Category::all();
-        
         return view('admin.category.create', compact('category'));
     }
 
     // ----------------------------------------------------------------------------
+
     // for admin only
     public function store(Request $request)
     {
-        if(auth()->user()->user_role == 'admin'){
+        if (auth()->user()->user_role == 'admin') {
             $request->validate([
                 'name'        => 'required|unique:categories',
                 'description' => 'required',
                 // mimes:png,jpg --> لازم يكون قيمتين/نوعين امتداد فقط غير هيك بصير ياخد اوا نوع امتداد كتبته
-                'image'       => 'required||mimes:png,jpg',  
+                'image'       => 'required||mimes:png,jpg',
             ]);
 
             $image = $request->file('image')->store('public/files');
             $category = Category::create([
                 'name'        => $request->name,
                 // "Str" is class in laravel [contains a lot of function]
-                'slug'        => Str::slug($request->name), 
+                'slug'        => Str::slug($request->name),
                 'description' => $request->description,
                 'image'       => $image
             ]);
-            
+
             // to update category_id in user
             User::where('id', auth()->user()->id)
                 ->update(['category_id' => $category->id]);
@@ -70,6 +72,7 @@ class CategoryController extends Controller
 
     // ----------------------------------------------------------------------------
 
+    // for admin only
     public function edit($id)
     {
         $category = Category::find($id);
@@ -77,19 +80,20 @@ class CategoryController extends Controller
     }
     // ----------------------------------------------------------------------------
 
+    // for admin only
     public function update(Request $request, $id)
-    { 
-        if(auth()->user()->user_role == 'admin'){
+    {
+        if (auth()->user()->user_role == 'admin') {
             $request->validate([
                 'name'        => 'required',
                 'description' => 'required',
             ]);
 
-            $category = Category::find($id); 
-            if ($request->file('image')) { 
+            $category = Category::find($id);
+            if ($request->file('image')) {
                 $image = $request->file('image')->store('public/files');
                 Storage::delete($category->image);
-                $category->image= $image;
+                $category->image = $image;
             }
 
             //things to be updated 
@@ -105,19 +109,19 @@ class CategoryController extends Controller
     }
 
     // ----------------------------------------------------------------------------
-
+    //  for superadmin only
     public function destroy($id)
     {
-        if(auth()->user()->user_role == 'superadmin'){
+        if (auth()->user()->user_role == 'superadmin') {
             $category = Category::find($id);
             $filename = $category->image;
             $category->delete();
             // Delete the image from a folder files [public\storage\files\...]
-            Storage::delete($filename); 
+            Storage::delete($filename);
             Toastr::success('Store deleteed successfully', 'success');
             return redirect()->route('store.index');
         }
-        abort(403);    
+        abort(403);
     }
 
 
@@ -136,10 +140,9 @@ class CategoryController extends Controller
 
     // ----------------------------------------------------------------------------
 
-    public function categoriesWithUser ()
+    public function categoriesWithUser() // delete
     {
         $categories = Category::get();
         return view('admin.user.index', compact('categories'));
     }
-
 }

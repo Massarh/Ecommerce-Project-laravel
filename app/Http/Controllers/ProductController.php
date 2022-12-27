@@ -13,9 +13,10 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class ProductController extends Controller
 {
-
+    // Superadmin, Admin, Employee [superadmin -> when click on button in store ]
     public function getProductByCatAndSubId($categorySlug, $subcategorySlug)
     {
+
         if (auth()->user()->user_role == 'admin') {
             // URL validate 
             $subcategories = auth()->user()->category->subcategory;
@@ -46,7 +47,7 @@ class ProductController extends Controller
 
     // ----------------------------------------------------------------------------
 
-    // for admin
+    // for admin, employee
     public function index()
     {
         $products = Product::where('category_id', auth()->user()->category_id)->get();
@@ -55,6 +56,7 @@ class ProductController extends Controller
 
     // ----------------------------------------------------------------------------
 
+    // for admin only
     public function create()
     {
         return view('admin.product.create');
@@ -62,7 +64,7 @@ class ProductController extends Controller
 
     // ----------------------------------------------------------------------------
 
-    // for admin
+    // for admin only
     public function store(Request $request)
     {
         if(auth()->user()->user_role=='admin'){
@@ -94,6 +96,7 @@ class ProductController extends Controller
 
     // ----------------------------------------------------------------------------
 
+    // for admin only
     public function edit($id)
     {
         $products = Product::where('category_id', auth()->user()->category_id)->get();
@@ -112,6 +115,7 @@ class ProductController extends Controller
 
     // ----------------------------------------------------------------------------
 
+    // for admin only
     public function update(Request $request, $id)
     {
         if(auth()->user()->user_role=='admin'){  
@@ -165,6 +169,9 @@ class ProductController extends Controller
     }
 
     // ----------------------------------------------------------------------------
+
+    // for customer in all-product
+
     // To associate a category-field and a subcategory
     public function loadSubCategories(Request $request)
     {
