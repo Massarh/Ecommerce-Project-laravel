@@ -58,7 +58,7 @@ class CartController extends Controller
         $cart = new Cart(session()->get('cart'));
         $cart->updateQty($product->id, $request->qty); // qty from FORM in cart.blade.php
         session()->put('cart', $cart);
-        
+
         Toastr::success('Cart updated', 'success');
         return redirect()->back();
     }
@@ -75,7 +75,7 @@ class CartController extends Controller
         } else {
             session()->put('cart', $cart);
         }
-        
+
         return redirect()->back();
     }
 
@@ -144,7 +144,7 @@ class CartController extends Controller
             OrderItem::insert($newCart);
 
             session()->forget('cart');
-// hereeeeee
+            // hereeeeee
             Toastr::success('Transaction completed!', 'success');
             return redirect()->to('/');
         } else {
@@ -160,11 +160,10 @@ class CartController extends Controller
     public function order()
     {
         $orders = auth()->user()->orders;
-        if (count($orders)>0) {
-        return view('order', compact('orders'));
-        }
-        else {
-        return view('no-items');
+        if (count($orders) > 0) {
+            return view('order', compact('orders'));
+        } else {
+            return view('no-items');
         }
     }
 
@@ -193,10 +192,10 @@ class CartController extends Controller
     //--------------------------------------------------------
 
     // for superadmin only
-    public function viewUserOrder($orderid)
+    public function viewUserOrder($orderId)
     {
         //should be edit
-        $order = Order::with('orderItem')->where('id', $orderid)->first();
+        $order = Order::with('orderItem')->find($orderId);
         // return $order->orderItem[0]->category;
         return view('admin.order.show', compact('order'));
     }
@@ -207,7 +206,8 @@ class CartController extends Controller
     public function storeOrder()
     {
         //should be edit
-        $categories = Category::has('orderItem')->with(['user' => function ($query) { // call back function
+        $categories = Category::has('orderItem')->with(['user' => function ($query) {
+            // call back function
             $query->where('user_role', 'admin');
             $query->orderBy('created_at', 'desc');
         }])->get();
@@ -219,15 +219,15 @@ class CartController extends Controller
     // for superadmin , admin , employee
     public function viewStoreItem($categorySlug, Request $request)
     {
-        if(auth()->user()->user_role == 'admin'){
+        if (auth()->user()->user_role == 'admin') {
             $isLegal = auth()->user()->category->slug == $categorySlug;
-            if(!$isLegal) {
+            if (!$isLegal) {
                 abort(403);
             }
         }
-        
+
         $category = Category::where('slug', $categorySlug)->first();
-        if ( !$category ) {
+        if (!$category) {
             abort(404);
         }
         $categoryId = $category->id;

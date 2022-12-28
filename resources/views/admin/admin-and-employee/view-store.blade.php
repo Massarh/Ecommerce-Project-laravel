@@ -40,7 +40,7 @@
                                 <th>Name</th>
                                 <th></th>
                                 <th></th>
-                                <th>Action</th>
+                                <th>View</th>
                             </tr>
                         </thead>
                         <tbody>

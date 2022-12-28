@@ -108,7 +108,7 @@
 
                     </ul>
                 </li>
-                
+
                 <!-- Sliders  -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -149,7 +149,7 @@
                     </ul>
                 </li>
 
-                <!-- Add Admin -->
+                <!-- Admins & Employees -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-account"></i>
@@ -165,7 +165,7 @@
                 </li>
 
                 @endif
-                
+
             </ul>
 
         </div>

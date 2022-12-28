@@ -41,7 +41,7 @@ class UserController extends Controller
             'category_id' => $request['categoryId'],
         ]);
 
-        if($request['categoryId']) {
+        if ($request['categoryId']) {
             return redirect()->route('admin.view', $request['categoryId']);
         }
         return redirect()->route('newAdmin.view');
@@ -69,15 +69,15 @@ class UserController extends Controller
     //--------------------------------------------------------
 
     // for superadmin only
-    public function deleteAdminOrEmployee($userId,Request $request)
+    public function deleteAdminOrEmployee($userId, Request $request)
     {
         $adminOrEmployee = User::find($userId);
 
-        if ($adminOrEmployee->user_role=='employee'){
-            
+        if ($adminOrEmployee->user_role == 'employee') {
+
             $adminOrEmployee->delete();
-        } else if ($adminOrEmployee->user_role=='admin'&& $adminOrEmployee->category_id){
-            
+        } else if ($adminOrEmployee->user_role == 'admin' && $adminOrEmployee->category_id) {
+
             //  'from admin&employee';
             $numberOfAdmin = User::where("category_id", $adminOrEmployee->category_id)->where("user_role", "admin")->count();
             if ($numberOfAdmin > 1) {
@@ -85,8 +85,8 @@ class UserController extends Controller
             } else {
                 $request->session()->flash('status', 'cannot delete the last admin in this store,please create a new admin before you try to delete him.');
             }
-        } else if($adminOrEmployee->user_role=='admin'&& !$adminOrEmployee->category_id){
-        
+        } else if ($adminOrEmployee->user_role == 'admin' && !$adminOrEmployee->category_id) {
+
             //  'from new admin';
             $adminOrEmployee->delete();
         }
@@ -100,7 +100,7 @@ class UserController extends Controller
     public function viewNewAdmin()
     {
         $newAdmins = User::where("user_role", "admin")->where('category_id', null)
-        ->orWhere("user_role", "employee")->where('category_id', null)->get();
+            ->orWhere("user_role", "employee")->where('category_id', null)->get();
         // return $newAdmins;
         return view('admin.admin-and-employee.view-new-admin', compact('newAdmins'));
     }
@@ -111,9 +111,9 @@ class UserController extends Controller
     public function showUserProfile()
     {
         $user = auth()->user();
-        if(auth()->user()->user_role == 'superadmin' || auth()->user()->user_role == 'admin' || auth()->user()->user_role == 'employee') {
+        if (auth()->user()->user_role == 'superadmin' || auth()->user()->user_role == 'admin' || auth()->user()->user_role == 'employee') {
             return view('admin.profile.profile', compact('user'));
-        }elseif(auth()->user()->user_role == 'customer') {
+        } elseif (auth()->user()->user_role == 'customer') {
             return view('customerProfile.profile', compact('user'));
         }
     }
@@ -123,10 +123,9 @@ class UserController extends Controller
     public function editProfile()
     {
         $user = User::find(auth()->user()->id);
-        if(auth()->user()->user_role == 'superadmin' || auth()->user()->user_role == 'admin' || auth()->user()->user_role == 'employee') {
+        if (auth()->user()->user_role == 'superadmin' || auth()->user()->user_role == 'admin' || auth()->user()->user_role == 'employee') {
             return view('admin.profile.edit', compact('user'));
-
-        }elseif(auth()->user()->user_role == 'customer') {
+        } elseif (auth()->user()->user_role == 'customer') {
             return view('customerProfile.edit', compact('user'));
         }
     }
@@ -149,19 +148,19 @@ class UserController extends Controller
             '_method',
             'image'
         );
-        
+
         if ($request->file('image')) {
 
             $user = User::where('id', auth()->user()->id)->first();
             if ($user->image) {
                 Storage::delete($user->image);
             }
-            
+
             $image = $request->file('image')->store('public/user');
             User::where('id', auth()->user()->id)
-            ->update([
-                'image'=>$image
-            ]);
+                ->update([
+                    'image' => $image
+                ]);
         }
 
         User::where('id', auth()->user()->id)

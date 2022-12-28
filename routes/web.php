@@ -22,9 +22,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 // FrontProductListController
 Route::get('/', [FrontProductListController::class, 'index']);
@@ -47,9 +44,6 @@ Route::get('/orders', [CartController::class, 'order'])->name('order')->middlewa
 Route::get('/order-items/{orderId}', [CartController::class, 'orderItems'])->name('orderItems')->middleware('auth');
 
 // END CartController
-
-//CategoryController
-Route::get('/users-stores', [CategoryController::class, 'categoriesWithUser'])->name('getCategoriesWithUser');
 
 
 Route::get('/no-items', function () {
@@ -91,13 +85,13 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
 
 
     /* Add Admin/Employee */
-    Route::post('/create-admin-or-employee', [UserController::class, 'createAdminOrEmployee'])->name('admin.create');
     Route::get('/add-admin', function () {
         return view('admin.admin-and-employee.add-admin');
     })->name('add.admin');
+    Route::post('/create-admin-or-employee', [UserController::class, 'createAdminOrEmployee'])->name('admin.create');
     Route::get('/view-store', [UserController::class, 'viewStore'])->name('store.view');
     Route::get('/view-new-admin', [UserController::class, 'viewNewAdmin'])->name('newAdmin.view');
-    Route::get('/view-admin-or-employee/{categoryId}', [UserController::class, 'viewAdminAndEmployee'])->name('admin.view');
+    Route::get('/view-admin-and-employee/{categoryId}', [UserController::class, 'viewAdminAndEmployee'])->name('admin.view');
     Route::delete('/delete-admin-or-employee/{userId}', [UserController::class, 'deleteAdminOrEmployee'])->name('admin.delete');
 });
 
@@ -105,9 +99,9 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
 Route::get('sections', [ProductController::class, 'loadSubCategories']);
 
 /*  PROFILE ADMIN */
-Route::get('profile', [UserController::class, 'showUserProfile'])->name('profile');
-Route::get('profile/edit', [UserController::class, 'editProfile'])->name('profile.edit');
-Route::put('profile/update', [UserController::class, 'updateProfile'])->name('profile.update');
+Route::get('profile', [UserController::class, 'showUserProfile'])->name('profile')->middleware('auth');
+Route::get('profile/edit', [UserController::class, 'editProfile'])->name('profile.edit')->middleware('auth');
+Route::put('profile/update', [UserController::class, 'updateProfile'])->name('profile.update')->middleware('auth');
 
 
 

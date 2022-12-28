@@ -27,37 +27,38 @@
     <div class="col-12">
         <div class="card">
             <!-- Simple Tables -->
-            
-                <form action="{{route('item.order', [$storeItems[0]->category->slug])}}" method="GET">
-                    @csrf
-                    <div class="card-header py-3 calendar-parent">
-                        
-                        {{-- Filter Date --}}
-                        <div class="calendar-child">
-                            <label for="date" class="h5 col-form-label" style="margin-right: 10px">From</label>
-                            <div class="">
-                                <input name="fromdate" type="date" class="form-control input-sm" id="fromdate">
-                            </div>
+
+            <form action="{{route('item.order', [$storeItems[0]->category->slug])}}" method="GET">
+                @csrf
+                <div class="card-header py-3 calendar-parent">
+
+                    {{-- Filter Date --}}
+                    <div class="calendar-child">
+                        <label for="date" class="h5 col-form-label" style="margin-right: 10px">From</label>
+                        <div class="">
+                            <input name="fromdate" type="date" class="form-control input-sm" id="fromdate">
                         </div>
-    
-                        <div class="calendar-child">
-                            <label for="date" class="h5 col-form-label margin-to" style="margin-right: 10px">To</label>
-                            <div class="">
-                                <input name="todate" type="date" class="form-control input-sm" id="todate">
-                            </div>
-                        </div>
-    
-                        <div class="d-flex justify-content-between ">
-                            <button class="mr-3 bg-color-btn h6" ><i class="fas fa-search fa-fw"></i></button>
-                            <a class="h6 mt-2" href="{{route('item.order', [$storeItems[0]->category->slug])}}" style="--bs-link-hover-color: #495057;">
-                                <button class="bg-color-btn h6" ><i class="fas fa-sync"></i></button>
-                            </a>
-                        </div>
-                        {{-- Filter Date --}}
-    
                     </div>
-                </form>
-            
+
+                    <div class="calendar-child">
+                        <label for="date" class="h5 col-form-label margin-to" style="margin-right: 10px">To</label>
+                        <div class="">
+                            <input name="todate" type="date" class="form-control input-sm" id="todate">
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between ">
+                        <button class="mr-3 bg-color-btn h6"><i class="fas fa-search fa-fw"></i></button>
+                        <a class="h6 mt-2" href="{{route('item.order', [$storeItems[0]->category->slug])}}"
+                            style="--bs-link-hover-color: #495057;">
+                            <button class="bg-color-btn h6"><i class="fas fa-sync"></i></button>
+                        </a>
+                    </div>
+                    {{-- Filter Date --}}
+
+                </div>
+            </form>
+
             <div class="card-body">
 
                 <div class="table-responsive">
@@ -73,7 +74,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+
                             <?php $totalPrice = 0 ?>
                             @foreach ($storeItems as $key=>$item)
 
@@ -81,23 +82,23 @@
                                 <td>{{ $key+1 }}</td>
 
                                 <td>{{ $item->name }}</td>
-                                <td>${{ $item->price }}</td>
+                                <td>{{ $item->price }} JOD</td>
                                 <td>{{ $item->quantity }}</td>
-                                <td>${{ $item->price * $item->quantity }}</td>
+                                <td>{{ $item->price * $item->quantity }} JOD</td>
                                 <td><img src="{{ Storage::url($item->image) }}" width="100"></td>
                             </tr>
                             <?php $totalPrice += $item->price * $item->quantity ?>
                             @endforeach
-                            
+
                         </tbody>
 
                         <tfoot>
                             <tr>
-                                <td><b style="">Total price: </b></td>
+                                <td><b style="">Total Price: </b></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td><b>${{$totalPrice}} </b></td>
+                                <td><b>{{$totalPrice}} JOD</b></td>
                                 <td></td>
                             </tr>
                         </tfoot>

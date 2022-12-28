@@ -49,9 +49,9 @@
                                 <td>{{$i++}}</td>
                                 <td>{{$item->category->name}}</td>
                                 <td>{{$item->name}}</td>
-                                <td>${{$item->price}}</td>
+                                <td>{{$item->price}} JOD</td>
                                 <td>{{$item->quantity}}</td>
-                                <td>${{$item->price * $item->quantity}}</td>
+                                <td>{{$item->price * $item->quantity}} JOD</td>
                                 <td><img src="{{ Storage::url($item->image) }}" width="100"></td>
                             </tr>
                             @endforeach
@@ -65,7 +65,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td><b>${{$order->total_price}} </b></td>
+                                <td><b>{{$order->total_price}} JOD</b></td>
                                 <td></td>
                             </tr>
                         </tfoot>

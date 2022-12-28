@@ -109,13 +109,4 @@
 </div>
     <!---Container Fluid-->
 
-
-<script type="text/javascript">
-    function confirmDelete(){
-        console.log("massarh");
-        let a = confirm('Are you sure you want to delete?');
-        console.log(a);
-        return a;
-    }
-</script>
 @endsection
