@@ -58,7 +58,6 @@ class SubcategoryController extends Controller
     // for admin , superadmin 
     public function create()
     {
-        return 'hi';
         if(auth()->user()->user_role=="superadmin")
         {
             return view('admin.subcategory.superadmin-create');

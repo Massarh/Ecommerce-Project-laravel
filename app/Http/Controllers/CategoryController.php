@@ -22,11 +22,11 @@ class CategoryController extends Controller
                 ->first();
             $category = $user->category;
             return view('admin.category.index', compact('category'));
-        
         } elseif ($currentUser->user_role == 'superadmin') {
             $categories = Category::get();
             return view('admin.category.index', compact('categories'));
         }
+        abort(403);
     }
 
     // ----------------------------------------------------------------------------
@@ -34,8 +34,11 @@ class CategoryController extends Controller
     // for admin only
     public function create()
     {
-        $category = Category::all();
-        return view('admin.category.create', compact('category'));
+        if (auth()->user()->user_role == 'admin') {
+            $category = Category::all();
+            return view('admin.category.create', compact('category'));
+        }
+        abort(403);
     }
 
     // ----------------------------------------------------------------------------
@@ -75,8 +78,11 @@ class CategoryController extends Controller
     // for admin only
     public function edit($id)
     {
-        $category = Category::find($id);
-        return view('admin.category.edit', compact('category'));
+        if (auth()->user()->user_role == 'admin') {
+            $category = Category::find($id);
+            return view('admin.category.edit', compact('category'));
+        }
+        abort(403);
     }
     // ----------------------------------------------------------------------------
 
@@ -124,25 +130,4 @@ class CategoryController extends Controller
         abort(403);
     }
 
-
-    // ----------------------------------------------------------------------------
-    public function tests($request)
-    {
-        $request->validate([
-            'name'        => 'required|unique:categories',
-            'description' => 'required',
-            'image'       => 'required|mimes:png, jpeg',
-        ]);
-
-        $image = $this->file('image')->store('public/files');
-        return view('/test', compact('image'));
-    }
-
-    // ----------------------------------------------------------------------------
-
-    public function categoriesWithUser() // delete
-    {
-        $categories = Category::get();
-        return view('admin.user.index', compact('categories'));
-    }
 }

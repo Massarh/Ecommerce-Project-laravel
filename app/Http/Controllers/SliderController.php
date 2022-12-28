@@ -12,8 +12,11 @@ class SliderController extends Controller
     // for superadmin only
     public function index()
     {
-        $sliders = Slider::get();
-        return view('admin.slider.index', compact('sliders'));
+        if (auth()->user()->user_role == 'superadmin') {
+            $sliders = Slider::get();
+            return view('admin.slider.index', compact('sliders'));
+        }
+        abort(403);
     }
 
     //--------------------------------------------------------
@@ -21,32 +24,43 @@ class SliderController extends Controller
     // for superadmin only
     public function create()
     {
-        return view('admin.slider.create');
+        if (auth()->user()->user_role == 'superadmin') {
+            return view('admin.slider.create');
+        }
+        abort(403);
     }
 
     //--------------------------------------------------------
 
     // for superadmin only
-    public function store(Request $request){
-        $request->validate([
-            'image'=>'required|mimes:jpg,png'
-        ]);
-        $image = $request->file('image')->store('public/slider');
-        Slider::create([
-            'image'=>$image
-        ]);
+    public function store(Request $request)
+    {
+        if (auth()->user()->user_role == 'superadmin') {
+            $request->validate([
+                'image' => 'required|mimes:jpg,png'
+            ]);
+            $image = $request->file('image')->store('public/slider');
+            Slider::create([
+                'image' => $image
+            ]);
 
-        Toastr::success('Image created successfully', 'success');
-        return redirect()->route('slider.index');
+            Toastr::success('Image created successfully', 'success');
+            return redirect()->route('slider.index');
+        }
+        abort(403);
     }
 
     //--------------------------------------------------------
 
     // for superadmin only
-    public function destroy($id){
-        Slider::find($id)->delete();
+    public function destroy($id)
+    {
+        if (auth()->user()->user_role == 'superadmin') {
+            Slider::find($id)->delete();
 
-        Toastr::success('Image deleted successfully', 'success');
-        return redirect()->back();
+            Toastr::success('Image deleted successfully', 'success');
+            return redirect()->back();
+        }
+        abort(403);
     }
 }

@@ -6,9 +6,11 @@ use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FrontProductListController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -22,6 +24,17 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+/** Auth */
+Auth::routes();
+
+// HomeController
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+//  home page
+
+Route::get('/no-items', function () {
+    return view('no-item');
+})->name('noItems');
 
 // FrontProductListController
 Route::get('/', [FrontProductListController::class, 'index']);
@@ -39,71 +52,63 @@ Route::post('/product/{product}', [CartController::class, 'removeCart'])->name('
 Route::get('/checkout/{amount}', [CartController::class, 'checkout'])->name('cart.checkout')->middleware('auth'); // must login
 Route::post('/charge', [CartController::class, 'charge'])->name('cart.charge');
 
-// Order
-Route::get('/orders', [CartController::class, 'order'])->name('order')->middleware('auth');
-Route::get('/order-items/{orderId}', [CartController::class, 'orderItems'])->name('orderItems')->middleware('auth');
+// OrderController
+Route::get('/orders', [OrderController::class, 'order'])->name('order')->middleware('auth');
+Route::get('/order-items/{orderId}', [OrderController::class, 'orderItems'])->name('orderItems')->middleware('auth');
 
-// END CartController
+// UserController
+Route::get('profile', [UserController::class, 'showUserProfile'])->name('profile')->middleware('auth');
+Route::get('profile/edit', [UserController::class, 'editProfile'])->name('profile.edit')->middleware('auth');
+Route::put('profile/update', [UserController::class, 'updateProfile'])->name('profile.update')->middleware('auth');
 
+// ProductController
+// using in ajax in all products page
+Route::get('sections', [ProductController::class, 'loadSubCategories']);
 
-Route::get('/no-items', function () {
-    return view('no-item');
-})->name('noItems');
+//  TestController 
+Route::get('/test', [TestController::class, 'test']);
 
-/** Auth */
-Auth::routes();
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+// end home page
 
 // middleware any action that executed between the request and the response.
 // auth inside middleware => check that the user should be login otherwise he will be redirected to login form.
 // isAdmin inside middleware => check that the user who is login is not a customer otherwise he will be redirected to home page.
 
-/** Admin Panel */
+//  Admin Panel 
 Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function () {
 
     Route::get('/dashboard', function () {
         return view('admin.layouts.container');
     })->name('dashboard');
 
+    // CategoryController
     Route::resource('store', CategoryController::class);
-    // subcategory
+
+    // SubcategoryController
     Route::get('section/store/{slug}', [SubcategoryController::class, 'getSubcategoryByCatId'])->name('section.getSubcategoryByCatId');
     Route::resource('section', SubcategoryController::class);
 
-    // product
+    // ProductController
     Route::get('product/store/{storeSlug}/section/{sectionSlug}', [ProductController::class, 'getProductByCatAndSubId'])->name('product.getProductByCatAndSubId');
     Route::resource('product', ProductController::class);
 
-    Route::get('/orders', [CartController::class, 'userOrder'])->name('order.index');
-    /*  ORDER */
-    Route::get('/store-order', [CartController::class, 'storeOrder'])->name('order.store');
-    Route::get('/orders/{orderid}', [CartController::class, 'viewUserOrder'])->name('user.order');  // {id} is user id
-    Route::get('/store-order-item/{categorySlug}', [CartController::class, 'viewStoreItem'])->name('item.order');
-    // Slider Admin
+    // OrderController 
+    Route::get('/orders', [OrderController::class, 'userOrder'])->name('order.index');
+    Route::get('/store-order', [OrderController::class, 'storeOrder'])->name('order.store');
+    Route::get('/orders/{orderid}', [OrderController::class, 'viewUserOrder'])->name('user.order');  // 
+    Route::get('/store-order-item/{categorySlug}', [OrderController::class, 'viewStoreItem'])->name('item.order');
+
+    // SliderController 
     Route::resource('slider', SliderController::class);
 
 
-    /* Add Admin/Employee */
+    // /UserController
     Route::get('/add-admin', function () {
         return view('admin.admin-and-employee.add-admin');
     })->name('add.admin');
     Route::post('/create-admin-or-employee', [UserController::class, 'createAdminOrEmployee'])->name('admin.create');
     Route::get('/view-store', [UserController::class, 'viewStore'])->name('store.view');
     Route::get('/view-new-admin', [UserController::class, 'viewNewAdmin'])->name('newAdmin.view');
-    Route::get('/view-admin-and-employee/{categoryId}', [UserController::class, 'viewAdminAndEmployee'])->name('admin.view');
+    Route::get('/view-admin-or-employee/{categoryId}', [UserController::class, 'viewAdminAndEmployee'])->name('admin.view');
     Route::delete('/delete-admin-or-employee/{userId}', [UserController::class, 'deleteAdminOrEmployee'])->name('admin.delete');
 });
-
-// using in ajax in all products page
-Route::get('sections', [ProductController::class, 'loadSubCategories']);
-
-/*  PROFILE ADMIN */
-Route::get('profile', [UserController::class, 'showUserProfile'])->name('profile')->middleware('auth');
-Route::get('profile/edit', [UserController::class, 'editProfile'])->name('profile.edit')->middleware('auth');
-Route::put('profile/update', [UserController::class, 'updateProfile'])->name('profile.update')->middleware('auth');
-
-
-
-/*  TEST */
-Route::get('/index/test', [ProductController::class, 'test']);
