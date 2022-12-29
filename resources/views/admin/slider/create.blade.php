@@ -46,7 +46,7 @@
                     <div class="mb-3">
                         <label for="name">Choose Image</label>
                         <div class="custom-file">
-                            <label for="customFile" class="custom-file-label bg-color-transparent">Choose file</label>
+                            <label for="customFile" class="custom-file-label bg-color-transparent">Choose image</label>
                             <input id="customFile" name="image" type="file"
                                 class="custom-file-input @error('image') is-invalid @enderror bg-color-transparent">
 
@@ -89,21 +89,21 @@
         $('.custom-file-input').on('change', function() {
             var input = this;
             var url  = $(this).val(); 
-            var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+
             if (input.files && input.files[0]) 
-                    {
-                        //  The FileReader function returns the file’s contents
-                        var reader = new FileReader();
-                        reader.onload = function (e) {
-                            console.log(e);
-                        $('#img').attr('src', e.target.result);
-                        $('#img').attr('style',"width:100px");
-                        
-                        }
-                    // The readAsDataURL method is used to read the contents of the specified File.
-                    reader.readAsDataURL(input.files[0]);
-                    }
-                    
+            {
+                // The FileReader function returns the file’s contents
+                var reader = new FileReader(); // step1
+                reader.onload = function (e) { // step3
+                    console.log(e);
+                $('#img').attr('src', e.target.result);
+                $('#img').attr('style',"width:100px");
+                
+                }
+                // The readAsDataURL method is used to read the contents of the specified File.
+                reader.readAsDataURL(input.files[0]); // step2
+            }
+            
         });
     });
 </script>

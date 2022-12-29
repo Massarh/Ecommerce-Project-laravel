@@ -37,7 +37,7 @@
     <div class="col-lg-10">
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('store.update', [$category->id]) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('store.update', [$category->slug]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     {!! Toastr::message() !!}

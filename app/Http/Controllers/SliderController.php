@@ -53,10 +53,14 @@ class SliderController extends Controller
     //--------------------------------------------------------
 
     // for superadmin only
-    public function destroy($id)
+    public function destroy($sliderId)
     {
         if (auth()->user()->user_role == 'superadmin') {
-            Slider::find($id)->delete();
+            $slider = Slider::find($sliderId);
+            if (!$slider) {
+                abort(404);
+            }
+            $slider->delete();
 
             Toastr::success('Image deleted successfully', 'success');
             return redirect()->back();

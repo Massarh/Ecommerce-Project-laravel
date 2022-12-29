@@ -95,7 +95,7 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
     // OrderController 
     Route::get('/orders', [OrderController::class, 'userOrder'])->name('order.index');
     Route::get('/store-order', [OrderController::class, 'storeOrder'])->name('order.store');
-    Route::get('/orders/{orderid}', [OrderController::class, 'viewUserOrder'])->name('user.order');  // 
+    Route::get('/orders/{orderid}', [OrderController::class, 'viewUserOrder'])->name('user.order'); 
     Route::get('/store-order-item/{categorySlug}', [OrderController::class, 'viewStoreItem'])->name('item.order');
 
     // SliderController 

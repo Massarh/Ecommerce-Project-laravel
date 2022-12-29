@@ -29,6 +29,17 @@ class OrderController extends Controller
     // for four user_role
     public function orderItems($orderId)
     {
+        $orders = auth()->user()->orders;
+        $orderIds = [];
+        foreach ($orders as $key => $order) {
+            array_push($orderIds, $order->id);
+        }
+        $isLegal = in_array($orderId, $orderIds);
+
+        if (!$isLegal) {
+            abort(403);
+        }
+
         $order = Order::find($orderId);
 
         $orderItems = OrderItem::where('order_id', $orderId)->get();
@@ -36,7 +47,7 @@ class OrderController extends Controller
     }
 
     //////////////////////////////////////////////////////////////
-    /////////////////For Admin///////////////////////////////////
+    /////////////////////////For Admin///////////////////////////
     ////////////////////////////////////////////////////////////
 
     // for superadmin only
@@ -54,9 +65,12 @@ class OrderController extends Controller
     // for superadmin only
     public function viewUserOrder($orderId)
     {
+        // error here
         if (auth()->user()->user_role == 'superadmin') {
-
-            $order = Order::with('orderItem')->find($orderId);
+            $order = Order::with('orderItem')->where('id', $orderId)->first();
+            if (!$order) {
+                abort(404);
+            }
             return view('admin.order.show', compact('order'));
         }
         abort(403);
@@ -84,6 +98,7 @@ class OrderController extends Controller
     // for superadmin , admin , employee
     public function viewStoreItem($categorySlug, Request $request)
     {
+        // here
         $category = Category::where('slug', $categorySlug)->first();
 
         if (auth()->user()->user_role == 'admin' || auth()->user()->user_role == 'employee') {

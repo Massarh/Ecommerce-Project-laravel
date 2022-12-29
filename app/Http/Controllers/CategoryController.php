@@ -14,15 +14,11 @@ class CategoryController extends Controller
     // Superadmin , Admin , Employee
     public function index()
     {
-        $currentUser = auth()->user();
+        if (auth()->user()->user_role == 'admin' || auth()->user()->user_role == 'employee') {
+            $category = Category::find(auth()->user()->category_id);
 
-        if ($currentUser->user_role == 'admin' || $currentUser->user_role == 'employee') {
-            $user = User::with('category')
-                ->where('id', $currentUser->id)
-                ->first();
-            $category = $user->category;
             return view('admin.category.index', compact('category'));
-        } elseif ($currentUser->user_role == 'superadmin') {
+        } elseif (auth()->user()->user_role == 'superadmin') {
             $categories = Category::get();
             return view('admin.category.index', compact('categories'));
         }
@@ -76,10 +72,14 @@ class CategoryController extends Controller
     // ----------------------------------------------------------------------------
 
     // for admin only
-    public function edit($id)
+    public function edit($categorySlug)
     {
         if (auth()->user()->user_role == 'admin') {
-            $category = Category::find($id);
+
+            if (auth()->user()->category->slug != $categorySlug) {
+                abort(403);
+            }
+            $category = Category::where("slug", $categorySlug)->first();
             return view('admin.category.edit', compact('category'));
         }
         abort(403);
@@ -87,7 +87,7 @@ class CategoryController extends Controller
     // ----------------------------------------------------------------------------
 
     // for admin only
-    public function update(Request $request, $id)
+    public function update(Request $request, $categorySlug)
     {
         if (auth()->user()->user_role == 'admin') {
             $request->validate([
@@ -95,7 +95,11 @@ class CategoryController extends Controller
                 'description' => 'required',
             ]);
 
-            $category = Category::find($id);
+            if (auth()->user()->category->slug != $categorySlug) {
+                abort(403);
+            }
+            $category = Category::where("slug", $categorySlug)->first();
+
             if ($request->file('image')) {
                 $image = $request->file('image')->store('public/files');
                 Storage::delete($category->image);
@@ -116,18 +120,19 @@ class CategoryController extends Controller
 
     // ----------------------------------------------------------------------------
     //  for superadmin only
-    public function destroy($id)
+    public function destroy($categorySlug)
     {
         if (auth()->user()->user_role == 'superadmin') {
-            $category = Category::find($id);
-            $filename = $category->image;
-            $category->delete();
+            $category = Category::where("slug", $categorySlug)->first();
+            if (!$category) {
+                abort(404);
+            }
             // Delete the image from a folder files [public\storage\files\...]
-            Storage::delete($filename);
+            Storage::delete($category->image);
+            $category->delete();
             Toastr::success('Store deleteed successfully', 'success');
             return redirect()->route('store.index');
         }
         abort(403);
     }
-
 }

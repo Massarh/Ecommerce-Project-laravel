@@ -60,6 +60,7 @@ class UserController extends Controller
 
     // for superadmin only
     public function viewAdminAndEmployee($categoryId)
+        // error here
     {
         $adminsAndEmployees = User::where('category_id', $categoryId)->get();
 

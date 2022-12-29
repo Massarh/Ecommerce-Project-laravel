@@ -73,7 +73,7 @@
                                         <td>{{ $category->description }}</td>
                                         @if(auth()->user()->user_role=='admin')   
                                             <td> 
-                                                <a href=" {{route('store.edit', [$category->id])}} ">
+                                                <a href=" {{route('store.edit', [$category->slug])}} ">
                                                     <button class="bg-color-btn" style="color:#198754; "><i class="fas fa-edit"></i></button>
                                                 </a>
                                             </td>
@@ -99,7 +99,7 @@
                                             
                                             <!-- section Button-->
                                             <td> 
-                                                <a href=" {{route('section.getSubcategoryByCatId',[ $category->slug])}} ">
+                                                <a href=" {{route('section.getSubcategoryByCatId',[$category->slug])}} ">
                                                     <button class="btn" style="background-color: #232838; color:white; padding: 6px">section</button>
                                                 </a>
                                             </td>
@@ -114,7 +114,7 @@
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="exampleModal{{$category->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
-                                                        <form action=" {{ route('store.destroy', [$category->id]) }} " method="POST">
+                                                        <form action=" {{ route('store.destroy', [$category->slug]) }} " method="POST">
                                                             @csrf
                                                             @method('DELETE') 
                                                             <div class="modal-content">

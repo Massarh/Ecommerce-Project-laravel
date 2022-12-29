@@ -113,7 +113,7 @@ class ProductController extends Controller
     // ----------------------------------------------------------------------------
 
     // for admin only
-    public function edit($id)
+    public function edit($productId)
     {
         if (auth()->user()->user_role == 'admin') {
             $products = Product::where('category_id', auth()->user()->category_id)->get();
@@ -121,12 +121,12 @@ class ProductController extends Controller
             foreach ($products as $prod) {
                 array_push($productIds, $prod->id);
             }
-            $isLegal = in_array($id, $productIds);
+            $isLegal = in_array($productId, $productIds);
             if (!$isLegal) {
                 abort(403);
             }
 
-            $product = Product::find($id);
+            $product = Product::find($productId);
             return view('admin.product.edit', compact('product'));
         }
         abort(403);
@@ -135,7 +135,7 @@ class ProductController extends Controller
     // ----------------------------------------------------------------------------
 
     // for admin only
-    public function update(Request $request, $id)
+    public function update(Request $request, $productId)
     {
         if (auth()->user()->user_role == 'admin') {
             $request->validate([
@@ -145,7 +145,19 @@ class ProductController extends Controller
                 'additional_info' => 'required',
                 'subcategory'     => 'required',
             ]);
-            $product = Product::find($id);
+            // authorization
+            $products = Product::where('category_id', auth()->user()->category_id)->get();
+            $productIds = [];
+            foreach ($products as $prod) {
+                array_push($productIds, $prod->id);
+            }
+            $isLegal = in_array($productId, $productIds);
+            if (!$isLegal) {
+                abort(403);
+            }
+            //end authorization
+
+            $product = Product::find($productId);
 
             if ($request->file('image')) {
                 $image = $request->file('image')->store('public/product');
@@ -171,14 +183,26 @@ class ProductController extends Controller
     // ----------------------------------------------------------------------------
 
     // for admin only
-    public function destroy($id)
+    public function destroy($productId)
     {
         if (auth()->user()->user_role == 'admin') {
-            $product = Product::find($id);
-            $filename = $product->image;
-            $product->delete();
+            // authorization
+            $products = Product::where('category_id', auth()->user()->category_id)->get();
+            $productIds = [];
+            foreach ($products as $prod) {
+                array_push($productIds, $prod->id);
+            }
+            $isLegal = in_array($productId, $productIds);
+            if (!$isLegal) {
+                abort(403);
+            }
+            //end authorization
+
+            $product = Product::find($productId);
+
             // Delete the image from a folder product [public\storage\product\...]
-            Storage::delete($filename);
+            Storage::delete($product->image);
+            $product->delete();
 
             Toastr::success('Product deleted successfully', 'success');
             return redirect()->route('product.index');
