@@ -21,8 +21,9 @@ class CategoryController extends Controller
         } elseif (auth()->user()->user_role == 'superadmin') {
             $categories = Category::get();
             return view('admin.category.index', compact('categories'));
+        } else {
+            abort(403);
         }
-        abort(403);
     }
 
     // ----------------------------------------------------------------------------
@@ -31,10 +32,10 @@ class CategoryController extends Controller
     public function create()
     {
         if (auth()->user()->user_role == 'admin') {
-            $category = Category::all();
-            return view('admin.category.create', compact('category'));
+            return view('admin.category.create');
+        } else {
+            abort(403);
         }
-        abort(403);
     }
 
     // ----------------------------------------------------------------------------
@@ -60,13 +61,15 @@ class CategoryController extends Controller
             ]);
 
             // to update category_id in user
-            User::where('id', auth()->user()->id)
-                ->update(['category_id' => $category->id]);
+            $user = User::find(auth()->user()->id);
+
+            $user->update(['category_id' => $category->id]);
 
             Toastr::success('Stroe created successfully', 'success');
             return redirect()->route('store.index');
+        } else {
+            abort(403);
         }
-        abort(403);
     }
 
     // ----------------------------------------------------------------------------
@@ -90,20 +93,18 @@ class CategoryController extends Controller
     public function update(Request $request, $categorySlug)
     {
         if (auth()->user()->user_role == 'admin') {
+
             $request->validate([
                 'name'        => 'required',
                 'description' => 'required',
             ]);
 
-            if (auth()->user()->category->slug != $categorySlug) {
-                abort(403);
-            }
             $category = Category::where("slug", $categorySlug)->first();
-
             if ($request->file('image')) {
-                $image = $request->file('image')->store('public/files');
                 Storage::delete($category->image);
-                $category->image = $image;
+                // the name for the new image
+                $newImage = $request->file('image')->store('public/files');
+                $category->image = $newImage;
             }
 
             //things to be updated 
@@ -124,9 +125,7 @@ class CategoryController extends Controller
     {
         if (auth()->user()->user_role == 'superadmin') {
             $category = Category::where("slug", $categorySlug)->first();
-            if (!$category) {
-                abort(404);
-            }
+
             // Delete the image from a folder files [public\storage\files\...]
             Storage::delete($category->image);
             $category->delete();

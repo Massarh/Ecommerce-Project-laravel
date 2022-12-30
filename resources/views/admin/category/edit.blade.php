@@ -124,7 +124,6 @@
         $('.custom-file-input').on('change', function() {
             var input = this;
             var url  = $(this).val(); 
-            var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
             if (input.files && input.files[0]) 
                     {
                         //  The FileReader function returns the file’s contents

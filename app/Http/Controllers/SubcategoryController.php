@@ -32,14 +32,17 @@ class SubcategoryController extends Controller
         $category = Category::where('slug', $categorySlug)->first();
         if (auth()->user()->user_role === 'admin' || auth()->user()->user_role === 'employee') {
             $isLegal = auth()->user()->category->slug == $categorySlug;
+
+            // URL authorization 
             if (!$isLegal) {
                 abort(403);
             };
         } elseif (auth()->user()->user_role == 'superadmin') {
-            // URL validate
+            // URL authorization 
             if (!$category) {
                 abort(404);
             }
+            // END URL authorization
         } else {
             // if the user is not superadmin or admin or customer 
             abort(403);
@@ -78,7 +81,7 @@ class SubcategoryController extends Controller
     {
         if (auth()->user()->user_role == 'superadmin') {
             $request->validate([
-                'name' => 'required|min:3',
+                'name' => 'required',
             ]);
 
             $subcategory = Subcategory::create([
@@ -90,12 +93,12 @@ class SubcategoryController extends Controller
             return redirect()->route('section.index');
         } else if (auth()->user()->user_role == 'admin') {
             $request->validate([
-                'subcategory' => 'required',
+                'subcategoryId' => 'required',
             ]);
 
             $subcategory = CategorySubcategory::create([
                 'category_id' => auth()->user()->category_id,
-                'subcategory_id' => $request->subcategory,
+                'subcategory_id' => $request->subcategoryId,
             ]);
             Toastr::success('Section created successfully', 'success');
             return redirect()->route('section.getSubcategoryByCatId', [auth()->user()->category->slug]);
@@ -109,39 +112,32 @@ class SubcategoryController extends Controller
     // for admin , superadmin 
     public function edit($subcategorySlug)
     {
-        $subcategory = Subcategory::where('slug', $subcategorySlug)->first();
+        $oldSubcategory = Subcategory::where('slug', $subcategorySlug)->first();
 
         if (auth()->user()->user_role == 'superadmin') {
-            // URL // URL authorization 
-            if (!$subcategory) {
+
+            // URL authorization
+            if (!$oldSubcategory) {
                 abort(404);
             }
-            $oldSubcategory = Subcategory::find($subcategory->id);
+            //END URL authorization 
 
             return view('admin.subcategory.superadmin-edit', compact('oldSubcategory'));
         } elseif (auth()->user()->user_role == 'admin') {
-            // URL authorization 
-            // URL validate 
-            $subcategories = auth()->user()->category->subcategory;
-            $subcategorySlugs = [];
-            foreach ($subcategories as $key => $subcat) {
-                array_push($subcategorySlugs, $subcat->slug);
-            }
 
-            $isLegal = in_array($subcategorySlug, $subcategorySlugs);
+            // URL authorization 
+            $subcategories = auth()->user()->category->subcategory;
+            $existedSubcategorySlugs = [];
+            foreach ($subcategories as $key => $subcategory) {
+                array_push($existedSubcategorySlugs, $subcategory->slug);
+            }
+            $isLegal = in_array($subcategorySlug, $existedSubcategorySlugs);
             if (!$isLegal) {
                 abort(403);
             }
+            //END URL authorization 
 
-            $oldSubcategory = Subcategory::find($subcategory->id);
-
-            $adminSubcategoryIds = [];
-            $adminSubcategories = auth()->user()->category->subcategory;
-            foreach ($adminSubcategories as $key => $adminSubcategory) {
-                array_push($adminSubcategoryIds, $adminSubcategory->id);
-            };
-
-            $restSubcategories = Subcategory::whereNotIn('id', $adminSubcategoryIds)->get();
+            $restSubcategories = Subcategory::whereNotIn('slug', $existedSubcategorySlugs)->get();
             return view('admin.subcategory.edit', compact('oldSubcategory', 'restSubcategories'));
         } else {
             abort(403);
@@ -155,13 +151,9 @@ class SubcategoryController extends Controller
     {
         if (auth()->user()->user_role === 'superadmin') {
             $request->validate([
-                'name' => 'required|min:3',
+                'name' => 'required',
             ]);
             $subcategory = Subcategory::find($oldSubcategoryId);
-
-            if (!$subcategory) {
-                abort(404);
-            }
 
             $subcategory->name = $request->name;
             $subcategory->save();
@@ -170,10 +162,10 @@ class SubcategoryController extends Controller
             return redirect()->route('section.index');
         } elseif (auth()->user()->user_role === 'admin') {
             $request->validate([
-                'subcategory' => 'required',
+                'subcategoryId' => 'required',
             ]);
-            $newSubcategoryId = $request->subcategory;
-            // check that new subcategory id exist is one of the unchoosen subcategory
+            $newSubcategoryId = $request->subcategoryId;
+            // check that new subcategory id exist and is not one of my subcategory
             //here
             // also check that old subcategory is one of his subcategory
             // here 
@@ -187,7 +179,7 @@ class SubcategoryController extends Controller
 
             $productsCount = Product::where('category_id', $categoryId)
                 ->where('subcategory_id', $oldSubcategoryId)->count();
-            if ($productsCount != 0) {
+            if ($productsCount) {
                 // you cant delete
                 $request->session()->flash('status', 'cannot update this section because it contains products.');
                 return redirect()->back();
@@ -239,7 +231,7 @@ class SubcategoryController extends Controller
             $categoryId = auth()->user()->category_id;
             $categorySubcategory = CategorySubcategory::where('category_id', $categoryId)->where('subcategory_id', $subcategoryId)->first();
             $categorySubcategory->delete();
-            // delete all products that related to this category and old subcategory 
+            // delete all products that related to this category and subcategory 
 
             $products = Product::where('category_id', $categoryId)->where('subcategory_id', $subcategoryId)->get();
             //   each delete all objects on products array

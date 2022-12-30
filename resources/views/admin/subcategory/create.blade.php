@@ -40,7 +40,7 @@
 
                             <div class="form-group mb-4 ">
                                 <label for="">Choose Section</label>
-                                <select name="subcategory" class="form-control @error('subcategory') is-invalid @enderror">
+                                <select name="subcategoryId" class="form-control @error('subcategoryId') is-invalid @enderror">
                                     <option value="">select </option>
 
                                     @foreach($restSubcategories as $key=>$subcategory)

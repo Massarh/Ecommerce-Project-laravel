@@ -13,38 +13,34 @@ use Brian2694\Toastr\Facades\Toastr;
 class UserController extends Controller
 {
 
-    public function index() //delete
-    {
-        $users = User::where('user_role', 'customer')->get();
-        return view('admin.user.index', compact('users'));
-    }
-
-    //--------------------------------------------------------
-
     // for superadmin only
     public function createAdminOrEmployee(Request $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            //unique users mean that the email is not exist in the database(new email).
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            //confirmed means that the two password is the same.
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'userRole' => ['required'],
-        ]);
+        if (auth()->user()->user_role == "superadmin") {
+            $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                //unique users mean that the email is not exist in the database(new email).
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                //confirmed means that the two password is the same.
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'userRole' => ['required'],
+            ]);
 
-        User::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-            'user_role' => $request['userRole'],
-            'category_id' => $request['categoryId'],
-        ]);
+            User::create([
+                'name' => $request['name'],
+                'email' => $request['email'],
+                'password' => Hash::make($request['password']),
+                'user_role' => $request['userRole'],
+                'category_id' => $request['categoryId'],
+            ]);
 
-        if ($request['categoryId']) {
-            return redirect()->route('admin.view', $request['categoryId']);
+            if ($request['categoryId']) {
+                return redirect()->route('admin.view', $request['categoryId']);
+            }
+            return redirect()->route('newAdmin.view');
+        } else {
+            abort(403);
         }
-        return redirect()->route('newAdmin.view');
     }
 
     //--------------------------------------------------------
@@ -52,19 +48,31 @@ class UserController extends Controller
     // for superadmin only
     public function viewStore()
     {
-        $categories = Category::get();
-        return view('admin.admin-and-employee.view-store', compact('categories'));
+        if (auth()->user()->user_role == "superadmin") {
+
+            $categories = Category::get();
+            return view('admin.admin-and-employee.view-store', compact('categories'));
+        } else {
+            abort(403);
+        }
     }
 
     //--------------------------------------------------------
 
     // for superadmin only
     public function viewAdminAndEmployee($categoryId)
-        // error here
+    // error here
     {
-        $adminsAndEmployees = User::where('category_id', $categoryId)->get();
+        if (auth()->user()->user_role == "superadmin") {
+            $adminsAndEmployees = User::where('category_id', $categoryId)->get();
+            if (!$adminsAndEmployees) {
+                abort(404);
+            }
 
-        return view('admin.admin-and-employee.view-admin-and-employee', compact('adminsAndEmployees'));
+            return view('admin.admin-and-employee.view-admin-and-employee', compact('adminsAndEmployees'));
+        } else {
+            abort(403);
+        }
     }
 
     //--------------------------------------------------------
@@ -72,27 +80,35 @@ class UserController extends Controller
     // for superadmin only
     public function deleteAdminOrEmployee($userId, Request $request)
     {
-        $adminOrEmployee = User::find($userId);
+        if (auth()->user()->user_role == "superadmin") {
 
-        if ($adminOrEmployee->user_role == 'employee') {
-
-            $adminOrEmployee->delete();
-        } else if ($adminOrEmployee->user_role == 'admin' && $adminOrEmployee->category_id) {
-
-            //  'from admin&employee';
-            $numberOfAdmin = User::where("category_id", $adminOrEmployee->category_id)->where("user_role", "admin")->count();
-            if ($numberOfAdmin > 1) {
-                $adminOrEmployee->delete();
-            } else {
-                $request->session()->flash('status', 'cannot delete the last admin in this store,please create a new admin before you try to delete him.');
+            $adminOrEmployee = User::find($userId);
+            if (!$adminOrEmployee) {
+                abort(404);
             }
-        } else if ($adminOrEmployee->user_role == 'admin' && !$adminOrEmployee->category_id) {
 
-            //  'from new admin';
-            $adminOrEmployee->delete();
+            if ($adminOrEmployee->user_role == 'employee') {
+
+                $adminOrEmployee->delete();
+            } else if ($adminOrEmployee->user_role == 'admin' && $adminOrEmployee->category_id) {
+
+                //  'from admin&employee';
+                $numberOfAdmin = User::where("category_id", $adminOrEmployee->category_id)->where("user_role", "admin")->count();
+                if ($numberOfAdmin > 1) {
+                    $adminOrEmployee->delete();
+                } else {
+                    $request->session()->flash('status', 'cannot delete the last admin in this store,please create a new admin before you try to delete him.');
+                }
+            } else if ($adminOrEmployee->user_role == 'admin' && !$adminOrEmployee->category_id) {
+
+                //  'from new admin';
+                $adminOrEmployee->delete();
+            }
+
+            return redirect()->back();
+        } else {
+            abort(403);
         }
-
-        return redirect()->back();
     }
 
     //--------------------------------------------------------
@@ -100,10 +116,14 @@ class UserController extends Controller
     // for superadmin only
     public function viewNewAdmin()
     {
-        $newAdmins = User::where("user_role", "admin")->where('category_id', null)
-            ->orWhere("user_role", "employee")->where('category_id', null)->get();
-        // return $newAdmins;
-        return view('admin.admin-and-employee.view-new-admin', compact('newAdmins'));
+        if (auth()->user()->user_role == "superadmin") {
+            $newAdmins = User::where("user_role", "admin")->where('category_id', null)
+                ->orWhere("user_role", "employee")->where('category_id', null)->get();
+            // return $newAdmins;
+            return view('admin.admin-and-employee.view-new-admin', compact('newAdmins'));
+        } else {
+            abort(403);
+        }
     }
 
     //--------------------------------------------------------

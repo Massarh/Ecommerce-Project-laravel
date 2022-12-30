@@ -49,8 +49,8 @@
                     
                     <div class="form-group mb-4 ">
                         <label for="">Choose Section</label>
-                        <select name="subcategory" class="form-control @error('subcategory') is-invalid @enderror">
-                            <option style="color:rgb(4, 249, 0)" value="{{$oldSubcategory->id}}">{{$oldSubcategory->name}}      (current) </option>
+                        <select name="subcategoryId" class="form-control @error('subcategoryId') is-invalid @enderror">
+                            <option style="color:rgba(28, 161, 37, 0.992)" value="{{$oldSubcategory->id}}">{{$oldSubcategory->name}}      (current) </option>
 
                             @foreach($restSubcategories as $key=>$subcategory)
                             <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
