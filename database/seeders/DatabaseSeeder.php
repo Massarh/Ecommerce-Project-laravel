@@ -395,6 +395,7 @@ class DatabaseSeeder extends Seeder
             'price' => 50.99,
             'description' => ' Fitted, calf-length dress in a soft rib knit made from a LivaEco™ viscose blend. Round neckline,',
             'additional_info' => ' cut-out sections at top, and long raglan sleeves with flared cuffs.',
+            'number_of_sold' => 2,
             'category_id' => 3,
             'subcategory_id' => 2
         ]);
@@ -404,6 +405,7 @@ class DatabaseSeeder extends Seeder
             'price' => 70.66,
             'description' => 'Fitted, calf-length dress in soft, rib-knit merino wool. Mock turtleneck, dropped shoulders, ',
             'additional_info' => 'long sleeves with gently flared cuffs. Gently flared skirt with a straight hem.',
+            'number_of_sold' => 1,
             'category_id' => 3,
             'subcategory_id' => 2
         ]);
@@ -597,6 +599,7 @@ class DatabaseSeeder extends Seeder
             'price' => 999.99,
             'description' => 'Glitter Shinny Wedding Dresses Plus Size Princess Spaghetti Straps ',
             'additional_info' => 'Bridal Formal Gowns Corset Wedding Gown 2022',
+            'number_of_sold' => 1,
             'category_id' => 11,
             'subcategory_id' => 8
         ]);
@@ -738,6 +741,7 @@ class DatabaseSeeder extends Seeder
             'price' =>  29.00,
             'description' => 'Short cardigan in a soft rib knit with wool content',
             'additional_info' => 'V-neck, decorative, bows in rhinestone chain, and concealed snap fasteners at front. Long, wide sleeves with close-fitting cuffs and a straight hem.',
+            'number_of_sold' => 2,
             'category_id' => 10,
             'subcategory_id' => 9
         ]);
@@ -994,6 +998,7 @@ class DatabaseSeeder extends Seeder
             'price' => 34.99,
             'description' => 'Derby shoes with open lacing at front. Canvas lining and insoles.',
             'additional_info' => 'Heel height 1 in.',
+            'number_of_sold' => 3,
             'category_id' => 9,
             'subcategory_id' => 6
         ]);
@@ -1021,6 +1026,7 @@ class DatabaseSeeder extends Seeder
             'price' => 50.00,
             'description' => 'Sneakers in mesh with faux leather details. Padded upper edge, padded tongue, and lacing at front.',
             'additional_info' => ' Jersey lining, piqué insoles, and chunky, patterned soles. Sole thickness 2 1/2 in.',
+            'number_of_sold' => 1,
             'category_id' => 9,
             'subcategory_id' => 6
         ]);
@@ -1141,6 +1147,7 @@ class DatabaseSeeder extends Seeder
             'price' => 50.20,
             'description' => 'Lace-up trainers.',
             'additional_info' => 'Chunky track soles.',
+            'number_of_sold' => 1,
             'category_id' => 4,
             'subcategory_id' => 6
         ]);
@@ -1252,6 +1259,7 @@ class DatabaseSeeder extends Seeder
             'price' => 5.00,
             'description' => 'POLKA DOT HEADBAND  Headband with',
             'additional_info' => ' a bow appliqué and a polka dot print.',
+            'number_of_sold' => 2,
             'category_id' => 5,
             'subcategory_id' => 5
         ]);
@@ -1534,6 +1542,7 @@ class DatabaseSeeder extends Seeder
             'price' => 25.00,
             'description' => 'Long sleeve T-shirt with a round neckline.  ',
             'additional_info' => 'This is additional info',
+            'number_of_sold' => 2,
             'category_id' => 7,
             'subcategory_id' => 1 //men
         ]);
@@ -1545,6 +1554,7 @@ class DatabaseSeeder extends Seeder
             'price' => 129.00,
             'description' => ' Tubular shoulder straps and detachable crossbody strap. Decorative seams.  ',
             'additional_info' => 'Rectangular leather shoulder bag.',
+            'number_of_sold' => 1,
             'category_id' => 8,
             'subcategory_id' => 4
         ]);
@@ -1729,6 +1739,7 @@ class DatabaseSeeder extends Seeder
             'price' => 29.00,
             'description' => 'Metal necklace in the shape of leaves.  ',
             'additional_info' => ' Lobster clasp fastening. ',
+            'number_of_sold' => 1,
             'category_id' => 6,
             'subcategory_id' => 5
         ]);
@@ -1946,90 +1957,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        //orders
-        // Order::create([
-        //     'user_id'=>1,
-        //     'total_quantity'=>6,
-        //     'total_price'=>177
-        // ]);
-        // Order::create([
-        //     'user_id'=>1,
-        //     'total_quantity'=>8,
-        //     'total_price'=>179
-
-        // ]);
-        // OrderItem::create([
-        //     'name'=>'Teddy Mini Bag' ,
-        //     'image'=>'public/product/Teddy Mini Bag .jpg',
-        //     'price'=>12,
-        //     'quantity'=>1,
-        //     'order_id'=>1,
-        //     'category_id'=>4,
-        // ]);
-        // OrderItem::create([
-        //     'name'=>'Teddy Mini Bag' ,
-        //     'image'=>'public/product/Teddy Mini Bag .jpg',
-        //     'price'=>12,
-        //     'quantity'=>1,
-        //     'order_id'=>1,
-        //     'category_id'=>4,
-        // ]);
-        // OrderItem::create([
-        //     'name'=>'TRAINERS' ,
-        //     'image'=>'public/product/TRAINERS.jpg',
-        //     'price'=>50.2,
-        //     'quantity'=>7,
-        //     'order_id'=>1,
-        //     'category_id'=>4,
-        // ]);
-        // OrderItem::create([
-        //     'name'=>'POLKA DOT HEADBAND' ,
-        //     'image'=>'public/product/POLKA DOT HEADBAND.jpg',
-        //     'price'=>60,
-        //     'quantity'=>12,
-        //     'order_id'=>1,
-        //     'category_id'=>5,
-        // ]);
-        // OrderItem::create([
-        //     'name'=>'Cut-out Bodycon Dress' ,
-        //     'image'=>'public/product/Cut-out Bodycon Dress.jpg',
-        //     'price'=>50.99,
-        //     'quantity'=>8,
-        //     'order_id'=>1,
-        //     'category_id'=>3,
-        // ]);
-        // OrderItem::create([
-        //     'name'=>'Rhinestone-bow Rib-knit Cardigan' ,
-        //     'image'=>'public/product/Rhinestone-bow Rib-knit Cardigan 29.00.jpg',
-        //     'price'=>290,
-        //     'quantity'=>10,
-        //     'order_id'=>1,
-        //     'category_id'=>10,
-        // ]);
-        // OrderItem::create([
-        //     'name'=>'Beaded-collar Sweater ' ,
-        //     'image'=>'public/product/collar Sweater 29.70.jpg',
-        //     'price'=>267.3,
-        //     'quantity'=>9,
-        //     'order_id'=>1,
-        //     'category_id'=>10,
-        // ]);
-        // OrderItem::create([
-        //     'name'=>'KNIT TURTLENECK SWEATER' ,
-        //     'image'=>'public/product/KNIT TURTLENECK SWEATER.jpg',
-        //     'price'=>178.53,
-        //     'quantity'=>11,
-        //     'order_id'=>2,
-        //     'category_id'=>3,
-        // ]);
-
-
-
-
-
-
-
-
 
 
         //sliders
@@ -2050,7 +1977,7 @@ class DatabaseSeeder extends Seeder
 
 
         // User 
-        User::create([
+        User::create([ // 1
             'name' => 'Super ADMIN',
             'email' => 'superadmin1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2059,7 +1986,7 @@ class DatabaseSeeder extends Seeder
             'phone_number' => '0771496574',
             'user_role' => 'superadmin'
         ]);
-        User::create([
+        User::create([ // 2 
             'name' => 'H&M ADMIN1',
             'email' => 'h&madmin1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2069,7 +1996,7 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'admin',
             'category_id' => '1'
         ]);
-        User::create([
+        User::create([ // 3
             'name' => 'H&M EMPLOYEE1',
             'email' => 'h&memployee1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2079,7 +2006,7 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'employee',
             'category_id' => '1'
         ]);
-        User::create([
+        User::create([ // 4
             'name' => 'PRADA ADMIN1',
             'email' => 'pradaadmin1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2089,7 +2016,7 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'admin',
             'category_id' => '2'
         ]);
-        User::create([
+        User::create([ // 5 
             'name' => 'PRADA EMPLOYEE1',
             'email' => 'pradaemployee1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2099,7 +2026,7 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'employee',
             'category_id' => '2'
         ]);
-        User::create([
+        User::create([ // 6
             'name' => 'ZARA ADMIN1',
             'email' => 'zaraadmin1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2109,7 +2036,7 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'admin',
             'category_id' => '3'
         ]);
-        User::create([
+        User::create([ // 7
             'name' => 'ZARA EMPLOYEE1',
             'email' => 'zaraemployee1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2121,7 +2048,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        User::create([
+        User::create([ // 8
             'name' => 'MANGO ADMIN1',
             'email' => 'mangoadmin1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2131,7 +2058,7 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'admin',
             'category_id' => '4'
         ]);
-        User::create([
+        User::create([ // 9
             'name' => 'MANGO EMPLOYEE1',
             'email' => 'mangoemployee1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2141,7 +2068,7 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'employee',
             'category_id' => '4'
         ]);
-        User::create([
+        User::create([ // 10
             'name' => 'PRETTY LITTLE THING ADMIN1',
             'email' => 'prettylittlethingadmin1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2151,7 +2078,7 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'admin',
             'category_id' => '5'
         ]);
-        User::create([
+        User::create([ // 11
             'name' => 'PRETTY LITTLE THING EMPLOYEE1',
             'email' => 'prettylittlethingemployee1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2161,7 +2088,7 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'employee',
             'category_id' => '5'
         ]);
-        User::create([
+        User::create([ // 12
             'name' => 'DOLCE & GABBANA ADMIN1',
             'email' => 'dolce&gabbanaadmin1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2171,7 +2098,7 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'admin',
             'category_id' => '6'
         ]);
-        User::create([
+        User::create([ // 13 
             'name' => 'DOLCE & GABBANA EMPLOYEE1',
             'email' => 'dolce&gabbanaemployee1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2181,7 +2108,7 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'employee',
             'category_id' => '6'
         ]);
-        User::create([
+        User::create([ // 14 
             'name' => 'CHRISTIAN DIOR ADMIN1',
             'email' => 'christiandioradmin1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2191,7 +2118,7 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'admin',
             'category_id' => '7'
         ]);
-        User::create([
+        User::create([ // 15
             'name' => 'CHRISTIAN DIOR EMPLOYEE1',
             'email' => 'christiandioremployee1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2201,7 +2128,7 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'employee',
             'category_id' => '7'
         ]);
-        User::create([
+        User::create([ // 16
             'name' => 'GUCCI ADMIN1',
             'email' => 'gucciadmin1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2211,7 +2138,7 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'admin',
             'category_id' => '8'
         ]);
-        User::create([
+        User::create([ // 17
             'name' => 'GUCCI EMPLOYEE1',
             'email' => 'gucciemployee1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2221,7 +2148,7 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'employee',
             'category_id' => '8'
         ]);
-        User::create([
+        User::create([ // 18 
             'name' => 'DARAGHMEH ADMIN1',
             'email' => 'draghmehadmin1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2231,7 +2158,7 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'admin',
             'category_id' => '9'
         ]);
-        User::create([
+        User::create([ // 19
             'name' => 'DARAGHMEH EMPLOYEE1',
             'email' => 'draghmehemployee1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2241,7 +2168,7 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'employee',
             'category_id' => '9'
         ]);
-        User::create([
+        User::create([ // 20
             'name' => 'CHOCOLATE ADMIN1',
             'email' => 'shechocolateadmin1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2251,7 +2178,7 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'admin',
             'category_id' => '10'
         ]);
-        User::create([
+        User::create([ // 21
             'name' => 'CHOCOLATE EMPLOYEE1',
             'email' => 'shechocolateemployee1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2261,7 +2188,7 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'employee',
             'category_id' => '10'
         ]);
-        User::create([
+        User::create([ // 22 
             'name' => 'VICTORIA ADMIN1',
             'email' => 'victoriaadmin1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2271,7 +2198,7 @@ class DatabaseSeeder extends Seeder
             'user_role' => 'admin',
             'category_id' => '11'
         ]);
-        User::create([
+        User::create([ // 23
             'name' => 'VICTORIA EMPLOYEE1',
             'email' => 'victoriaemployee1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2282,7 +2209,7 @@ class DatabaseSeeder extends Seeder
             'category_id' => '11'
         ]);
 
-        User::create([
+        User::create([ // 24 
             'name' => 'customer1',
             'email' => 'customer1@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2291,7 +2218,7 @@ class DatabaseSeeder extends Seeder
             'phone_number' => '0777777777',
             'user_role' => 'customer'
         ]);
-        User::create([
+        User::create([ // 25 
             'name' => 'customer2',
             'email' => 'customer2@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2300,7 +2227,7 @@ class DatabaseSeeder extends Seeder
             'phone_number' => '0777777777',
             'user_role' => 'customer'
         ]);
-        User::create([
+        User::create([ // 26
             'name' => 'customer3',
             'email' => 'customer3@gmail.com',
             'password' => bcrypt('123456789'),
@@ -2308,6 +2235,145 @@ class DatabaseSeeder extends Seeder
             'address' => 'JORDAN',
             'phone_number' => '0777777777',
             'user_role' => 'customer'
+        ]);
+
+
+
+        //orders
+        //order 1 for superadmin 
+        Order::create([ //done
+            'user_id' => 1,
+            'total_quantity' => 5,
+            'total_price' => 162.18
+        ]);
+
+        OrderItem::create([ //done
+            'name' => 'TRAINERS',
+            'image' => 'public/product/TRAINERS.jpg',
+            'price' => 50.20,
+            'quantity' => 1,
+            'order_id' => 1,
+            'category_id' => 4,
+        ]);
+        OrderItem::create([ //done
+            'name' => 'POLKA DOT HEADBAND',
+            'image' => 'public/product/POLKA DOT HEADBAND.jpg',
+            'price' => 5.00,
+            'quantity' => 2,
+            'order_id' => 1,
+            'category_id' => 5,
+        ]);
+        OrderItem::create([ //done
+            'name' => 'Cut-out Bodycon Dress',
+            'image' => 'public/product/Cut-out Bodycon Dress.jpg',
+            'price' => 50.99,
+            'quantity' => 2,
+            'order_id' => 1,
+            'category_id' => 3,
+        ]);
+
+        //order 2 for zara admin 
+        Order::create([//done
+            'user_id' => 6,
+            'total_quantity' => 3,
+            'total_price' => 1053.99
+        ]);
+
+        OrderItem::create([  //done
+            'name' => 'JANE',
+            'image' => 'public/product/JANE 999.99.jpg',
+            'price' => 999.99,
+            'quantity' => 1,
+            'order_id' => 2,
+            'category_id' => 11,
+        ]);
+        OrderItem::create([ //done
+            'name' => 'NECKLACE WITH METAL LEAVES',
+            'image' => 'public/product/1cc.jpg',
+            'price' => 29.00,
+            'quantity' => 1,
+            'order_id' => 2,
+            'category_id' => 6,
+        ]);
+        OrderItem::create([ //done
+            'name' => 'TEXTURED T-SHIRT',
+            'image' => 'public/product/6.jpg',
+            'price' => 25.00,
+            'quantity' => 1,
+            'order_id' => 2,
+            'category_id' => 7,
+        ]);
+
+        //order 3 for customer2
+        Order::create([ //done
+            'user_id' => 25,
+            'total_quantity' => 5,
+            'total_price' => 212.99
+        ]);
+
+        OrderItem::create([ //done
+            'name' => 'Rhinestone-bow Rib-knit Cardigan',
+            'image' => 'public/product/Rhinestone-bow Rib-knit Cardigan 29.00.jpg',
+            'price' => 29.00,
+            'quantity' => 2,
+            'order_id' => 3,
+            'category_id' => 10,
+        ]);
+        OrderItem::create([ //done
+            'name' => 'Derby Shoes',
+            'image' => 'public/product/Derby Shoes 34.99.jpg',
+            'price' => 34.99,
+            'quantity' => 1,
+            'order_id' => 3,
+            'category_id' => 9,
+        ]);
+        OrderItem::create([ //done
+            'name' => 'Sneakers ',
+            'image' => 'public/product/Sneakers 50.00.jpg',
+            'price' => 50.00,
+            'quantity' => 1,
+            'order_id' => 3,
+            'category_id' => 9,
+        ]);
+        OrderItem::create([ //done
+            'name' => 'Rib-knit Merino Wool Dress',
+            'image' => 'public/product/Rib-knit Merino Wool Dress.jpg',
+            'price' => 70.66,
+            'quantity' => 1,
+            'order_id' => 3,
+            'category_id' => 3,
+        ]);
+
+        //order 4 for customer 1
+        Order::create([ //done
+            'user_id' => 24,
+            'total_quantity' => 4,
+            'total_price' => 117.98
+        ]);
+
+        OrderItem::create([ 
+            'name' => 'Rectangular leather shoulder bag',
+            'image' => 'public/product/Rectangular leather shoulder bag.jpg',
+            'price' => 23.00,
+            'quantity' => 1,
+            'order_id' => 4,
+            'category_id' => 4,
+        ]);
+        OrderItem::create([ 
+            'name' => 'Derby Shoes',
+            'image' => 'public/product/Derby Shoes 34.99.jpg',
+            'price' => 34.99,
+            'quantity' => 2,
+            'order_id' => 4,
+            'category_id' => 9,
+        ]);
+        OrderItem::create([ 
+            'name' => 'TEXTURED T-SHIRT',
+            'image' => 'public/product/6.jpg',
+            'price' => 25.00,
+            'quantity' => 1,
+            'order_id' => 4,
+            'category_id' => 7,
         ]);
     }
 }
