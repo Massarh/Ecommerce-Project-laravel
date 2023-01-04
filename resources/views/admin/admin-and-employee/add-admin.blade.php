@@ -129,7 +129,7 @@
                             <select name="categoryId" class="form-control @error('categoryId') is-invalid @enderror">
                                 {{-- i think that it was error,check it please --}}
                                 <option value="">Select Store</option>
-                                @foreach (App\Models\Category::all() as $category)
+                                @foreach ($categories as $category)
                                 <option {{old('categoryId') == $category->id ? 'selected' : '' }} value="{{ $category->id
                                     }}">{{ $category->name }}</option>
                                 @endforeach

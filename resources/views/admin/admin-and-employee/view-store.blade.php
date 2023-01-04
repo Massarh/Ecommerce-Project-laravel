@@ -60,7 +60,7 @@
                                     <td></td>
                                     <td></td>
                                     <td>
-                                        <a href=" {{route('admin.view',[ $category->id])}} ">
+                                        <a href=" {{route('admin.view',[ $category->slug])}} ">
                                             <button class="btn"  style="background-color: #232838;
                                             color: white;">view admins&employees</button>
                                         </a>

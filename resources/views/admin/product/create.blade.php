@@ -135,12 +135,12 @@
                         <div class="mb-3 col">
                             <div class="custom-file">
                                 <label>Choose Section</label>
-                                <select name="subcategory"
-                                    class="form-control @error('subcategory') is-invalid @enderror">
-                                    <option value="{{old('subcategory')}}">Select</option>
+                                <select name="subcategoryId"
+                                    class="form-control @error('subcategoryId') is-invalid @enderror">
+                                    <option value="">Select</option>
 
                                     @foreach ($subcategories as $subcategory)
-                                    <option {{old('subcategory')==$subcategory->id ? 'selected' : '' }} value="{{
+                                    <option {{old('subcategoryId')==$subcategory->id ? 'selected' : '' }} value="{{
                                         $subcategory->id }}">{{ $subcategory->name }}</option>
                                     @endforeach
                                 </select>

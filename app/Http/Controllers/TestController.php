@@ -20,13 +20,11 @@ class TestController extends Controller
         // $mas=[
         //     [
         //     "name"=>"me2",
-        //     "category_id"=>1,
         //     "created_at"=>now(),
         //     "updated_at"=>now()
         //     ],
         //   [
         //     "name"=>"me3",
-        //     "category_id"=>1,
         //     "created_at"=>now(),
         //     "updated_at"=>now()
         //   ]

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Slider;
+use Illuminate\Support\Facades\Storage;
 use Brian2694\Toastr\Facades\Toastr;
 
 class SliderController extends Controller
@@ -57,9 +58,7 @@ class SliderController extends Controller
     {
         if (auth()->user()->user_role == 'superadmin') {
             $slider = Slider::find($sliderId);
-            if (!$slider) {
-                abort(404);
-            }
+            Storage::delete($slider->image);
             $slider->delete();
 
             Toastr::success('Image deleted successfully', 'success');

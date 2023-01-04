@@ -49,7 +49,7 @@ Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
 Route::post('/products/{product}', [CartController::class, 'updateCart'])->name('cart.update');
 Route::post('/product/{product}', [CartController::class, 'removeCart'])->name('cart.remove');
 //payment 
-Route::get('/checkout/{amount}', [CartController::class, 'checkout'])->name('cart.checkout')->middleware('auth'); // must login
+Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout')->middleware('auth'); // must login
 Route::post('/charge', [CartController::class, 'charge'])->name('cart.charge');
 
 // OrderController
@@ -102,13 +102,11 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth', 'isAdmin']], function
     Route::resource('slider', SliderController::class);
 
 
-    // /UserController
-    Route::get('/add-admin', function () {
-        return view('admin.admin-and-employee.add-admin');
-    })->name('add.admin');
+    // UserController
+    Route::get('/add-admin', [UserController::class, 'viewCreateAdminOrEmployee'] )->name('add.admin');
     Route::post('/create-admin-or-employee', [UserController::class, 'createAdminOrEmployee'])->name('admin.create');
     Route::get('/view-store', [UserController::class, 'viewStore'])->name('store.view');
     Route::get('/view-new-admin', [UserController::class, 'viewNewAdmin'])->name('newAdmin.view');
-    Route::get('/view-admin-or-employee/{categoryId}', [UserController::class, 'viewAdminAndEmployee'])->name('admin.view');
-    Route::delete('/delete-admin-or-employee/{userId}', [UserController::class, 'deleteAdminOrEmployee'])->name('admin.delete');
+    Route::get('/view-admin-and-employee/{categoryId}', [UserController::class, 'viewAdminAndEmployee'])->name('admin.view');
+    Route::delete('/delete-admin-and-employee/{userId}', [UserController::class, 'deleteAdminOrEmployee'])->name('admin.delete');
 });

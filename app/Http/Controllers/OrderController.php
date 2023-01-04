@@ -9,14 +9,12 @@ use App\Models\OrderItem;
 
 class OrderController extends Controller
 {
-    //--------------------------------------------------------
-
     // for four user_role
 
     // For Loggedin User
     public function order()
     {
-        $orders = auth()->user()->orders;
+        $orders = auth()->user()->orders()->latest()->get();
         if (count($orders) > 0) {
             return view('order', compact('orders'));
         } else {
@@ -29,6 +27,7 @@ class OrderController extends Controller
     // for four user_role
     public function orderItems($orderId)
     {
+        // URL AUTHORIZATION
         $orders = auth()->user()->orders;
         $orderIds = [];
         foreach ($orders as $key => $order) {
@@ -39,10 +38,10 @@ class OrderController extends Controller
         if (!$isLegal) {
             abort(403);
         }
-
+        //END URL AUTHORIZATION
         $order = Order::find($orderId);
 
-        $orderItems = OrderItem::where('order_id', $orderId)->get();
+        $orderItems = $order->orderItem;
         return view('order-item', compact('orderItems', 'order'));
     }
 
@@ -67,10 +66,12 @@ class OrderController extends Controller
     {
         // error here
         if (auth()->user()->user_role == 'superadmin') {
-            $order = Order::with('orderItem')->where('id', $orderId)->first();
+            $order = Order::with('orderItem')->find($orderId);
+            // URL AUTHORIZATION
             if (!$order) {
                 abort(404);
             }
+            //END URL AUTHORIZATION
             return view('admin.order.show', compact('order'));
         }
         abort(403);
@@ -88,6 +89,7 @@ class OrderController extends Controller
                 $query->where('user_role', 'admin');
                 $query->orderBy('created_at', 'desc');
             }])->get();
+
             return view('admin.order.store-order', compact('categories'));
         }
         abort(403);
@@ -106,11 +108,14 @@ class OrderController extends Controller
             if (!$isLegal) {
                 abort(403);
             }
-        } elseif (auth()->user()->user_role == 'superadmin') {
 
+        } elseif (auth()->user()->user_role == 'superadmin') {
+            // URL AUTHORIZATION
             if (!$category) {
                 abort(404);
             }
+            // END URL AUTHORIZATION
+
         } else {
             abort(403);
         }
@@ -126,7 +131,7 @@ class OrderController extends Controller
             $storeItems = OrderItem::where('created_at', '<=', $request->todate . " 23:59:59")
                 ->where('category_id', $categoryId)->get();
         } else {
-            $storeItems = OrderItem::where('category_id', $categoryId)->get();
+            $storeItems = $category->orderItem;
         }
         return view('admin.order.store-order-item', compact('storeItems'));
     }

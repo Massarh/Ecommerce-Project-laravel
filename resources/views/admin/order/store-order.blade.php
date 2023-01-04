@@ -45,12 +45,12 @@
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->user[0]->email }}</td> 
                                         <td><a href="{{route('item.order', [$category->slug])}}"> <button class="btn"  style="background-color: #232838;
-                                            color: white;">View Order Items</button>
+                                            color: white;">Ordered Items</button>
                                         </a></td> 
                                     </tr>
                                 @endforeach
                             @else 
-                                <td>No any stores to show</td>
+                                <td>No Stores To Show</td>
                             @endif
                             
                         </tbody>

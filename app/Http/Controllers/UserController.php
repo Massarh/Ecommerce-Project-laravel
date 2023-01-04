@@ -12,6 +12,11 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class UserController extends Controller
 {
+    public function viewCreateAdminOrEmployee(Request $request)
+    {
+        $categories = Category::get();
+        return view('admin.admin-and-employee.add-admin', compact('categories'));
+    }
 
     // for superadmin only
     public function createAdminOrEmployee(Request $request)
@@ -34,8 +39,10 @@ class UserController extends Controller
                 'category_id' => $request['categoryId'],
             ]);
 
-            if ($request['categoryId']) {
-                return redirect()->route('admin.view', $request['categoryId']);
+            $categoryId = $request['categoryId'];
+            if ($categoryId) {
+                $category = Category::find($categoryId);
+                return redirect()->route('admin.view', $category->slug);
             }
             return redirect()->route('newAdmin.view');
         } else {
@@ -60,15 +67,19 @@ class UserController extends Controller
     //--------------------------------------------------------
 
     // for superadmin only
-    public function viewAdminAndEmployee($categoryId)
+    public function viewAdminAndEmployee($categorySlug)
     // error here
     {
         if (auth()->user()->user_role == "superadmin") {
-            $adminsAndEmployees = User::where('category_id', $categoryId)->get();
-            if (!$adminsAndEmployees) {
+            $category = Category::where('slug', $categorySlug)->first();
+
+            // URL AUTHORIZATION
+            if (!$category) {
                 abort(404);
             }
+            //END URL AUTHORIZATION
 
+            $adminsAndEmployees = $category->user;
             return view('admin.admin-and-employee.view-admin-and-employee', compact('adminsAndEmployees'));
         } else {
             abort(403);
@@ -83,9 +94,6 @@ class UserController extends Controller
         if (auth()->user()->user_role == "superadmin") {
 
             $adminOrEmployee = User::find($userId);
-            if (!$adminOrEmployee) {
-                abort(404);
-            }
 
             if ($adminOrEmployee->user_role == 'employee') {
 
@@ -117,8 +125,8 @@ class UserController extends Controller
     public function viewNewAdmin()
     {
         if (auth()->user()->user_role == "superadmin") {
-            $newAdmins = User::where("user_role", "admin")->where('category_id', null)
-                ->orWhere("user_role", "employee")->where('category_id', null)->get();
+            $newAdmins = User::where("user_role", "admin")->whereNull('category_id')
+                ->orWhere("user_role", "employee")->whereNull('category_id')->get();
             // return $newAdmins;
             return view('admin.admin-and-employee.view-new-admin', compact('newAdmins'));
         } else {
@@ -132,9 +140,9 @@ class UserController extends Controller
     public function showUserProfile()
     {
         $user = auth()->user();
-        if (auth()->user()->user_role == 'superadmin' || auth()->user()->user_role == 'admin' || auth()->user()->user_role == 'employee') {
+        if( $user->user_role == 'superadmin' ||  $user->user_role == 'admin' ||  $user->user_role == 'employee') {
             return view('admin.profile.profile', compact('user'));
-        } elseif (auth()->user()->user_role == 'customer') {
+        } elseif ($user->user_role == 'customer') {
             return view('customerProfile.profile', compact('user'));
         }
     }
@@ -155,6 +163,7 @@ class UserController extends Controller
     // for four user_role
     public function updateProfile(Request $request)
     {
+        // MUST EDIT AND CAN BE NULL ALSO U CAN MAKE IT NULL AFTER YOU GIVE IT A VALUE.
         $request->validate([
             'name'    => ['nullable', 'max:255'],
             'phone_number' => ['nullable', 'digits:10', 'numeric'],
@@ -162,7 +171,7 @@ class UserController extends Controller
             'image'   => ['nullable'], //, 'mimes:png,jpg'
         ]);
 
-        // collect(request()->all())->filter() dosenot show null vale
+        // collect(request()->all())->filter() dosenot show null value
         // except(...) prevents showing same vales
         $filteredRequest = collect(request()->all())->filter()->except(
             '_token',

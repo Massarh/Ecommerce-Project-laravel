@@ -22,9 +22,7 @@ class CartController extends Controller
         } else {
             $cart = new Cart();
         }
-        //how product is exist
         $cart->add($product);
-
         session()->put('cart', $cart);
 
         Toastr::success('Product added to cart', 'success');
@@ -78,41 +76,33 @@ class CartController extends Controller
 
     //--------------------------------------------------------
 
-    public function checkout($amount)
+    public function checkout()
     {
         if (session()->has('cart')) {
             $cart = new Cart(session()->get('cart'));
         } else {
-            $cart = null;
+            abort(403);
         }
-        return view('checkout', compact('amount', 'cart'));
+        return view('checkout', compact('cart'));
     }
 
     //--------------------------------------------------------
 
     public function charge(Request $request)
     {
+        $cart = new Cart(session()->get('cart'));
+        $amount = $cart->totalPrice;
         //return $request->stripeToken; // RETURN -> tok_1M28ryDRUJBpF05ylfYIkU6S
         $charge = Stripe::charges()->create([
             'currency' => "USD",
             'source' => $request->stripeToken,
-            'amount' => $request->amount, // from <input name="amount" ...> in checkout.blade.php 
-            'description' => 'Test'
+            'amount' => $amount,
+            'description' => 'Stripe Payment',
         ]);
-
         $chargeId = $charge['id'];
-
-        if (session()->has('cart')) {
-            $cart = new Cart(session()->get('cart'));
-        } else {
-            $cart = null;
-        }
-
         // ORDER
         if ($chargeId) {
             Mail::to(auth()->user()->email)->send(new Sendmail($cart));
-            //should be edited
-            $cart = session()->get('cart');
             $order = Order::create([
                 'user_id' => auth()->user()->id,
                 'total_price' => $cart->totalPrice,

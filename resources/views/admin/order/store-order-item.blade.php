@@ -28,6 +28,7 @@
         <div class="card">
             <!-- Simple Tables -->
 
+            @if (count($storeItems)>0)
             <form action="{{route('item.order', [$storeItems[0]->category->slug])}}" method="GET">
                 @csrf
                 <div class="card-header py-3 calendar-parent">
@@ -58,6 +59,7 @@
 
                 </div>
             </form>
+            @endif
 
             <div class="card-body">
 
@@ -75,6 +77,7 @@
                         </thead>
                         <tbody>
 
+                            @if (count($storeItems)>0)
                             <?php $totalPrice = 0 ?>
                             @foreach ($storeItems as $key=>$item)
 
@@ -102,6 +105,9 @@
                                 <td></td>
                             </tr>
                         </tfoot>
+                        @else 
+                            <td>No Order Items To Show</td>
+                        @endif
 
                     </table>
                 </div>

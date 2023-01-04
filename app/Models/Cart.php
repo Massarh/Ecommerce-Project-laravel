@@ -14,6 +14,7 @@ class Cart extends Model
     public $totalPrice;
     public $totalQuantity; // Qty = > Quantity
 
+    // detrmine the shape of the object
     public function __construct($cart = null)
     {
         if ($cart) {
@@ -52,7 +53,7 @@ class Cart extends Model
     public function updateQty($id, $qty)
     {
         $this->totalQuantity -= $this->items[$id]['qty'];
-        $this->totalPrice -= $this->items[$id]['price'] * $this->items[$id]['qty']; //?? 155
+        $this->totalPrice -= $this->items[$id]['price'] * $this->items[$id]['qty'];
 
         // add the item with new quantity
         $this->items[$id]['qty'] = $qty;

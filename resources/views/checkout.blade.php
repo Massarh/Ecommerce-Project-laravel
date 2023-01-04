@@ -168,8 +168,6 @@
                                                     </div>
                                                 </div>
 
-                                                <input type="hidden" name="amount" value="{{$amount}}">
-
                                                 {{-- Payment information --}}
                                                 <div class="mt-5" id="v-pills-payment" role="tabpanel"
                                                     aria-labelledby="v-pills-payment-tab">

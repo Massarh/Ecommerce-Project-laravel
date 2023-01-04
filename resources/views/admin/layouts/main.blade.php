@@ -25,8 +25,8 @@
             </div>
             <!-- Footer -->
             
+            @include('admin.layouts.footer')
         </div>
-        @include('admin.layouts.footer')
     </div>
 
     <!-- Right Sidebar -->

@@ -97,7 +97,7 @@
                     <div class="col" style="display: grid ; justify-content: end">
 
                         <div class="text-sm-end mt-2 mt-sm-0">
-                            <a href="{{route('cart.checkout', $cart->totalPrice)}}" class="btn"
+                            <a href="{{route('cart.checkout')}}" class="btn"
                                 style="background-color: #1A1A1A; color:#fff">
                                 <i class="mdi mdi-cart-arrow-right me-1"></i> Checkout </a>
                         </div>

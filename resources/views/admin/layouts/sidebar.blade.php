@@ -79,7 +79,7 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-calendar-multiple-check"></i>
-                        <span key="store-order-items">Store Order Items</span>
+                        <span key="store-order-items">Ordered Items</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
 
@@ -127,7 +127,7 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-package-variant-closed"></i>
-                        <span key="users-orders">Users Orders</span>
+                        <span key="users-orders">Orders</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
 
@@ -140,7 +140,7 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-calendar-multiple-check"></i>
-                        <span key="store-order-items">Store Order Items</span>
+                        <span key="store-order-items">Stores Ordered From</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
 
@@ -159,7 +159,7 @@
 
                         <li><a href="{{ route('store.view') }}" key="t-light-sidebar">View</a></li>
                         <li><a href="{{ route('add.admin') }}" key="t-light-sidebar">Create</a></li>
-                        <li><a href="{{ route('newAdmin.view')}}" key="t-light-sidebar">View New Admin</a></li>
+                        <li><a href="{{ route('newAdmin.view')}}" key="t-light-sidebar">View New Admin & Employee</a></li>
 
                     </ul>
                 </li>

@@ -79,9 +79,11 @@ class CategoryController extends Controller
     {
         if (auth()->user()->user_role == 'admin') {
 
+            // URL AUTHORIZATION
             if (auth()->user()->category->slug != $categorySlug) {
                 abort(403);
             }
+            //END URL AUTHORIZATION
             $category = Category::where("slug", $categorySlug)->first();
             return view('admin.category.edit', compact('category'));
         }
