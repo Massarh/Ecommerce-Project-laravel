@@ -214,9 +214,8 @@
                 </svg>
                 <h2 style="font-family: garamond Serif; font-style: italic!important;">
                     @go_ plaza</h2>
-                <p style="max-width: 550px; display: inline-block; font-size: 20px;">Like what you see? Shop the looks
-                    from your fave influencer of the moment
-                    straight from the ‘Gram.
+                <p style="max-width: 550px; display: inline-block; font-size: 20px;">Like what you see?
+                        Shop the looks from our top stores 
                 </p>
                 <div class="display-button" style="">
                     <a class="btn mt-2 button-margin"

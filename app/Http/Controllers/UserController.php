@@ -12,10 +12,15 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class UserController extends Controller
 {
+    // for superadmin only
     public function viewCreateAdminOrEmployee(Request $request)
     {
-        $categories = Category::get();
-        return view('admin.admin-and-employee.add-admin', compact('categories'));
+        if (auth()->user()->user_role == "superadmin") {
+            $categories = Category::get();
+            return view('admin.admin-and-employee.add-admin', compact('categories'));
+        } else {
+            abort(403);
+        }
     }
 
     // for superadmin only
@@ -68,7 +73,6 @@ class UserController extends Controller
 
     // for superadmin only
     public function viewAdminAndEmployee($categorySlug)
-    // error here
     {
         if (auth()->user()->user_role == "superadmin") {
             $category = Category::where('slug', $categorySlug)->first();
@@ -105,7 +109,7 @@ class UserController extends Controller
                 if ($numberOfAdmin > 1) {
                     $adminOrEmployee->delete();
                 } else {
-                    $request->session()->flash('status', 'cannot delete the last admin in this store,please create a new admin before you try to delete him.');
+                    $request->session()->flash('status', 'cannot delete the last admin in this store, please create a new admin before you try to delete him.');
                 }
             } else if ($adminOrEmployee->user_role == 'admin' && !$adminOrEmployee->category_id) {
 
@@ -140,7 +144,7 @@ class UserController extends Controller
     public function showUserProfile()
     {
         $user = auth()->user();
-        if( $user->user_role == 'superadmin' ||  $user->user_role == 'admin' ||  $user->user_role == 'employee') {
+        if ($user->user_role == 'superadmin' ||  $user->user_role == 'admin' ||  $user->user_role == 'employee') {
             return view('admin.profile.profile', compact('user'));
         } elseif ($user->user_role == 'customer') {
             return view('customerProfile.profile', compact('user'));
@@ -148,7 +152,7 @@ class UserController extends Controller
     }
 
     //--------------------------------------------------------
-
+    // Go back to this
     public function editProfile()
     {
         $user = User::find(auth()->user()->id);
@@ -160,6 +164,7 @@ class UserController extends Controller
     }
 
     //--------------------------------------------------------
+    // Go back to this
     // for four user_role
     public function updateProfile(Request $request)
     {

@@ -75,7 +75,7 @@
                                 </td>
 
                                 <td>
-                                    $ {{$product['price'] * $product['qty'] }} JOD
+                                    {{$product['price'] * $product['qty'] }} JOD
                                 </td>
                                 <td>
                                     <form action="{{route('cart.remove', $product['id'])}}" method="POST">
@@ -88,7 +88,7 @@
                                 </td>
                             </tr>
                             @endforeach
-                            <td colspan="5">Total Price: ${{$cart->totalPrice}}</td>
+                            <td colspan="5">Total Price: {{$cart->totalPrice}} JOD</td>
 
                         </tbody>
                     </table>

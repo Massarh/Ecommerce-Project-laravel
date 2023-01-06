@@ -38,7 +38,7 @@ class CartController extends Controller
         } else {
             $cart = null;
         }
-        // dd($cart);
+        // dd($cart->items);
         return view('cart', compact('cart'));
     }
 

@@ -64,8 +64,8 @@ class OrderController extends Controller
     // for superadmin only
     public function viewUserOrder($orderId)
     {
-        // error here
         if (auth()->user()->user_role == 'superadmin') {
+            // using 'Order' models not 'OrderItem' models Because I need Order for the totalPrice
             $order = Order::with('orderItem')->find($orderId);
             // URL AUTHORIZATION
             if (!$order) {
@@ -104,10 +104,12 @@ class OrderController extends Controller
         $category = Category::where('slug', $categorySlug)->first();
 
         if (auth()->user()->user_role == 'admin' || auth()->user()->user_role == 'employee') {
+            // URL AUTHORIZATION
             $isLegal = auth()->user()->category->slug == $categorySlug;
             if (!$isLegal) {
                 abort(403);
             }
+            // END URL AUTHORIZATION
 
         } elseif (auth()->user()->user_role == 'superadmin') {
             // URL AUTHORIZATION

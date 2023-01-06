@@ -180,22 +180,20 @@ class SubcategoryController extends Controller
             $productsCount = Product::where('category_id', $categoryId)
                 ->where('subcategory_id', $oldSubcategoryId)->count();
             if ($productsCount) {
-                // you cant delete
+                // you can't delete
                 $request->session()->flash('status', 'cannot update this section because it contains products.');
                 return redirect()->back();
             } else {
 
                 // delete link between category and old subcategory in jt 
-                $categorySubcategory = CategorySubcategory::where('category_id', $categoryId)->where(
-                    'subcategory_id',
-                    $oldSubcategoryId
-                )->first();
+                $categorySubcategory = CategorySubcategory::where('category_id', $categoryId)
+                    ->where('subcategory_id', $oldSubcategoryId)->first();
 
                 $categorySubcategory->delete();
 
                 // create new link between category and new subcategory in jt
                 $createcategorySubcategory = CategorySubcategory::create([
-                    'category_id' => $categoryId,
+                    'category_id'    =>  $categoryId,
                     'subcategory_id' =>  $newSubcategoryId
                 ]);
                 Toastr::success('Section updated successfully', 'success');

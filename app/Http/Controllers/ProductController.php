@@ -102,7 +102,7 @@ class ProductController extends Controller
                 'image'           => 'required|mimes:png,jpg',
                 'price'           => 'required|numeric',
                 'additional_info' => 'required',
-                'subcategoryId'     => 'required',
+                'subcategoryId'   => 'required',
             ]);
 
             $image = $request->file('image')->store('public/product');

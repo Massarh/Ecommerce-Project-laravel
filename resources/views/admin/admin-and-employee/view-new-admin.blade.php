@@ -87,7 +87,7 @@
                             @endforeach
 
                         @else 
-                            <td>No new admin created yet</td>
+                            <td>No new admin & employee created yet</td>
                         @endif
                             
                         </tbody>
