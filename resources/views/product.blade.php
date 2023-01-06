@@ -27,10 +27,9 @@
 
     @media(min-width:1350px) {
         .slider-image {
-            height:100vh;
+            height: 100vh;
         }
     }
-    
 </style>
 
 {{-- Nav --}}
@@ -91,6 +90,12 @@
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
+
+                {{-- new --}}
+                <img class="rounded-circle header-profile-user mt-1"
+                    src="{{ auth()->user()->image ?  Storage::url(auth()->user()->image):asset('/logo/user.png')}}"
+                    alt="profile image">
+                {{-- new --}}
 
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -215,7 +220,7 @@
                 <h2 style="font-family: garamond Serif; font-style: italic!important;">
                     @go_ plaza</h2>
                 <p style="max-width: 550px; display: inline-block; font-size: 20px;">Like what you see?
-                        Shop the looks from our top stores 
+                    Shop the looks from our top stores
                 </p>
                 <div class="display-button" style="">
                     <a class="btn mt-2 button-margin"

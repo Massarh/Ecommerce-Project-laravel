@@ -176,6 +176,7 @@
         </div>
     </div>
 </div>
-{{$products->links()}} {{--to make pagination --}}
+
+{{$products->onEachSide(1)->links()}} {{--to make pagination --}}
 
 @endsection

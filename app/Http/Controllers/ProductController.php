@@ -68,6 +68,25 @@ class ProductController extends Controller
 
     // ----------------------------------------------------------------------------
 
+    // for superadmin only
+    public function getProductBySubId($subcategorySlug)
+    {
+        if (auth()->user()->user_role == 'superadmin') {
+            $subcategory = Subcategory::where('slug', $subcategorySlug)->first();
+            // URL AUTHORIZATION
+            if (!$subcategory) {
+                abort(404);
+            }
+            //END  URL AUTHORIZATION
+            $products = $subcategory->product;
+            return view('admin.product.index', compact('products'));
+        } else {
+            abort(403);
+        }
+    }
+
+    // ----------------------------------------------------------------------------
+
     // for admin, employee
     public function index()
     {
@@ -142,7 +161,8 @@ class ProductController extends Controller
             //END URL AUTHORIZATION
 
             $product = Product::find($productId);
-            return view('admin.product.edit', compact('product'));
+            $subcategories = Category::find(auth()->user()->category_id)->subcategory()->where('subcategory_id', '!=', $product->subcategory->id)->get();
+            return view('admin.product.edit', compact('product', 'subcategories'));
         }
         abort(403);
     }

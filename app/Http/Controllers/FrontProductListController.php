@@ -72,7 +72,7 @@ class FrontProductListController extends Controller
                         ->orWhere('description', 'like', '%' . $search . '%')
                         ->orWhere('additional_info', 'like', '%' . $search . '%');
                 });
-            })->paginate(16);
+            })->paginate(16)->withQueryString();
         
         $price = $request->price;
         //  return $products;
@@ -114,7 +114,7 @@ class FrontProductListController extends Controller
                     ->orWhere('description', 'like', '%' . $search . '%')
                     ->orWhere('additional_info', 'like', '%' . $search . '%');
             });
-        })->paginate(16);
+        })->paginate(16)->withQueryString();
 
         $price = $request->price;
         return view('all-product', compact("products", "categories", "subcategories", "search", "price", "categoryId", "subcategoryId"));

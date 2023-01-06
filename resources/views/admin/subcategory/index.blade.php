@@ -11,7 +11,7 @@
             @if(auth()->user()->user_role=='superadmin')
             <ol class="breadcrumb m-0">
                 <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ url()->previous() }}">Stores Table</a></li>
+                <li class="breadcrumb-item"><a href="{{route('store.index')}}">Stores Table</a></li>
                 <li class="breadcrumb-item active" style="text-decoration-line: underline;">Sections Table</li>
             </ol>
             @endif
@@ -55,18 +55,19 @@
                         </thead>
 
                         <tbody>
-                        <!-- Admin & Employee -->
-                        @if (count($subcategories)>0)
-                        @foreach ($subcategories as $key=>$subcategory)
+                            <!-- Admin & Employee -->
+                            @if (count($subcategories)>0)
+                            @foreach ($subcategories as $key=>$subcategory)
                             <tr>
-                                <td>{{ $key+1 }}</td> 
+                                <td>{{ $key+1 }}</td>
                                 <td>{{ $subcategory->name }}</td>
                                 @if(auth()->user()->user_role=='superadmin')
                                 <td>{{ $category->name}}</td>
                                 @endif
 
                                 <td>
-                                    <a href=" {{route('product.getProductByCatAndSubId', ['storeSlug'=>$category->slug,'sectionSlug'=>$subcategory->slug])}}">
+                                    <a
+                                        href=" {{route('product.getProductByCatAndSubId', ['storeSlug'=>$category->slug,'sectionSlug'=>$subcategory->slug])}}">
                                         <button class="btn"
                                             style="background-color: #232838; color:white; padding:5px">products</button>
                                     </a>
@@ -76,15 +77,17 @@
                                 <!-- Button Edit -->
                                 <td>
                                     <a href=" {{route('section.edit', [$subcategory->slug])}} ">
-                                        <button class="bg-color-btn" style="color:#198754;"><i class="fas fa-edit"></i></button>
+                                        <button class="bg-color-btn" style="color:#198754;"><i
+                                                class="fas fa-edit"></i></button>
                                     </a>
                                 </td>
 
                                 <!-- Button Delete -->
                                 <td>
                                     <!-- Button trigger modal -->
-                                    <button class="bg-color-btn" type="button" data-toggle="modal" data-target="#exampleModal{{$subcategory->id}}" style="color: #dc3545;border:none">
-                                        <i class="mdi mdi-trash-can font-size-20"></i> 
+                                    <button class="bg-color-btn" type="button" data-toggle="modal" data-target="#exampleModal{{$subcategory->id}}"
+                                        style="color: #dc3545;border:none">
+                                        <i class="mdi mdi-trash-can font-size-20"></i>
                                     </button>
 
                                     <!-- Modal -->
@@ -97,7 +100,10 @@
                                                 @method('DELETE')
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel" style="white-space: pre-wrap;">Are you sure you want to delete? all products in this section will be removed from the store</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel"
+                                                            style="white-space: pre-wrap;">Are you sure you want to
+                                                            delete? all products in this section will be removed from
+                                                            the store</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
@@ -118,10 +124,10 @@
                                 @endif
                             </tr>
 
-                        @endforeach
-                        @else
-                        <td>No Store created yet</td>
-                        @endif
+                            @endforeach
+                            @else
+                            <td>No Section Created Yet</td>
+                            @endif
 
                         </tbody>
 

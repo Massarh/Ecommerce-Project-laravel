@@ -2,8 +2,7 @@
 
 <body data-sidebar="dark">
 
-    <div id="layout-wrapper" style="min-height:100vh; display:flex; flex-direction:column; 
-    justify-content:space-between;">
+    <div id="layout-wrapper">
 
         <!-- TopBar -->
         @include('admin.layouts.navbar')
@@ -14,7 +13,8 @@
         <!-- ================================================= -->
         <!-- Start right Content here -->
         <!-- ================================================== -->
-        <div class="main-content">
+        <div class="main-content" style="min-height:100vh; display:flex; flex-direction:column; 
+        justify-content:space-between;">
             <div class="page-content">
 
                 <!-- Container Fluid-->

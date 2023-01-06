@@ -135,6 +135,26 @@ class OrderController extends Controller
         } else {
             $storeItems = $category->orderItem;
         }
-        return view('admin.order.store-order-item', compact('storeItems'));
+        // return $storeItems;
+        // return $storeItems->groupBy('name');
+
+        $storeItems = $storeItems->groupBy('name')->map(function ($group) {
+            return [
+                'name' => $group->first()['name'],
+                'image' => $group->first()['image'],
+                'price' => $group->first()['price'],
+                'quantity' => $group->sum('quantity'),
+                'category_id' => $group->first()['category_id'],
+            ];
+        });
+        // return storeItems;
+
+        $filteredStoreItems = [];
+        foreach ($storeItems as $key => $item) {
+            array_push($filteredStoreItems, $item);
+        }
+        // return filteredStoreItems;
+
+        return view('admin.order.store-order-item', compact('filteredStoreItems', 'categorySlug'));
     }
 }

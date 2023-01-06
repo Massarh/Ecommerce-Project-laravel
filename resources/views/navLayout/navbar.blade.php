@@ -56,6 +56,12 @@
                     @csrf
                 </form>
 
+                {{-- new --}}
+                <img class="rounded-circle header-profile-user mt-1"
+                    src="{{ auth()->user()->image ?  Storage::url(auth()->user()->image):asset('/logo/user.png')}}"
+                    alt="profile image">
+                {{-- new --}}
+
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

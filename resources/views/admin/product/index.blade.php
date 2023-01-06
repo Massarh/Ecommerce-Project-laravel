@@ -9,31 +9,40 @@
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
             <h4 class="mb-sm-0 font-size-18">Products Table</h4>
             @if(auth()->user()->user_role=='superadmin')
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{route('store.index')}}">Stores Table</a></li> 
-                <li class="breadcrumb-item"><a href="{{ url()->previous() }}">Sections Table</a></li> 
-                <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Products Table</li>
-            </ol>
+                @if( app('router')->getRoutes()->match(app('request')->create(URL::previous()))->getName() == 'section.index')
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+                        <li class="breadcrumb-item">Section</li>
+                        <li class="breadcrumb-item active"><a href="{{route('section.index')}}">Sections Table</a></li>
+                        <li class="breadcrumb-item active" style="text-decoration-line: underline;">Products Table</li>
+                    </ol>
+                @else
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('store.index')}}">Stores Table</a></li> 
+                        <li class="breadcrumb-item"><a href="{{ url()->previous() }}">Sections Table</a></li> 
+                        <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Products Table</li>
+                    </ol>
+                @endif
             @endif
 
             @if(auth()->user()->user_role=='admin' || auth()->user()->user_role=='employee')
-                @if( app('router')->getRoutes()->match(app('request')->create(URL::previous()))->getName() != 'section.getSubcategoryByCatId')
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item">Product</li> 
-                    <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Products Table</li>
-                </ol>
-                @endif
 
                 @if( app('router')->getRoutes()->match(app('request')->create(URL::previous()))->getName() == 'section.getSubcategoryByCatId')
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item">Section</li>
-                    <li class="breadcrumb-item"><a href="{{ url()->previous()}}">Sections Table</a></li> 
-                    <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Products Table</li>
-                </ol>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+                        <li class="breadcrumb-item">Section</li>
+                        <li class="breadcrumb-item"><a href="{{ url()->previous()}}">Sections Table</a></li> 
+                        <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Products Table</li>
+                    </ol>
+                @else
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+                        <li class="breadcrumb-item">Product</li> 
+                        <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Products Table</li>
+                    </ol>
                 @endif
+
             @endif
 
         </div>

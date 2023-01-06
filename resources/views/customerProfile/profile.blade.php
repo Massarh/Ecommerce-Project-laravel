@@ -1,107 +1,106 @@
-<x-loading-indicatore />
 @include('navLayout.navbar')
-
 @extends('layouts.app')
-@section('title')
-@lang('Profile')
-@endsection
+<style>
+    .custom-file-input {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: calc(1.5em + 0.75rem + 2px);
+        margin: 0;
+        opacity: 0;
+    }
+
+    .custom-file-label {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1;
+        height: calc(1.5em + 0.75rem + 2px);
+        padding: 0.375rem 0.75rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #6e707e;
+        background-color: #fff;
+        border: 1px solid #d1d3e2;
+        border-radius: 0.25rem;
+        -webkit-box-shadow: 0 0.125rem 0.25rem 0 rgb(58 59 69 / 20%) !important;
+        box-shadow: 0 0.125rem 0.25rem 0 rgb(58 59 69 / 20%) !important;
+    }
+</style>
 
 @section('content')
 
+<div class=" d-flex justify-content-center" style="margin-top:55px!important">
+    <div class="col-12">
+        <div>
+            <div class="mb-2" style="display: flex; justify-content: center">
+                <img id="main-image" src="{{ $user->image ?  Storage::url($user->image)  : asset('/logo/user.png')  }}"
+                    alt="" class="rounded-circle img-fluid" style="width: 150px;" />
+            </div>
+            <div class="text-center">
+                <h4 class="mb-2">{{ $user->name }}</h4>
+                <p class="text-muted mb-4">{{ $user->user_role }} </p>
 
-<section class="vh-100" style="background-color: rgb(255, 255, 255);">
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-md-12 col-xl-4">
-
-                <div class="card" style="border-radius: 15px; border: solid 0px #ffffff;">
-                    <div class="card-body text-center" style="border-radius: 15px; border: solid 0px #ffffff;">
-                        <div class="mt-3 mb-4">
-                            <img src="{{ isset($user->image) ? asset($user->image) : asset('/logo/user.png')  }}"
-                                alt="" class="rounded-circle img-fluid" style="width: 150px;" />
-                        </div>
-                        <h4 class="mb-2">{{ $user->name }}</h4>
-                        <p class="text-muted mb-4">{{ $user->user_role }}
-
-                            {{-- Edit profile --}}
-                            <a href="" data-bs-toggle="modal" data-bs-target=".update-profile"
-                                style="color: #1A1A1A ;text-decoration: none;">
-                                <p class="text-muted mb-4"> Edit profile <i class='far fa-edit'></i> </p>
-                            </a>
-
-                        <div class="mb-4 pb-2">
-                            <a type="button" href="{{route('order')}}" class="btn btn-rounded btn-lg"
-                                style="margin:5px; --bs-btn-padding-x: 59px; background-color:#1A1A1A ; color:#ffffff  ">
-                                My orders
-                            </a>
-                        </div>
-
-                        <div class="flex-container" style=" display: flex; justify-content: space-between; ">
-                            <div>
-                                <p class="mb-2 h5">{{ $user->created_at->toDateString()}}</p>
-                                <p class="text-muted mb-0">joined at</p>
-                            </div>
-
-                            <div class="px-3">
-                                <p class="mb-2 h5">{{isset($user->orders) ? $user->orders->count() : '0'}}</p>
-                                <p class="text-muted mb-0">Order count</p>
-                            </div>
+                {{-- Edit profile --}}
+                <a href="" data-bs-toggle="modal" data-bs-target=".update-profile"
+                    style="color: #1A1A1A ;text-decoration: none;">
+                    <p class="text-muted mb-4"> Edit profile <i class='far fa-edit'></i> </p>
+                </a>
+            </div>
+            {{-- My orders --}}
+            <div class="mb-4 text-center">
+                <a type="button" href="{{route('order')}}" class="btn btn-rounded btn-lg"
+                    style="margin:5px; --bs-btn-padding-x: 40px; background-color:#1A1A1A ; color:#ffffff  ">
+                    My orders
+                </a>
+            </div>
 
 
-                        </div>
-
-
-                        {{-- user info --}}
-                        <div class="flex-container" style="">
-
-                            <hr>
-                            {{-- name --}}
-                            <div class="row " style="margin-top: 30px ; margin-left:auto;margin-right:auto">
-                                <div class="col-sm-3">
-                                    <p class="mb-0"><b>Name :</b></p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">{{ $user->name }} </p>
-                                </div>
-                            </div>
-
-                            {{-- Address --}}
-                            <div class="row " style=" margin-top: 10px">
-                                <div class="col-sm-3">
-                                    <p class="mb-0"><b>Address :</b></p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">{{ $user->address}}</p>
-                                </div>
-                            </div>
-
-                            {{-- phone --}}
-                            <div class="row " style=" margin-top: 10px">
-                                <div class="col-sm-3">
-                                    <p class="mb-0"><b>phone :</b></p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">{{ $user->phone_number}}</p>
-                                </div>
-                            </div>
-
-                            {{-- Email --}}
-                            <div class="row " style=" margin-top: 10px">
-                                <div class="col-sm-3">
-                                    <p class="mb-0"><b>E-mail</b></p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">{{ $user->email}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="" style=" display: flex; justify-content: space-around; ">
+                <div>
+                    <p class="mb-2 h5">{{ $user->created_at->toDateString()}}</p>
+                    <p class="text-muted mb-0">joined at</p>
                 </div>
 
+                <div class="px-3">
+                    <p class="mb-2 h5">{{isset($user->orders) ? $user->orders->count() : '0'}}</p>
+                    <p class="text-muted mb-0">Order count</p>
+                </div>
+            </div>
+
+
+            {{-- user info --}}
+            <div style="margin-top:30px; ">
+                {{-- name --}}
+                <div style="display: flex; justify-content: center;margin-top: 10px">
+                    <p class="mb-0" style=""><b>Name</b></p>
+                    <p class="text-muted mx-2">{{ $user->name }} </p>
+                </div>
+
+                {{-- Address --}}
+                <div style="display: flex; justify-content:center; margin-top: 10px">
+                    <p class="mb-0" style=""><b>Address</b></p>
+                    <p class="text-muted mx-2">{{ $user->address?$user->address:'No Address Yet'}}</p>
+                </div>
+
+
+                {{-- phone --}}
+                <div style="display: flex; justify-content:center; margin-top: 10px">
+                    <p class="mb-0" style=""><b>Phone Number</b></p>
+                    <p class="text-muted mx-2">{{ $user->phone_number?$user->phone_number:"No Phone Number YET"}}</p>
+                </div>
+
+                {{-- Email --}}
+                <div style="display: flex; justify-content:center; margin-top: 10px">
+                    <p class="mb-0" style=""><b>E-mail</b></p>
+                    <p class="text-muted mx-2" style="">{{ $user->email}}</p>
+                </div>
             </div>
         </div>
     </div>
-</section>
+</div>
+
 <!--  Update Profile example -->
 <div class="modal fade update-profile" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true">
@@ -116,7 +115,6 @@
                     @csrf
                     @method('PUT')
                     {!! Toastr::message() !!}
-
                     <div class="mb-3">
                         <label for="name" class="form-label">Username</label>
                         <input id="name" name="name" type="text"
@@ -145,7 +143,7 @@
                     <div class="mb-3">
                         <label for="address" class="form-label">Address</label>
                         <input id="address" name="address" type="text"
-                            class="form-control @error('phone') is-invalid @enderror" value="{{ $user->address }}"
+                            class="form-control @error('address') is-invalid @enderror" value="{{ $user->address }}"
                             autofocus autocomplete="new-address">
                         @error('address')
                         <span class="invalid-feedback" role="alert">
@@ -153,27 +151,86 @@
                         </span>
                         @enderror
                     </div>
-                    <!-- Image -->
-                    <div class="mb-3">
-                        <label for="image">Profile Picture</label>
-                        <div class="input-group">
-                            <input type="file" id="image" name="image"
-                                class="form-control @error('image') is-invalid @enderror" autofocus>
-                            <label class="input-group-text bg-color-transparent" for="image">Upload</label>
+                    {{-- image --}}
+
+                    <div class="row mx-1">
+                        <div class="custom-file col-10">
+                            <label for="customFile" class="custom-file-label">Choose Image</label>
+                            <input id="customFile" name="image" type="file"
+                                class="custom-file-input @error('image') is-invalid @enderror  bg-color-transparent">
+
+                            @error('image')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
-                        @error('image')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
+                        <div class="col-2 d-flex align-items-center">
+                            <input class="clear" type="checkbox" id="clear" name="clear"
+                                class=" @error('clear') is-invalid @enderror">
+                            <label class="mx-1 mt-2">Clear</label>
+                        </div>
                     </div>
-                    <div class="mt-3 d-flex justify-content-center">
+
+                    <div class="mt-3 mb-1 offset-sm-4">
+                        <img id="img" src="{{$user->image ?  Storage::url($user->image)  : asset('/logo/user.png')}}"
+                            style="width:6rem; height:7rem">
+                    </div>
+                    {{-- button --}}
+                    <div class="mt-4  d-flex justify-content-center" style="margin-right: 50px;">
                         <button class="btn" type="submit"
-                            style="background-color: #1a1a1a; color:#ffffff; border-radius: 4px; --bs-btn-padding-x: 50;">Update</button>
+                            style="background-color: #1a1a1a; color:#ffffff; border-radius: 4px;">Update</button>
                     </div>
-                </form>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+            </form>
+        </div>
+    </div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 @endsection
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+@if (count($errors) > 0)
+<script type="text/javascript">
+    $("document").ready(function() {
+            $('.modal').modal('show');
+        });
+            
+</script>
+@endif
+<script type="text/javascript">
+    $("document").ready(function() {
+        $('.custom-file-input').on('change', function() {
+            var input = this;
+            if (input.files && input.files[0]) 
+            {
+                //  The FileReader function returns the file’s contents
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                $('#img').attr('src', e.target.result);
+                }
+                // The readAsDataURL method is used to read the contents of the specified File.
+                reader.readAsDataURL(input.files[0]);
+                
+            }
+            $('.clear').prop('checked', false)
+        });
+
+        $('.clear').on('change', function() {
+            if ($(this).is(":checked")) 
+                {
+                    $('#img').attr('src', 'logo/user.png');
+                    $('#img').attr('style', "width:6rem; height:7rem");
+                    $('#customFile').val('');
+
+                } else {
+                var image=$('#main-image').attr('src');
+                $('#img').attr('src', image);
+                $('#img').attr('style', "width:6rem; height:7rem");
+            } 
+        });
+    });
+
+</script>

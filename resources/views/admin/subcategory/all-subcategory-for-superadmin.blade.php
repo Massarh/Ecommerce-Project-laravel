@@ -14,8 +14,6 @@
                 <li class="breadcrumb-item">Section</li>
                 <li class="breadcrumb-item active" style="text-decoration-line: underline;">Sections Table</li>
             </ol>
-
-
         </div>
     </div>
 </div>
@@ -43,10 +41,9 @@
                             <tr>
                                 <th>SN</th>
                                 <th>Name</th>
-
                                 <th>Action</th>
                                 <th></th>
-
+                                <th></th>
                             </tr>
                         </thead>
 
@@ -57,11 +54,18 @@
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $subcategory->name }}</td>
-
+                                <!-- section Button-->
+                                <td>
+                                    <a href=" {{route('product.getProductBySubId',[$subcategory->slug])}}">
+                                        <button class="btn"
+                                            style="background-color: #232838; color:white; padding: 6px">product</button>
+                                    </a>
+                                </td>
                                 <!-- Button Edit -->
                                 <td>
                                     <a href=" {{route('section.edit', [$subcategory->slug])}} ">
-                                        <button class="bg-color-btn" style="color:#198754;"><i class="fas fa-edit"></i></button>
+                                        <button class="bg-color-btn" style="color:#198754;"><i
+                                                class="fas fa-edit"></i></button>
                                     </a>
                                 </td>
 
@@ -108,7 +112,7 @@
 
                             @endforeach
                             @else
-                            <td>No Store created yet</td>
+                            <td>No Section Created Yet</td>
                             @endif
 
                         </tbody>

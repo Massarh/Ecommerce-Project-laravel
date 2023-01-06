@@ -123,13 +123,11 @@
     $("document").ready(function() {
         $('.custom-file-input').on('change', function() {
             var input = this;
-            var url  = $(this).val(); 
             if (input.files && input.files[0]) 
             {
                 //  The FileReader function returns the file’s contents
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                    console.log(e);
                     $('#img').attr('src', e.target.result);
                 }
                 // The readAsDataURL method is used to read the contents of the specified File.

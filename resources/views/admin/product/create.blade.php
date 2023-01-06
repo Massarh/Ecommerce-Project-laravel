@@ -78,11 +78,11 @@
                             @enderror
                         </div>
                     </div>
-                    
+
                     <!-- Image -->
                     <div class="row">
                         <div class="mb-3 col-2 offset-sm-5">
-                            <img id="img" src="" >
+                            <img id="img" src="">
                         </div>
                     </div>
 
@@ -155,8 +155,8 @@
                             style="background-color:  #232838;; color: #fff">Submit</button>
                     </div>
 
-                </div>
             </div>
+        </div>
 
         </form>
 
@@ -174,14 +174,11 @@
     $("document").ready(function() {
         $('.custom-file-input').on('change', function() {
             var input = this;
-            var url  = $(this).val(); 
-            var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
             if (input.files && input.files[0]) 
                     {
                         //  The FileReader function returns the file’s contents
                         var reader = new FileReader();
                         reader.onload = function (e) {
-                            console.log(e);
                         $('#img').attr('src', e.target.result);
                         $('#img').attr('style',"width:6rem; height:7rem");
                         

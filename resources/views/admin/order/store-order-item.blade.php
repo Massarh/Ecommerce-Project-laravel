@@ -28,8 +28,8 @@
         <div class="card">
             <!-- Simple Tables -->
 
-            @if (count($storeItems)>0)
-            <form action="{{route('item.order', [$storeItems[0]->category->slug])}}" method="GET">
+            @if (count($filteredStoreItems)>0)
+            <form action="{{route('item.order', [$categorySlug])}}" method="GET">
                 @csrf
                 <div class="card-header py-3 calendar-parent">
 
@@ -50,7 +50,7 @@
 
                     <div class="d-flex justify-content-between ">
                         <button class="mr-3 bg-color-btn h6"><i class="fas fa-search fa-fw"></i></button>
-                        <a class="h6 mt-2" href="{{route('item.order', [$storeItems[0]->category->slug])}}"
+                        <a class="h6 mt-2" href="{{route('item.order', [$categorySlug])}}"
                             style="--bs-link-hover-color: #495057;">
                             <button class="bg-color-btn h6"><i class="fas fa-sync"></i></button>
                         </a>
@@ -77,20 +77,20 @@
                         </thead>
                         <tbody>
 
-                            @if (count($storeItems)>0)
+                            @if (count($filteredStoreItems)>0)
                             <?php $totalPrice = 0 ?>
-                            @foreach ($storeItems as $key=>$item)
+                            @foreach ($filteredStoreItems as $key=>$item)
 
                             <tr>
                                 <td>{{ $key+1 }}</td>
 
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->price }} JOD</td>
-                                <td>{{ $item->quantity }}</td>
-                                <td>{{ $item->price * $item->quantity }} JOD</td>
-                                <td><img src="{{ Storage::url($item->image) }}" width="100"></td>
+                                <td>{{ $item['name'] }}</td>
+                                <td>{{ $item['price'] }} JOD</td>
+                                <td>{{ $item['quantity'] }}</td>
+                                <td>{{ $item['price'] * $item['quantity'] }} JOD</td>
+                                <td><img src="{{ Storage::url($item['image']) }}" width="100"></td>
                             </tr>
-                            <?php $totalPrice += $item->price * $item->quantity ?>
+                            <?php $totalPrice += $item['price'] * $item['quantity'] ?>
                             @endforeach
 
                         </tbody>
@@ -105,8 +105,8 @@
                                 <td></td>
                             </tr>
                         </tfoot>
-                        @else 
-                            <td>No Order Items To Show</td>
+                        @else
+                        <td>No Store Items To Show</td>
                         @endif
 
                     </table>

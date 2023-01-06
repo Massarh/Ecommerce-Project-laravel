@@ -67,7 +67,7 @@
 
 <div class="container">
     <form action="{{route('more.product')}}" method="GET">
-        @csrf 
+        @csrf
         <div class="search">
             <div class="" style="display: inline-block">
                 <input value="{{ $search ? $search: ''}}" type="text" name="search" class="form-control"
@@ -88,7 +88,7 @@
     <div class="row">
         <div class="col-md-2 filter-container mb-5">
             <form action="{{route('more.product')}}" method="GET">
-                @csrf 
+                @csrf
                 <p class="p-style ms-2">Filter Products</p>
 
                 {{-- filter by categories --}}
@@ -99,7 +99,7 @@
 
                         @foreach ( $categories as $key=>$category )
 
-                        <option {{ $categoryId == $category->id ? 'selected' : ''}}
+                        <option {{ $categoryId==$category->id ? 'selected' : ''}}
                             value="{{$category->id}}">{{$category->name}}</option>
 
                         @endforeach
@@ -113,10 +113,10 @@
                         <option value="">select </option>
 
                         @foreach ( $subcategories as $key=>$subcategory )
-                        <option {{ $subcategoryId == $subcategory->id ? 'selected' : ''}}
+                        <option {{ $subcategoryId==$subcategory->id ? 'selected' : ''}}
                             value="{{$subcategory->id}}">{{$subcategory->name}}</option>
                         @endforeach
-                        
+
                     </select>
                 </div>
 
@@ -166,10 +166,8 @@
 
 {{-- end products --}}
 
+{{ $products->onEachSide(1)->links() }} {{--to make pagination --}}
 
-
-
-{{$products->links()}} {{--to make pagination --}}
 @endsection
 
 

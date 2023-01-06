@@ -3,8 +3,8 @@
 
         <ul class="list-inline">
             <li class="list-inline-item">
-                <a href="https://mail.google.com/mail/u/0/?tab=km#sent?compose=goplaza.team22@gmail.com"
-                    class="social-list-item bg-success text-white border-success" target="_blank">
+                <a href="mailto:goplaza.team22@gmail.com" class="social-list-item bg-success text-white border-success"
+                    target="_blank">
                     <i class="mdi mdi-gmail"></i>
                 </a>
             </li>
@@ -22,12 +22,12 @@
         </ul>
     </div>
 
-        
-        <div class="copyright text-center my-auto">
-            <span>developed by <b>plaza team</b> &copy; <script>
+
+    <div class="copyright text-center my-auto">
+        <span>developed by <b>plaza team</b> &copy; <script>
                 document.write(new Date().getFullYear()); 
             </script>
-        </div>
+    </div>
 </footer>
 
 
@@ -84,4 +84,3 @@
             $('#dataTableHover').DataTable(); // ID From dataTable with Hover
         });
 </script>
-

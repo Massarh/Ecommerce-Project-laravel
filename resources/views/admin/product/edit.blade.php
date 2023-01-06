@@ -127,14 +127,14 @@
 
                     <div class="row">
                         <!-- Section -->
-                        <?php $subcategories = App\Models\Category::find(auth()->user()->category_id)->subcategory()->get() ?>
 
                         <div class="mb-3 col">
                             <div class="custom-file">
                                 <label>Choose Section</label>
                                 <select name="subcategory"
                                     class="form-control @error('subcategory') is-invalid @enderror">
-                                    <option value="{{$product->subcategory->id}}">{{$product->subcategory->name}}
+                                    <option style="color:rgba(28, 161, 37, 0.992)"
+                                        value="{{$product->subcategory->id}}"> {{$product->subcategory->name}}
                                     </option>
 
                                     @foreach ($subcategories as $subcategory)
@@ -169,15 +169,12 @@
 
         $('.custom-file-input').on('change', function() {
             var input = this;
-            var url  = $(this).val(); 
-            var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
             if (input.files && input.files[0]) 
             {
                 //  The FileReader function returns the file’s contents
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
-                    console.log(e);
                 $('#img').attr('src', e.target.result);
                 }
                 // The readAsDataURL method is used to read the contents of the specified File.

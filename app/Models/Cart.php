@@ -69,11 +69,13 @@ class Cart extends Model
 
     public function remove($id)
     {
-        if (array_key_exists($id, $this->items)) { // array_key_exists() function is used to check whether a specified key is present in an array or not
+        // array_key_exists() function is used to check whether a specified key is present in an array or not
+        if (array_key_exists($id, $this->items)) {
             $this->totalQuantity -= $this->items[$id]['qty'];
             $this->totalPrice -= $this->items[$id]['qty'] * $this->items[$id]['price'];
 
-            unset($this->items[$id]); // unset() destroys the specified variables.
+            // unset() destroys the specified variables.
+            unset($this->items[$id]);
         }
     }
 }
