@@ -1,3 +1,4 @@
+<x-loading-indicatore />
 @include('navLayout.navbar')
 @extends('layouts.app')
 <style>
@@ -81,14 +82,14 @@
                 {{-- Address --}}
                 <div style="display: flex; justify-content:center; margin-top: 10px">
                     <p class="mb-0" style=""><b>Address</b></p>
-                    <p class="text-muted mx-2">{{ $user->address?$user->address:'No Address Yet'}}</p>
+                    <p class="text-muted mx-2">{{ $user->address ? $user->address : 'No Address Yet'}}</p>
                 </div>
 
 
                 {{-- phone --}}
                 <div style="display: flex; justify-content:center; margin-top: 10px">
                     <p class="mb-0" style=""><b>Phone Number</b></p>
-                    <p class="text-muted mx-2">{{ $user->phone_number?$user->phone_number:"No Phone Number YET"}}</p>
+                    <p class="text-muted mx-2">{{ $user->phone_number ? $user->phone_number : "No Phone Number Yet"}}
                 </div>
 
                 {{-- Email --}}
@@ -126,6 +127,7 @@
                         </span>
                         @enderror
                     </div>
+
                     <!-- Phone Number -->
                     <div class="mb-3">
                         <label for="phone_number" class="form-label">Phone Number</label>
@@ -139,6 +141,7 @@
                         </span>
                         @enderror
                     </div>
+
                     <!-- Address -->
                     <div class="mb-3">
                         <label for="address" class="form-label">Address</label>
@@ -151,24 +154,28 @@
                         </span>
                         @enderror
                     </div>
+
                     {{-- image --}}
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Choose Image</label>
+                        <div class="row mx-1">
+                            <div class="custom-file col-10">
+                                <label for="customFile" class="custom-file-label bg-color-transparent">Choose
+                                    Image</label>
+                                <input id="customFile" name="image" type="file"
+                                    class="custom-file-input @error('image') is-invalid @enderror  bg-color-transparent">
 
-                    <div class="row mx-1">
-                        <div class="custom-file col-10">
-                            <label for="customFile" class="custom-file-label">Choose Image</label>
-                            <input id="customFile" name="image" type="file"
-                                class="custom-file-input @error('image') is-invalid @enderror  bg-color-transparent">
-
-                            @error('image')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                        <div class="col-2 d-flex align-items-center">
-                            <input class="clear" type="checkbox" id="clear" name="clear"
-                                class=" @error('clear') is-invalid @enderror">
-                            <label class="mx-1 mt-2">Clear</label>
+                                @error('image')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="col-2 d-flex align-items-center">
+                                <input class="clear" type="checkbox" id="clear" name="clear"
+                                    class=" @error('clear') is-invalid @enderror">
+                                <label class="mx-1 mt-2">Clear</label>
+                            </div>
                         </div>
                     </div>
 
@@ -176,29 +183,29 @@
                         <img id="img" src="{{$user->image ?  Storage::url($user->image)  : asset('/logo/user.png')}}"
                             style="width:6rem; height:7rem">
                     </div>
+
                     {{-- button --}}
                     <div class="mt-4  d-flex justify-content-center" style="margin-right: 50px;">
                         <button class="btn" type="submit"
                             style="background-color: #1a1a1a; color:#ffffff; border-radius: 4px;">Update</button>
                     </div>
+                </form>
             </div>
-            </form>
-        </div>
-    </div>
-</div><!-- /.modal-content -->
-</div><!-- /.modal-dialog -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 @endsection
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+{{-- pop up open when error appeare --}}
 @if (count($errors) > 0)
 <script type="text/javascript">
     $("document").ready(function() {
             $('.modal').modal('show');
         });
-            
 </script>
 @endif
+
 <script type="text/javascript">
     $("document").ready(function() {
         $('.custom-file-input').on('change', function() {

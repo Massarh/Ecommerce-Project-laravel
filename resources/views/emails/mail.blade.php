@@ -27,7 +27,7 @@ padding: 10px;">
     <tfoot>
         <tr>
             <td>
-                Total Price:{{$cart->totalPrice}}
+                Total Price:{{$cart->totalPrice}} JOD
             </td>
         </tr>
     </tfoot>

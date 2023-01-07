@@ -25,7 +25,7 @@
             {{-- My orders --}}
             <div class="mb-4 text-center">
                 <a type="button" href="{{route('order')}}" class="btn btn-rounded btn-lg"
-                    style="margin:5px; --bs-btn-padding-x: 40px; background-color:#232838 ; color:#ffffff  ">
+                    style="margin:5px; --bs-btn-padding-x: 40px; background-color:#282e40 ; color:#ffffff ">
                     My orders
                 </a>
             </div>
@@ -56,13 +56,14 @@
                 {{-- Address --}}
                 <div style="display: flex; justify-content:center; margin-top: 10px">
                     <p class="mb-0" style=""><b>Address</b></p>
-                    <p class="text-muted mx-2">{{ $user->address?$user->address:'No Address Yet'}}</p>
+                    <p class="text-muted mx-2">{{ $user->address ? $user->address : 'No Address Yet'}}</p>
                 </div>
 
                 {{-- phone --}}
                 <div style="display: flex; justify-content:center; margin-top: 10px">
                     <p class="mb-0" style=""><b>Phone Number</b></p>
-                    <p class="text-muted mx-2">{{ $user->phone_number?$user->phone_number:"No Phone Number YET"}}</p>
+                    <p class="text-muted mx-2">{{ $user->phone_number ? $user->phone_number : "No Phone Number Yet"}}
+                    </p>
                 </div>
 
                 {{-- Email --}}
@@ -128,23 +129,26 @@
                     </div>
 
                     {{-- image --}}
-                    <div class="row mx-1">
-                        <div class="custom-file col-10">
-                            <label>Choose Image</label>
-                            <label for="customFile" class="custom-file-label">Choose Image</label>
-                            <input id="customFile" name="image" type="file"
-                                class="custom-file-input @error('image') is-invalid @enderror  bg-color-transparent">
+                    <div class="mb-3">
+                        <label class="form-label">Choose Image</label>
+                        <div class="row mx-1">
+                            <div class="custom-file col-10">
+                                <label for="customFile" class="custom-file-label bg-color-transparent">Choose
+                                    Image</label>
+                                <input id="customFile" name="image" type="file"
+                                    class="custom-file-input @error('image') is-invalid @enderror  bg-color-transparent">
 
-                            @error('image')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                        <div class="col-2 d-flex align-items-center">
-                            <input class="clear" type="checkbox" id="clear" name="clear"
-                                class=" @error('clear') is-invalid @enderror">
-                            <label class="mx-1 mt-2">Clear</label>
+                                @error('image')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="col-2 d-flex align-items-center">
+                                <input class="clear" type="checkbox" id="clear" name="clear"
+                                    class=" @error('clear') is-invalid @enderror">
+                                <label class="mx-1 mt-2">Clear</label>
+                            </div>
                         </div>
                     </div>
 
@@ -158,12 +162,10 @@
                         <button class="btn" type="submit"
                             style="background-color: #232838; color:#ffffff; border-radius: 4px;">Update</button>
                     </div>
+                </form>
             </div>
-            </form>
-        </div>
-    </div>
-</div><!-- /.modal-content -->
-</div><!-- /.modal-dialog -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 @endsection
 
@@ -180,43 +182,43 @@
 
 <script type="text/javascript">
     $("document").ready(function() {
-           //uploade image 
-            $('.custom-file-input').on('change', function() {
-                var input = this;
-                if (input.files && input.files[0]) 
-                {
-                    //  The FileReader function returns the file’s contents
-                    var reader = new FileReader();
-    
-                    reader.onload = function (e) {
-                    $('#img').attr('src', e.target.result);
-                    }
-                    // The readAsDataURL method is used to read the contents of the specified File.
-                    reader.readAsDataURL(input.files[0]);
-                    
-                }
-                // prop from proparties
-                $('.clear').prop('checked', false)
-            
-            });
-            // end uploade image
-                    
-            // clear button
-            $('.clear').on('change', function() {
-                if ( $(this).is(":checked") ) 
+        //uploade image 
+        $('.custom-file-input').on('change', function() {
+            var input = this;
+            if (input.files && input.files[0]) 
+            {
+                //  The FileReader function returns the file’s contents
+                var reader = new FileReader();
 
-                {
-                    // attr from attributes
-                    $('#img').attr('src', 'logo/user.png');
-                    $('#img').attr('style', "width:6rem; height:7rem");
-                    // val fro value
-                    $('#customFile').val('');
-                } else {
-                    var image=$('#main-image').attr('src');
-                    $('#img').attr('src', image);
-                    $('#img').attr('style', "width:6rem; height:7rem");
-                } 
-            });
-            // end clear button
+                reader.onload = function (e) {
+                    $('#img').attr('src', e.target.result);
+                }
+                // The readAsDataURL method is used to read the contents of the specified File.
+                reader.readAsDataURL(input.files[0]);
+                
+            }
+            // prop from proparties
+            $('.clear').prop('checked', false)
+        
         });
+        // end uploade image
+
+        // clear button
+        $('.clear').on('change', function() {
+            if ( $(this).is(":checked") ) 
+            {
+                // attr from attributes
+                $('#img').attr('src', 'logo/user.png');
+                $('#img').attr('style', "width:6rem; height:7rem");
+                // val fro value
+                $('#customFile').val('');
+            } else {
+                var image = $('#main-image').attr('src');
+                console.log(image);
+                $('#img').attr('src', image);
+                $('#img').attr('style', "width:6rem; height:7rem");
+            } 
+        });
+        // end clear button
+    });
 </script>

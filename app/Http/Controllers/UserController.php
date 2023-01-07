@@ -152,19 +152,7 @@ class UserController extends Controller
     }
 
     //--------------------------------------------------------
-    // Go back to this
-    public function editProfile()
-    {
-        $user = User::find(auth()->user()->id);
-        if (auth()->user()->user_role == 'superadmin' || auth()->user()->user_role == 'admin' || auth()->user()->user_role == 'employee') {
-            return view('admin.profile.edit', compact('user'));
-        } elseif (auth()->user()->user_role == 'customer') {
-            return view('customerProfile.edit', compact('user'));
-        }
-    }
 
-    //--------------------------------------------------------
-    // Go back to this
     // for four user_role
     public function updateProfile(Request $request)
     {
@@ -193,7 +181,7 @@ class UserController extends Controller
         $user->address         = $request->address;
         $user->save();
 
-        Toastr::success('User updated successfully', 'success');
+        Toastr::success('User information updated successfully', 'success');
         return redirect()->route('profile');
     }
 }
