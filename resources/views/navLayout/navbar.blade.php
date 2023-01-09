@@ -24,7 +24,7 @@
                 <!-- Authentication Links -->
 
                 <!-- Shopping Cart -->
-                <a href="{{ route('cart.show') }}" class="nav-link">
+                <a href="{{ route('cart.show') }}" class="nav-link" style="margin-top: 3px">
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                             class="bi bi-bag" viewBox="0 0 16 16">
@@ -57,14 +57,17 @@
                 </form>
 
                 {{-- new --}}
-                <img class="rounded-circle header-profile-user mt-1"
+                {{-- <img class="rounded-circle header-profile-user mt-1"
                     src="{{ auth()->user()->image ?  Storage::url(auth()->user()->image):asset('/logo/user.png')}}"
-                    alt="profile image">
+                    alt="profile image"> --}}
                 {{-- new --}}
 
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <img class="rounded-circle header-profile-user" 
+                            src="{{ auth()->user()->image ?  Storage::url(auth()->user()->image):asset('/logo/user.png')}}"
+                            alt="profile image">
                         {{ Auth::user()->name }}
                     </a>
 

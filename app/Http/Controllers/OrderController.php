@@ -147,13 +147,13 @@ class OrderController extends Controller
                 'category_id' => $group->first()['category_id'],
             ];
         });
-        // return storeItems;
+        // return $storeItems;
 
         $filteredStoreItems = [];
         foreach ($storeItems as $key => $item) {
             array_push($filteredStoreItems, $item);
         }
-        // return filteredStoreItems;
+        // return $filteredStoreItems;
 
         return view('admin.order.store-order-item', compact('filteredStoreItems', 'categorySlug'));
     }

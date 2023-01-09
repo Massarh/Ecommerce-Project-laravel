@@ -26,9 +26,20 @@
     }
 
     @media(min-width:1350px) {
-        .slider-image {
+        /* .slider-image {
             height: 100vh;
-        }
+        } */
+    }
+
+    .top-selling {
+        text-align: left !important;
+        font-family: garamond !important;
+        font-family: Serif;
+        font-style: italic !important;
+        font-size: 50px;
+        font-weight: 500;
+        margin-bottom: 25px;
+        margin-top: -22px;
     }
 </style>
 
@@ -158,7 +169,7 @@
         <div class="carousel-inner">
             @foreach ($sliders as $key => $slider)
             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                <img src="{{ Storage::url($slider->image) }}" class="d-block w-100 slider-image" alt="...">
+                <img src="{{ Storage::url($slider->image) }}" class="d-block w-100" alt="...">
             </div>
             @endforeach
 
@@ -175,8 +186,31 @@
         </button>
     </div>
 </div>
-{{-- slider --}}
+{{-- slider end --}}
 
+<!--welcoming message-->
+<section id="welcome" class="py-5 text-center" style="padding-top: 3rem!important;
+padding-bottom: 3rem!important;
+background-color:#ffffff!important;">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md">
+                <img class="img-fluid w-75" src="{{ URL::asset('logo/us.png')}}">
+            </div>
+            <div class="col-md py-4">
+                <h2> Yay! Be one of our official users now.</h2>
+                <p>
+                    Without our customers, we wouldn’t exist. </p>
+                <p>
+                    Welcome to our family. Explore this site to your heart’s content. We promise you will see everything
+                    you desire! Your presence inspires us to do more.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!--welcoming message end -->
 
 <div class="container-fluid">
     <main role="main">
@@ -208,41 +242,42 @@
             @endforeach
         </div>
 
-        {{-- --}}
+        <!--insta start -->
 
-        <div class="row align-items-center mt-5 padding-xs" style="background: #272424; color:#fff; min-height:550px">
-            <div class="col-md-8 col-12 p-0 align-self-center" style="text-align: center;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
-                    class="bi bi-instagram" viewBox="0 0 16 16">
-                    <path
-                        d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
-                </svg>
-                <h2 style="font-family: garamond Serif; font-style: italic!important;">
-                    @go_ plaza</h2>
-                <p style="max-width: 550px; display: inline-block; font-size: 20px;">Like what you see?
-                    Shop the looks from our top stores
-                </p>
-                <div class="display-button" style="">
-                    <a class="btn mt-2 button-margin"
-                        style="background-color: #fff; color:#1a1a1a; border-radius: 0px; --bs-btn-padding-x: 19; font-weight: 800;">Shop
-                        instagram</a>
-                    <a class="btn mt-2" href="https://www.instagram.com/go_plaza/"
-                        style="background-color: #fff; color:#1a1a1a; border-radius: 0px; --bs-btn-padding-x: 50; font-weight: 800;">follow</a>
+        <section id="welcome" class="py-5 text-center" style="padding-top: 3rem!important;
+                padding-bottom: 3rem!important; background-color:#1a1a1a!important;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md">
+                        <img class="img-fluid w-75"
+                            src="{{ URL::asset('logo/pngkit_follow-us-on-instagram_2658663.png')}}">
+
+                    </div>
+                    <div class="col-md py-4" style="color:rgb(234, 234, 234) ">
+
+                        <h2> @ go_plaza </h2>
+                        <p>
+                            Let’s connect on Instagram!
+                        </p>
+                        <p>
+                            Stay up to date on all that we've got going on through our social media channels! If you
+                            haven't already, make sure to give us a follow!
+                        </p>
+
+                        <button type="button" class="btn btn-light">
+                            <a href="https://www.instagram.com/go_plaza/" style="color: #1a1a1a">let's go</a>
+                        </button>
+                    </div>
                 </div>
             </div>
-
-            <div class="col-md-4 col-12">
-                <img src="{{asset('storage/files/goplaza.png')}}" class="instagram-image">
-            </div>
-
-        </div>
-        {{-- --}}
+        </section>
+        <!--insta end -->
 
         {{-- product --}}
         <div class="album py-5 mt-5">
             <div class="container-fluid">
                 <div style="display:flex; justify-content:center">
-                    <h2 class="fontStyleHint">Top Selling Products</h2>
+                    <h2 class="top-selling">Top Selling Products</h2>
                 </div>
                 <div class="row custom-media">
                     @foreach ($products as $product)
@@ -298,11 +333,17 @@
                         <li><a href="#">Hosting</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-3 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i
-                            class="icon ion-social-twitter"></i></a><a href="#"><i
-                            class="icon ion-social-snapchat"></i></a><a href="#"><i
-                            class="icon ion-social-instagram"></i></a>
-                    <p class="copyright">Plaza team © 2022</p>
+                <div class="col-lg-3 text-center item social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="mailto:goplaza.team22@gmail.com"><i class="mdi mdi-gmail"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/go_plaza/"><i class="fab fa-instagram"></i></a>
+
+                    <div class="copyright text-center my-auto">
+                        <span>developed by <b>plaza team</b> &copy; <script>
+                                document.write(new Date().getFullYear()); 
+                            </script>
+                    </div>
                 </div>
             </div>
         </div>
@@ -368,7 +409,7 @@
         display: inline-block;
         text-align: center;
         border-radius: 50%;
-        border: 1px solid #ccc;
+        border: 1px solid rgb(255, 255, 255);
         margin-left: 10px;
         margin-top: 22px;
         color: inherit;

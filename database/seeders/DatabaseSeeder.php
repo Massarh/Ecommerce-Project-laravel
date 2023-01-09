@@ -1972,7 +1972,9 @@ class DatabaseSeeder extends Seeder
         Slider::create([
             'image' => 'slider/slider (4).jpg',
         ]);
-
+        // Slider::create([
+        //     'image' => 'slider/slider (5).jpg',
+        // ]);
 
 
 
