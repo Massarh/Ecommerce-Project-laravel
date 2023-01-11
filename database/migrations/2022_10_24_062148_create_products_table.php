@@ -20,15 +20,17 @@ return new class extends Migration
             $table->string('price');
             $table->bigInteger('number_of_sold')->default(0);
             $table->text('description');
+            $table->enum('section',['men','women','kids']); 
+
             $table->text('additional_info');
+            $table->unsignedBigInteger('store_id');
+            $table->foreign('store_id')->references('id')->on('stores')->onDelete('cascade');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-
-            $table->unsignedBigInteger('subcategory_id');
-            $table->foreign('subcategory_id')->references('id')->on('subcategories')->onDelete('cascade');
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

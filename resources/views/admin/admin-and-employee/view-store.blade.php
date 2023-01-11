@@ -28,7 +28,7 @@
             <div class="card-body">
 
                 <div class="table-responsive">
-                    <table class="table align-middle table-nowrap" style="font-size:13px">
+                    <table class="table align-middle table-nowrap">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -40,27 +40,27 @@
                                 <th>Name</th>
                                 <th></th>
                                 <th></th>
-                                <th>View</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             
                             @if(auth()->user()->user_role=='superadmin')
 
-                            @if (count($categories)>0)
-                                @foreach ($categories as $key=>$category)
+                            @if (count($stores)>0)
+                                @foreach ($stores as $key=>$store)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td></td>
 
-                                    <td><img src="{{ Storage::url($category->image) }}" alt=".." width="100"></td>
+                                    <td><img src="{{ Storage::url($store->image) }}" alt=".." width="100"></td>
                                     <td></td>
 
-                                    <td>{{ $category->name }}</td>
+                                    <td>{{ $store->name }}</td>
                                     <td></td>
                                     <td></td>
                                     <td>
-                                        <a href=" {{route('admin.view',[ $category->slug])}} ">
+                                        <a href=" {{route('admin.view',[ $store->slug])}} ">
                                             <button class="btn"  style="background-color: #232838;
                                             color: white;">view admins&employees</button>
                                         </a>

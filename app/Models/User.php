@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Order;
+use App\Models\Store;
 
 class User extends Authenticatable
 {
@@ -22,7 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'category_id', 
+        'store_id', 
         'user_role'
     ];
 
@@ -49,7 +50,7 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
-    public function category() {
-        return $this->belongsTo(Category::class);
+    public function store() {
+        return $this->belongsTo(Store::class);
     }
 }

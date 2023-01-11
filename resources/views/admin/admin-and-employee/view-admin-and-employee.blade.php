@@ -38,7 +38,7 @@
             <div class="card-body">
 
                 <div class="table-responsive">
-                    <table class="table align-middle table-nowrap" style="font-size:13px">
+                    <table class="table align-middle table-nowrap">
                         <thead>
                             <tr>
                                 <th>#</th>

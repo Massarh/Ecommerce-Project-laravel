@@ -25,9 +25,9 @@ return new class extends Migration
             $table->string('phone_number')->nullable();
             $table->string('address')->nullable();
             $table->enum('user_role',['superadmin','admin','employee','customer'])->default('customer'); 
-            $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('store_id')->nullable();
                 //categories table الي ب id لل data type لانه لازم يكون بنفس unsignedBigInteger() نوعه category حددنا انه 
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('store_id')->references('id')->on('stores')->onDelete('cascade');
                 /**
                 references('id') -> "PK" id in categories table
                 on('categories') -> id الجدول الي متخذين منه 

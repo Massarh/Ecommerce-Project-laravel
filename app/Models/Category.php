@@ -4,31 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Subcategory;
-use App\Models\User;
-use App\Models\OrderItem;
+use App\Models\Store;
+use App\Models\Product;
 
 class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable =[
-        'name', 'slug', 'description', 'image'
+    protected $fillable = [
+        'name', 'slug'
     ];
 
-    public function subcategory() {
-        return $this->belongsToMany(Subcategory::class)->withTimestamps();
+    public function stores() {
+        return $this->belongsToMany(Store::class,table:'store_category')->withTimestamps();
     }
 
-    public function product() { // مو مستخدم
+    public function products() {
         return $this->hasMany(Product::class);
-    }
-
-    public function user() {
-        return $this->hasMany(User::class);
-    }
-// ORDER
-    public function orderItem() {
-        return $this->hasMany(OrderItem::class);
     }
 }

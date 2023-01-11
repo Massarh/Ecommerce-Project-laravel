@@ -16,7 +16,7 @@
                     </div>
                     <p>Date & time : {{$order->created_at}}</p>
                     <p>Total price : {{$order->total_price}} JOD</p>
-                    @foreach($order->orderItem as $item)
+                    @foreach($order->orderItems as $item)
                     <span style="margin-right: 10px !important;">
                         <img src="{{ Storage::url($item['image']) }}" style="width:4rem; height:5rem;">
                     </span>

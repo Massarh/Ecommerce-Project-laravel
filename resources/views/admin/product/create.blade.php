@@ -35,14 +35,6 @@
 </div>
 
 <div class="row justify-content-center">
-
-    <!-- to show the message -->
-    @if (Session::has('message'))
-    <div class="alert alert-success">
-        {{ Session::get('message') }}
-    </div>
-    @endif
-
     <div class="col-lg-10">
         <div class="card">
             <div class="card-body">
@@ -78,11 +70,11 @@
                             @enderror
                         </div>
                     </div>
-
+                    
                     <!-- Image -->
                     <div class="row">
                         <div class="mb-3 col-2 offset-sm-5">
-                            <img id="img" src="">
+                            <img id="img" src="" >
                         </div>
                     </div>
 
@@ -128,47 +120,55 @@
                     </div>
 
                     <div class="row">
-
-                        <!-- Section -->
-                        <?php $subcategories = App\Models\Category::find(auth()->user()->category_id)->subcategory()->get() ?>
-
-                        <div class="mb-3 col">
+                         {{-- section --}}
+                         <div class="mb-5 col-sm-6">
                             <div class="custom-file">
                                 <label>Choose Section</label>
-                                <select name="subcategoryId"
-                                    class="form-control @error('subcategoryId') is-invalid @enderror">
+                                <select name="section"
+                                    class="form-control @error('section') is-invalid @enderror">
                                     <option value="">Select</option>
-
-                                    @foreach ($subcategories as $subcategory)
-                                    <option {{old('subcategoryId')==$subcategory->id ? 'selected' : '' }} value="{{
-                                        $subcategory->id }}">{{ $subcategory->name }}</option>
-                                    @endforeach
+                                    <option {{old('section')=="men" ? 'selected' : '' }} value="men">Men
+                                    </option>
+                                    <option {{old('section')=="women" ? 'selected' : '' }} value="women">WOMEN
+                                    </option>
+                                    <option {{old('section')=="kids" ? 'selected' : '' }} value="kids">KIDS
+                                    </option>
                                 </select>
                             </div>
                         </div>
 
-                    </div>
+                        <!-- Category -->
+                        <?php $categories = App\Models\Store::find(auth()->user()->store_id)->categories()->get() ?>
 
-                    <!-- Button -->
-                    <div class="mb-3 mt-5">
+                        <div class="mb-3 col-sm-6">
+                            <div class="custom-file">
+                                <label>Choose Category</label>
+                                <select name="categoryId"
+                                    class="form-control @error('categoryId') is-invalid @enderror">
+                                    <option value="">Select</option>
+
+                                    @foreach ($categories as $category)
+                                    <option {{old('categoryId')==$category->id ? 'selected' : '' }} value="{{
+                                        $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                       
+                    </div>
+                <!-- Button -->
+                    <div class="mb-3 mt-4">
                         <button type="submit" class="btn"
                             style="background-color:  #232838;; color: #fff">Submit</button>
                     </div>
-
+                </form>
             </div>
         </div>
-
-        </form>
-
     </div>
-</div>
-
-</div>
 </div>
 <!-- end row -->
 
 @endsection
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript">
     $("document").ready(function() {

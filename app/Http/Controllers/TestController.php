@@ -1,17 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Subcategory;
+use App\Models\Store;
 use App\Models\Category;
-
+use App\Models\Product;
 class TestController extends Controller
 {
-    
-    //////////////////////////////////////////////////////////////
+ //////////////////////////////////////////////////////////////
     ///////////////  For Test   /////////////////////////////////
     ////////////////////////////////////////////////////////////
     public function test(Request $request)
@@ -20,69 +18,72 @@ class TestController extends Controller
         // $mas=[
         //     [
         //     "name"=>"me2",
+        //  
         //     "created_at"=>now(),
         //     "updated_at"=>now()
         //     ],
         //   [
         //     "name"=>"me3",
+        //     
         //     "created_at"=>now(),
         //     "updated_at"=>now()
         //   ]
         //   ];
 
-        //       return  Subcategory::insert($mas);
+        //       return  Category::insert($mas);
 
         // .......................................................................
 
         // test get eloquent queries
         // done
-        //   $category = Category::first();
-        //   return $category->subcategory;
+        
+          // $products=Store::first()->products()->where('section', 'men')->count();
+          //   return $products;
         // --------------------------------------------------------------------------
 
-        // $category = Category::find(3);
-        //   return $category;
-
-        // --------------------------------------------------------------------------
-
-        // $category = Category::get();
-        //    return $category;
+        // $store = Store::find(3);
+        //   return $store;
 
         // --------------------------------------------------------------------------
 
-        // $categories = DB::table('categories')
+        // $store = Store::get();
+        //    return $store;
+
+        // --------------------------------------------------------------------------
+
+        // $stores = DB::table('stores')
         // ->select('name','id')
         // ->get();
 
-        // return $categories;
+        // return $stores;
 
         // --------------------------------------------------------------------------
 
-        // $category = Category::orderBy('id', 'desc')
+        // $Store = Store::orderBy('id', 'desc')
         // ->select('name','id')
         // ->where('id','>',2)
         // ->get();
-        // return $category;
+        // return $Store;
         // ----------------------------------------------------------------------
 
-        // $category = category::where('name', 'Zara')
+        // $Store = Store::where('name', 'Zara')
         // ->Where('name', 'Nike')->get();
-        //    return $category;
+        //    return $Store;
 
 
         // --------------------------------------------------------------------------
 
-        // $category = Category::
+        // $Store = Store::
         //     where('name', 'prada')
         //     ->orWhere('name', 'h&m')
         //     ->orWhere('id', '3')
         //     ->get();
-        //     return $category;
+        //     return $Store;
 
         // --------------------------------------------------------------------------
-        // select * from category where name = 'prada' and (id > 5 or name = 'CHRISTIAN DIOR')
+        // select * from Store where name = 'prada' and (id > 5 or name = 'CHRISTIAN DIOR')
 
-        // $category = Category::
+        // $Store = Store::
         //     where('name', 'PRADA')
         //     ->orWhere(function($query) {
         //         $query->where('id','>', '5')
@@ -90,9 +91,9 @@ class TestController extends Controller
         //     })
         //     ->get();
 
-        // return $category;
+        // return $Store;
         // --------------------------------------------------------------------------
-        // $category = Category::where('id', '<', 1)
+        // $Store = Store::where('id', '<', 1)
 
         //     ->orWhere(function ($query) {
         //         $query->where('id', '>', '5')
@@ -100,29 +101,29 @@ class TestController extends Controller
         //     })
         //     ->get();
 
-        // return $category;
+        // return $Store;
 
         // --------------------------------------------------------------------------
 
-        // $category = category::where('updated_at', Null)->get();
+        // $Store = Store::where('updated_at', Null)->get();
 
-        // return $category;
+        // return $Store;
 
         // --------------------------------------------------------------------------
 
-        // $category = category::where(null)->get();
+        // $Store = Store::where(null)->get();
 
-        // return $category;
+        // return $Store;
 
         // ..............................................................................
 
-        // $a = Category::find(3)->subcategory;
+        // $a = Store::find(3)->categories;
         // return $a;
 
         // .....................................................................
 
-        // $a = Category::find(3)
-        // ->subcategory()->orderBy('name','asc')->get();
+        // $a = Store::find(3)
+        // ->categories()->orderBy('name','asc')->get();
         // return $a;
 
         // .......................................................................
@@ -145,102 +146,102 @@ class TestController extends Controller
 
         // --------------------------------------------------------------------------
         // [1, 3] -> 1, 2, 3 include
-        // $category = Category::whereBetween('id', [1, 3])->get();
-        // return $category;
+        // $Store = Store::whereBetween('id', [1, 3])->get();
+        // return $Store;
 
         // --------------------------------------------------------------------------
         // [1, 3] -> 1, 2, 3 include
-        // $category = Category::whereNotBetween('id', [1, 3])->get();
-        // return $category;
+        // $Store = Store::whereNotBetween('id', [1, 3])->get();
+        // return $Store;
 
         // --------------------------------------------------------------------------
         // [1, 3] -> Only 1 and 3
 
-        // $category = Category::whereIn('id', [1,3])->get();
-        // return $category;
+        // $Store = Store::whereIn('id', [1,3])->get();
+        // return $Store;
 
         // .......................................................................
 
-        // $category = Category::whereNotIn('id', [1, 2,3])->get();
-        // return $category;
+        // $Store = Store::whereNotIn('id', [1, 2,3])->get();
+        // return $Store;
 
         // --------------------------------------------------------------------------
 
-        // $category = Category::whereNull('updated_at')->get();
-        // return $category;
+        // $Store = Store::whereNull('updated_at')->get();
+        // return $Store;
 
         // .................................................................
 
-        // $category = Category::whereNotNull('updated_at')->get();
-        // return $category;
+        // $Store = Store::whereNotNull('updated_at')->get();
+        // return $Store;
 
         // --------------------------------------------------------------------------
 
-        // $category = Category::whereDate('created_at', '2022-12-21')->get();
-        // return $category;
+        // $Store = Store::whereDate('created_at', '2022-12-21')->get();
+        // return $Store;
 
         // --------------------------------------------------------------------------
 
-        // $category = Category::whereDay('created_at', '21')->get();
-        // return $category;
+        // $Store = Store::whereDay('created_at', '21')->get();
+        // return $Store;
 
         // --------------------------------------------------------------------------
 
-        // $category = Category::whereMonth('created_at', '1')->get();
-        // return $category;
+        // $Store = Store::whereMonth('created_at', '1')->get();
+        // return $Store;
 
         // --------------------------------------------------------------------------
 
         //it is an array because you can put multiple condtions
-        // $category = Category::whereColumn([['updated_at', '!=', 'created_at']])->get();
-        // return $category;
+        // $Store = Store::whereColumn([['updated_at', '!=', 'created_at']])->get();
+        // return $Store;
 
         // --------------------------------------------------------------------------
 
-        // $category = Category::with('product')->first();
-        // return $category;
+        // $Store = Store::with('products')->first();
+        // return $Store;
 
         // --------------------------------------------------------------------------
-        // $product = Product::where('category_id', 1)->find(2);
+        // $product = Product::where('store_id', 1)->find(2);
 
-        // $product = Product::with('category')->find(2);
+        // $product = Product::with('store')->find(2);
         //    return $product;
 
         // --------------------------------------------------------------------------
 
-        // $category = Category::with('product')->find(1);
-        // return $category;
+        // $Store = Store::with('products')->find(1);
+        // return $Store;
 
         // ------------------------------------------------------------------------
         // start
-        // $category = Category::with('subcategory')->first(); 
-        // return $category;
+        // $Store = Store::with('categories')->first(); 
+        // return $Store;
 
-        // $subcategory = Subcategory::with('category')->first(); 
-        // return $subcategory;
+        // $category = Category::with('stores')->first(); 
+        // return $category;
 
         // ..............................................................................
 
-        // $category = Subcategory::with('product')->get();
+        // $categories = category::with('products')->get();
         // return $category;
 
         // .......................................................................
-        // $product = Product::with('subcategory')->get(); 
+        // $product = Product::with('categories')->get(); 
         // return $product;
 
         // .......................................................................
 
-        // $Subcategory = Subcategory::with('category')->where('id','>',5)->orderBy('id','desc')->get();
-        // return $Subcategory;
+        // $categories = Category::with('stores')->where('id','>',5)->orderBy('id','desc')->get();
+        // return $categories;
 
         // .....................................................................
         // end
 
-        // $category = Category::with('user', 'subcategory','product')->find(1);
-        // return $category;
+        // $store = Store::with('users', 'categories','products')->find(1);
+        // return $store;
 
         // ------------------------------------------------------------------------
-        // $category = Category::with(['product'  => function ($query) {
+        // $category = Category::with(['products'  => function ($query) {
         //     $query->with('subcategory');
         // }])->find(1);
 
@@ -322,3 +323,5 @@ class TestController extends Controller
         // whereDate / whereMonth / whereDay / whereYear / whereTime
     }
 }
+
+

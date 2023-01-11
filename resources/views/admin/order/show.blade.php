@@ -44,14 +44,14 @@
                             
                             <?php $i=1 ?>
                             
-                            @foreach($order->orderItem as $item)
+                            @foreach($order->orderItems as $item)
                             <tr>
                                 <td>{{$i++}}</td>
-                                <td>{{$item->category->name}}</td>
+                                <td>{{$item->store->name}}</td>
                                 <td>{{$item->name}}</td>
-                                <td>{{$item->price}} JOD</td>
+                                <td>${{$item->price}}</td>
                                 <td>{{$item->quantity}}</td>
-                                <td>{{$item->price * $item->quantity}} JOD</td>
+                                <td>${{$item->price * $item->quantity}}</td>
                                 <td><img src="{{ Storage::url($item->image) }}" width="100"></td>
                             </tr>
                             @endforeach
@@ -65,7 +65,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td><b>{{$order->total_price}} JOD</b></td>
+                                <td><b>${{$order->total_price}} </b></td>
                                 <td></td>
                             </tr>
                         </tfoot>
@@ -78,13 +78,4 @@
 </div>
     <!---Container Fluid-->
 
-
-<script type="text/javascript">
-    function confirmDelete(){
-        console.log("massarh");
-        let a = confirm('Are you sure you want to delete?');
-        console.log(a);
-        return a;
-    }
-</script>
 @endsection

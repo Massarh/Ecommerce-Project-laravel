@@ -26,7 +26,7 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('store.index') }}" key="store-view">View</a></li>
 
-                        @if((auth()->user()->user_role=='admin') && (!auth()->user()->category_id))
+                        @if((auth()->user()->user_role=='admin') && (!auth()->user()->store_id))
                         <li><a href="{{ route('store.create') }}" key="store-create">Create</a></li>
                         @endif
                     </ul>
@@ -34,27 +34,27 @@
 
                 <!-- Admin and Employee -->
                 @if((auth()->user()->user_role=='admin'||auth()->user()->user_role=='employee') &&
-                (auth()->user()->category_id))
+                (auth()->user()->store_id))
 
-                <!-- admin and employee Section -->
+                <!-- admin and employee Category -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-layout"></i>
-                        <span key="section">Section</span>
+                        <span key="category">Category</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
 
-                        <li><a href="{{ route('section.getSubcategoryByCatId',[auth()->user()->category->slug])}}"
-                                key="section-view">View</a></li>
+                        <li><a href="{{ route('category.getCategoryByStoreSlug',[auth()->user()->store->slug])}}"
+                                key="category-view">View</a></li>
 
                         @if(auth()->user()->user_role=='admin')
-                        <li><a href="{{ route('section.create') }}" key="section-create">Create</a></li>
+                        <li><a href="{{ route('category.create') }}" key="category-create">Create</a></li>
                         @endif
 
                     </ul>
                 </li>
 
-                @if(App\Models\Category::find(auth()->user()->category_id)->subcategory()->count())
+                @if(App\Models\Store::find(auth()->user()->store_id)->categories()->count())
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -73,7 +73,7 @@
                 </li>
                 @endif
 
-                @if(App\Models\OrderItem::where('category_id',auth()->user()->category_id)->count())
+                @if(App\Models\OrderItem::where('store_id',auth()->user()->store_id)->count())
 
                 <!-- Store Order Items -->
                 <li>
@@ -83,7 +83,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
 
-                        <li><a href="{{ route('item.order', [auth()->user()->category->slug]) }}"
+                        <li><a href="{{ route('item.order', [auth()->user()->store->slug]) }}"
                                 key="t-light-sidebar">View</a></li>
 
                     </ul>
@@ -95,20 +95,20 @@
                 <!-- Superadmin -->
                 @if(auth()->user()->user_role=='superadmin')
 
-                <!-- Superadmin Section -->
+                <!-- Superadmin Category -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-layout"></i>
-                        <span key="section">Section</span>
+                        <span key="category">Category</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
 
-                        <li><a href="{{ route('section.index')}}" key="section-view">View</a></li>
-                        <li><a href="{{ route('section.create') }}" key="section-create">Create</a></li>
+                        <li><a href="{{ route('category.index')}}" key="category-view">View</a></li>
+                        <li><a href="{{ route('category.create') }}" key="category-create">Create</a></li>
 
                     </ul>
                 </li>
-
+                
                 <!-- Sliders  -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -149,7 +149,7 @@
                     </ul>
                 </li>
 
-                <!-- Admins & Employees -->
+                <!-- Add Admin -->
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-account"></i>
@@ -165,7 +165,7 @@
                 </li>
 
                 @endif
-
+                
             </ul>
 
         </div>

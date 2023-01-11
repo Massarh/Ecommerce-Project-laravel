@@ -27,40 +27,38 @@
     <div class="col-12">
         <div class="card">
             <!-- Simple Tables -->
-
             @if (count($filteredStoreItems)>0)
-            <form action="{{route('item.order', [$categorySlug])}}" method="GET">
-                @csrf
-                <div class="card-header py-3 calendar-parent">
-
-                    {{-- Filter Date --}}
-                    <div class="calendar-child">
-                        <label for="date" class="h5 col-form-label" style="margin-right: 10px">From</label>
-                        <div class="">
-                            <input name="fromdate" type="date" class="form-control input-sm" id="fromdate">
+                <form action="{{route('item.order', [$storeSlug])}}" method="GET">
+                    @csrf
+                    <div class="card-header py-3 calendar-parent">
+                        
+                        {{-- Filter Date --}}
+                        <div class="calendar-child">
+                            <label for="date" class="h5 col-form-label" style="margin-right: 10px">From</label>
+                            <div class="">
+                                <input name="fromdate" type="date" class="form-control input-sm" id="fromdate">
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="calendar-child">
-                        <label for="date" class="h5 col-form-label margin-to" style="margin-right: 10px">To</label>
-                        <div class="">
-                            <input name="todate" type="date" class="form-control input-sm" id="todate">
+    
+                        <div class="calendar-child">
+                            <label for="date" class="h5 col-form-label margin-to" style="margin-right: 10px">To</label>
+                            <div class="">
+                                <input name="todate" type="date" class="form-control input-sm" id="todate">
+                            </div>
                         </div>
+    
+                        <div class="d-flex justify-content-between ">
+                            <button class="mr-3 bg-color-btn h6" ><i class="fas fa-search fa-fw"></i></button>
+                            <a class="h6 mt-2" href="{{route('item.order', [$storeSlug])}}" style="--bs-link-hover-color: #495057;">
+                                <button class="bg-color-btn h6" ><i class="fas fa-sync"></i></button>
+                            </a>
+                        </div>
+                        {{-- Filter Date --}}
+    
                     </div>
-
-                    <div class="d-flex justify-content-between ">
-                        <button class="mr-3 bg-color-btn h6"><i class="fas fa-search fa-fw"></i></button>
-                        <a class="h6 mt-2" href="{{route('item.order', [$categorySlug])}}"
-                            style="--bs-link-hover-color: #495057;">
-                            <button class="bg-color-btn h6"><i class="fas fa-sync"></i></button>
-                        </a>
-                    </div>
-                    {{-- Filter Date --}}
-
-                </div>
-            </form>
-            @endif
-
+                </form>
+                @endif
+            
             <div class="card-body">
 
                 <div class="table-responsive">
@@ -76,7 +74,6 @@
                             </tr>
                         </thead>
                         <tbody>
-
                             @if (count($filteredStoreItems)>0)
                             <?php $totalPrice = 0 ?>
                             @foreach ($filteredStoreItems as $key=>$item)
@@ -85,29 +82,29 @@
                                 <td>{{ $key+1 }}</td>
 
                                 <td>{{ $item['name'] }}</td>
-                                <td>{{ $item['price'] }} JOD</td>
+                                <td>${{ $item['price'] }}</td>
                                 <td>{{ $item['quantity'] }}</td>
-                                <td>{{ $item['price'] * $item['quantity'] }} JOD</td>
+                                <td>${{ $item['price'] * $item['quantity'] }}</td>
                                 <td><img src="{{ Storage::url($item['image']) }}" width="100"></td>
                             </tr>
                             <?php $totalPrice += $item['price'] * $item['quantity'] ?>
                             @endforeach
-
+                            
                         </tbody>
 
                         <tfoot>
                             <tr>
-                                <td><b style="">Total Price: </b></td>
+                                <td><b style="">Total price: </b></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td><b>{{$totalPrice}} JOD</b></td>
+                                <td><b>${{$totalPrice}} </b></td>
                                 <td></td>
                             </tr>
                         </tfoot>
-                        @else
+                        @else 
                         <td>No Store Items To Show</td>
-                        @endif
+                    @endif
 
                     </table>
                 </div>

@@ -38,8 +38,8 @@
                     </div>
                     <div class="number-align-items">
                         <h5 class="font-size-14 mb-0">Products</h5>
-                        <h6 class="font-size-14 mb-0">{{App\Models\Product::where('category_id',
-                            auth()->user()->category_id)->get()->count()}}</h6>
+                        <h6 class="font-size-14 mb-0">{{App\Models\Product::where('store_id',
+                            auth()->user()->store_id)->get()->count()}}</h6>
                     </div>
 
                 </div>
@@ -60,8 +60,8 @@
                         </span>
                     </div>
                     <div class="number-align-items">
-                        <h5 class="font-size-14 mb-0">Ordered Items</h5>
-                        <h6>{{App\Models\OrderItem::where('category_id', auth()->user()->category_id)->get()->count()}}
+                        <h5 class="font-size-14 mb-0">Order Items</h5>
+                        <h6>{{App\Models\OrderItem::where('store_id', auth()->user()->store_id)->get()->count()}}
                         </h6>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                     </div>
                     <div class="number-align-items">
                         <h5 class="font-size-14 mb-0">Number of Stores</h5>
-                        <h6>{{App\Models\Category::get()->count()}}</h6>
+                        <h6>{{App\Models\Store::get()->count()}}</h6>
                     </div>
                 </div>
 

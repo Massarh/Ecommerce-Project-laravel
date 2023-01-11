@@ -126,15 +126,15 @@
                     <div class="row mb-3">
                         <label class='col-md-4 col-form-label text-md-start'>Choose Store</label>
                         <div class='col-md-6'>
-                            <select name="categoryId" class="form-control @error('categoryId') is-invalid @enderror">
+                            <select name="storeId" class="form-control @error('storeId') is-invalid @enderror">
                                 {{-- i think that it was error,check it please --}}
                                 <option value="">Select Store</option>
-                                @foreach ($categories as $category)
-                                <option {{old('categoryId') == $category->id ? 'selected' : '' }} value="{{ $category->id
-                                    }}">{{ $category->name }}</option>
+                                @foreach ($stores as $store)
+                                <option {{old('storeId') == $store->id ? 'selected' : '' }} value="{{ $store->id
+                                    }}">{{ $store->name }}</option>
                                 @endforeach
                             </select>
-                            @error('categoryId')
+                            @error('storeId')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

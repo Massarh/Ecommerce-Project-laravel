@@ -2,7 +2,7 @@
 
 <body data-sidebar="dark">
 
-    <div id="layout-wrapper">
+    <div id="layout-wrapper" >
 
         <!-- TopBar -->
         @include('admin.layouts.navbar')

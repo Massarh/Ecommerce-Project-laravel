@@ -38,13 +38,13 @@
                         </thead>
                         <tbody>
                             
-                            @if (count($categories)>0)
-                                @foreach ($categories as $key=>$category)
+                            @if (count($stores)>0)
+                                @foreach ($stores as $key=>$store)
                                     <tr>
                                         <td>{{ $key+1 }}</td> 
-                                        <td>{{ $category->name }}</td>
-                                        <td>{{ $category->user[0]->email }}</td> 
-                                        <td><a href="{{route('item.order', [$category->slug])}}"> <button class="btn"  style="background-color: #232838;
+                                        <td>{{ $store->name }}</td>
+                                        <td>{{ $store->users[0]->email }}</td> 
+                                        <td><a href="{{route('item.order', [$store->slug])}}"> <button class="btn"  style="background-color: #232838;
                                             color: white;">Ordered Items</button>
                                         </a></td> 
                                     </tr>

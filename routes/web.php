@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StoreController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FrontProductListController;
 use App\Http\Controllers\CartController;
@@ -26,9 +26,7 @@ use Illuminate\Support\Facades\Auth;
 
 /** Auth */
 Auth::routes();
-
 Route::middleware(['revalidate'])->group(function () {
-
     // HomeController
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -39,11 +37,14 @@ Route::middleware(['revalidate'])->group(function () {
     })->name('noItems');
 
     // FrontProductListController
+    // using in ajax in all products page
+    Route::get('/ajax-categories-sections', [FrontProductListController::class, 'loadCategoriesAndSectionsDependOnStore']);
+    Route::get('/ajax-categories', [FrontProductListController::class, 'loadCategoriesDependOnSection']);
+    // end ajax
     Route::get('/', [FrontProductListController::class, 'index']);
-    Route::get('/product/{productId}', [FrontProductListController::class, 'show'])->name('product.view'); // change 'product.show' to 'product.view' because We used "product.show" in the product folder
-    Route::get('/store/{slug}', [FrontProductListController::class, 'allproduct'])->name('product.list');
+    Route::get('/product/{productId}', [FrontProductListController::class, 'show'])->name('product.view'); // change 'product.
     // to search product
-    Route::get('/all/products', [FrontProductListController::class, 'moreProducts'])->name('more.product');
+    Route::get('/all/products/{storeSlug?}', [FrontProductListController::class, 'allProducts'])->name('all.product');
 
     // CartController
     Route::get('/addToCart/{product}', [CartController::class, 'addToCart'])->name('add.cart');
@@ -63,13 +64,10 @@ Route::middleware(['revalidate'])->group(function () {
     Route::get('profile/edit', [UserController::class, 'editProfile'])->name('profile.edit')->middleware('auth');
     Route::put('profile/update', [UserController::class, 'updateProfile'])->name('profile.update')->middleware('auth');
 
-    // ProductController
-    // using in ajax in all products page
-    Route::get('sections', [ProductController::class, 'loadSubCategories']);
+
 
     //  TestController 
     Route::get('/test', [TestController::class, 'test']);
-
     // end home page
 
     // middleware any action that executed between the request and the response.
@@ -83,34 +81,36 @@ Route::middleware(['revalidate'])->group(function () {
             return view('admin.layouts.container');
         })->name('dashboard');
 
-        // CategoryController
-        Route::resource('store', CategoryController::class);
+        // StoreController
+        Route::resource('store', StoreController::class);
 
-        // SubcategoryController
-        Route::get('section/store/{slug}', [SubcategoryController::class, 'getSubcategoryByCatId'])->name('section.getSubcategoryByCatId');
-        Route::resource('section', SubcategoryController::class);
+        // CategoryController
+        Route::get('category/store/{slug}', [CategoryController::class, 'getCategoryByStoreSlug'])->name('category.getCategoryByStoreSlug');
+        Route::resource('category', CategoryController::class);
 
         // ProductController
-        Route::get('product/store/{storeSlug}/section/{sectionSlug}', [ProductController::class, 'getProductByCatAndSubId'])->name('product.getProductByCatAndSubId');
+        Route::get('product/store/{storeSlug}/category/{categorySlug}', [ProductController::class, 'getProductByStoreAndCategorySlug'])->name('product.getProductByStoreAndCategorySlug');
+
+        Route::get('product/category/{categorySlug}', [ProductController::class, 'getProductByCategorySlug'])->name('product.getProductByCategorySlug');
+
         Route::resource('product', ProductController::class);
-        Route::get('product/section/{sectionSlug}', [ProductController::class, 'getProductBySubId'])->name('product.getProductBySubId');
 
         // OrderController 
         Route::get('/orders', [OrderController::class, 'userOrder'])->name('order.index');
         Route::get('/store-order', [OrderController::class, 'storeOrder'])->name('order.store');
-        Route::get('/orders/{orderid}', [OrderController::class, 'viewUserOrder'])->name('user.order');
-        Route::get('/store-order-item/{categorySlug}', [OrderController::class, 'viewStoreItem'])->name('item.order');
+        Route::get('/orders/{orderid}', [OrderController::class, 'viewUserOrder'])->name('user.order');  // 
+        Route::get('/store-order-item/{storeSlug}', [OrderController::class, 'viewStoreItem'])->name('item.order');
 
         // SliderController 
         Route::resource('slider', SliderController::class);
 
 
-        // UserController
+        // /UserController 
         Route::get('/add-admin', [UserController::class, 'viewCreateAdminOrEmployee'])->name('add.admin');
         Route::post('/create-admin-or-employee', [UserController::class, 'createAdminOrEmployee'])->name('admin.create');
         Route::get('/view-store', [UserController::class, 'viewStore'])->name('store.view');
         Route::get('/view-new-admin', [UserController::class, 'viewNewAdmin'])->name('newAdmin.view');
-        Route::get('/view-admin-and-employee/{categoryId}', [UserController::class, 'viewAdminAndEmployee'])->name('admin.view');
+        Route::get('/view-admin-and-employee/{storeId}', [UserController::class, 'viewAdminAndEmployee'])->name('admin.view');
         Route::delete('/delete-admin-and-employee/{userId}', [UserController::class, 'deleteAdminOrEmployee'])->name('admin.delete');
     });
 });

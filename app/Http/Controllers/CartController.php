@@ -20,12 +20,10 @@ class CartController extends Controller
         if (session()->has('cart')) {
             $cart = new Cart(session()->get('cart'));
         } else {
-            // access this from navbar when is empty '0'
             $cart = new Cart();
         }
         $cart->add($product);
         session()->put('cart', $cart);
-
         Toastr::success('Product added to cart', 'success');
         return redirect()->back();
     }
@@ -34,12 +32,12 @@ class CartController extends Controller
 
     public function showCart()
     {
+
         if (session()->has('cart')) {
             $cart = new Cart(session()->get('cart'));
         } else {
             $cart = null;
         }
-        // dd($cart->items);
         return view('cart', compact('cart'));
     }
 
@@ -47,7 +45,7 @@ class CartController extends Controller
 
     public function updateCart(Request $request, Product $product)
     {
-        $request->validate([
+        $request->validate([ //156 in Cart page to update the qty must be least 1
             'qty' => 'required|numeric|min:1'
         ]);
 
@@ -64,12 +62,13 @@ class CartController extends Controller
     public function removeCart(Product $product)
     {
         $cart = new Cart(session()->get('cart'));
+
         $cart->remove($product->id); // remove() function in Models [Cart]
 
         if ($cart->totalQuantity <= 0) {
-            // this will execute when we remove the last item in the cart 
             session()->forget('cart'); // remove from the session
         } else {
+
             session()->put('cart', $cart);
         }
 
@@ -80,6 +79,7 @@ class CartController extends Controller
 
     public function checkout()
     {
+
         if (session()->has('cart')) {
             $cart = new Cart(session()->get('cart'));
         } else {
@@ -89,7 +89,11 @@ class CartController extends Controller
     }
 
     //--------------------------------------------------------
-
+    // 3rd party integration :stripe for payment ,mail from laravel to send gmail
+    // css ,bootstrap ,laravel ,php, elquent(orm),query builder
+    // notification library(toaster)
+    // alert () 
+    // livewire for loading
     public function charge(Request $request)
     {
         $cart = new Cart(session()->get('cart'));
@@ -98,6 +102,7 @@ class CartController extends Controller
         $charge = Stripe::charges()->create([
             'currency' => "USD",
             'source' => $request->stripeToken,
+            // from <input name="amount" ...> in checkout.blade.php 
             'amount' => $amount,
             'description' => 'Stripe Payment',
         ]);
@@ -119,7 +124,7 @@ class CartController extends Controller
                         'name' => $item['name'],
                         'price' => $item['price'],
                         'quantity' => $item['qty'],
-                        'category_id' => $item['categoryId'],
+                        'store_id' => $item['storeId'],
                         'image' => $item['image'],
                         'order_id' => $order->id,
                         'created_at' => now(),
@@ -133,7 +138,6 @@ class CartController extends Controller
             OrderItem::insert($newCart);
 
             session()->forget('cart');
-            // hereeeeee
             Toastr::success('Transaction completed!', 'success');
             return redirect()->to('/');
         } else {

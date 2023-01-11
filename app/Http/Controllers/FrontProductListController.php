@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 // here
-use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\Store;
 use App\Models\Product;
-use App\Models\Subcategory;
+use App\Models\Category;
 use App\Models\Slider;
+use Illuminate\Database\Eloquent\Builder;
+
 
 class FrontProductListController extends Controller
 {
@@ -14,10 +16,10 @@ class FrontProductListController extends Controller
     public function index()
     {
         $products = Product::orderBy('number_of_sold', 'desc')->limit(12)->get();
-        $categories=Category::all();
+        $stores=Store::all();
         $sliders = Slider::limit(5)->get();
 
-        return view('product', compact('products', 'categories','sliders'));
+        return view('product', compact('products', 'stores','sliders'));
     }
 
     // ----------------------------------------------------------------------------
@@ -26,87 +28,74 @@ class FrontProductListController extends Controller
     {
         $product = Product::find($productId);
         //تحت العنصر الي فاتحه id لعرض العناصر الي الهم نفس 
-        $productFromSameSubcategoryAndTopSelling = Product::where('subcategory_id', $product->subcategory_id)
+        $productFromSameCategoryAndTopSelling = Product::where('category_id', $product->category_id)
             ->where('id', '!=', $product->id)
             ->orderBy('number_of_sold', 'desc')
             ->limit(4)
             ->get();
 
-        return view('show', compact('product', 'productFromSameSubcategoryAndTopSelling'));
-    }
-
-    // ----------------------------------------------------------------------------
-
-    public function allproduct($slug, Request $request)
-    {
-        // subcategoryIds
-        $filterSubCategories = [];
-        $price = null;
-        $minPrice = null;
-        $maxPrice = null;
-        $category = Category::where('slug', $slug)->first();
-        $categoryId = $category->id;
-        $search = $request->search;
-        $filterSubCategories = $request->subcategory;
-
-        // filter products by price
-        if ($request->price) {
-            // split string in ; for two strings in array.('0';'1000'=>['0','1000'])
-            $price = explode(";", $request->price);
-            $minPrice = (int)$price[0];
-            $maxPrice = (int)$price[1];
-            $price = [$minPrice, $maxPrice];
-        }
-
-        $subcategories = Category::find($categoryId)->subcategory;
-        // this fun wil return all products that related to certain category if there is no query parameter
-        $products = Product::where('category_id', $categoryId)
-            ->when($price, function ($query, $price) {
-                $query->whereBetween('price', $price);
-            })->when($filterSubCategories, function ($query, $filterSubCategories) {
-                $query->whereIn('subcategory_id', $filterSubCategories);
-            })->when($search, function ($query, $search) {
-                /*SELECT count(*) AS aggregate FROM `products` WHERE `name` LIKE % This IS % OR `description` LIKE % This IS %*/
-                $query->where(function ($query) use ($search) {
-                    $query->where('name', 'like', '%' . $search . '%')
-                        ->orWhere('description', 'like', '%' . $search . '%')
-                        ->orWhere('additional_info', 'like', '%' . $search . '%');
-                });
-            })->paginate(16)->withQueryString();
-        
-        $price = $request->price;
-        //  return $products;
-        return view('category', compact('products', 'category', 'subcategories', 'filterSubCategories', 'price', 'search', 'slug'));
+        // return $productFromSameCategoryAndTopSelling;
+        return view('show', compact('product', 'productFromSameCategoryAndTopSelling'));
     }
 
     // ----------------------------------------------------------------------------
     // to search product
-    public function moreProducts(Request $request)
+    public function allProducts(Request $request,$storeSlug=null)
     {
+
         $price = null;
         $minPrice = null;
         $maxPrice = null;
+        $store=null;
+        $search = $request->search;
+        $categoryId = $request->categoryId;
+        $sections=[1=>"men",2=>"women",3=>"kids"];
+        $sectionId = $request->sectionId;
+        $section=null;
+        if ($sectionId) {
+            $section= $sections[$sectionId];
+        }
+        if($storeSlug){
+            // from all products
+            $store=Store::where("slug",$storeSlug)->first();
+            $storeId = $store->id;
+            // categories
+            $categories = $store->categories()->get();
+            // return $categories ;
 
+            // end categories
+            // sections
+            $sections=[];
+            $menProductsCount=$store->products()->where('section', 'men')->count();
+            $menProductsCount ? $sections += [ 1 => "men" ] : "";
+            
+            $womenProductsCount=$store->products()->where('section', 'women')->count();
+            $womenProductsCount ? $sections += [ 2 => "women" ]  : "";
+
+            $kidsProductsCount=$store->products()->where('section', 'kids')->count();
+            $kidsProductsCount ? $sections += [ 3 => "kids" ]  : "";
+            // return $sections;    
+            //end sections
+        }else{
+            $storeId = $request->storeId;
+            $categories = Category::get();
+        }
         if ($request->price) {
             $price = explode(";", $request->price);
             $minPrice = (int)$price[0];
             $maxPrice = (int)$price[1];
             $price = [$minPrice, $maxPrice];
         }
-        $search = $request->search;
-        $categoryId = $request->category;
-        $subcategoryId = $request->subcategory;
-
-        $categories = Category::get();
-        $subcategories = Subcategory::get();
-
+        $stores = Store::get();
         // this fun wil return all products if there is no query parameter
-        $products = Product::when($categoryId, function ($query, $categoryId) {
-            $query->where('category_id', $categoryId);
+        $products = Product::when($storeId, function ($query, $storeId) {
+            $query->where('store_id', $storeId);
+        })->when($section, function ($query, $section) {
+            $query->where('section', $section);
         })->when($price, function ($query, $price) {
             $query->whereBetween('price', $price);
-        })->when($subcategoryId, function ($query, $subcategoryId) {
-            $query->where('subcategory_id', $subcategoryId);
+        })->when($categoryId, function ($query, $categoryId) {
+            $query->where('category_id', $categoryId);
         })->when($search, function ($query, $search) {
             /*SELECT count(*) AS aggregate FROM `products` WHERE `name` LIKE % This IS % OR `description` LIKE % This IS %*/
             $query->where(function ($query) use ($search) {
@@ -117,6 +106,70 @@ class FrontProductListController extends Controller
         })->paginate(16)->withQueryString();
 
         $price = $request->price;
-        return view('all-product', compact("products", "categories", "subcategories", "search", "price", "categoryId", "subcategoryId"));
+        if($storeSlug){
+            return view('category', compact('products', 'store', 'categories','sections','search', 'price',  'storeId','storeSlug','categoryId','sectionId'));
+        }else{
+
+        return view('all-product', compact('products', 'stores', 'categories', 'search', 'price', 'storeId', 'categoryId','sectionId'));
+        }
+    }
+     // for customer in all-product
+
+    // when store input changes to any value accept select get section and categories relate to this 
+    // store and if  store input changes to select get all sections and categories. 
+    public function loadCategoriesAndSectionsDependOnStore (Request $request)
+    {
+        $storeId = $request->storeId;
+        if ($storeId) {
+            $store=Store::find($storeId);
+            // categories
+            $categories = $store->categories()->get()->pluck('name', 'id');
+            // end categories
+            // sections
+            $sections=[];
+            $menProductsCount=$store->products()->where('section', 'men')->count();
+            $menProductsCount ? $sections += [ 1 => "men" ] : "";
+            
+            $womenProductsCount=$store->products()->where('section', 'women')->count();
+            $womenProductsCount ? $sections += [ 2 => "women" ]  : "";
+
+            $kidsProductsCount=$store->products()->where('section', 'kids')->count();
+            $kidsProductsCount ? $sections += [ 3 => "kids" ]  : "";
+
+            //end sections
+
+        } else {
+        //when user click on select in category dropdown menu
+            // categories
+            $categories = Category::get()->pluck('name', 'id');
+            // end categories
+            // sections
+            $sections=[1=>"men",2=>"women",3=>"kids"];
+            //end sections
+        }
+        
+        $categoriesAndSections=[$categories,$sections];
+        return response()->json($categoriesAndSections);
+    }
+
+    // when section input changes to any value accept select get categories that related to specific
+    // section (i will preview it only if store input not selected else i will preview the intersection between it and store categories) and if section input changes to select get all categories(i will preview it only if store input not selected and the store input not selected i will preview the store categories). 
+    public function loadCategoriesDependOnSection (Request $request)
+    {
+        $sections=[1=>"men",2=>"women",3=>"kids"];
+        $sectionId = $request->sectionId;
+        if ($sectionId) {
+
+            $section= $sections[$sectionId];
+            // section categories
+            $categories = Category::whereHas('products', function (Builder $query) use($section) {
+                $query->where('section', $section);
+            })->get()->pluck('name', 'id');
+        } else {
+                //all categories
+                $categories = Category::get()->pluck('name', 'id');
+                return $categories;
+        }  
+        return response()->json($categories);
     }
 }

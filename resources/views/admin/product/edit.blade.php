@@ -20,6 +20,7 @@
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Product</li>
+                    <!-- what is aria? Accessible Rich Internet Applications (ARIA) -->
                 </ol>
             </div>
         </div>
@@ -126,20 +127,33 @@
                     </div>
 
                     <div class="row">
-                        <!-- Section -->
-
-                        <div class="mb-3 col">
+                        {{-- section --}}
+                        <div class="mb-5 col-sm-6">
                             <div class="custom-file">
                                 <label>Choose Section</label>
-                                <select name="subcategory"
-                                    class="form-control @error('subcategory') is-invalid @enderror">
-                                    <option style="color:rgba(28, 161, 37, 0.992)"
-                                        value="{{$product->subcategory->id}}"> {{$product->subcategory->name}}
+                                <select name="section" class="form-control @error('section') is-invalid @enderror">
+                                    <option  style="color:rgba(28, 161, 37, 0.992)" value="{{$product->section}}">
+                                        {{$product->section}}
+                                    </option>
+                                    @foreach ( $sections as $key=>$section )
+                                    <option {{ old('sectionId') == $key ? 'selected' : ''}}
+                                        value="{{$key}}">{{$section}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Category -->
+                        <div class="mb-3 col-sm-6">
+                            <div class="custom-file">
+                                <label>Choose Category</label>
+                                <select name="categoryId"
+                                    class="form-control @error('categoryId') is-invalid @enderror">
+                                    <option  style="color:rgba(28, 161, 37, 0.992)" value="{{$product->category->id}}">{{$product->category->name}}
                                     </option>
 
-                                    @foreach ($subcategories as $subcategory)
-                                    <option {{old('subcategory')==$subcategory->id ? 'selected' : '' }} value="{{
-                                        $subcategory->id }}">{{ $subcategory->name }}</option>
+                                    @foreach ($categories as $category)
+                                    <option {{old('category')==$category->id ? 'selected' : '' }} value="{{
+                                        $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

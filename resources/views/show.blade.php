@@ -40,12 +40,12 @@
         </div>
     </div>
     {{-- YOU MAY LIKE  --}}
-    @if (count($productFromSameSubcategoryAndTopSelling) > 0)
+    @if (count($productFromSameCategoryAndTopSelling) > 0)
         <div class="jumbotron"
             style="margin: 80px;">
             <h3 class="fontStyleHint2"  style=" font-family:Marlina; font-size:20px" >ITEMS YOU MAY LIKE </h3>
             <div class="row">
-                @foreach ($productFromSameSubcategoryAndTopSelling as $product)
+                @foreach ($productFromSameCategoryAndTopSelling as $product)
                 <div class="col-md-4 col-lg-3 col-xl-3 mb-3">
                     <div style="width: 317px; margin: auto;">
                         <a href="{{ route('product.view', [$product->id]) }}">

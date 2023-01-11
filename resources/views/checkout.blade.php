@@ -78,7 +78,7 @@
                                                 </th>
                                                 <td>{{$product['name']}}</td>
                                                 <td>{{ $product['qty'] }}</td>
-                                                <td>{{ $product['price']*$product['qty'] }} JOD</td>
+                                                <td>${{ $product['price']*$product['qty'] }}</td>
 
                                             </tr>
                                             @endforeach
@@ -89,7 +89,7 @@
                                                     <h6 class="m-0 ">Total Price: </h6>
                                                 </td>
                                                 <td style="font-weight: 500;">
-                                                    {{$cart->totalPrice}} JOD
+                                                    ${{$cart->totalPrice}}
                                                 </td>
                                             </tr>
 
@@ -167,6 +167,8 @@
                                                             required>
                                                     </div>
                                                 </div>
+
+                                                
 
                                                 {{-- Payment information --}}
                                                 <div class="mt-5" id="v-pills-payment" role="tabpanel"

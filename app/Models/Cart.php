@@ -28,20 +28,17 @@ class Cart extends Model
         }
     }
 
-    //--------------------------------------------------------
-
     public function add($product)
     {
         $item = [
-            'id'         => $product->id,
-            'name'       => $product->name,
-            'price'      => $product->price,
-            'qty'        => 0, // Quantity
-            'image'      => $product->image,
-            'description'=> $product->description,
-            'additional_info'=> $product->additional_info,
-            "categoryId" => $product->category_id, // ORDER
+            'id' => $product->id,
+            'name' => $product->name,
+            'price' => $product->price,
+            'qty' => 0, // Quantity
+            'image' => $product->image,
+            "storeId"=>$product->store_id, // ORDER
         ];
+        // dd( $this->items);
         // array_key_exists() ->used to check whether a specific key or index is present inside an array or not.
         if (!array_key_exists($product->id, $this->items)) {
             $this->items[$product->id] = $item;
@@ -54,12 +51,10 @@ class Cart extends Model
         $this->items[$product->id]['qty'] += 1;
     }
 
-    //--------------------------------------------------------
-
     public function updateQty($id, $qty)
     {
         $this->totalQuantity -= $this->items[$id]['qty'];
-        $this->totalPrice -= $this->items[$id]['price'] * $this->items[$id]['qty'];
+        $this->totalPrice -= $this->items[$id]['price'] * $this->items[$id]['qty']; 
 
         // add the item with new quantity
         $this->items[$id]['qty'] = $qty;
@@ -67,17 +62,13 @@ class Cart extends Model
         $this->totalPrice += $this->items[$id]['price'] * $qty;
     }
 
-    //--------------------------------------------------------
-
     public function remove($id)
     {
-        // array_key_exists() function is used to check whether a specified key is present in an array or not
-        if (array_key_exists($id, $this->items)) {
+        if (array_key_exists($id, $this->items)) { // array_key_exists() function is used to check whether a specified key is present in an array or not
             $this->totalQuantity -= $this->items[$id]['qty'];
             $this->totalPrice -= $this->items[$id]['qty'] * $this->items[$id]['price'];
 
-            // unset() destroys the specified variables.
-            unset($this->items[$id]);
+            unset($this->items[$id]); // unset() destroys the specified variables.
         }
     }
 }

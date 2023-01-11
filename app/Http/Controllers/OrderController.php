@@ -1,24 +1,25 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-use App\Models\Category;
+use App\Models\Store;
 use App\Models\Order;
 use App\Models\OrderItem;
-
 class OrderController extends Controller
 {
+   //--------------------------------------------------------
+
     // for four user_role
 
     // For Loggedin User
     public function order()
     {
         $orders = auth()->user()->orders()->latest()->get();
-        if (count($orders) > 0) {
-            return view('order', compact('orders'));
-        } else {
-            return view('no-items');
+        if (count($orders)>0) {
+        return view('order', compact('orders'));
+        }
+        else {
+        return view('no-items');
         }
     }
 
@@ -28,47 +29,50 @@ class OrderController extends Controller
     public function orderItems($orderId)
     {
         // URL AUTHORIZATION
-        $orders = auth()->user()->orders;
-        $orderIds = [];
-        foreach ($orders as $key => $order) {
-            array_push($orderIds, $order->id);
-        }
-        $isLegal = in_array($orderId, $orderIds);
-
-        if (!$isLegal) {
-            abort(403);
-        }
+        $orders= auth()->user()->orders;
+        $orderIds =[];
+           foreach ($orders as $key => $order) {
+               array_push($orderIds, $order->id);
+           }
+           $isLegal=in_array($orderId , $orderIds);
+           
+           if (!$isLegal ) {
+               abort(403);
+           }   
         //END URL AUTHORIZATION
         $order = Order::find($orderId);
-
-        $orderItems = $order->orderItem;
+        $orderItems = $order->orderItems;
         return view('order-item', compact('orderItems', 'order'));
     }
 
     //////////////////////////////////////////////////////////////
-    /////////////////////////For Admin///////////////////////////
+    /////////////////For Admin///////////////////////////////////
     ////////////////////////////////////////////////////////////
 
     // for superadmin only
     public function userOrder()
     {
-        if (auth()->user()->user_role == 'superadmin') {
+        
+        if(auth()->user()->user_role == 'superadmin'){
             $orders = Order::latest()->get();
             return view('admin.order.index', compact('orders'));
         }
         abort(403);
+           
     }
+
 
     //--------------------------------------------------------
 
     // for superadmin only
     public function viewUserOrder($orderId)
     {
-        if (auth()->user()->user_role == 'superadmin') {
-            // using 'Order' models not 'OrderItem' models Because I need Order for the totalPrice
-            $order = Order::with('orderItem')->find($orderId);
+      
+        // here
+    if(auth()->user()->user_role == 'superadmin'){
+        $order = Order::with('orderItems')->where('id', $orderId)->first();
             // URL AUTHORIZATION
-            if (!$order) {
+            if(!$order){
                 abort(404);
             }
             //END URL AUTHORIZATION
@@ -82,15 +86,15 @@ class OrderController extends Controller
     // for superadmin only
     public function storeOrder()
     {
-        if (auth()->user()->user_role == 'superadmin') {
-
-            $categories = Category::has('orderItem')->with(['user' => function ($query) {
+        if(auth()->user()->user_role == 'superadmin'){
+        
+            $stores = Store::has('orderItems')->with(['users' => function ($query) { 
                 // call back function
                 $query->where('user_role', 'admin');
                 $query->orderBy('created_at', 'desc');
-            }])->get();
-
-            return view('admin.order.store-order', compact('categories'));
+               }])->get();
+            return view('admin.order.store-order', compact('stores'));
+        
         }
         abort(403);
     }
@@ -98,63 +102,61 @@ class OrderController extends Controller
     //--------------------------------------------------------
 
     // for superadmin , admin , employee
-    public function viewStoreItem($categorySlug, Request $request)
+    public function viewStoreItem($storeSlug, Request $request)
     {
-        // here
-        $category = Category::where('slug', $categorySlug)->first();
+        $store = Store::where('slug', $storeSlug)->first();
 
-        if (auth()->user()->user_role == 'admin' || auth()->user()->user_role == 'employee') {
+        if(auth()->user()->user_role == 'admin'||auth()->user()->user_role == 'employee'){
             // URL AUTHORIZATION
-            $isLegal = auth()->user()->category->slug == $categorySlug;
-            if (!$isLegal) {
+            $isLegal = auth()->user()->store->slug == $storeSlug;
+            if(!$isLegal) {
                 abort(403);
             }
             // END URL AUTHORIZATION
 
-        } elseif (auth()->user()->user_role == 'superadmin') {
+        }elseif(auth()->user()->user_role == 'superadmin'){
             // URL AUTHORIZATION
-            if (!$category) {
+        if (!$store ) {
                 abort(404);
             }
-            // END URL AUTHORIZATION
-
-        } else {
+            //END URL AUTHORIZATION
+        }else{
             abort(403);
         }
-
-        $categoryId = $category->id;
+        $storeId = $store->id;
         if ($request->fromdate && $request->todate) {
-            $storeItems = OrderItem::whereBetween('created_at', [$request->fromdate . " 00:00:00", $request->todate . " 23:59:59"])
-                ->where('category_id', $categoryId)->get();
+            $storeItems = OrderItem::whereBetween('created_at', [$request->fromdate . " 00:00:00", $request->todate . " 23:59:59"])->where('store_id', $storeId)->get();
         } elseif ($request->fromdate) {
-            $storeItems = OrderItem::where('created_at', '>=', $request->fromdate . " 00:00:00")
-                ->where('category_id', $categoryId)->get();
+            $storeItems =  OrderItem::where('created_at', '>=', $request->fromdate . " 00:00:00")
+                ->where('store_id', $storeId)->get();
         } elseif ($request->todate) {
             $storeItems = OrderItem::where('created_at', '<=', $request->todate . " 23:59:59")
-                ->where('category_id', $categoryId)->get();
+                ->where('store_id', $storeId)->get();
         } else {
-            $storeItems = $category->orderItem;
+            $storeItems = $store->orderItems;
         }
         // return $storeItems;
         // return $storeItems->groupBy('name');
-
+       
         $storeItems = $storeItems->groupBy('name')->map(function ($group) {
             return [
                 'name' => $group->first()['name'],
-                'image' => $group->first()['image'],
-                'price' => $group->first()['price'],
+                'image'=>$group->first()['image'],
+                'price'=>$group->first()['price'],
                 'quantity' => $group->sum('quantity'),
-                'category_id' => $group->first()['category_id'],
+                'store_id'=>$group->first()['store_id'],
             ];
         });
-        // return $storeItems;
-
-        $filteredStoreItems = [];
+        // return storeItems;
+        
+        $filteredStoreItems=[];
         foreach ($storeItems as $key => $item) {
-            array_push($filteredStoreItems, $item);
+            array_push($filteredStoreItems,$item) ;
         }
-        // return $filteredStoreItems;
-
-        return view('admin.order.store-order-item', compact('filteredStoreItems', 'categorySlug'));
+        // return filteredStoreItems;
+        
+        return view('admin.order.store-order-item', compact('filteredStoreItems','storeSlug'));
     }
 }
+
+

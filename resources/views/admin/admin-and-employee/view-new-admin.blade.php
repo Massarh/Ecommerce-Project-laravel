@@ -28,7 +28,7 @@
             <div class="card-body">
 
                 <div class="table-responsive">
-                    <table class="table align-middle table-nowrap" style="font-size:13px">
+                    <table class="table align-middle table-nowrap">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -87,7 +87,7 @@
                             @endforeach
 
                         @else 
-                            <td>No new admin & employee created yet</td>
+                            <td>No new admin created yet</td>
                         @endif
                             
                         </tbody>
