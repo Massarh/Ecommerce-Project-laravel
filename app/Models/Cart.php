@@ -38,6 +38,8 @@ class Cart extends Model
             'price'      => $product->price,
             'qty'        => 0, // Quantity
             'image'      => $product->image,
+            'description'=> $product->description,
+            'additional_info'=> $product->additional_info,
             "categoryId" => $product->category_id, // ORDER
         ];
         // array_key_exists() ->used to check whether a specific key or index is present inside an array or not.

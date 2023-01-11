@@ -15,10 +15,10 @@ $(document).ready(function () {
     skin: "square",
     type: "double",
     grid: true,
-    min: 0,
+    min: 3,
     max: 1000,
 
-    prefix: "$"
+    prefix: "JOD "
   });
 });
 /******/ })()

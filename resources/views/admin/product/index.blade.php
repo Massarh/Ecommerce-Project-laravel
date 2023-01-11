@@ -87,7 +87,7 @@
                                 <td>{{ $product->name }}</td>
                                 <td>{!! $product->description !!}</td>
                                 <td>{!! $product->additional_info !!}</td>
-                                <td>${{ $product->price }}</td>
+                                <td>{{ $product->price }} JOD</td>
                                 @if(auth()->user()->user_role=='superadmin')
                                 <td>{{ $product->category->name }}</td>
                                 @endif

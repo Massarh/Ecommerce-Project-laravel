@@ -53,7 +53,12 @@
                                     <img src="{{ Storage::url($product['image']) }}" alt="product-img"
                                         title="product-img" class="avatar-md"  style="width:200px; height:300px"/>
                                 </td>
-                                <td>{{$product['name']}}</td>
+                                <td>
+                                    {{$product['name']}}
+                                    <hr style="border-top: 1px solid #989898;max-width: 400px !important;">
+                                    <p style="max-width: 400px !important; font-size:12px">{!!$product['description']!!}</p>
+                                    <p style="max-width: 400px !important; font-size:12px">{!!$product['additional_info']!!}</p>
+                                </td>
                                 <td>
                                     <div class="checkout" style="margin-top:18px">
                                         <form action="{{route('cart.update', $product['id'])}}" method="POST">

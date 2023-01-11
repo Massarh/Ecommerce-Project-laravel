@@ -103,14 +103,17 @@
                 </form>
 
                 {{-- new --}}
-                <img class="rounded-circle header-profile-user mt-1"
+                {{-- <img class="rounded-circle header-profile-user mt-1"
                     src="{{ auth()->user()->image ?  Storage::url(auth()->user()->image):asset('/logo/user.png')}}"
-                    alt="profile image">
+                    alt="profile image"> --}}
                 {{-- new --}}
 
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <img class="rounded-circle header-profile-user" 
+                            src="{{ auth()->user()->image ?  Storage::url(auth()->user()->image):asset('/logo/user.png')}}"
+                            alt="profile image">
                         {{ Auth::user()->name }}
                     </a>
 
@@ -337,7 +340,7 @@ background-color:#ffffff!important;">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="mailto:goplaza.team22@gmail.com"><i class="mdi mdi-gmail"></i></a>
                     <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="https://www.instagram.com/go_plaza/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/go_plaza/" target="_blank"><i class="fab fa-instagram"></i></a>
 
                     <div class="copyright text-center my-auto">
                         <span>developed by <b>plaza team</b> &copy; <script>
