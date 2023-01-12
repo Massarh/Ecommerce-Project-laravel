@@ -30,17 +30,12 @@
 
 <div class="row justify-content-center">
 
-    @if (Session::has('message')) {{-- to show the message --}}
-    <div class="alert alert-success">
-        {{ Session::get('message') }}
-    </div>
-    @endif
-
     <div class="col-lg-10">
         <div class="card">
             <div class="card-body">
                 <form method="POST" action="{{ route('admin.create') }}">
                     @csrf
+                    {!! Toastr::message() !!}
 
                     <!-- Name -->
                     <div class="row mb-3">

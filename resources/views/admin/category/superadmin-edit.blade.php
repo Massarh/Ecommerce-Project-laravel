@@ -37,10 +37,12 @@
     <div class="col-lg-10">
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('category.store') }}" method="POST">
+                <form action="{{ route('category.update', [$oldCategory->id]) }}" method="POST">
                     @csrf
+                    @method('PUT')
+
                     {!! Toastr::message() !!}
-                    
+
                     <div class="row">
                         <div class="col">
 
@@ -49,7 +51,7 @@
                                 <label for="name">Name</label>
                                 <input id="name" name="name" type="text"
                                     class="form-control @error('name') is-invalid @enderror" aria-describedby=""
-                                    placeholder="Enter name of category" value="{{ old('name') }}">
+                                    placeholder="Enter name of category" value="{{ $oldCategory->name }}">
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

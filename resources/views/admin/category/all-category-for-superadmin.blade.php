@@ -47,24 +47,26 @@
                                 <th></th>
                             </tr>
                         </thead>
-                         <tbody>
+                        <tbody>
                             <!-- Admin & Employee -->
                             @if (count($categories)>0)
                             @foreach ($categories as $key=>$category)
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $category->name }}</td>
-                                 <!-- section Button-->
-                                 <td> 
+                                <!-- section Button-->
+                                <td>
                                     <a href=" {{route('product.getProductByCategorySlug',[$category->slug])}}">
-                                        <button class="btn" style="background-color: #232838; color:white; padding: 6px">product</button>
+                                        <button class="btn"
+                                            style="background-color: #232838; color:white; padding: 6px">product</button>
                                     </a>
                                 </td>
 
                                 <!-- Button Edit -->
                                 <td>
                                     <a href=" {{route('category.edit', [$category->slug])}} ">
-                                        <button class="bg-color-btn" style="color:#198754;"><i class="fas fa-edit"></i></button>
+                                        <button class="bg-color-btn" style="color:#198754;"><i
+                                                class="fas fa-edit"></i></button>
                                     </a>
                                 </td>
 
@@ -72,8 +74,7 @@
                                 <td>
                                     <!-- Button trigger modal -->
                                     <button type="button" data-toggle="modal" class="bg-color-btn"
-                                        data-target="#exampleModal{{$category->id}}"
-                                        style="color: #dc3545;border:none">
+                                        data-target="#exampleModal{{$category->id}}" style="color: #dc3545;border:none">
                                         <i class="mdi mdi-trash-can font-size-20"></i>
                                     </button>
 
@@ -122,6 +123,3 @@
 </div>
 <!-- end row -->
 @endsection
-
-
-

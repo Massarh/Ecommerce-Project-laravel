@@ -151,9 +151,11 @@ class CategoryController extends Controller
             $request->validate([
                 'name' => 'required',
             ]);
+
             $category = Category::find($oldCategoryId);
             $category->name = $request->name;
             $category->save();
+
             Toastr::success('Category updated successfully', 'success');
             return redirect()->route('category.index');
         } elseif (auth()->user()->user_role === 'admin') {

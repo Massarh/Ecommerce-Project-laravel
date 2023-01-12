@@ -58,8 +58,8 @@
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $adminOrEmployee->name }}</td>
                                 <td>{{ $adminOrEmployee->email }}</td>
-                                <td>{{ $adminOrEmployee->phone_number ? $adminOrEmployee->phone_number :'no phone number yet' }}</td>
-                                <td>{{ $adminOrEmployee->address ? $adminOrEmployee->address : 'no address yet' }}</td>
+                                <td style="text-align: center;">{{ $adminOrEmployee->phone_number ? $adminOrEmployee->phone_number :'-' }}</td>
+                                <td style="text-align: center;">{{ $adminOrEmployee->address ? $adminOrEmployee->address : '-' }}</td>
                                 <td>{{ $adminOrEmployee->user_role }}</td>
                                 
                                 <td>
@@ -76,6 +76,8 @@
                                                 method="POST">
                                                 @csrf
                                                 @method('DELETE')
+                                                {!! Toastr::message() !!}
+
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="exampleModalLabel">Are you sure you

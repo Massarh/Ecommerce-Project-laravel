@@ -49,8 +49,12 @@ class UserController extends Controller
             $storeId=$request['storeId'];
             if($storeId) {
                 $store=Store::find($storeId);
+
+                Toastr::success('Created successfully', 'success');
                 return redirect()->route('admin.view',$store->slug);
             }
+            
+            Toastr::success('Created successfully', 'success');
             return redirect()->route('newAdmin.view');
         }else{
             abort(403);
@@ -98,7 +102,6 @@ class UserController extends Controller
     // for superadmin only
     public function deleteAdminOrEmployee($userId,Request $request)
     {
-        
         if(auth()->user()->user_role=="superadmin"){
             $adminOrEmployee = User::find($userId);
             if ($adminOrEmployee->user_role=='employee'){
@@ -119,12 +122,11 @@ class UserController extends Controller
                 $adminOrEmployee->delete();
             }
     
+            Toastr::success('Deleted successfully', 'success');
             return redirect()->back();
         }else{
             abort(403);
         }
-
-
     }
 
 
@@ -173,8 +175,6 @@ class UserController extends Controller
     // for four user_role
     public function updateProfile(Request $request)
     {
-        
-     
         $request->validate([
             'name'    => ['required','max:255'],
             'phone_number' => ['nullable', 'digits:10', 'numeric'],

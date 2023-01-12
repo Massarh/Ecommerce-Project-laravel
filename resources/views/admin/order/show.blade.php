@@ -60,8 +60,7 @@
 
                         <tfoot>
                             <tr>
-                                <td><b style="">Total price: </b></td>
-                                <td></td>
+                                <td colspan='2'><b>Total price: </b></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>

@@ -62,7 +62,7 @@
                                 <td>{{ $key+1 }}</td> 
                                 <td>{{ $category->name }}</td>
                                 @if(auth()->user()->user_role=='superadmin')
-                                <td>{{ $category->name}}</td>
+                                <td>{{ $store->name}}</td>
                                 @endif
 
                                 <td>
