@@ -141,7 +141,7 @@
                 {{-- filter by price --}}
                 <div class="price-style mb-5 ms-2" style="max-width:220px;">
                     <h5 class="font-size-14 ">Price</h5>
-                    <input name="price" type="text" id="pricerange" value="{{ $price ? $price : '0;1000'}}">
+                    <input name="price" type="text" id="pricerange" value="{{ $price ? $price : '2;26'}}">
                 </div>
 
                 <div class="ms-2 ">

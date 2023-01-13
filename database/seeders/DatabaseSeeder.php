@@ -1183,12 +1183,12 @@ class DatabaseSeeder extends Seeder
 
         User::create([ // 1
             'name'              => 'SUPER ADMIN',
-            'email'             => 'superadmin1@gmail.com',
+            'email'             => 'saplaza2023@gmail.com', // SuperADMIN123#
             'password'          => bcrypt('123456789'),
             'email_verified_at' => NOW(),
             'address'           => 'AMMAN',
             'phone_number'      => '0771496574',
-            'image'             => 'public/user/super.png',
+            'image'             => 'public/user/superadmin1.jpg',
             'user_role'         => 'superadmin'
         ]);
 
@@ -1236,7 +1236,7 @@ class DatabaseSeeder extends Seeder
 
         User::create([ // 6
             'name'              => 'PRETTY LITTLE THINGS ADMIN1',
-            'email'             => 'prettylittlethingsadmin1@gmail.com',
+            'email'             => 'prettylittlething2023@gmail.com', // PLTA123##
             'password'          => bcrypt('123456789'),
             'email_verified_at' => NOW(),
             'address'           => 'AMMAN',

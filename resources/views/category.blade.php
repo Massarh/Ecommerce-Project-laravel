@@ -150,7 +150,7 @@
                 <label class="ms-2" for="">price</label>
 
                 <div class="price-style mb-5 ms-2" style="max-width:220px;">
-                    <input value="{{ $price ? $price : '0;1000'}}" name="price" type="text" id="pricerange">
+                    <input value="{{ $price ? $price : '2;26'}}" name="price" type="text" id="pricerange">
                 </div>
 
                 <div class="ms-2 ">
