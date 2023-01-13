@@ -133,13 +133,6 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="remember" {{
-                                                    old('remember') ? 'checked' : '' }}>
-                                                <label class="form-check-label" for="remember">
-                                                    Remember me
-                                                </label>
-                                            </div>
 
                                             <div class="mt-3 d-grid">
                                                 <button class="btn waves-effect waves-light"
