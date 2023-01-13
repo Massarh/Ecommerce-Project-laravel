@@ -39,7 +39,7 @@
                         <div class="col">
 
                             <div class="form-group mb-4 ">
-                                <label for="">Choose Category</label>
+                                <label for="">Choose Category <span style="color:#ef5b69">  *</span></label>
                                 <select name="categoryId" class="form-control @error('categoryId') is-invalid @enderror">
                                     <option value="">select </option>
 

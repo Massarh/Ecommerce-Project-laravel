@@ -35,13 +35,13 @@
                     @csrf
                     @method('PUT')
                     {!! Toastr::message() !!}
-                    
+
                     <div class="row">
                         <div class="col">
 
                             <!-- Name -->
                             <div class="mb-3">
-                                <label for="name">Name</label>
+                                <label for="name">Name <span style="color:#ef5b69">  *</span></label>
                                 <input id="name" name="name" type="text"
                                     class="form-control @error('name') is-invalid @enderror" aria-describedby=""
                                     placeholder="Enter name of store" value="{{ $store->name }}">
@@ -55,9 +55,10 @@
 
                             <!-- Description -->
                             <div class="mb-3">
-                                <label for="description">Description</label>
-                                <textarea id="description" name="description"
-                                    class="form-control @error('description') is-invalid @enderror">{{ $store->description }}</textarea>
+                                <label for="description">Description <span style="color:#ef5b69">  *</span></label>
+                                <textarea id="description" name="description" placeholder="Enter store's description"
+                                    class="form-control @error('description') is-invalid @enderror" style="height: 100px;"
+                                    >{{ $store->description }}</textarea>
 
                                 @error('description')
                                 <span class="invalid-feedback" role="alert">
@@ -69,12 +70,13 @@
                             <div class="row">
                                 <!-- Image -->
                                 <div class="mb-3 col-12">
-                                    <label for="name">Choose Image</label>
+                                    <label for="name">Choose Image <span style="color:#ef5b69">  *</span></label>
                                     <div class="custom-file">
-                                        <label for="customFile" class="custom-file-label  bg-color-transparent">Choose Image</label>
-                                        <input  id="customFile" name="image" type="file" 
+                                        <label for="customFile" class="custom-file-label  bg-color-transparent">Choose
+                                            Image</label>
+                                        <input id="customFile" name="image" type="file"
                                             class="custom-file-input @error('image') is-invalid @enderror">
-                                        
+
                                         @error('image')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -82,13 +84,14 @@
                                         @enderror
                                     </div>
                                 </div>
-                                
+
                             </div>
 
                             <!-- Image -->
                             <div class="row">
                                 <div class="mb-3 col-2 offset-sm-5">
-                                    <img id="img" src="{{Storage::url($store->image) }}" style="width:6rem; height:7rem">
+                                    <img id="img" src="{{Storage::url($store->image) }}"
+                                        style="width:6rem; height:7rem">
                                 </div>
                             </div>
 

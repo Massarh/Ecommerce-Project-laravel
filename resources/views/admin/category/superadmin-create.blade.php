@@ -40,7 +40,7 @@
 
                             <!-- Name -->
                             <div class="mb-3">
-                                <label for="name">Name</label>
+                                <label for="name">Name <span style="color:#ef5b69">  *</span></label>
                                 <input id="name" name="name" type="text"
                                     class="form-control @error('name') is-invalid @enderror" aria-describedby=""
                                     placeholder="Enter name of category" value="{{ old('name') }}">

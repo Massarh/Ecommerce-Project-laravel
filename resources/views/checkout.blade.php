@@ -83,12 +83,10 @@
                                             </tr>
                                             @endforeach
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td>
-                                                    <h6 class="m-0 ">Total Price: </h6>
+                                                <td colspan="3" >
+                                                    <h6 class="m-0 " style="font-weight: bold;">Total Price: </h6>
                                                 </td>
-                                                <td style="font-weight: 500;">
+                                                <td style="font-weight: bold;">
                                                     {{$cart->totalPrice}} JOD
                                                 </td>
                                             </tr>
@@ -121,7 +119,7 @@
                                                 {!! Toastr::message() !!}
                                                 <!-- Name -->
                                                 <div class="form-group row mb-4">
-                                                    <label for="name" class="col-md-2 col-form-label">Name</label>
+                                                    <label for="name" class="col-md-2 col-form-label">Name <span style="color:#ef5b69">  *</span></label>
                                                     <div class="col-md-10">
                                                         <input type="text" name="name" id="name" class="form-control"
                                                             required value="{{auth()->user()->name}}"
@@ -131,7 +129,7 @@
 
                                                 <!-- Address -->
                                                 <div class="form-group row mb-4">
-                                                    <label for="address" class="col-md-2 col-form-label">Address</label>
+                                                    <label for="address" class="col-md-2 col-form-label">Address <span style="color:#ef5b69">  *</span></label>
                                                     <div class="col-md-10">
                                                         <input type="text" name="address" id="address"
                                                             class="form-control" placeholder="Enter your address"
@@ -141,7 +139,7 @@
 
                                                 <!-- City -->
                                                 <div class="form-group row mb-4">
-                                                    <label for="city" class="col-md-2 col-form-label">City</label>
+                                                    <label for="city" class="col-md-2 col-form-label">City <span style="color:#ef5b69">  *</span></label>
                                                     <div class="col-md-10">
                                                         <input type="text" name="city" id="city" class="form-control"
                                                             placeholder="Enter your city" required>
@@ -150,7 +148,7 @@
 
                                                 <!-- State -->
                                                 <div class="form-group row mb-4">
-                                                    <label for="state" class="col-md-2 col-form-label">State</label>
+                                                    <label for="state" class="col-md-2 col-form-label">State <span style="color:#ef5b69">  *</span></label>
                                                     <div class="col-md-10">
                                                         <input type="text" name="state" id="state" class="form-control"
                                                             placeholder="Enter your state" required>
@@ -159,16 +157,13 @@
 
                                                 <!-- Postal code -->
                                                 <div class="form-group row mb-4">
-                                                    <label for="postalcode" class="col-md-2 col-form-label">Postal
-                                                        code</label>
+                                                    <label for="postalcode" class="col-md-2 col-form-label">Postal code <span style="color:#ef5b69">  *</span></label>
                                                     <div class="col-md-10">
                                                         <input type="text" name="postalcode" id="postalcode"
                                                             class="form-control" placeholder="Enter your postalcode"
                                                             required>
                                                     </div>
                                                 </div>
-
-                                                
 
                                                 {{-- Payment information --}}
                                                 <div class="mt-5" id="v-pills-payment" role="tabpanel"

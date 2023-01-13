@@ -40,7 +40,7 @@
 
                             <!-- Name -->
                             <div class="mb-3">
-                                <label for="name">Name</label>
+                                <label for="name">Name <span style="color:#ef5b69">  *</span></label>
                                 <input id="name" name="name" type="text"
                                     class="form-control @error('name') is-invalid @enderror" aria-describedby=""
                                     placeholder="Enter name of store" value="{{ old('name') }}">
@@ -54,9 +54,10 @@
 
                             <!-- Description -->
                             <div class="mb-3">
-                                <label for="description">Description</label>
-                                <textarea id="description" name="description"
-                                    class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
+                                <label for="description">Description <span style="color:#ef5b69">  *</span></label>
+                                <textarea id="description" name="description" placeholder="Enter store's description"
+                                    class="form-control @error('description') is-invalid @enderror" style="height: 100px;"
+                                    >{{ old('description') }}</textarea>
 
                                 @error('description')
                                 <span class="invalid-feedback" role="alert">
@@ -67,7 +68,7 @@
 
                             <!-- Image -->
                             <div class="mb-3">
-                                <label for="name">Choose Image</label>
+                                <label for="name">Choose Image <span style="color:#ef5b69">  *</span></label>
                                 <div class="custom-file">
                                     <label for="customFile" class="custom-file-label bg-color-transparent">Choose Image</label>
                                     <input id="customFile" name="image" type="file"

@@ -44,7 +44,7 @@
 
                     <!-- Name -->
                     <div class="mb-3">
-                        <label for="name">Name</label>
+                        <label for="name">Name <span style="color:#ef5b69">  *</span></label>
                         <input id="name" name="name" type="text"
                             class="form-control @error('name') is-invalid @enderror" aria-describedby=""
                             placeholder="Enter name of product" value="{{ old('name') }}">
@@ -58,7 +58,7 @@
 
                     <!-- Image -->
                     <div class="mb-3">
-                        <label>Choose image</label>
+                        <label>Choose image <span style="color:#ef5b69">  *</span></label>
                         <div class="custom-file">
                             <label for="customFile" class="custom-file-label bg-color-transparent">Choose image</label>
                             <input id="customFile" name="image" type="file"
@@ -80,7 +80,7 @@
 
                     <!-- Price -->
                     <div class="mb-3">
-                        <label for="price">Price</label>
+                        <label for="price">Price <span style="color:#ef5b69">  *</span></label>
                         <input id="price" name="price" type="text"
                             class="form-control @error('price') is-invalid @enderror" aria-describedby=""
                             value="{{ old('price') }}">
@@ -95,7 +95,7 @@
 
                         <!-- Description -->
                         <div class="mb-3 col-sm-6">
-                            <label for="description">Description</label>
+                            <label for="description">Description <span style="color:#ef5b69">  *</span></label>
                             <textarea name="description" id="summernote"
                                 class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
                             @error('description')
@@ -107,7 +107,7 @@
 
                         <!-- Additional information -->
                         <div class="mb-3 col-sm-6">
-                            <label for="additional_info">Additional information</label>
+                            <label for="additional_info">Additional information <span style="color:#ef5b69">  *</span></label>
                             <textarea id="summernote1" name="additional_info"
                                 class="form-control @error('additional_info') is-invalid @enderror">{{ old('additional_info') }}</textarea>
                             @error('additional_info')
@@ -120,10 +120,10 @@
                     </div>
 
                     <div class="row">
-                         {{-- section --}}
-                         <div class="mb-5 col-sm-6">
+                        {{-- section --}}
+                        <div class="mb-5 col-sm-6">
                             <div class="custom-file">
-                                <label>Choose Section</label>
+                                <label>Choose Section <span style="color:#ef5b69">  *</span></label>
                                 <select name="section"
                                     class="form-control @error('section') is-invalid @enderror">
                                     <option value="">Select</option>
@@ -142,7 +142,7 @@
 
                         <div class="mb-3 col-sm-6">
                             <div class="custom-file">
-                                <label>Choose Category</label>
+                                <label>Choose Category <span style="color:#ef5b69">  *</span></label>
                                 <select name="categoryId"
                                     class="form-control @error('categoryId') is-invalid @enderror">
                                     <option value="">Select</option>
@@ -154,7 +154,6 @@
                                 </select>
                             </div>
                         </div>
-                       
                     </div>
                 <!-- Button -->
                     <div class="mb-3 mt-4">

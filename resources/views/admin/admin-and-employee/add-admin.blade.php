@@ -39,7 +39,7 @@
 
                     <!-- Name -->
                     <div class="row mb-3">
-                        <label for="name" class="col-md-4 col-form-label text-md-start">{{ __('Name') }}</label>
+                        <label for="name" class="col-md-4 col-form-label text-md-start">{{ __('Name') }} <span style="color:#ef5b69">  *</span></label>
 
                         <div class="col-md-6">
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
@@ -55,7 +55,7 @@
 
                     <!-- Email -->
                     <div class="row mb-3">
-                        <label for="email" class="col-md-4 col-form-label text-md-start">{{ __('Email Address') }}</label>
+                        <label for="email" class="col-md-4 col-form-label text-md-start">{{ __('Email Address') }} <span style="color:#ef5b69">  *</span></label>
 
                         <div class="col-md-6">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
@@ -71,7 +71,7 @@
 
                     <!-- Password -->
                     <div class="row mb-3">
-                        <label for="password" class="col-md-4 col-form-label text-md-start">{{ __('Password') }}</label>
+                        <label for="password" class="col-md-4 col-form-label text-md-start">{{ __('Password') }} <span style="color:#ef5b69">  *</span></label>
 
                         <div class="col-md-6">
                             <input id="password" type="password"
@@ -89,7 +89,7 @@
                     <!-- Confirm Password -->
                     <div class="row mb-3">
                         <label for="password-confirm" class="col-md-4 col-form-label text-md-start">{{ __('Confirm
-                            Password') }}</label>
+                            Password') }} <span style="color:#ef5b69">  *</span></label>
 
                         <div class="col-md-6">
                             <input id="password-confirm" type="password" class="form-control"
@@ -99,7 +99,7 @@
 
                     <!-- Choose User Role -->
                     <div class="row mb-3">
-                        <label class='col-md-4 col-form-label text-md-start'>Choose User Role</label>
+                        <label class='col-md-4 col-form-label text-md-start'>Choose User Role <span style="color:#ef5b69">  *</span></label>
                         <div class='col-md-6'>
                             <select name="userRole" class="form-control @error('userRole') is-invalid @enderror">
                                 <option value="{{ old('userRole') }}">Select User Role</option>

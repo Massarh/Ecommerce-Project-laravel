@@ -38,7 +38,7 @@
 
                     <!-- Image -->
                     <div class="mb-3">
-                        <label for="name">Choose Image</label>
+                        <label for="name">Choose Image <span style="color:#ef5b69">  *</span></label>
                         <div class="custom-file">
                             <label for="customFile" class="custom-file-label bg-color-transparent">Choose image</label>
                             <input id="customFile" name="image" type="file"

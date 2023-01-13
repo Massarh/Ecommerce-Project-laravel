@@ -48,7 +48,7 @@
                     {!! Toastr::message() !!}
                     
                     <div class="form-group mb-4 ">
-                        <label for="">Choose Category</label>
+                        <label for="">Choose Category <span style="color:#ef5b69">  *</span></label>
                         <select name="categoryId" class="form-control @error('categoryId') is-invalid @enderror">
                             <option style="color:rgba(28, 161, 37, 0.992)" value="{{$oldCategory->id}}">{{$oldCategory->name}}      (current) </option>
 

@@ -92,7 +92,7 @@
 
                     <!-- Username -->
                     <div class="mb-3">
-                        <label for="name" class="form-label">Username</label>
+                        <label for="name" class="form-label">Username <span style="color:#ef5b69">  *</span></label>
                         <input id="name" name="name" type="text"
                             class="form-control @error('name') is-invalid @enderror" value="{{ $user->name }}" autofocus
                             placeholder="Enter name" autocomplete="name">

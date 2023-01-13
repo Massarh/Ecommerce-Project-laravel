@@ -28,13 +28,6 @@
 
 <div class="row justify-content-center">
 
-    <!-- to show the message -->
-    @if (Session::has('message'))
-    <div class="alert alert-success">
-        {{ Session::get('message') }}
-    </div>
-    @endif
-
     <div class="col-lg-10">
         <div class="card">
             <div class="card-body">
@@ -46,7 +39,7 @@
 
                     <!-- Name -->
                     <div class="mb-3">
-                        <label for="name">Name</label>
+                        <label for="name">Name <span style="color:#ef5b69">  *</span></label>
                         <input id="name" name="name" type="text"
                             class="form-control @error('name') is-invalid @enderror" aria-describedby=""
                             value="{{ $product->name }}">
@@ -61,7 +54,7 @@
 
                         <!-- Image -->
                         <div class="mb-3 col-12">
-                            <label>Choose Image</label>
+                            <label>Choose Image <span style="color:#ef5b69">  *</span></label>
                             <div class="custom-file">
                                 <label for="customFile" class="custom-file-label">Choose Image</label>
                                 <input id="customFile" name="image" type="file"
@@ -85,7 +78,7 @@
 
                     <!-- Price -->
                     <div class="mb-3">
-                        <label for="price">Price</label>
+                        <label for="price">Price <span style="color:#ef5b69">  *</span></label>
                         <input id="price" name="price" type="text"
                             class="form-control @error('price') is-invalid @enderror" aria-describedby=""
                             value="{{ $product->price }}">
@@ -100,7 +93,7 @@
 
                         <!-- Description -->
                         <div class="mb-3 col-sm-6">
-                            <label for="description">Description</label>
+                            <label for="description">Description <span style="color:#ef5b69">  *</span></label>
 
                             <textarea name="description" id="summernote"
                                 class="form-control @error('description') is-invalid @enderror"> {{$product->description }}</textarea>
@@ -113,7 +106,7 @@
 
                         <!-- Additional information -->
                         <div class="mb-3 col-sm-6">
-                            <label for="additional_info">Additional information</label>
+                            <label for="additional_info">Additional information <span style="color:#ef5b69">  *</span></label>
                             <textarea id="summernote1" name="additional_info"
                                 class="form-control @error('additional_info') is-invalid @enderror">{{ $product->additional_info  }}</textarea>
                             @error('additional_info')
@@ -129,7 +122,7 @@
                         {{-- section --}}
                         <div class="mb-5 col-sm-6">
                             <div class="custom-file">
-                                <label>Choose Section</label>
+                                <label>Choose Section <span style="color:#ef5b69">  *</span></label>
                                 <select name="section" class="form-control @error('section') is-invalid @enderror">
                                     <option  style="color:rgba(28, 161, 37, 0.992)" value="{{$product->section}}">
                                         {{$product->section}}
@@ -144,7 +137,7 @@
                         <!-- Category -->
                         <div class="mb-3 col-sm-6">
                             <div class="custom-file">
-                                <label>Choose Category</label>
+                                <label>Choose Category <span style="color:#ef5b69">  *</span></label>
                                 <select name="categoryId"
                                     class="form-control @error('categoryId') is-invalid @enderror">
                                     <option  style="color:rgba(28, 161, 37, 0.992)" value="{{$product->category->id}}">{{$product->category->name}}
