@@ -16,14 +16,14 @@
                 style=" height: 507px; display:block;" />
         </div>
         <div class="col-md-6 cardTop">
-            <section class=" p-5 MarginTop">
+            <section class=" p-5 MarginTop" style="padding-right: 18px !important; max-width: 472px;">
                 {{-- Name --}}
                 <h2 class="title mb-3">
                     <b style=" font-family: Times New Roman">{{ $product->name }} </b>
                 </h2>
                 {{-- DESCRIPTION --}}
                 <p style=" font-family: Times New Roman">{!! $product->description !!}</p>
-                <hr style=" border-top: 1px solid #1c1c1c;">
+                <hr style=" border-top: 1px solid #1c1c1c; " style="padding: 3rem !important;">
                 {{-- ITEM INFO --}}
                 <p style=" font-family: Times New Roman">{!! $product->additional_info !!}</p>
                 {{-- Price --}}
@@ -35,6 +35,14 @@
                 <a href="{{ route('add.cart', [$product->id]) }}" style="text-align: center; color:#fff; background: #000; border: #000;
                     border-radius: 4px; --bs-btn-padding-x: 80px; font-family: Times New Roman" class="btn">Add to Bag
                 </a>
+                <a href="{{ route('cart.show') }}" style="color:#fff; background: #000; border: #000;
+                    border-radius: 4px; --bs-btn-padding-x: 10px;" class="btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bag"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                    </svg>
+                </a>
             </section>
         </div>
     </div>
@@ -42,7 +50,7 @@
 {{-- YOU MAY LIKE --}}
 @if (count($productFromSameCategoryAndTopSelling) > 0)
 <div class="jumbotron" style="margin: 80px;">
-    <h3 class="fontStyleHint2" style=" font-family:Marlina; font-size:20px">ITEMS YOU MAY LIKE </h3>
+    <h3 class="fontStyleHint2" style=" font-family:Marlina; font-size:20px">SIMILAR ITEMS FROM OTHER STORES</h3>
     <div class="row">
         @foreach ($productFromSameCategoryAndTopSelling as $product)
         <div class="col-md-4 col-lg-3 col-xl-3 mb-3">

@@ -18,8 +18,14 @@ class DatabaseSeeder extends Seeder
 
     public function run()
     {
+        /** MEN   ->  TOPS, HOODIES & SEWATSHIRTS, KNITWEAR, OUTWEAR*/
+        /** WOMEN ->  ACCESSORIES & JEWELRY, SHOES, BAGS*/
+        /** KIDS  ->  KNITWEAR, OUTWEAR, TWO-PIECES & JUMPSUITS, PANTS, SHOES, BAGS, HATS*/
 
-        /* Stores*/
+        /*      Stores      */
+
+        /* daraghmeh has MEN & KIDS */
+        /* daragmeh has TWO-PIECES & JUMPSUITS ,OUTWEAR ,SHOES ,TOPS , HOODIES & SEWATSHIRTS */
         Store::create([
             'name'        => 'DARAGHMEH', //1
             'slug'        => 'DARAGHMEH',
@@ -27,7 +33,8 @@ class DatabaseSeeder extends Seeder
             'image'       => 'public/files/Daragmeh.png'
         ]);
 
-        // lafmilia
+        /* La Familia has WOMEN & KIDS  */
+        /* La Familia has OUTWEAR , PANTS , ACCESSORIES & JEWELRY , Bag*/
         Store::create([
             'name'        => 'LA FAMILIA', //2
             'slug'        => 'LA FAMILIAA',
@@ -35,6 +42,8 @@ class DatabaseSeeder extends Seeder
             'image'       => 'public/files/lafamilia.png'
         ]);
 
+        /* PRETTY LITTLE THINGS has WOMEN & kids */
+        /* PRETTY LITTLE THINGS has HATS ,SHOES ,BAGS */
         Store::create([
             'name'        => 'PRETTY LITTLE THINGS', //3
             'slug'        => 'PRETTY LITTLE THINGS',
@@ -42,6 +51,8 @@ class DatabaseSeeder extends Seeder
             'image'       => 'public/files/PrettyLittleThings.png'
         ]);
 
+        /* Jack jones has MEN */
+        /* Jack jones has KNITWEAR , OUTWEAR*/
         Store::create([
             'name'        => 'JACK & JONES ', //4
             'slug'        => 'JACK & JONES ',
@@ -49,7 +60,8 @@ class DatabaseSeeder extends Seeder
             'image'       => 'public/files/jack&jones.png'
         ]);
 
-        /* Categories */
+        /*      Categories      */
+
         Category::create([ //1
             'name' => 'TOPS',
             'slug' => 'TOPS',
@@ -96,7 +108,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        /* Connectors*/
+        /*      Connectors       */
 
         /* daragmeh */
         /* daragmeh has TWO-PIECES & JUMPSUITS ,OUTWEAR ,SHOES ,TOPS , HOODIES & SEWATSHIRTS    */
@@ -186,11 +198,11 @@ class DatabaseSeeder extends Seeder
 
 
 
-        //PRODUCTS
+        /*      PRODUCTS        */
 
         /* daragmeh */
-        /* daragmeh has TWO-PIECES & JUMPSUITS ,OUTWEAR ,SHOES ,TOPS , HOODIES & SEWATSHIRTS    */
         /* daraghmeh has men & kids */
+        /* daragmeh has TWO-PIECES & JUMPSUITS ,OUTWEAR ,SHOES ,TOPS , HOODIES & SEWATSHIRTS    */
 
         //daraghmeh
         //TWO-PIECES & JUMPSUITS
@@ -1149,26 +1161,27 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        //sliders
+        /*      sliders     */
 
         Slider::create([
-            'image' => 'slider/slider (1).jpg',
+            'image' => 'public/slider/slider (1).jpg',
         ]);
         Slider::create([
-            'image' => 'slider/slider (2).jpg',
+            'image' => 'public/slider/slider (2).jpg',
         ]);
         Slider::create([
-            'image' => 'slider/slider (3).jpg',
+            'image' => 'public/slider/slider (3).jpg',
         ]);
         Slider::create([
-            'image' => 'slider/slider (4).jpg',
+            'image' => 'public/slider/slider (4).jpg',
         ]);
         Slider::create([
-            'image' => 'slider/slider (5).jpg',
+            'image' => 'public/slider/slider (5).jpg',
         ]);
 
 
-        // User 
+        /*       User       */
+
         User::create([ // 1
             'name'              => 'SUPER ADMIN',
             'email'             => 'superadmin1@gmail.com',
@@ -1176,7 +1189,7 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => NOW(),
             'address'           => 'AMMAN',
             'phone_number'      => '0771496574',
-            'image'             => 'puplic/user/super.png',
+            'image'             => 'public/user/super.png',
             'user_role'         => 'superadmin'
         ]);
 
@@ -1294,7 +1307,7 @@ class DatabaseSeeder extends Seeder
             'user_role'         => 'customer'
         ]);
 
-        // ORDERS
+        /*       ORDERS      */
 
         //order 1 for superadmin 
         Order::create([

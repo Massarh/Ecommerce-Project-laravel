@@ -135,6 +135,11 @@
     .MarginTop {
         margin-top: 267px;
     }
+
+    .card-aside-img2  {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 992px){

@@ -30,6 +30,23 @@
         -webkit-box-shadow: 0 0.125rem 0.25rem 0 rgb(58 59 69 / 20%) !important;
         box-shadow: 0 0.125rem 0.25rem 0 rgb(58 59 69 / 20%) !important;
     }
+
+    .custom-file-label::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 3;
+        display: block;
+        height: calc(1.5em + 0.75rem);
+        padding: 0.375rem 0.75rem;
+        line-height: 1.5;
+        color: #6e707e;
+        content: "Browse";
+        background-color: #eaecf4;
+        border-left: inherit;
+        border-radius: 0 0.35rem 0.35rem 0;
+    }
 </style>
 
 @section('content')
