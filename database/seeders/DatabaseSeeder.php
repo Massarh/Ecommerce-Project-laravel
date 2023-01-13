@@ -266,6 +266,7 @@ class DatabaseSeeder extends Seeder
             'price'       => 26.99,
             'description' => 'Oversized Bomber Jacket',
             'additional_info' => 'Fluffy Oversized Bomber Jacket',
+            'number_of_sold'  => 2,
             'store_id'    => 1,
             'category_id' => 4,
             'section'     => 'KIDS'
@@ -369,6 +370,7 @@ class DatabaseSeeder extends Seeder
             'price'       => 49.99,
             'description' => 'Chunky Boots in mesh with a padded edge and tongue, lacing at front, and loop at back.',
             'additional_info' => 'Piqué lining, piqué insoles, and chunky, patterned soles. Sole thickness 2 in.',
+            'number_of_sold'  => 1,
             'store_id'    => 1,
             'category_id' => 9,
             'section'     => 'KIDS'
@@ -413,6 +415,7 @@ class DatabaseSeeder extends Seeder
             'price'       => 12.88,
             'description' => 'Slim Fit Polo Shirt  details. Padded upper edge, padded tongue, and lacing at front.',
             'additional_info' => ' Slim Fit Polo Shirt  Jersey lining, piqué insoles, and chunky, patterned soles. Sole thickness 2 1/2 in.',
+            'number_of_sold'  => 2,
             'store_id'    => 1,
             'category_id' => 1,
             'section'     => 'MEN'
@@ -609,6 +612,7 @@ class DatabaseSeeder extends Seeder
             'price'       => 89.00,
             'description' => 'Puffer jacket with 50% feathers and 50% down. Detachable hood with zip and long sleeves with cuffs. Injected zip fastening at the front hidden by a snap-button placket. Maxi front pockets with flaps.',
             'additional_info' => ' snap buttons and an label appliqué.',
+            'number_of_sold'  => 1,
             'store_id'    => 2,
             'category_id' => 4, //Outwear
             'section'     => 'KIDS'
@@ -662,6 +666,7 @@ class DatabaseSeeder extends Seeder
             'price'       => 10.00,
             'description' => 'Trousers with an elastic waistband. Patch pockets on the leg with flaps. ',
             'additional_info' => 'Elastic hems.',
+            'number_of_sold'  => 1,
             'store_id'    => 2,
             'category_id' => 7, //Pants
             'section'     => 'KIDS'
@@ -875,6 +880,7 @@ class DatabaseSeeder extends Seeder
             'price'       => 28.99,
             'description' => 'QUILTED MOUNTAIN BOOTS  Quilted nylon mountain boots. Side zip and adjustable lace-up fastening.',
             'additional_info' => 'Pull tab at the back for slipping on with ease. Contrast track sole.',
+            'number_of_sold'  => 1,
             'store_id'    => 3,
             'category_id' => 9,
             'section'     => 'KIDS'
@@ -908,6 +914,7 @@ class DatabaseSeeder extends Seeder
             'price'       => 20.99,
             'description' => 'LEATHER SHOULDER BAG  Rectangular leather shoulder bag. Tubular shoulder straps and detachable crossbody strap. ',
             'additional_info' => 'Decorative seams. Zip closure.',
+            'number_of_sold'  => 1,
             'store_id'    => 3,
             'category_id' => 10,
             'section'     => 'WOMEN'
@@ -1001,6 +1008,7 @@ class DatabaseSeeder extends Seeder
             'price'       => 30.40,
             'description' => 'TRAINERS  Lace-up trainers',
             'additional_info' => 'Chunky track soles.',
+            'number_of_sold'  => 2,
             'store_id'    => 3,
             'category_id' => 9,
             'section'     => 'WOMEN'
@@ -1284,6 +1292,148 @@ class DatabaseSeeder extends Seeder
             'address'           => 'ZARQA',
             'phone_number'      => '0777777777',
             'user_role'         => 'customer'
+        ]);
+
+        // ORDERS
+
+        //order 1 for superadmin 
+        Order::create([
+            'user_id'        => 1,
+            'total_quantity' => 4,
+            'total_price'    => 97.26,
+            'created_at'     => '2023-01-11 09:57:53',
+            'updated_at'     => '2023-01-11 09:57:53'
+        ]);
+
+        OrderItem::create([
+            'name'        => 'Bomber Jacket [D,K,OUTWEAR]',
+            'image'       => 'public/product/Oversized Bomber Jacket 26.99.jpg',
+            'price'       => 26.99,
+            'quantity'    => 2,
+            'order_id'    => 1,
+            'store_id'    => 1,
+            'created_at'  => '2023-01-11 09:57:53',
+            'updated_at'  => '2023-01-11 09:57:53'
+        ]);
+        OrderItem::create([
+            'name'        => 'Slim Fit Polo Shirt [D,M,TOPS]',
+            'image'       => 'public/product/Slim Fit Polo Shirt 12.88.jpg',
+            'price'       => 12.88,
+            'quantity'    => 1,
+            'order_id'    => 1,
+            'store_id'    => 1,
+            'created_at'  => '2023-01-11 09:57:53',
+            'updated_at'  => '2023-01-11 09:57:53'
+        ]);
+        OrderItem::create([
+            'name'        => 'TRAINERS [P, W, SHOES]',
+            'image'       => 'public/product/TRAINERS  Lace-up trainers. Chunky track soles..jpg',
+            'price'       => 30.40,
+            'quantity'    => 1,
+            'order_id'    => 1,
+            'store_id'    => 3,
+            'created_at'  => '2023-01-11 09:57:53',
+            'updated_at'  => '2023-01-11 09:57:53'
+        ]);
+
+        //order 2 for DARAGHMEH ADMIN1 
+        Order::create([
+            'user_id'        => 2,
+            'total_quantity' => 3,
+            'total_price'    => 122.87,
+            'created_at'     => '2023-01-8 09:57:53',
+            'updated_at'     => '2023-01-8 09:57:53'
+        ]);
+
+        OrderItem::create([
+            'name'        => 'LEATHER SHOULDER BAG [P, W, BAGS]',
+            'image'       => 'public/product/LEATHER SHOULDER BAG  Rectangular leather shoulder bag. Tubular shoulder straps and detachable crossbody strap. Decorative seams. Zip closure..jpg',
+            'price'       => 20.99,
+            'quantity'    => 1,
+            'order_id'    => 2,
+            'store_id'    => 3,
+            'created_at'  => '2023-01-8 09:57:53',
+            'updated_at'  => '2023-01-8 09:57:53'
+        ]);
+        OrderItem::create([
+            'name'        => 'Slim Fit Polo Shirt [D,M,TOPS]',
+            'image'       => 'public/product/Slim Fit Polo Shirt 12.88.jpg',
+            'price'       => 12.88,
+            'quantity'    => 1,
+            'order_id'    => 2,
+            'store_id'    => 1,
+            'created_at'  => '2023-01-8 09:57:53',
+            'updated_at'  => '2023-01-8 09:57:53'
+        ]);
+        OrderItem::create([
+            'name'        => 'DOWN AND FEATHER PUFFER JACKET WITH MAXI POCKETS [L, K, OWTWEAR]',
+            'image'       => 'public/product/D&GKO5.jpg',
+            'price'       => 89.00,
+            'quantity'    => 1,
+            'order_id'    => 2,
+            'store_id'    => 2,
+            'created_at'  => '2023-01-8 09:57:53',
+            'updated_at'  => '2023-01-8 09:57:53'
+        ]);
+
+        //order 2 for customer1
+        Order::create([
+            'user_id'        => 10,
+            'total_quantity' => 2,
+            'total_price'    => 80.39,
+            'created_at'     => '2023-01-8 09:57:53',
+            'updated_at'     => '2023-01-8 09:57:53'
+        ]);
+
+        OrderItem::create([
+            'name'        => 'Chunky Boots [D,K,shoes]',
+            'image'       => 'public/product/Warm-lined Boots 29.99.jpg',
+            'price'       => 49.99,
+            'quantity'    => 1,
+            'order_id'    => 3,
+            'store_id'    => 1,
+            'created_at'  => '2023-01-8 09:57:53',
+            'updated_at'  => '2023-01-8 09:57:53'
+        ]);
+        OrderItem::create([
+            'name'        => 'TRAINERS [P, W, SHOES]',
+            'image'       => 'public/product/TRAINERS  Lace-up trainers. Chunky track soles..jpg',
+            'price'       => 30.40,
+            'quantity'    => 1,
+            'order_id'    => 3,
+            'store_id'    => 3,
+            'created_at'  => '2023-01-8 09:57:53',
+            'updated_at'  => '2023-01-8 09:57:53'
+        ]);
+
+        //order 4 for customer2 
+        Order::create([
+            'user_id'        => 11,
+            'total_quantity' => 3,
+            'total_price'    => 48.99,
+            'created_at'     => '2023-01-6 09:57:53',
+            'updated_at'     => '2023-01-6 09:57:53'
+        ]);
+
+        OrderItem::create([
+            'name'        => 'CARGO TROUSERS [L, K, PANTS]',
+            'image'       => 'public/product/D&GKP4.jpg',
+            'price'       => 10.00,
+            'quantity'    => 2,
+            'order_id'    => 4,
+            'store_id'    => 2,
+            'created_at'  => '2023-01-6 09:57:53',
+            'updated_at'  => '2023-01-6 09:57:53'
+        ]);
+        OrderItem::create([
+            'name'        => 'QUILTED MOUNTAIN BOOTS [P, K, SHOES]',
+            'image'       => 'public/product/QUILTED MOUNTAIN BOOTS  Quilted nylon mountain boots. Side zip and adjustable lace-up fastening. Pull tab at the back for slipping on with ease. Contrast track sole..jpg',
+            'price'       => 28.99,
+            'quantity'    => 1,
+            'order_id'    => 4,
+            'store_id'    => 3,
+            'created_at'  => '2023-01-6 09:57:53',
+            'updated_at'  => '2023-01-6 09:57:53'
         ]);
     }
 }
