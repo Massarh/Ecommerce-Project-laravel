@@ -1,7 +1,7 @@
 <x-loading-indicatore />
 @extends('admin.layouts.main')
 
-@section('title') @lang('store') @endsection
+@section('title') View store @endsection
 
 @section('content')
 <!-- Breadcrumb -->
@@ -28,18 +28,15 @@
             <div class="card-body">
 
                 <div class="table-responsive">
-                    <table class="table align-middle table-nowrap">
+                    <table class="table align-middle table-nowrap" style="font-size:13px">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th></th>
+                                <th colspan="2">#</th>
 
-                                <th>Image</th>
-                                <th></th>
+                                <th colspan="2">Image</th>
 
-                                <th>Name</th>
-                                <th></th>
-                                <th></th>
+                                <th colspan="3">Name</th>
+
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -50,15 +47,12 @@
                             @if (count($stores)>0)
                                 @foreach ($stores as $key=>$store)
                                 <tr>
-                                    <td>{{ $key+1 }}</td>
-                                    <td></td>
+                                    <td colspan="2">{{ $key+1 }}</td>
 
-                                    <td><img src="{{ Storage::url($store->image) }}" alt=".." width="100"></td>
-                                    <td></td>
+                                    <td colspan="2"><img src="{{ Storage::url($store->image) }}" alt=".." width="100"></td>
 
-                                    <td>{{ $store->name }}</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td colspan="3">{{ $store->name }}</td>
+
                                     <td>
                                         <a href=" {{route('admin.view',[ $store->slug])}} ">
                                             <button class="btn"  style="background-color: #232838;
@@ -68,7 +62,7 @@
                                 </tr>
                                 @endforeach
                             @else
-                                <td>No Store created yet</td>
+                                <td>No stores created yet</td>
                             @endif
 
                         @endif

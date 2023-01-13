@@ -63,6 +63,8 @@
 
 @extends('layouts.app')
 
+@section('title') All store @endsection
+
 @section('content')
 {{-- start search --}}
 

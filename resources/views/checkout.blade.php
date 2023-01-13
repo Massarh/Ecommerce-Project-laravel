@@ -3,7 +3,7 @@
 
 @extends('layouts.app')
 
-@section('title') @lang('Checkout') @endsection
+@section('title') Checkout @endsection
 
 @section('css')
 <!-- select2 css -->
@@ -78,7 +78,7 @@
                                                 </th>
                                                 <td>{{$product['name']}}</td>
                                                 <td>{{ $product['qty'] }}</td>
-                                                <td>${{ $product['price']*$product['qty'] }}</td>
+                                                <td>{{ $product['price']*$product['qty'] }} JOD</td>
 
                                             </tr>
                                             @endforeach
@@ -89,7 +89,7 @@
                                                     <h6 class="m-0 ">Total Price: </h6>
                                                 </td>
                                                 <td style="font-weight: 500;">
-                                                    ${{$cart->totalPrice}}
+                                                    {{$cart->totalPrice}} JOD
                                                 </td>
                                             </tr>
 

@@ -2,6 +2,7 @@
 @include('navLayout.navbar')
 
 @extends('layouts.app')
+@section('title') Order items @endsection
 
 @section('content')
 

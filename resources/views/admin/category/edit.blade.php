@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title') update Category @endsection
+@section('title') Update category @endsection
 
 @section('css')
 <!-- select2 css -->

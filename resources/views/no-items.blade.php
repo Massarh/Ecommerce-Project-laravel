@@ -1,4 +1,7 @@
+<x-loading-indicatore />
 @extends('layouts.app')
+
+@section('title') No items @endsection
 
 @section('content')
 

@@ -80,6 +80,8 @@
 
 @extends('layouts.app')
 
+@section('title') {{ $store->name }} store @endsection
+
 @section('content')
 
 {{-- start search --}}

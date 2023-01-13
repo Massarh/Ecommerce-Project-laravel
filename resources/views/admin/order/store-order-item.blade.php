@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title') @lang('orders') @endsection
+@section('title') View order @endsection
 
 @section('content')
 <!-- Breadcrumb -->
@@ -28,37 +28,38 @@
         <div class="card">
             <!-- Simple Tables -->
             @if (count($filteredStoreItems)>0)
-                <form action="{{route('item.order', [$storeSlug])}}" method="GET">
-                    @csrf
-                    <div class="card-header py-3 calendar-parent">
-                        
-                        {{-- Filter Date --}}
-                        <div class="calendar-child">
-                            <label for="date" class="h5 col-form-label" style="margin-right: 10px">From</label>
-                            <div class="">
-                                <input name="fromdate" type="date" class="form-control input-sm" id="fromdate">
-                            </div>
+            <form action="{{route('item.order', [$storeSlug])}}" method="GET">
+                @csrf
+                <div class="card-header py-3 calendar-parent">
+
+                    {{-- Filter Date --}}
+                    <div class="calendar-child">
+                        <label for="date" class="h5 col-form-label" style="margin-right: 10px">From</label>
+                        <div class="">
+                            <input name="fromdate" type="date" class="form-control input-sm" id="fromdate">
                         </div>
-    
-                        <div class="calendar-child">
-                            <label for="date" class="h5 col-form-label margin-to" style="margin-right: 10px">To</label>
-                            <div class="">
-                                <input name="todate" type="date" class="form-control input-sm" id="todate">
-                            </div>
-                        </div>
-    
-                        <div class="d-flex justify-content-between ">
-                            <button class="mr-3 bg-color-btn h6" ><i class="fas fa-search fa-fw"></i></button>
-                            <a class="h6 mt-2" href="{{route('item.order', [$storeSlug])}}" style="--bs-link-hover-color: #495057;">
-                                <button class="bg-color-btn h6" ><i class="fas fa-sync"></i></button>
-                            </a>
-                        </div>
-                        {{-- Filter Date --}}
-    
                     </div>
-                </form>
-                @endif
-            
+
+                    <div class="calendar-child">
+                        <label for="date" class="h5 col-form-label margin-to" style="margin-right: 10px">To</label>
+                        <div class="">
+                            <input name="todate" type="date" class="form-control input-sm" id="todate">
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between ">
+                        <button class="mr-3 bg-color-btn h6"><i class="fas fa-search fa-fw"></i></button>
+                        <a class="h6 mt-2" href="{{route('item.order', [$storeSlug])}}"
+                            style="--bs-link-hover-color: #495057;">
+                            <button class="bg-color-btn h6"><i class="fas fa-sync"></i></button>
+                        </a>
+                    </div>
+                    {{-- Filter Date --}}
+
+                </div>
+            </form>
+            @endif
+
             <div class="card-body">
 
                 <div class="table-responsive">
@@ -82,29 +83,25 @@
                                 <td>{{ $key+1 }}</td>
 
                                 <td>{{ $item['name'] }}</td>
-                                <td>${{ $item['price'] }}</td>
+                                <td>{{ $item['price'] }} JOD</td>
                                 <td>{{ $item['quantity'] }}</td>
-                                <td>${{ $item['price'] * $item['quantity'] }}</td>
+                                <td>{{ $item['price'] * $item['quantity'] }} JOD</td>
                                 <td><img src="{{ Storage::url($item['image']) }}" width="100"></td>
                             </tr>
                             <?php $totalPrice += $item['price'] * $item['quantity'] ?>
                             @endforeach
-                            
+
                         </tbody>
 
                         <tfoot>
                             <tr>
-                                <td><b style="">Total price: </b></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><b>${{$totalPrice}} </b></td>
-                                <td></td>
+                                <td colspan='4'><b>Total price: </b></td>
+                                <td colspan='2'><b>{{$totalPrice}} JOD</b></td>
                             </tr>
                         </tfoot>
-                        @else 
-                        <td>No Store Items To Show</td>
-                    @endif
+                        @else
+                            <td>No store items created yet</td>
+                        @endif
 
                     </table>
                 </div>

@@ -1,7 +1,7 @@
 <x-loading-indicatore />
 @extends('admin.layouts.main')
 
-@section('title') @lang('create admin') @endsection
+@section('title') Create admin @endsection
 
 @section('css')
 <!-- select2 css -->

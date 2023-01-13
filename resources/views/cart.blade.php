@@ -24,7 +24,7 @@
 
 @extends('layouts.app')
 
-@section('title') @lang('Cart') @endsection
+@section('title') Bag @endsection
 
 @section('content')
 
@@ -46,14 +46,19 @@
                             @if($cart)
                             {{-- Foreach To display product in cart --}}
 
-                            <div>{!! Toastr::message() !!}</div>
+                            {!! Toastr::message() !!}
                             @foreach($cart->items as $product)
                             <tr>
                                 <td>
                                     <img src="{{ Storage::url($product['image']) }}" alt="product-img"
-                                        title="product-img" class="avatar-md"  style="width:200px; height:300px"/>
+                                        title="product-img" class="avatar-md" style="width:200px; height:300px" />
                                 </td>
-                                <td>{{$product['name']}}</td>
+                                <td>
+                                    {{$product['name']}}
+                                    <hr style="border-top: 1px solid #989898; max-width: 400px !important;">
+                                    <p style="max-width: 400px !important; font-size:12px">{!!$product['description']!!}</p>
+                                    <p style="max-width: 400px !important; font-size:12px">{!!$product['additional_info']!!}</p>
+                                </td>
                                 <td>
                                     <div class="checkout" style="margin-top:18px">
                                         <form action="{{route('cart.update', $product['id'])}}" method="POST">
@@ -68,14 +73,12 @@
                                             <button type="submit"
                                                 style="border:none;background-color:transparent;cursor:pointer;margin-left:4px;color: #1e1e1e"
                                                 class="fa fa-refresh"></button>
-
                                         </form>
-
                                     </div>
                                 </td>
 
                                 <td>
-                                    $ {{$product['price'] * $product['qty'] }} JOD
+                                    {{$product['price'] * $product['qty'] }} JOD
                                 </td>
                                 <td>
                                     <form action="{{route('cart.remove', $product['id'])}}" method="POST">
@@ -88,9 +91,13 @@
                                 </td>
                             </tr>
                             @endforeach
-                            <td colspan="5">Total Price: ${{$cart->totalPrice}}</td>
-
                         </tbody>
+                        <tfoot style="font-weight: bold;">
+
+                            <td colspan="3">Total Price: </td>
+                            <td colspan="2">{{$cart->totalPrice}} JOD</td>
+
+                        </tfoot>
                     </table>
                 </div>
                 <div class="row mt-4">

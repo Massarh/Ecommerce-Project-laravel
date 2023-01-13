@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title') @lang('orders') @endsection
+@section('title') View user @endsection
 
 @section('content')
 <!-- Breadcrumb -->
@@ -11,7 +11,7 @@
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}"">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
                     <li class="breadcrumb-item active" style="text-decoration-line: underline;">Orders Table</li>
                 </ol>
             </div>
@@ -53,7 +53,7 @@
                                     </tr>
                                 @endforeach
                             @else 
-                                <td>No any orders to show</td>
+                                <td>No orders are established yet</td>
                             @endif
                             
                         </tbody>

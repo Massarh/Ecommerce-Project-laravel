@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title') @lang('update product') @endsection
+@section('title') Update product @endsection
 
 @section('css')
 <!-- select2 css -->
@@ -20,7 +20,6 @@
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Product</li>
-                    <!-- what is aria? Accessible Rich Internet Applications (ARIA) -->
                 </ol>
             </div>
         </div>

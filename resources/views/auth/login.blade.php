@@ -1,9 +1,7 @@
 <x-loading-indicatore />
 @extends('layouts.app')
 
-@section('title')
-@lang('Login')
-@endsection
+@section('title') Login @endsection
 
 @section('css')
 <!-- owl.carousel css -->

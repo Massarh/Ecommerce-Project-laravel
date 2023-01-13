@@ -1,6 +1,8 @@
 <x-loading-indicatore />
 @extends('layouts.app')
 
+@section('title') Orders @endsection
+
 @section('content')
 @include('navLayout.navbar')
 

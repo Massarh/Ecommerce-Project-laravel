@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title') @lang('edit store') @endsection
+@section('title') Update store @endsection
 
 @section('css')
 <!-- select2 css -->
@@ -27,12 +27,6 @@
 </div>
 
 <div class="row justify-content-center">
-
-    @if (Session::has('message')) {{-- to show the message --}}
-        <div class="alert alert-success">
-            {{ Session::get('message') }}
-        </div>
-    @endif
 
     <div class="col-lg-10">
         <div class="card">
@@ -124,17 +118,15 @@
         $('.custom-file-input').on('change', function() {
             var input = this;
             if (input.files && input.files[0]) 
-           
-                    {
-                        //  The FileReader function returns the file’s contents
-                        var reader = new FileReader();
-                        reader.onload = function (e) {
-                        $('#img').attr('src', e.target.result);
-                        }
-                    // The readAsDataURL method is used to read the contents of the specified File.
-                    reader.readAsDataURL(input.files[0]);
-                    }
-                    
+            {
+                //  The FileReader function returns the file’s contents
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                $('#img').attr('src', e.target.result);
+                }
+            // The readAsDataURL method is used to read the contents of the specified File.
+            reader.readAsDataURL(input.files[0]);
+            }
         });
     });
 </script>

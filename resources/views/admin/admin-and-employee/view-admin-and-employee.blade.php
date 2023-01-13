@@ -1,7 +1,7 @@
 <x-loading-indicatore />
 @extends('admin.layouts.main')
 
-@section('title') @lang('admin') @endsection
+@section('title') View admin @endsection
 
 @section('content')
 <!-- Breadcrumb -->
@@ -38,7 +38,7 @@
             <div class="card-body">
 
                 <div class="table-responsive">
-                    <table class="table align-middle table-nowrap">
+                    <table class="table align-middle table-nowrap" style="font-size:13px">
                         <thead>
                             <tr>
                                 <th>#</th>

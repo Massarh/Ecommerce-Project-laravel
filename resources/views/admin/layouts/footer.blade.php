@@ -3,31 +3,32 @@
 
         <ul class="list-inline">
             <li class="list-inline-item">
-                <a href="mailto:goplaza.team22@gmail.com"
-                    class="social-list-item bg-success text-white border-success" target="_blank">
-                    <i class="mdi mdi-gmail"></i>
+                <a href="mailto:goplaza.team22@gmail.com" class="social-list-item bg-success text-white border-success"
+                    target="_blank" style="line-height: 29px;">
+                    <i class="mdi mdi-gmail" style="font-size: large !important"></i>
                 </a>
             </li>
             <li class="list-inline-item">
-                <a href="https://www.instagram.com/go_plaza/" target="_blank"
+                <a href="https://www.instagram.com/go_plaza/" target="_blank" style="line-height: 29px;"
                     class="social-list-item bg-danger text-white border-danger">
-                    <i class="mdi mdi-instagram"></i>
+                    <i class="mdi mdi-instagram" style="font-size: large !important"></i>
                 </a>
             </li>
             {{-- <li class="list-inline-item">
-                <a href="#" class="social-list-item bg-primary text-white border-primary">
-                    <i class="mdi mdi-facebook"></i>
+                <a href="#" class="social-list-item bg-primary text-white border-primary" target="_blank"
+                    style="line-height: 29px;">
+                    <i class="mdi mdi-facebook" style="font-size: large !important"></i>
                 </a>
             </li> --}}
         </ul>
     </div>
 
-        
-        <div class="copyright text-center my-auto">
-            <span>developed by <b>plaza team</b> &copy; <script>
+
+    <div class="copyright text-center my-auto">
+        <span>developed by <b>plaza team</b> &copy; <script>
                 document.write(new Date().getFullYear()); 
             </script>
-        </div>
+    </div>
 </footer>
 
 
@@ -84,4 +85,3 @@
             $('#dataTableHover').DataTable(); // ID From dataTable with Hover
         });
 </script>
-

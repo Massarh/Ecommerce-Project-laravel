@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title') @lang('Category') @endsection
+@section('title') View category @endsection
 
 @section('content')
 <!-- Breadcrumb -->
@@ -120,7 +120,7 @@
 
                         @endforeach
                         @else
-                        <td>No Category created yet</td>
+                        <td>No categories created yet</td>
                         @endif
 
                         </tbody>

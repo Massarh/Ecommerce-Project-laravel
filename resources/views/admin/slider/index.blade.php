@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title') @lang('slider') @endsection
+@section('title') View slider @endsection
 
 @section('content')
 <!-- Breadcrumb -->

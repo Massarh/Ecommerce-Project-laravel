@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title') @lang('create product') @endsection
+@section('title') Create product @endsection
 
 @section('css')
 <!-- select2 css -->

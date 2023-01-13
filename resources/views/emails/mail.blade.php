@@ -18,7 +18,7 @@ padding: 10px;">
         <tr>
             <th scope="row">{{$i++}}</th>
             <td style="padding-left: 4px;">{{$product['name']}}</td>
-            <td style="padding-left: 14px;">{{$product['price']}}</td>
+            <td style="padding-left: 14px;">{{$product['price']}} JOD</td>
             <td style="padding-left: 17px;">{{$product['qty']}}</td>
         </tr>
         @endforeach
@@ -27,7 +27,7 @@ padding: 10px;">
     <tfoot>
         <tr>
             <td>
-                Total Price:{{$cart->totalPrice}}
+                Total Price:{{$cart->totalPrice}} JOD
             </td>
         </tr>
     </tfoot>

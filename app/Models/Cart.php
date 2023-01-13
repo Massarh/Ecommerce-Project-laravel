@@ -28,15 +28,19 @@ class Cart extends Model
         }
     }
 
+    //--------------------------------------------------------
+
     public function add($product)
     {
         $item = [
-            'id' => $product->id,
-            'name' => $product->name,
-            'price' => $product->price,
-            'qty' => 0, // Quantity
-            'image' => $product->image,
-            "storeId"=>$product->store_id, // ORDER
+            'id'         => $product->id,
+            'name'       => $product->name,
+            'description'=> $product->description,
+            'additional_info'=> $product->additional_info,
+            'price'      => $product->price,
+            'qty'        => 0, // Quantity
+            'image'      => $product->image,
+            "storeId" => $product->store_id, // ORDER
         ];
         // dd( $this->items);
         // array_key_exists() ->used to check whether a specific key or index is present inside an array or not.
@@ -51,16 +55,20 @@ class Cart extends Model
         $this->items[$product->id]['qty'] += 1;
     }
 
+    //--------------------------------------------------------
+
     public function updateQty($id, $qty)
     {
         $this->totalQuantity -= $this->items[$id]['qty'];
-        $this->totalPrice -= $this->items[$id]['price'] * $this->items[$id]['qty']; 
+        $this->totalPrice -= $this->items[$id]['price'] * $this->items[$id]['qty'];
 
         // add the item with new quantity
         $this->items[$id]['qty'] = $qty;
         $this->totalQuantity += $qty;
         $this->totalPrice += $this->items[$id]['price'] * $qty;
     }
+
+    //--------------------------------------------------------
 
     public function remove($id)
     {

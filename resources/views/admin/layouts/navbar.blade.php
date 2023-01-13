@@ -8,7 +8,7 @@
                         {{-- <img src="{{ URL::asset('/assets/images/logo-light.svg') }}" alt="" height="22"> --}}
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ URL::asset('logo/light.png')}}" alt="" height="40">
+                        <img src="{{ URL::asset('logo/light.png')}}" alt="" height="40" class="mt-3">
                     </span>
                 </a>
             </div>

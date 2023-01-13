@@ -20,6 +20,7 @@ class CartController extends Controller
         if (session()->has('cart')) {
             $cart = new Cart(session()->get('cart'));
         } else {
+            // access this from navbar when is empty '0'
             $cart = new Cart();
         }
         $cart->add($product);
@@ -45,7 +46,7 @@ class CartController extends Controller
 
     public function updateCart(Request $request, Product $product)
     {
-        $request->validate([ //156 in Cart page to update the qty must be least 1
+        $request->validate([ 
             'qty' => 'required|numeric|min:1'
         ]);
 
@@ -66,6 +67,7 @@ class CartController extends Controller
         $cart->remove($product->id); // remove() function in Models [Cart]
 
         if ($cart->totalQuantity <= 0) {
+            // this will execute when we remove the last item in the cart
             session()->forget('cart'); // remove from the session
         } else {
 
@@ -101,9 +103,9 @@ class CartController extends Controller
         //return $request->stripeToken; // RETURN -> tok_1M28ryDRUJBpF05ylfYIkU6S
         $charge = Stripe::charges()->create([
             'currency' => "USD",
-            'source' => $request->stripeToken,
+            'source'   => $request->stripeToken,
             // from <input name="amount" ...> in checkout.blade.php 
-            'amount' => $amount,
+            'amount'   => $amount,
             'description' => 'Stripe Payment',
         ]);
         $chargeId = $charge['id'];

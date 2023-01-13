@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title') @lang('order items') @endsection
+@section('title') View order @endsection
 
 @section('content')
 <!-- Breadcrumb -->
@@ -49,9 +49,9 @@
                                 <td>{{$i++}}</td>
                                 <td>{{$item->store->name}}</td>
                                 <td>{{$item->name}}</td>
-                                <td>${{$item->price}}</td>
+                                <td>{{$item->price}} JOD</td>
                                 <td>{{$item->quantity}}</td>
-                                <td>${{$item->price * $item->quantity}}</td>
+                                <td>{{$item->price * $item->quantity}} JOD</td>
                                 <td><img src="{{ Storage::url($item->image) }}" width="100"></td>
                             </tr>
                             @endforeach
@@ -60,12 +60,8 @@
 
                         <tfoot>
                             <tr>
-                                <td colspan='2'><b>Total price: </b></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><b>${{$order->total_price}} </b></td>
-                                <td></td>
+                                <td colspan='5'><b>Total price: </b></td>
+                                <td colspan='2'><b>{{$order->total_price}} JOD</b></td>
                             </tr>
                         </tfoot>
                     </table>
@@ -75,6 +71,6 @@
         </div>
     </div>
 </div>
-    <!---Container Fluid-->
+<!---Container Fluid-->
 
 @endsection

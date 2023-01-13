@@ -177,24 +177,22 @@ class CategoryController extends Controller
 
             $productsCount = Product::where('store_id', $storeId)
                 ->where('category_id', $oldCategoryId)->count();
-            // zero =false
+            // zero = false
             if ($productsCount) {
-                // you cant delete
+                // you can't delete
                 $request->session()->flash('status', 'cannot update this category because it contains products.');
                 return redirect()->back();
             } else {
 
                 // delete link between category and old subcategory in jt 
-                $storeCategory = StoreCategory::where('store_id', $storeId)->where(
-                    'category_id',
-                    $oldCategoryId
-                )->first();
+                $storeCategory = StoreCategory::where('store_id', $storeId)
+                    ->where('category_id', $oldCategoryId)->first();
 
                 $storeCategory->delete();
 
                 // create new link between category and new subcategory in jt
                 $createStoreCategory = StoreCategory::create([
-                    'store_id' => $storeId,
+                    'store_id'    => $storeId,
                     'category_id' =>  $newCategoryId
                 ]);
                 Toastr::success('Category updated successfully', 'success');

@@ -1,9 +1,7 @@
 <x-loading-indicatore />
 @extends('layouts.app')
 
-@section('title')
-    @lang('Recover_Password') 2
-@endsection
+@section('title') Reset password @endsection
 
 @section('css')
     <!-- owl.carousel css -->

@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title') @lang('create section') @endsection
+@section('title') Create category @endsection
 
 @section('css')
 <!-- select2 css -->

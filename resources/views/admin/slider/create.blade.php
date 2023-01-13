@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title') @lang('create slider') @endsection
+@section('title') Create slider @endsection
 
 @section('css')
 <!-- select2 css -->
@@ -28,12 +28,6 @@
 </div>
 
 <div class="row justify-content-center">
-
-    @if (Session::has('message')) {{-- to show the message --}}
-    <div class="alert alert-success">
-        {{ Session::get('message') }}
-    </div>
-    @endif
 
     <div class="col-lg-10">
         <div class="card">

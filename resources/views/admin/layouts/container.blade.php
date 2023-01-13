@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title') @lang('Dashboard') @endsection
+@section('title') Dashboard @endsection
 
 @section('content')
 
@@ -60,7 +60,7 @@
                         </span>
                     </div>
                     <div class="number-align-items">
-                        <h5 class="font-size-14 mb-0">Order Items</h5>
+                        <h5 class="font-size-14 mb-0">Ordered Items</h5>
                         <h6>{{App\Models\OrderItem::where('store_id', auth()->user()->store_id)->get()->count()}}
                         </h6>
                     </div>

@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title') @lang('stores orders') @endsection
+@section('title') View store @endsection
 
 @section('content')
 <!-- Breadcrumb -->
@@ -50,7 +50,7 @@
                                     </tr>
                                 @endforeach
                             @else 
-                                <td>No Stores To Show</td>
+                            <td>No orders are established yet</td>
                             @endif
                             
                         </tbody>
