@@ -130,7 +130,8 @@ class ProductController extends Controller
                 'price'           => $request->price,
                 'additional_info' => $request->additional_info,
                 'store_id'     => auth()->user()->store_id,
-                'category_id'  => $request->categoryId
+                'category_id'  => $request->categoryId,
+                'section'      => $request->section
             ]);
 
             Toastr::success('Product created successfully', 'success');
@@ -156,7 +157,7 @@ class ProductController extends Controller
                 abort(403);
             }
             //END URL AUTHORIZATION
-            $sections=["men"=>"men","women"=>"women","kids"=>"kids"];
+            $sections=["MEN"=>"MEN","WOMEN"=>"WOMEN","KIDS"=>"KIDS"];
             $product = Product::find($productId);  
             unset($sections[$product->section]);
             $categories = Store::find(auth()->user()->store_id)->categories()->where('category_id', '!=',$product->category->id )->get(); 

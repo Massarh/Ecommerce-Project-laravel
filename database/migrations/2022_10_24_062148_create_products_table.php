@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('price');
             $table->bigInteger('number_of_sold')->default(0);
             $table->text('description');
-            $table->enum('section',['men','women','kids']); 
+            $table->enum('section',['MEN','WOMEN','KIDS']); 
 
             $table->text('additional_info');
             $table->unsignedBigInteger('store_id');

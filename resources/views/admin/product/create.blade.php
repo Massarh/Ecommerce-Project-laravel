@@ -127,11 +127,11 @@
                                 <select name="section"
                                     class="form-control @error('section') is-invalid @enderror">
                                     <option value="">Select</option>
-                                    <option {{old('section')=="men" ? 'selected' : '' }} value="men">Men
+                                    <option {{old('section')=="MEN" ? 'selected' : '' }} value="MEN">MEN
                                     </option>
-                                    <option {{old('section')=="women" ? 'selected' : '' }} value="women">WOMEN
+                                    <option {{old('section')=="WOMEN" ? 'selected' : '' }} value="WOMEN">WOMEN
                                     </option>
-                                    <option {{old('section')=="kids" ? 'selected' : '' }} value="kids">KIDS
+                                    <option {{old('section')=="KIDS" ? 'selected' : '' }} value="KIDS">KIDS
                                     </option>
                                 </select>
                             </div>

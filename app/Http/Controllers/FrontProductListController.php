@@ -49,7 +49,7 @@ class FrontProductListController extends Controller
         $store=null;
         $search = $request->search;
         $categoryId = $request->categoryId;
-        $sections=[1=>"men",2=>"women",3=>"kids"];
+        $sections=[1=>"MEN",2=>"WOMEN",3=>"KIDS"];
         $sectionId = $request->sectionId;
         $section=null;
         if ($sectionId) {
@@ -66,14 +66,14 @@ class FrontProductListController extends Controller
             // end categories
             // sections
             $sections=[];
-            $menProductsCount=$store->products()->where('section', 'men')->count();
-            $menProductsCount ? $sections += [ 1 => "men" ] : "";
+            $menProductsCount=$store->products()->where('section', 'MEN')->count();
+            $menProductsCount ? $sections += [ 1 => "MEN" ] : "";
             
-            $womenProductsCount=$store->products()->where('section', 'women')->count();
-            $womenProductsCount ? $sections += [ 2 => "women" ]  : "";
+            $womenProductsCount=$store->products()->where('section', 'WOMEN')->count();
+            $womenProductsCount ? $sections += [ 2 => "WOMEN" ]  : "";
 
-            $kidsProductsCount=$store->products()->where('section', 'kids')->count();
-            $kidsProductsCount ? $sections += [ 3 => "kids" ]  : "";
+            $kidsProductsCount=$store->products()->where('section', 'KIDS')->count();
+            $kidsProductsCount ? $sections += [ 3 => "KIDS" ]  : "";
             // return $sections;    
             //end sections
         }else{
@@ -127,14 +127,14 @@ class FrontProductListController extends Controller
             // end categories
             // sections
             $sections=[];
-            $menProductsCount=$store->products()->where('section', 'men')->count();
-            $menProductsCount ? $sections += [ 1 => "men" ] : "";
+            $menProductsCount=$store->products()->where('section', 'MEN')->count();
+            $menProductsCount ? $sections += [ 1 => "MEN" ] : "";
             
-            $womenProductsCount=$store->products()->where('section', 'women')->count();
-            $womenProductsCount ? $sections += [ 2 => "women" ]  : "";
+            $womenProductsCount=$store->products()->where('section', 'WOMEN')->count();
+            $womenProductsCount ? $sections += [ 2 => "WOMEN" ]  : "";
 
-            $kidsProductsCount=$store->products()->where('section', 'kids')->count();
-            $kidsProductsCount ? $sections += [ 3 => "kids" ]  : "";
+            $kidsProductsCount=$store->products()->where('section', 'KIDS')->count();
+            $kidsProductsCount ? $sections += [ 3 => "KIDS" ]  : "";
 
             //end sections
 
@@ -144,7 +144,7 @@ class FrontProductListController extends Controller
             $categories = Category::get()->pluck('name', 'id');
             // end categories
             // sections
-            $sections=[1=>"men",2=>"women",3=>"kids"];
+            $sections=[1=>"MEN",2=>"WOMEN",3=>"KIDS"];
             //end sections
         }
         
@@ -156,7 +156,7 @@ class FrontProductListController extends Controller
     // section (i will preview it only if store input not selected else i will preview the intersection between it and store categories) and if section input changes to select get all categories(i will preview it only if store input not selected and the store input not selected i will preview the store categories). 
     public function loadCategoriesDependOnSection (Request $request)
     {
-        $sections=[1=>"men",2=>"women",3=>"kids"];
+        $sections=[1=>"MEN",2=>"WOMEN",3=>"KIDS"];
         $sectionId = $request->sectionId;
         if ($sectionId) {
 

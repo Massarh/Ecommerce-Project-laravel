@@ -115,11 +115,11 @@
                     <select   name="sectionId" class="form-control @error('section') is-invalid @enderror">
                         <option value="">select</option>
                         <option {{ $sectionId ==1 ? 'selected' : ''}}
-                            value="1">men</option>
+                            value="1">MEN</option>
                         <option {{ $sectionId ==2 ? 'selected' : ''}}
-                            value="2">women</option>  
+                            value="2">WOMEN</option>  
                         <option {{ $sectionId ==3 ? 'selected' : ''}}
-                            value="3">kids</option>
+                            value="3">KIDS</option>
                     </select>
 
                 </div>
