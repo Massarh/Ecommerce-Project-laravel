@@ -41,7 +41,270 @@
     }
 </style>
 
+<style>
+    /* loading style */
+    /*!
+   * Load Awesome v1.1.0 (http://github.danielcardoso.net/load-awesome/)
+   * Copyright 2015 Daniel Cardoso <@DanielCardoso>
+   * Licensed under MIT
+   */
+    .la-ball-spin,
+    .la-ball-spin>div {
+        position: relative;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .la-ball-spin {
+        display: block;
+        font-size: 0;
+        color: #fff;
+    }
+
+    .la-ball-spin.la-dark {
+        color: #333;
+    }
+
+    .la-ball-spin>div {
+        display: inline-block;
+        float: none;
+        background-color: currentColor;
+        border: 0 solid currentColor;
+    }
+
+    .la-ball-spin {
+        width: 32px;
+        height: 32px;
+    }
+
+    .la-ball-spin>div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 8px;
+        height: 8px;
+        margin-top: -4px;
+        margin-left: -4px;
+        border-radius: 100%;
+        -webkit-animation: ball-spin 1s infinite ease-in-out;
+        -moz-animation: ball-spin 1s infinite ease-in-out;
+        -o-animation: ball-spin 1s infinite ease-in-out;
+        animation: ball-spin 1s infinite ease-in-out;
+    }
+
+    .la-ball-spin>div:nth-child(1) {
+        top: 5%;
+        left: 50%;
+        -webkit-animation-delay: -1.125s;
+        -moz-animation-delay: -1.125s;
+        -o-animation-delay: -1.125s;
+        animation-delay: -1.125s;
+    }
+
+    .la-ball-spin>div:nth-child(2) {
+        top: 18.1801948466%;
+        left: 81.8198051534%;
+        -webkit-animation-delay: -1.25s;
+        -moz-animation-delay: -1.25s;
+        -o-animation-delay: -1.25s;
+        animation-delay: -1.25s;
+    }
+
+    .la-ball-spin>div:nth-child(3) {
+        top: 50%;
+        left: 95%;
+        -webkit-animation-delay: -1.375s;
+        -moz-animation-delay: -1.375s;
+        -o-animation-delay: -1.375s;
+        animation-delay: -1.375s;
+    }
+
+    .la-ball-spin>div:nth-child(4) {
+        top: 81.8198051534%;
+        left: 81.8198051534%;
+        -webkit-animation-delay: -1.5s;
+        -moz-animation-delay: -1.5s;
+        -o-animation-delay: -1.5s;
+        animation-delay: -1.5s;
+    }
+
+    .la-ball-spin>div:nth-child(5) {
+        top: 94.9999999966%;
+        left: 50.0000000005%;
+        -webkit-animation-delay: -1.625s;
+        -moz-animation-delay: -1.625s;
+        -o-animation-delay: -1.625s;
+        animation-delay: -1.625s;
+    }
+
+    .la-ball-spin>div:nth-child(6) {
+        top: 81.8198046966%;
+        left: 18.1801949248%;
+        -webkit-animation-delay: -1.75s;
+        -moz-animation-delay: -1.75s;
+        -o-animation-delay: -1.75s;
+        animation-delay: -1.75s;
+    }
+
+    .la-ball-spin>div:nth-child(7) {
+        top: 49.9999750815%;
+        left: 5.0000051215%;
+        -webkit-animation-delay: -1.875s;
+        -moz-animation-delay: -1.875s;
+        -o-animation-delay: -1.875s;
+        animation-delay: -1.875s;
+    }
+
+    .la-ball-spin>div:nth-child(8) {
+        top: 18.179464974%;
+        left: 18.1803700518%;
+        -webkit-animation-delay: -2s;
+        -moz-animation-delay: -2s;
+        -o-animation-delay: -2s;
+        animation-delay: -2s;
+    }
+
+    .la-ball-spin.la-sm {
+        width: 16px;
+        height: 16px;
+    }
+
+    .la-ball-spin.la-sm>div {
+        width: 4px;
+        height: 4px;
+        margin-top: -2px;
+        margin-left: -2px;
+    }
+
+    .la-ball-spin.la-2x {
+        width: 64px;
+        height: 64px;
+    }
+
+    .la-ball-spin.la-2x>div {
+        width: 16px;
+        height: 16px;
+        margin-top: -8px;
+        margin-left: -8px;
+    }
+
+    .la-ball-spin.la-3x {
+        width: 96px;
+        height: 96px;
+    }
+
+    .la-ball-spin.la-3x>div {
+        width: 24px;
+        height: 24px;
+        margin-top: -12px;
+        margin-left: -12px;
+    }
+
+    /*
+   * Animation
+   */
+    @-webkit-keyframes ball-spin {
+
+        0%,
+        100% {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+
+        20% {
+            opacity: 1;
+        }
+
+        80% {
+            opacity: 0;
+            -webkit-transform: scale(0);
+            transform: scale(0);
+        }
+    }
+
+    @-moz-keyframes ball-spin {
+
+        0%,
+        100% {
+            opacity: 1;
+            -moz-transform: scale(1);
+            transform: scale(1);
+        }
+
+        20% {
+            opacity: 1;
+        }
+
+        80% {
+            opacity: 0;
+            -moz-transform: scale(0);
+            transform: scale(0);
+        }
+    }
+
+    @-o-keyframes ball-spin {
+
+        0%,
+        100% {
+            opacity: 1;
+            -o-transform: scale(1);
+            transform: scale(1);
+        }
+
+        20% {
+            opacity: 1;
+        }
+
+        80% {
+            opacity: 0;
+            -o-transform: scale(0);
+            transform: scale(0);
+        }
+    }
+
+    @keyframes ball-spin {
+
+        0%,
+        100% {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            -moz-transform: scale(1);
+            -o-transform: scale(1);
+            transform: scale(1);
+        }
+
+        20% {
+            opacity: 1;
+        }
+
+        80% {
+            opacity: 0;
+            -webkit-transform: scale(0);
+            -moz-transform: scale(0);
+            -o-transform: scale(0);
+            transform: scale(0);
+        }
+    }
+</style>
+
 @section('content')
+
+{{-- loading --}}
+<div id="spinnerDiv"
+    style="visibility:hidden;display: flex; justify-content: center; align-items: center; background-color: white; position: fixed; top: 0px; left: 0px; z-index: 9999; width: 100%; height: 100%;">
+    <div style="color:black" class="la-ball-spin la-3x">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
 
 <div class="checkout-tabs mt-4">
     <div class="row justify-content-center">
@@ -73,8 +336,9 @@
                                             <tr>
                                                 <th scope="row">
                                                     <img src="{{ Storage::url($product['image']) }}" alt="product-img"
-                                                        title="product-img" class="avatar-md" style="width: 70px ;height:103px">
-                                                        
+                                                        title="product-img" class="avatar-md"
+                                                        style="width: 70px ;height:103px">
+
                                                 </th>
                                                 <td>{{$product['name']}}</td>
                                                 <td>{{ $product['qty'] }}</td>
@@ -83,7 +347,7 @@
                                             </tr>
                                             @endforeach
                                             <tr>
-                                                <td colspan="3" >
+                                                <td colspan="3">
                                                     <h6 class="m-0 " style="font-weight: bold;">Total Price: </h6>
                                                 </td>
                                                 <td style="font-weight: bold;">
@@ -115,11 +379,12 @@
 
                                             <form action="/charge" method="POST" id="payment-form">
                                                 @csrf
-                                                {{--  hereeeeee --}}
+                                                {{-- hereeeeee --}}
                                                 {!! Toastr::message() !!}
                                                 <!-- Name -->
                                                 <div class="form-group row mb-4">
-                                                    <label for="name" class="col-md-2 col-form-label">Name <span style="color:#ef5b69">  *</span></label>
+                                                    <label for="name" class="col-md-2 col-form-label">Name <span
+                                                            style="color:#ef5b69"> *</span></label>
                                                     <div class="col-md-10">
                                                         <input type="text" name="name" id="name" class="form-control"
                                                             required value="{{auth()->user()->name}}"
@@ -129,7 +394,8 @@
 
                                                 <!-- Address -->
                                                 <div class="form-group row mb-4">
-                                                    <label for="address" class="col-md-2 col-form-label">Address <span style="color:#ef5b69">  *</span></label>
+                                                    <label for="address" class="col-md-2 col-form-label">Address <span
+                                                            style="color:#ef5b69"> *</span></label>
                                                     <div class="col-md-10">
                                                         <input type="text" name="address" id="address"
                                                             class="form-control" placeholder="Enter your address"
@@ -139,7 +405,8 @@
 
                                                 <!-- City -->
                                                 <div class="form-group row mb-4">
-                                                    <label for="city" class="col-md-2 col-form-label">City <span style="color:#ef5b69">  *</span></label>
+                                                    <label for="city" class="col-md-2 col-form-label">City <span
+                                                            style="color:#ef5b69"> *</span></label>
                                                     <div class="col-md-10">
                                                         <input type="text" name="city" id="city" class="form-control"
                                                             placeholder="Enter your city" required>
@@ -148,7 +415,8 @@
 
                                                 <!-- State -->
                                                 <div class="form-group row mb-4">
-                                                    <label for="state" class="col-md-2 col-form-label">State <span style="color:#ef5b69">  *</span></label>
+                                                    <label for="state" class="col-md-2 col-form-label">State <span
+                                                            style="color:#ef5b69"> *</span></label>
                                                     <div class="col-md-10">
                                                         <input type="text" name="state" id="state" class="form-control"
                                                             placeholder="Enter your state" required>
@@ -157,7 +425,8 @@
 
                                                 <!-- Postal code -->
                                                 <div class="form-group row mb-4">
-                                                    <label for="postalcode" class="col-md-2 col-form-label">Postal code <span style="color:#ef5b69">  *</span></label>
+                                                    <label for="postalcode" class="col-md-2 col-form-label">Postal code
+                                                        <span style="color:#ef5b69"> *</span></label>
                                                     <div class="col-md-10">
                                                         <input type="text" name="postalcode" id="postalcode"
                                                             class="form-control" placeholder="Enter your postalcode"
@@ -181,7 +450,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+
                                                 {{-- Stripe DOCS --}}
                                                 <div class="stripe">
                                                     <label for="card-element"></label>
@@ -193,21 +462,21 @@
                                                 </div>
 
                                                 <div class="text-end mt-4">
-                                                    <button class="btn" type="submit"
+                                                    <button class="btn" type="submit" id="deliver"
                                                         style="background-color:#1A1A1A; color:#fff">
-                                                        <i class="mdi mdi-truck-fast me-1"></i> Deliver 
+                                                        <i class="mdi mdi-truck-fast me-1"></i> Deliver
                                                     </button>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
-                    
+
                     {{-- --}}
                 </div>
             </div>
@@ -216,20 +485,6 @@
     </div>
 </div>
 
-{{--  --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script type="text/javascript">
-    $("document").ready(function() {
-
-            $('input[name="paymentoptionsRadio"]').on('change', function() { 
-                var redioValue = $(this).val(); 
-
-                // const boxes = document.getElementsByClassName("stripe");
-                // $(boxes[0]).toggle();
-                // console.log(boxes[0])
-            });
-        });
-</script>
 
 {{-- JS from "stripe DOCS"--}}
 <script src="https://js.stripe.com/v3/"></script>
@@ -282,7 +537,7 @@ window.onload = function() { // 5.05m 162?
     form.addEventListener('submit', function(event) {
         event.preventDefault();
 
-        var options={ // 7:00m ?
+        var options={ 
         // 'name', 'address', 'city', 'state', 'postalcode' from <input id="..." >
             name:document.getElementById('name').value, 
             address_line1:document.getElementById('address').value,
@@ -297,6 +552,9 @@ window.onload = function() { // 5.05m 162?
                 var errorElement = document.getElementById('card-errors');
                 errorElement.textContent = result.error.message;
             } else {
+                $("#spinnerDiv").css({
+                    visibility: "visible"
+                });
                 // Send the token to your server.
                 stripeTokenHandler(result.token);
             }

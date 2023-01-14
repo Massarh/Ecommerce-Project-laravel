@@ -2,6 +2,13 @@
 
 @section('title') View product @endsection
 
+<style>
+    @media (max-width: 1200px) {
+        .description-style {
+            min-width: 200px;
+        }
+    }
+</style>
 @section('content')
 <!-- Breadcrumb -->
 <div class="row">
@@ -60,7 +67,7 @@
             <div class="card-body">
                 {!! Toastr::message() !!}
                 <div class="table-responsive">
-                    <table class="table align-middle table-nowrap">
+                    <table class="table align-middle table-nowrap" style="font-size: 13px">
 
                         <thead>
                             <tr>
@@ -88,8 +95,8 @@
                             <tr>
                                 <td><img src="{{ Storage::url($product->image) }}" width="100"></td>
                                 <td>{{ $product->name }}</td>
-                                <td>{!! $product->description !!}</td>
-                                <td>{!! $product->additional_info !!}</td>
+                                <td class="description-style">{!! $product->description !!}</td>
+                                <td class="description-style">{!! $product->additional_info !!}</td>
                                 <td>{{ $product->price }} JOD</td>
                                 @if(auth()->user()->user_role=='superadmin')
                                 <td>{{ $product->store->name }}</td>

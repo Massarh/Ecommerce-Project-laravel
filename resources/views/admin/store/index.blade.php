@@ -2,6 +2,14 @@
 
 @section('title') View store @endsection
 
+<style>
+    @media (max-width: 1200px) {
+        .description-style {
+            min-width: 325px;
+        }
+    }
+</style>
+
 @section('content')
 <!-- Breadcrumb -->
 <div class="row">
@@ -43,7 +51,7 @@
             <div class="card-body">
 
                 <div class="table-responsive">
-                    <table class="table align-middle table-nowrap">
+                    <table class="table align-middle table-nowrap"  style="font-size: 13px">
                         <thead>
                             <tr>
                                 @if(auth()->user()->user_role=='superadmin')
@@ -70,7 +78,7 @@
                                     <tr>
                                         <td><img src="{{ Storage::url($store->image) }}" alt=".." width="100"></td>
                                         <td>{{ $store->name }}</td>
-                                        <td>{{ $store->description }}</td>
+                                        <td class="description-style">{{ $store->description }}</td>
                                         @if(auth()->user()->user_role=='admin')   
                                             <td> 
                                                 <a href=" {{route('store.edit', [$store->slug])}} ">
@@ -94,7 +102,7 @@
                                             <td>{{ $key+1 }}</td> 
                                             <td><img src="{{ Storage::url($store->image) }}" alt=".." width="100"></td>
                                             <td>{{ $store->name }}</td>
-                                            <td>{{ $store->description }}</td>
+                                            <td class="description-style">{{ $store->description }}</td>
                                             <td> {{App\Models\User::where('store_id', $store->id)->where('user_role', 'admin')->first()->email}} </td>
                                             
                                             <!-- section Button-->

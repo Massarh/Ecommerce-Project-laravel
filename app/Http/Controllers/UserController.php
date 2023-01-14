@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
@@ -33,7 +34,11 @@ class UserController extends Controller
                 //unique users mean that the email is not exist in the database(new email).
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 //confirmed means that the two password is the same.
-                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'password' => ['required', 'string', 'confirmed',  Password::min(8)
+                    ->letters()
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()],
                 'userRole' => ['required'],
             ]);
 
@@ -136,6 +141,120 @@ class UserController extends Controller
             $newAdmins = User::where("user_role", "admin")->whereNull('store_id')
                 ->orWhere("user_role", "employee")->whereNull('store_id')->get();
             return view('admin.admin-and-employee.view-new-admin', compact('newAdmins'));
+        } else {
+            abort(403);
+        }
+    }
+
+    //--------------------------------------------------------
+
+    // for superadmin only
+    public function editAdminAndEmployee($userId)
+    {
+        if (auth()->user()->user_role == "superadmin") {
+
+            $roles = ['admin' => 'admin', 'employee' => 'employee'];
+            $adminOrEmployee = User::find($userId);
+            unset($roles[$adminOrEmployee->user_role]);
+
+            if (isset($adminOrEmployee->store)) {
+                $stores = Store::where('id', '!=', $adminOrEmployee->store->id)->get();
+            } else {
+                $stores = Store::get();
+            }
+
+            return view('admin.admin-and-employee.edit-admin-or-employee', compact('adminOrEmployee', 'roles', 'stores'));
+        } else {
+            abort(403);
+        }
+    }
+
+    //--------------------------------------------------------
+
+    // for superadmin only
+    public function updateAdminAndEmployee(Request $request, $userId)
+    {
+        // return $request;
+        if (auth()->user()->user_role == "superadmin") {
+            $adminOrEmployee = User::find($userId);
+
+            if ($adminOrEmployee->email == $request->email) {
+                $request->validate([
+                    'name'     => ['required', 'string', 'max:255'],
+                    'userRole' => ['required'],
+                ]);
+            } else {
+                $request->validate([
+                    'name'     => ['required', 'string', 'max:255'],
+                    //unique users mean that the email is not exist in the database(new email).
+                    'email'    => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                    'userRole' => ['required'],
+                ]);
+            }
+
+
+            if ($adminOrEmployee->store_id) {
+
+                if ($adminOrEmployee->user_role == 'employee') {
+                    $adminOrEmployee->name       =  $request->name;
+                    $adminOrEmployee->email      =  $request->email;
+                    $adminOrEmployee->user_role  =  $request->userRole;
+
+                    $adminOrEmployee->store_id   =  $request->storeId;
+                    $adminOrEmployee->save();
+                    Toastr::success('Updated successfully', 'success');
+                } else if ($adminOrEmployee->user_role == 'admin') {
+                    if (($request->storeId != $adminOrEmployee->store_id) || ($request->userRole == 'employee')) {
+                        // admin want to update the store name or want to update him to an employee
+                        $numberOfAdmin = User::where("store_id", $adminOrEmployee->store_id)->where("user_role", "admin")->count();
+                        if ($numberOfAdmin > 1) {
+                            $adminOrEmployee->name       =  $request->name;
+                            $adminOrEmployee->email      =  $request->email;
+                            $adminOrEmployee->user_role  =  $request->userRole;
+                            $adminOrEmployee->store_id   =  $request->storeId;
+                            $adminOrEmployee->save();
+
+                            Toastr::success('Updated successfully', 'success');
+                        } else {
+                            $request->session()->flash('status', 'cannot update the last admin in this store, please create a new admin before you try to update him.');
+                            $store = Store::find($adminOrEmployee->store_id);
+                            return redirect()->route('admin.view', $store->slug);
+                        }
+                    } else {
+                        // admin dosn't want to update the store name or dosn't want to update him to an employee
+                        $adminOrEmployee->name       =  $request->name;
+                        $adminOrEmployee->email      =  $request->email;
+                        $adminOrEmployee->save();
+                        Toastr::success('Updated successfully', 'success');
+                    }
+                }
+
+                if ($request->storeId) {
+                    $store = Store::find($request->storeId);
+                } else {
+                    $store = Store::find($adminOrEmployee->store_id);
+                }
+                return redirect()->route('admin.view', $store->slug);
+
+                // new admin and employee
+            } else if (!$adminOrEmployee->store_id) {
+                $adminOrEmployee->name       =  $request->name;
+                $adminOrEmployee->email      =  $request->email;
+                $adminOrEmployee->user_role  =  $request->userRole;
+
+                if ($request->storeId) {
+                    $adminOrEmployee->store_id   =  $request->storeId;
+                    $adminOrEmployee->save();
+
+                    $store = Store::find($request->storeId);
+                    Toastr::success('Updated successfully', 'success');
+                    return redirect()->route('admin.view', $store->slug);
+                } else {
+                    $adminOrEmployee->save();
+                    Toastr::success('Updated successfully', 'success');
+                    return redirect()->route('newAdmin.view');
+                }
+            }
         } else {
             abort(403);
         }

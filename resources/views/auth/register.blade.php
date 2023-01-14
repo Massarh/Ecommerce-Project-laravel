@@ -10,11 +10,18 @@
     type="text/css">
 @endsection
 
-@section('body')
+<style>
+    @media (min-width: 1200px){
 
-<body class="auth-body-bg">
-    @endsection
+        .auth-full-bg {
+            min-height: 132vh;
+        }
 
+        .margin {
+            margin-top: 170px!important;
+        }
+    }
+</style>
     @section('content')
 
     <div>
@@ -22,12 +29,12 @@
             <div class="row g-0">
 
                 <div class="col-xl-9">
-                    <div class="auth-full-bg pt-lg-5 p-4" style="background-color:#1A1A1A">
+                    <div class="auth-full-bg pt-lg-5 p-4" style="background-color:#1A1A1A;">
                         <div class="w-100">
                             <div class="bg-overlay" ></div>
-                            <div class="d-flex h-100 flex-column">
+                            <div class="d-flex h-100 flex-column justify-content-center">
 
-                                <div class="p-4 mt-auto">
+                                <div class="p-4 margin">
                                     <div class="row justify-content-center">
                                         <div class="col-lg-7">
                                             <div class="text-center">
@@ -77,7 +84,7 @@
                 <!-- end col -->
 
                 <div class="col-xl-3">
-                    <div class="auth-full-page-content p-md-5 p-4">
+                    <div class="auth-full-page-content px-md-5 p-4">
                         <div class="w-100">
 
                             <div class="d-flex flex-column h-100">
@@ -158,33 +165,8 @@
 
                                             <div class="mt-4 d-grid">
                                                 <button class="btn waves-effect waves-light" type="submit"
-                                                    style="background-color: #1A1A1A; color:#fff">Register</button>
+                                                    style="background-color: #1A1A1A; color:#fff;">Register</button>
                                             </div>
-
-                                            {{-- <div class="mt-4 text-center">
-                                                <h5 class="font-size-14 mb-3">Sign up using</h5>
-
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item">
-                                                        <a href="#"
-                                                            class="social-list-item bg-primary text-white border-primary">
-                                                            <i class="mdi mdi-facebook"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <a href="#"
-                                                            class="social-list-item bg-info text-white border-info">
-                                                            <i class="mdi mdi-twitter"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li class="list-inline-item">
-                                                        <a href="#"
-                                                            class="social-list-item bg-danger text-white border-danger">
-                                                            <i class="mdi mdi-google"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div> --}}
 
                                             <div class="mt-4 text-center">
                                                 <p class="mb-0">By registering you agree to the Plaza Terms of Use</p>

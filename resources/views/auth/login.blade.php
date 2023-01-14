@@ -8,11 +8,6 @@
 <link rel="stylesheet" href="{{ URL::asset('/assets/libs/owl.carousel/owl.carousel.min.css') }}">
 @endsection
 
-@section('body')
-
-<body class="auth-body-bg">
-    @endsection
-
     @section('content')
 
     <div>
@@ -75,12 +70,12 @@
                 <!-- end col -->
 
                 <div class="col-xl-3">
-                    <div class="auth-full-page-content p-md-5 p-4">
+                    <div class="auth-full-page-content px-md-5 p-4">
                         <div class="w-100">
 
                             <div class="d-flex flex-column h-100">
                                 <div class="mb-4 mb-md-5">
-                                    <div class="d-block auth-logo">
+                                    <div class="d-block auth-logo ">
                                         <img src="{{ URL::asset('/logo/logo.jpeg') }}" alt="" height="45">
                                         <img src="{{ URL::asset('/logo/goplaza.jpeg') }}" alt="" height="60">
                                     </div>
@@ -170,14 +165,14 @@
                                                     class="fw-medium text-primary"> Signup now </a> </p>
                                         </div>
 
-                                        <div class="mt-5 text-center">
+                                        <div class="mt-3 text-center">
                                             <a href="/"><i class="fa-solid fa-house" style="font-size: 25px ;color:#1a1a1a;"></i></a>
                                             <div><a href="/" style="color: #1a1a1a;font-size:11px ; ">Explore Home page</a></div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="mt-4 mt-md-5 text-center">
+                                <div class="mt-3 text-center">
                                     <p class="mb-0">© <script>
                                             document.write(new Date().getFullYear())
                                         </script> Go-plaza. Created with <i class="mdi mdi-heart text-danger"></i> by

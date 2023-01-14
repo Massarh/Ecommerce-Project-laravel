@@ -7,12 +7,14 @@
 <!-- owl.carousel css -->
 <link rel="stylesheet" href="{{ URL::asset('/assets/libs/owl.carousel/owl.carousel.min.css') }}">
 @endsection
+<style>
+    @media (min-width: 1200px){
 
-@section('body')
-
-<body class="auth-body-bg">
-    @endsection
-
+        .auth-full-bg {
+            min-height: 110vh;
+        }
+    }
+</style>
     @section('content')
 
     <div>
@@ -25,7 +27,7 @@
                             <div class="bg-overlay" ></div>
                             <div class="d-flex h-100 flex-column">
 
-                                <div class="p-4 mt-auto">
+                                <div class="p-4 mt-auto mb-5">
                                     <div class="row justify-content-center">
                                         <div class="col-lg-7">
                                             <div class="text-center">
@@ -75,7 +77,7 @@
                 <!-- end col -->
 
                 <div class="col-xl-3">
-                    <div class="auth-full-page-content p-md-5 p-4">
+                    <div class="auth-full-page-content px-md-5 p-4">
                         <div class="w-100">
 
                             <div class="d-flex flex-column h-100">
@@ -129,9 +131,9 @@
                                                     placeholder="Enter confirm password">
                                             </div>
 
-                                            <div class="text-end">
-                                                <button class="btn w-md waves-effect waves-light"
-                                                    type="submit" style="background-color: #1A1A1A; color:#fff;">Reset</button>
+                                            <div class="mt-4 d-grid">
+                                                <button class="btn waves-effect waves-light" type="submit"
+                                                    style="background-color: #1A1A1A; color:#fff">Reset</button>
                                             </div>
 
                                         </form>
@@ -140,14 +142,14 @@
                                                     class="font-weight-medium text-primary"> Sign In here</a> </p>
                                         </div>
 
-                                        <div class="mt-5 text-center">
+                                        <div class="mt-4 text-center">
                                             <a href="/"><i class="fa-solid fa-house" style="font-size: 25px ;color:#1a1a1a;"></i></a>
                                             <div><a href="/" style="color: #1a1a1a;font-size:11px ; ">Explore Home page</a></div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="mt-4 mt-md-5 text-center">
+                                <div class="mt-2 text-center">
                                     <p class="mb-0">© <script>
                                             document.write(new Date().getFullYear())
                                         </script> Go-plaza. Created with <i class="mdi mdi-heart text-danger"></i> by

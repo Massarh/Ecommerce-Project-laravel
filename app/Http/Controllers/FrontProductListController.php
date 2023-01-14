@@ -16,7 +16,7 @@ class FrontProductListController extends Controller
     public function index()
     {
         $products = Product::orderBy('number_of_sold', 'desc')->limit(12)->get();
-        $stores=Store::all();
+        $stores=Store::has('products')->get();
         $sliders = Slider::limit(5)->get();
 
         return view('product', compact('products', 'stores','sliders'));

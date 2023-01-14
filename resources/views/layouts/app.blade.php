@@ -36,7 +36,7 @@
 <body style="background-color: white; overflow-x:hidden">
     <div id="app" >
 
-        <main class="main-n pb-4">
+        <main class="main-n ">
             @yield('content')
         </main>
     </div>

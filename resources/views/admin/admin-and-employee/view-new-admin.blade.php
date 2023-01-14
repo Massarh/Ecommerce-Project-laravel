@@ -37,7 +37,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Role</th>
-                                <th>Action</th>
+                                <th colspan="2">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,6 +50,14 @@
                                 <td>{{ $admin->name }}</td>
                                 <td>{{ $admin->email }}</td>
                                 <td>{{ $admin->user_role }}</td>
+
+                                <!-- Button Edit -->
+                                <td>
+                                    <a href=" {{route('admin.edit', [$admin->id])}} ">
+                                        <button class="bg-color-btn" style="color:#198754;"><i
+                                                class="fas fa-edit"></i></button>
+                                    </a>
+                                </td>
 
                                 <td>
                                     <!-- Button trigger modal -->

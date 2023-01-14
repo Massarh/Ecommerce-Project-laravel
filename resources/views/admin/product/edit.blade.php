@@ -128,7 +128,7 @@
                                         {{$product->section}}
                                     </option>
                                     @foreach ( $sections as $key=>$section )
-                                    <option {{ old('sectionId') == $key ? 'selected' : ''}}
+                                    <option {{ old('section') == $key ? 'selected' : ''}}
                                         value="{{$key}}">{{$section}}</option>
                                     @endforeach
                                 </select>

@@ -60,6 +60,12 @@ class DatabaseSeeder extends Seeder
             'image'       => 'public/files/jack&jones.png'
         ]);
 
+        Store::create([
+            'name'        => 'TEST ', //5
+            'slug'        => 'TEST ',
+            'description' => 'TEST',
+            'image'       => 'public/files/jack&jones.png'
+        ]);
         /*      Categories      */
 
         Category::create([ //1
@@ -1183,7 +1189,7 @@ class DatabaseSeeder extends Seeder
 
         User::create([ // 1
             'name'              => 'SUPER ADMIN',
-            'email'             => 'saplaza2023@gmail.com', // SuperADMIN123#
+            'email'             => 'goplaza.team22@gmail.com', // password gmail:: Goplaza2022
             'password'          => bcrypt('123456789'),
             'email_verified_at' => NOW(),
             'address'           => 'AMMAN',
@@ -1236,7 +1242,7 @@ class DatabaseSeeder extends Seeder
 
         User::create([ // 6
             'name'              => 'PRETTY LITTLE THINGS ADMIN1',
-            'email'             => 'prettylittlething2023@gmail.com', // PLTA123##
+            'email'             => 'prettylittlething2023@gmail.com', // password gmail:: PLTA123##
             'password'          => bcrypt('123456789'),
             'email_verified_at' => NOW(),
             'address'           => 'AMMAN',
@@ -1304,6 +1310,16 @@ class DatabaseSeeder extends Seeder
             'address'           => 'ZARQA',
             'phone_number'      => '0777777777',
             'user_role'         => 'customer'
+        ]);
+        User::create([ // 
+            'name'              => 'test1',
+            'email'             => 'test@gmail.com',
+            'password'          => bcrypt('123456789'),
+            'email_verified_at' => NOW(),
+            'address'           => 'AMMAN',
+            'phone_number'      => '0778735641',
+            'user_role'         => 'admin',
+            'store_id'          => 5
         ]);
 
         /*       ORDERS      */

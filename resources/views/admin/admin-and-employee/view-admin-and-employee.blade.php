@@ -36,7 +36,7 @@
             @endif
 
             <div class="card-body">
-
+                {!! Toastr::message() !!}
                 <div class="table-responsive">
                     <table class="table align-middle table-nowrap" style="font-size:13px">
                         <thead>
@@ -47,8 +47,8 @@
                                 <th>Phone Number</th>
                                 <th>Address</th>
                                 <th>Role</th>
-                                <th>Action</th>
-                                <th></th>
+                                <th colspan="3">Action</th>
+                                {{-- <th></th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -62,6 +62,13 @@
                                 <td style="text-align: center;">{{ $adminOrEmployee->address ? $adminOrEmployee->address : '-' }}</td>
                                 <td>{{ $adminOrEmployee->user_role }}</td>
                                 
+                                <!-- Button Edit -->
+                                <td>
+                                    <a href=" {{route('admin.edit', [$adminOrEmployee->id])}} ">
+                                        <button class="bg-color-btn" style="color:#198754;"><i
+                                                class="fas fa-edit"></i></button>
+                                    </a>
+                                </td>
                                 <td>
                                     <!-- Button trigger modal -->
                                     <button class="bg-color-btn" type="button" data-toggle="modal" data-target="#exampleModal{{$adminOrEmployee->id}}" style="color: #dc3545;border:none">
@@ -76,7 +83,6 @@
                                                 method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                {!! Toastr::message() !!}
 
                                                 <div class="modal-content">
                                                     <div class="modal-header">

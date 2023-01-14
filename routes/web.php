@@ -111,6 +111,8 @@ Route::middleware(['revalidate'])->group(function () {
         Route::get('/view-store', [UserController::class, 'viewStore'])->name('store.view');
         Route::get('/view-new-admin', [UserController::class, 'viewNewAdmin'])->name('newAdmin.view');
         Route::get('/view-admin-and-employee/{storeId}', [UserController::class, 'viewAdminAndEmployee'])->name('admin.view');
+        Route::get('/edit-admin-or-employee/{userId}', [UserController::class, 'editAdminAndEmployee'])->name('admin.edit');
+        Route::put('/edit-admin-or-employee/{userId}', [UserController::class, 'updateAdminAndEmployee'])->name('admin.update');
         Route::delete('/delete-admin-and-employee/{userId}', [UserController::class, 'deleteAdminOrEmployee'])->name('admin.delete');
     });
 });

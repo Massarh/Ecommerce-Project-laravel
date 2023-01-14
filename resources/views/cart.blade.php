@@ -53,26 +53,30 @@
                                     <img src="{{ Storage::url($product['image']) }}" alt="product-img"
                                         title="product-img" class="avatar-md" style="width:200px; height:300px" />
                                 </td>
-                                <td>
+                                <td style="min-width: 230px">
                                     {{$product['name']}}
                                     <hr style="border-top: 1px solid #989898; max-width: 400px !important;">
-                                    <p style="max-width: 400px !important; font-size:12px">{!!$product['description']!!}</p>
-                                    <p style="max-width: 400px !important; font-size:12px">{!!$product['additional_info']!!}</p>
+                                    <p style="max-width: 400px !important; font-size:12px">{!!$product['description']!!}
+                                    </p>
+                                    <p style="max-width: 400px !important; font-size:12px">
+                                        {!!$product['additional_info']!!}</p>
                                 </td>
                                 <td>
                                     <div class="checkout" style="margin-top:18px">
                                         <form action="{{route('cart.update', $product['id'])}}" method="POST">
                                             @csrf
-                                            <button id="{{$product['id']}}" type="button"
-                                                class="decrease-btn">-</button>
-                                            <input id="{{$product['id']}}" name="qty" type="text" class="quantity"
-                                                value="{{ $product['qty'] }}">
-                                            <button type="button" id="{{$product['id']}}"
-                                                class="increase-btn">+</button>
+                                            <div class="d-flex">
+                                                <button id="{{$product['id']}}" type="button"
+                                                    class="decrease-btn">-</button>
+                                                <input id="{{$product['id']}}" name="qty" type="text" class="quantity"
+                                                    value="{{ $product['qty'] }}">
+                                                <button type="button" id="{{$product['id']}}"
+                                                    class="increase-btn">+</button>
 
-                                            <button type="submit"
-                                                style="border:none;background-color:transparent;cursor:pointer;margin-left:4px;color: #1e1e1e"
-                                                class="fa fa-refresh"></button>
+                                                <button type="submit"
+                                                    style="border:none;background-color:transparent;cursor:pointer;margin-left:4px;color: #1e1e1e"
+                                                    class="fa fa-refresh"></button>
+                                            </div>
                                         </form>
                                     </div>
                                 </td>
