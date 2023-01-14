@@ -159,3 +159,10 @@
     }
 }
 /* **************************************** */
+/*      Navbar       */
+
+@media (min-width: 768px){
+    .nav-align-items {
+        align-items: center;
+    }
+}

@@ -112,11 +112,28 @@
                                                 @enderror
                                             </div>
 
-                                            <div class="mb-3">
+                                            {{-- <div class="mb-3">
                                                 <label for="userpassword">Password</label>
                                                 <input type="password"
                                                     class="form-control @error('password') is-invalid @enderror"
                                                     name="password" id="userpassword" placeholder="Enter password">
+                                                @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div> --}}
+
+                                            <!-- Password -->
+                                            <label class="form-label">{{ __('Password') }}</label>
+                                            <div
+                                                class=" mb-3 input-group auth-pass-inputgroup @error('password') is-invalid @enderror">
+                                                <input type="password" name="password"
+                                                    class="form-control  @error('password') is-invalid @enderror"
+                                                    id="userpassword" placeholder="Enter password"
+                                                    aria-label="Password" aria-describedby="password-addon">
+                                                <button class="btn btn-light " type="button" id="password-addon"><i
+                                                        class="mdi mdi-eye-outline"></i></button>
                                                 @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

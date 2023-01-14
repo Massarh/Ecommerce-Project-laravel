@@ -95,13 +95,18 @@
 
         <form action="{{route('all.product', [$storeSlug])}}" method="GET">
             @csrf
-            <div class="search">
-                <div class="" style="display: inline-block">
+            <div class="search " style="width: 265px">
+                {{-- <div class="" style="display: inline-block">
                     <input value="{{ $search ? $search: ''}}" type="text" name="search" class="form-control"
                         placeholder="search">
                 </div>
                 <div class="" style="display: inline-block;">
                     <button type="submit" style="background-color:#1a1a1a; color: #fff" class="btn">Search</button>
+                </div> --}}
+                <div class="input-group auth-pass-inputgroup" >
+                    <input value="{{ $search ? $search: ''}}" type="text" name="search" class="form-control" placeholder="search">
+                    <button class="btn" type="submit"style="background-color:#1a1a1a; color: #fff"><i
+                            class="mdi mdi-magnify"></i></button>
                 </div>
             </div>
         </form>

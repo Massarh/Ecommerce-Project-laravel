@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Product;
@@ -14,10 +15,10 @@ class ProductController extends Controller
     public function getProductByStoreAndCategorySlug($storeSlug, $categorySlug)
     {
         $store = Store::where('slug', $storeSlug)->first();
-       
-        if (auth()->user()->user_role == 'admin'||auth()->user()->user_role == 'employee') {
+
+        if (auth()->user()->user_role == 'admin' || auth()->user()->user_role == 'employee') {
             // CATEGORY URL AUTHORIZATION
-            if (!(auth()->user()->store->slug == $storeSlug) ) {
+            if (!(auth()->user()->store->slug == $storeSlug)) {
                 abort(403);
             }
             //END CATEGORY URL AUTHORIZATION
@@ -25,58 +26,80 @@ class ProductController extends Controller
             //SUBCATEGORY URL AUTHORIZATION
             // his refer to the one who send the request
             $hisCategories = auth()->user()->store->categories;
-            $hisCategorySlugs =[];
+            $hisCategorySlugs = [];
             foreach ($hisCategories as $key => $category) {
                 array_push($hisCategorySlugs, $category->slug);
             }
-        
-         $isLegal= in_array($categorySlug , $hisCategorySlugs) ; 
-            if (!$isLegal ) {
+
+            $isLegal = in_array($categorySlug, $hisCategorySlugs);
+            if (!$isLegal) {
                 abort(404);
             }
             //END SUBCATEGORY URL AUTHORIZATION
-            }elseif (auth()->user()->user_role == 'superadmin') {
+        } elseif (auth()->user()->user_role == 'superadmin') {
             // CATEGORY URL AUTHORIZATION
-            if(!$store) {
+            if (!$store) {
                 abort(404);
             }
             //END CATEGORY URL AUTHORIZATION
-           
+
             //SUBCATEGORY URL AUTHORIZATION
             // check that subcategory Slug is inside the store that his slug is sent too.
-            $storeCategories= $store->categories;
-            $storeCategorySlugs =[];
+            $storeCategories = $store->categories;
+            $storeCategorySlugs = [];
             foreach ($storeCategories as $key => $category) {
                 array_push($storeCategorySlugs, $category->slug);
             }
-            $isLegal=in_array($categorySlug , $storeCategorySlugs);
+            $isLegal = in_array($categorySlug, $storeCategorySlugs);
 
-            if (!$isLegal ) {
-            abort(404);
+            if (!$isLegal) {
+                abort(404);
             }
             //END SUBCATEGORY URL AUTHORIZATION
-        }else{
-        // if the user is not superadmin or admin or customer 
-        abort(403);
+        } else {
+            // if the user is not superadmin or admin or customer 
+            abort(403);
         }
         $category = Category::where('slug', $categorySlug)->first();
-        $products = Product::where('store_id',$store->id )
-        ->where('category_id', $category->id)->get();
+        $products = Product::where('store_id', $store->id)
+            ->where('category_id', $category->id)->get();
         return view('admin.product.index', compact('products'));
     }
-    
+
+    // ----------------------------------------------------------------------------
+
     // for superadmin only
-    public function getProductByCategorySlug($categorySlug){
+    public function getProductByCategorySlug($categorySlug)
+    {
         if (auth()->user()->user_role == 'superadmin') {
-            $category=Category::where('slug',$categorySlug)->first();
+            $category = Category::where('slug', $categorySlug)->first();
             // URL AUTHORIZATION
-            if(!$category){
+            if (!$category) {
                 abort(404);
             }
             //END  URL AUTHORIZATION
-            $products=$category->products;
+            $products = $category->products;
             return view('admin.product.index', compact('products'));
-        }else{
+        } else {
+            abort(403);
+        }
+    }
+    // ----------------------------------------------------------------------------
+
+    // for superadmin only
+    public function getProductByStoreSlug($storeSlug)
+    {
+        // return $storeSlug;
+        if (auth()->user()->user_role == 'superadmin') {
+            $store = Store::where('slug', $storeSlug)->first();
+            // URL AUTHORIZATION
+            if (!$store) {
+                abort(404);
+            }
+            //END  URL AUTHORIZATION
+            $products = $store->products;
+            return view('admin.product.index', compact('products'));
+        } else {
             abort(403);
         }
     }
@@ -86,7 +109,7 @@ class ProductController extends Controller
     // for admin, employee
     public function index()
     {
-        if (auth()->user()->user_role == 'admin'||auth()->user()->user_role == 'employee') {
+        if (auth()->user()->user_role == 'admin' || auth()->user()->user_role == 'employee') {
             $products = Product::where('store_id', auth()->user()->store_id)->get();
             return view('admin.product.index', compact('products'));
         }
@@ -103,7 +126,6 @@ class ProductController extends Controller
             return view('admin.product.create');
         }
         abort(403);
-
     }
 
     // ----------------------------------------------------------------------------
@@ -111,7 +133,7 @@ class ProductController extends Controller
     // for admin only
     public function store(Request $request)
     {
-        if(auth()->user()->user_role=='admin'){
+        if (auth()->user()->user_role == 'admin') {
             $request->validate([
                 'name'            => 'required',
                 'description'     => 'required|min:3',
@@ -145,26 +167,25 @@ class ProductController extends Controller
     // for admin only
     public function edit($productId)
     {
-        if(auth()->user()->user_role=='admin'){
+        if (auth()->user()->user_role == 'admin') {
             // URL AUTHORIZATION
             $products = Product::where('store_id', auth()->user()->store_id)->get();
             $productIds = [];
             foreach ($products as $prod) {
                 array_push($productIds, $prod->id);
             }
-            $isLegal = in_array($productId , $productIds) ;
-            if(!$isLegal) {
+            $isLegal = in_array($productId, $productIds);
+            if (!$isLegal) {
                 abort(403);
             }
             //END URL AUTHORIZATION
-            $sections=["MEN"=>"MEN","WOMEN"=>"WOMEN","KIDS"=>"KIDS"];
-            $product = Product::find($productId);  
+            $sections = ["MEN" => "MEN", "WOMEN" => "WOMEN", "KIDS" => "KIDS"];
+            $product = Product::find($productId);
             unset($sections[$product->section]);
-            $categories = Store::find(auth()->user()->store_id)->categories()->where('category_id', '!=',$product->category->id )->get(); 
-            return view('admin.product.edit', compact('product','categories','sections'));
+            $categories = Store::find(auth()->user()->store_id)->categories()->where('category_id', '!=', $product->category->id)->get();
+            return view('admin.product.edit', compact('product', 'categories', 'sections'));
         }
         abort(403);
-
     }
 
     // ----------------------------------------------------------------------------
@@ -172,7 +193,7 @@ class ProductController extends Controller
     // for admin only
     public function update(Request $request, $productId)
     {
-        if(auth()->user()->user_role=='admin'){  
+        if (auth()->user()->user_role == 'admin') {
             $request->validate([
                 'name'            => 'required',
                 'description'     => 'required|min:3',
@@ -180,11 +201,11 @@ class ProductController extends Controller
                 'additional_info' => 'required',
                 'categoryId'     => 'required',
                 'section'        => 'required',
-                
+
             ]);
             $product = Product::find($productId);
 
-            if ($request->file('image')) { 
+            if ($request->file('image')) {
                 Storage::delete($product->image);
                 $image = $request->file('image')->store('public/product');
                 $product->image =  $image;
@@ -203,7 +224,7 @@ class ProductController extends Controller
             Toastr::success('Product updated successfully', 'success');
             return redirect()->route('product.index');
         }
-        abort(403);  
+        abort(403);
     }
 
     // ----------------------------------------------------------------------------
@@ -211,22 +232,21 @@ class ProductController extends Controller
     // for admin only
     public function destroy($productId)
     {
-        if(auth()->user()->user_role=='admin')
-        {
+        if (auth()->user()->user_role == 'admin') {
             $product = Product::find($productId);
             // Delete the image from a folder product [public\storage\product\...]
-            Storage::delete($product->image); 
+            Storage::delete($product->image);
             $product->delete();
             Toastr::success('Product deleted successfully', 'success');
             return redirect()->route('product.index');
         }
         abort(403);
     }
-            
+
 
 
     // ----------------------------------------------------------------------------
 
-   
+
 
 }

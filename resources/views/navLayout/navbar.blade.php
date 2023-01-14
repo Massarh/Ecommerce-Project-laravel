@@ -20,11 +20,11 @@
             </ul>
 
             <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ms-auto" style="font-family: fangsong;font-size: 17px; align-items: center;">
+            <ul class="navbar-nav ms-auto nav-align-items" style="font-family: fangsong;font-size: 17px;">
                 <!-- Authentication Links -->
 
                 <!-- Shopping Cart -->
-                <a href="{{ route('cart.show') }}" class="nav-link" style="margin-top: 3px">
+                <a href="{{ route('cart.show') }}" class="nav-link" style=" margin-left: 10px !important;">
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                             class="bi bi-bag" viewBox="0 0 16 16">

@@ -262,9 +262,8 @@ File: Main Css File
 }
 
 .header-profile-user {
-  height: 36px;
-  width: 36px;
-  background-color: var(--bs-gray-300);
+  height: 40px;
+  width: 40px;
   padding: 3px;
 }
 

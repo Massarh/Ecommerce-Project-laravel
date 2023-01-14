@@ -1190,7 +1190,7 @@ class DatabaseSeeder extends Seeder
         User::create([ // 1
             'name'              => 'SUPER ADMIN',
             'email'             => 'goplaza.team22@gmail.com', // password gmail:: Goplaza2022
-            'password'          => bcrypt('123456789'),
+            'password'          => bcrypt('Plaza@123'),
             'email_verified_at' => NOW(),
             'address'           => 'AMMAN',
             'phone_number'      => '0771496574',
@@ -1201,7 +1201,7 @@ class DatabaseSeeder extends Seeder
         User::create([ // 2
             'name'              => 'DARAGHMEH ADMIN1',
             'email'             => 'draghmehadmin1@gmail.com',
-            'password'          => bcrypt('123456789'),
+            'password'          => bcrypt('Plaza@123'),
             'email_verified_at' => NOW(),
             'address'           => 'MABABA',
             'phone_number'      => '0787854998',
@@ -1211,7 +1211,7 @@ class DatabaseSeeder extends Seeder
         User::create([ // 3
             'name'              => 'DARAGHMEH EMPLOYEE1',
             'email'             => 'draghmehemployee1@gmail.com',
-            'password'          => bcrypt('123456789'),
+            'password'          => bcrypt('Plaza@123'),
             'email_verified_at' => NOW(),
             'address'           => 'MABABA',
             'phone_number'      => '0778951641',
@@ -1222,7 +1222,7 @@ class DatabaseSeeder extends Seeder
         User::create([ // 4
             'name'              => 'LA FAMILIA ADMIN1',
             'email'             => 'lafamiliaadmin1@gmail.com',
-            'password'          => bcrypt('123456789'),
+            'password'          => bcrypt('Plaza@123'),
             'email_verified_at' => NOW(),
             'address'           => 'IRBID',
             'phone_number'      => '0787854998',
@@ -1232,7 +1232,7 @@ class DatabaseSeeder extends Seeder
         User::create([ // 5
             'name'              => 'LA FAMILIA EMPLOYEE1',
             'email'             => 'lafamiliaemployee1@gmail.com',
-            'password'          => bcrypt('123456789'),
+            'password'          => bcrypt('Plaza@123'),
             'email_verified_at' => NOW(),
             'address'           => 'IRBID',
             'phone_number'      => '0778951641',
@@ -1243,7 +1243,7 @@ class DatabaseSeeder extends Seeder
         User::create([ // 6
             'name'              => 'PRETTY LITTLE THINGS ADMIN1',
             'email'             => 'prettylittlething2023@gmail.com', // password gmail:: PLTA123##
-            'password'          => bcrypt('123456789'),
+            'password'          => bcrypt('Plaza@123'),
             'email_verified_at' => NOW(),
             'address'           => 'AMMAN',
             'phone_number'      => '0787854998',
@@ -1254,7 +1254,7 @@ class DatabaseSeeder extends Seeder
         User::create([ // 7
             'name'              => 'PRETTY LITTLE THINGS EMPLOYEE1',
             'email'             => 'prettylittlethingsemployee1@gmail.com',
-            'password'          => bcrypt('123456789'),
+            'password'          => bcrypt('Plaza@123'),
             'email_verified_at' => NOW(),
             'address'           => 'AMMAN',
             'phone_number'      => '0778951641',
@@ -1265,7 +1265,7 @@ class DatabaseSeeder extends Seeder
         User::create([ // 8
             'name'              => 'JONES ADMIN1',
             'email'             => 'jonesadmin1@gmail.com',
-            'password'          => bcrypt('123456789'),
+            'password'          => bcrypt('Plaza@123'),
             'email_verified_at' => NOW(),
             'address'           => 'AMMAN',
             'phone_number'      => '0775156376',
@@ -1276,7 +1276,7 @@ class DatabaseSeeder extends Seeder
         User::create([ // 9
             'name'              => 'JONES EMPLOYEE1',
             'email'             => 'jonesemployee1@gmail.com',
-            'password'          => bcrypt('123456789'),
+            'password'          => bcrypt('Plaza@123'),
             'email_verified_at' => NOW(),
             'address'           => 'AMMAN',
             'phone_number'      => '0778735641',
@@ -1287,7 +1287,7 @@ class DatabaseSeeder extends Seeder
         User::create([ // 10 
             'name'              => 'customer1',
             'email'             => 'customer1@gmail.com',
-            'password'          => bcrypt('123456789'),
+            'password'          => bcrypt('Plaza@123'),
             'email_verified_at' => NOW(),
             'address'           => 'AGLOUN',
             'phone_number'      => '0777777777',
@@ -1296,7 +1296,7 @@ class DatabaseSeeder extends Seeder
         User::create([ // 11 
             'name'              => 'customer2',
             'email'             => 'customer2@gmail.com',
-            'password'          => bcrypt('123456789'),
+            'password'          => bcrypt('Plaza@123'),
             'email_verified_at' => NOW(),
             'address'           => 'AMMAN',
             'phone_number'      => '0777777777',
@@ -1305,16 +1305,16 @@ class DatabaseSeeder extends Seeder
         User::create([ // 12
             'name'              => 'customer3',
             'email'             => 'customer3@gmail.com',
-            'password'          => bcrypt('123456789'),
+            'password'          => bcrypt('Plaza@123'),
             'email_verified_at' => NOW(),
             'address'           => 'ZARQA',
             'phone_number'      => '0777777777',
             'user_role'         => 'customer'
         ]);
-        User::create([ // 
+        User::create([ // 13
             'name'              => 'test1',
             'email'             => 'test@gmail.com',
-            'password'          => bcrypt('123456789'),
+            'password'          => bcrypt('Plaza@123'),
             'email_verified_at' => NOW(),
             'address'           => 'AMMAN',
             'phone_number'      => '0778735641',

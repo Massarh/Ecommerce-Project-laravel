@@ -43,7 +43,8 @@
 
                         <div class="col-md-6">
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                name="name" value="{{ old('name') }}" required autocomplete="name" autofocus
+                                placeholder="Enter name">
 
                             @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -59,7 +60,8 @@
 
                         <div class="col-md-6">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                name="email" value="{{ old('email') }}" required autocomplete="email">
+                                name="email" value="{{ old('email') }}" required autocomplete="email"
+                                placeholder="Enter email">
 
                             @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -74,15 +76,19 @@
                         <label for="password" class="col-md-4 col-form-label text-md-start">{{ __('Password') }} <span style="color:#ef5b69">  *</span></label>
 
                         <div class="col-md-6">
-                            <input id="password" type="password"
-                                class="form-control @error('password') is-invalid @enderror" name="password" required
-                                autocomplete="new-password">
-
+                            <!-- Password -->
+                        <div class=" input-group auth-pass-inputgroup @error('password') is-invalid @enderror">
+                            <input type="password" name="password"
+                                class="form-control  @error('password') is-invalid @enderror" id="userpassword"
+                                placeholder="Enter password" aria-label="Password" aria-describedby="password-addon">
+                            <button class="btn btn-light " type="button" id="password-addon"><i
+                                    class="mdi mdi-eye-outline"></i></button>
                             @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
+                        </div>
                         </div>
                     </div>
 
@@ -93,7 +99,8 @@
 
                         <div class="col-md-6">
                             <input id="password-confirm" type="password" class="form-control"
-                                name="password_confirmation" required autocomplete="new-password">
+                                name="password_confirmation" required autocomplete="new-password" 
+                                placeholder="Enter confirm password">
                         </div>
                     </div>
 

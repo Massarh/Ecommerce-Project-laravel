@@ -68,6 +68,7 @@
                                 @endif
                                 @if(auth()->user()->user_role=='superadmin')
                                     <th></th>
+                                    <th></th>
                                 @endif
                             </tr>
                         </thead>
@@ -105,10 +106,17 @@
                                             <td class="description-style">{{ $store->description }}</td>
                                             <td> {{App\Models\User::where('store_id', $store->id)->where('user_role', 'admin')->first()->email}} </td>
                                             
-                                            <!-- section Button-->
+                                            <!-- category Button-->
                                             <td> 
                                                 <a href=" {{route('category.getCategoryByStoreSlug',[$store->slug])}} ">
                                                     <button class="btn" style="background-color: #232838; color:white; padding: 6px">category</button>
+                                                </a>
+                                            </td>
+
+                                            <!-- product Button-->
+                                            <td> 
+                                                <a href=" {{route('product.getProductByStoreSlug',[$store->slug])}} ">
+                                                    <button class="btn" style="background-color: #232838; color:white; padding: 6px">products</button>
                                                 </a>
                                             </td>
 
