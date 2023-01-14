@@ -36,6 +36,10 @@
     .card .calendar-parent .calendar-child .margin-to {
         margin-right: 22px !important;
     }
+
+    .to-input {
+        margin-left: 6px;
+    }
 }
 
 /* Date md*/
@@ -43,14 +47,17 @@
     .card .calendar-parent {
         display: flex !important;
         flex-direction: row !important;
-        justify-content: space-between;
+        /* justify-content: space-between; */
         align-items: baseline;
     }
 
     .card .calendar-parent .calendar-child {
         display: flex;
         flex-wrap: nowrap;
+    }
 
+    .to-calendar-child {
+        margin-left: 25px;
     }
 }
 

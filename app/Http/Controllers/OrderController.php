@@ -101,6 +101,8 @@ class OrderController extends Controller
     // for superadmin , admin , employee
     public function viewStoreItem($storeSlug, Request $request)
     {
+        $fromDate = $request->fromDate;
+        $toDate = $request->toDate;
         $store = Store::where('slug', $storeSlug)->first();
 
         if (auth()->user()->user_role == 'admin' || auth()->user()->user_role == 'employee') {
@@ -121,13 +123,13 @@ class OrderController extends Controller
             abort(403);
         }
         $storeId = $store->id;
-        if ($request->fromdate && $request->todate) {
-            $storeItems = OrderItem::whereBetween('created_at', [$request->fromdate . " 00:00:00", $request->todate . " 23:59:59"])->where('store_id', $storeId)->get();
-        } elseif ($request->fromdate) {
-            $storeItems =  OrderItem::where('created_at', '>=', $request->fromdate . " 00:00:00")
+        if ($fromDate &&  $toDate) {
+            $storeItems = OrderItem::whereBetween('created_at', [$fromDate . " 00:00:00",  $toDate . " 23:59:59"])->where('store_id', $storeId)->get();
+        } elseif ($fromDate) {
+            $storeItems =  OrderItem::where('created_at', '>=', $fromDate . " 00:00:00")
                 ->where('store_id', $storeId)->get();
-        } elseif ($request->todate) {
-            $storeItems = OrderItem::where('created_at', '<=', $request->todate . " 23:59:59")
+        } elseif ($toDate) {
+            $storeItems = OrderItem::where('created_at', '<=',  $toDate . " 23:59:59")
                 ->where('store_id', $storeId)->get();
         } else {
             $storeItems = $store->orderItems;
@@ -152,6 +154,6 @@ class OrderController extends Controller
         }
         // return filteredStoreItems;
 
-        return view('admin.order.store-order-item', compact('filteredStoreItems', 'storeSlug'));
+        return view('admin.order.store-order-item', compact('filteredStoreItems', 'storeSlug', 'fromDate', 'toDate'));
     }
 }

@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 
-@section('title') View order @endsection
+@section('title') @lang('orders') @endsection
 
 @section('content')
 <!-- Breadcrumb -->
@@ -27,7 +27,7 @@
     <div class="col-12">
         <div class="card">
             <!-- Simple Tables -->
-            @if (count($filteredStoreItems)>0)
+
             <form action="{{route('item.order', [$storeSlug])}}" method="GET">
                 @csrf
                 <div class="card-header py-3 calendar-parent">
@@ -36,34 +36,35 @@
                     <div class="calendar-child">
                         <label for="date" class="h5 col-form-label" style="margin-right: 10px">From</label>
                         <div class="">
-                            <input name="fromdate" type="date" class="form-control input-sm" id="fromdate">
+                            <input name="fromDate" type="date" class="form-control input-sm" id="fromdate"
+                                value="{{$fromDate}}">
                         </div>
                     </div>
+                    <div class="d-flex align-items-end">
+                        <div class="calendar-child to-calendar-child">
+                            <label for="date" class="h5 col-form-label margin-to" style="margin-right: 10px">To</label>
+                            <div class="to-input">
+                                <input name="toDate" type="date" class="form-control input-sm" id="todate"
+                                    value="{{$toDate}}">
+                            </div>
+                        </div>
 
-                    <div class="calendar-child">
-                        <label for="date" class="h5 col-form-label margin-to" style="margin-right: 10px">To</label>
-                        <div class="">
-                            <input name="todate" type="date" class="form-control input-sm" id="todate">
+                        {{-- Filter Date --}}
+                        <div class="" style="margin-left: 10px;">
+                            <button class="mr-1 bg-color-btn h6"><i class="fas fa-search fa-fw"></i></button>
+                            <a class="h6 mt-2" href="{{route('item.order', [$storeSlug])}}"
+                                style="--bs-link-hover-color: #495057;">
+                                <button id="clear" class="bg-color-btn h6"><i class="fas fa-sync"></i></button>
+                            </a>
                         </div>
                     </div>
-
-                    <div class="d-flex justify-content-between ">
-                        <button class="mr-3 bg-color-btn h6"><i class="fas fa-search fa-fw"></i></button>
-                        <a class="h6 mt-2" href="{{route('item.order', [$storeSlug])}}"
-                            style="--bs-link-hover-color: #495057;">
-                            <button class="bg-color-btn h6"><i class="fas fa-sync"></i></button>
-                        </a>
-                    </div>
-                    {{-- Filter Date --}}
-
                 </div>
             </form>
-            @endif
 
             <div class="card-body">
 
                 <div class="table-responsive">
-                    <table class="table align-middle table-nowrap">
+                    <table class="table align-middle table-nowrap" style="font-size: 13px">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -83,9 +84,9 @@
                                 <td>{{ $key+1 }}</td>
 
                                 <td>{{ $item['name'] }}</td>
-                                <td>{{ $item['price'] }} JOD</td>
+                                <td>${{ $item['price'] }}</td>
                                 <td>{{ $item['quantity'] }}</td>
-                                <td>{{ $item['price'] * $item['quantity'] }} JOD</td>
+                                <td>${{ $item['price'] * $item['quantity'] }}</td>
                                 <td><img src="{{ Storage::url($item['image']) }}" width="100"></td>
                             </tr>
                             <?php $totalPrice += $item['price'] * $item['quantity'] ?>
@@ -95,12 +96,16 @@
 
                         <tfoot>
                             <tr>
-                                <td colspan='4'><b>Total price: </b></td>
-                                <td colspan='2'><b>{{$totalPrice}} JOD</b></td>
+                                <td><b style="">Total price: </b></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><b>${{$totalPrice}} </b></td>
+                                <td></td>
                             </tr>
                         </tfoot>
                         @else
-                            <td>No store items created yet</td>
+                        <td>No Store Items To Show</td>
                         @endif
 
                     </table>
@@ -113,3 +118,11 @@
 <!---Container Fluid-->
 
 @endsection
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).on('click', '#clear', function () {
+    $('#fromdate').attr('value', ""); 
+    $('#todate').attr('value', "");
+});
+
+</script>
