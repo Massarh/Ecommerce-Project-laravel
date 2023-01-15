@@ -98,9 +98,19 @@
                             Password') }} <span style="color:#ef5b69">  *</span></label>
 
                         <div class="col-md-6">
-                            <input id="password-confirm" type="password" class="form-control"
-                                name="password_confirmation" required autocomplete="new-password" 
-                                placeholder="Enter confirm password">
+                            <!-- Password -->
+                        <div class=" input-group auth-pass-inputgroup @error('password-confirm') is-invalid @enderror">
+                            <input type="password" name="password_confirmation" required
+                                class="form-control  @error('password-confirm') is-invalid @enderror" id="password-confirm"
+                                placeholder="Enter confirm password " aria-label="password-confirm" aria-describedby="password-addon">
+                            <button class="btn btn-light " type="button" id="password-confirm-addon"><i
+                                    class="mdi mdi-eye-outline"></i></button>
+                            @error('password-confirm')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
                         </div>
                     </div>
 

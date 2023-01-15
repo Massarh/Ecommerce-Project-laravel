@@ -150,14 +150,17 @@
                                                 @enderror
                                             </div>
 
-                                            {{-- Confirm Password --}}
-                                            <div class="mb-3">
-                                                <label for="confirmpassword" class="form-label">Confirm Password</label>
-                                                <input type="password"
-                                                    class="form-control @error('password_confirmation') is-invalid @enderror"
-                                                    id="confirmpassword" name="password_confirmation"
-                                                    placeholder="Enter Confirm password" autofocus required>
-                                                @error('password_confirmation')
+                                            <!-- Confirm Password -->
+                                            <label for="password-confirm" >{{ __('Confirm Password') }}</label>
+
+                                                <!-- Password -->
+                                            <div class=" mb-3 input-group auth-pass-inputgroup @error('password-confirm') is-invalid @enderror">
+                                                <input type="password" name="password_confirmation" required
+                                                    class="form-control @error('password-confirm') is-invalid @enderror" id="password-confirm"
+                                                    placeholder="Enter confirm password" aria-label="password-confirm" aria-describedby="password-addon">
+                                                <button class="btn btn-light " type="button" id="password-confirm-addon"><i
+                                                        class="mdi mdi-eye-outline"></i></button>
+                                                @error('password-confirm')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
