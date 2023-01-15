@@ -63,7 +63,7 @@ class ProductController extends Controller
         $category = Category::where('slug', $categorySlug)->first();
         $products = Product::where('store_id', $store->id)
             ->where('category_id', $category->id)->get();
-        return view('admin.product.index', compact('products'));
+        return view('admin.product.index', compact('products', 'store'));
     }
 
     // ----------------------------------------------------------------------------
@@ -84,6 +84,7 @@ class ProductController extends Controller
             abort(403);
         }
     }
+
     // ----------------------------------------------------------------------------
 
     // for superadmin only
@@ -98,7 +99,7 @@ class ProductController extends Controller
             }
             //END  URL AUTHORIZATION
             $products = $store->products;
-            return view('admin.product.index', compact('products'));
+            return view('admin.product.index', compact('products', 'store'));
         } else {
             abort(403);
         }

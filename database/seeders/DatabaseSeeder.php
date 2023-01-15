@@ -61,10 +61,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Store::create([
-            'name'        => 'TEST ', //5
-            'slug'        => 'TEST ',
-            'description' => 'TEST',
-            'image'       => 'public/files/jack&jones.png'
+            'name'        => 'SHE CHOCOLATE ', //5
+            'slug'        => 'SHE CHOCOLATE ',
+            'description' => 'SHE CHOCOLATE is one of the leading brands in the apparel and fashion sector in Jordan, opened its first store in 2009. SHE_CHOCOLATE has taken its place among the leading brands in clothing and fashion .industry in Jordan and worldwide',
+            'image'       => 'public/files/shechocolate.png'
         ]);
         /*      Categories      */
 
@@ -1311,9 +1311,9 @@ class DatabaseSeeder extends Seeder
             'phone_number'      => '0777777777',
             'user_role'         => 'customer'
         ]);
-        User::create([ // 13
-            'name'              => 'test1',
-            'email'             => 'test@gmail.com',
+        User::create([ // 13 
+            'name'              => 'SHECHOCOLATE ADMIN',
+            'email'             => 'shechocolate@gmail.com',
             'password'          => bcrypt('Plaza@123'),
             'email_verified_at' => NOW(),
             'address'           => 'AMMAN',

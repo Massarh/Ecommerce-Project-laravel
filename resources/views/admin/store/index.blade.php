@@ -3,7 +3,7 @@
 @section('title') View store @endsection
 
 <style>
-    @media (max-width: 1200px) {
+    @media (max-width: 1550px) {
         .description-style {
             min-width: 325px;
         }

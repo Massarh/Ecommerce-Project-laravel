@@ -65,6 +65,17 @@
         <div class="card">
 
             <div class="card-body">
+                @if(auth()->user()->user_role=='superadmin')
+
+                @if(app('router')->getRoutes()->match(app('request')->create(URL::current()))->getName() ==
+                'product.getProductByStoreSlug' ||
+                app('router')->getRoutes()->match(app('request')->create(URL::current()))->getName()
+                == 'product.getProductByStoreAndCategorySlug')
+                <h4 class="mb-3" style="font-size: 16px">{{ $store->name }} STORE</h4>
+                @endif
+
+                @endif
+
                 {!! Toastr::message() !!}
                 <div class="table-responsive">
                     <table class="table align-middle table-nowrap" style="font-size: 13px">
@@ -76,7 +87,9 @@
                                 <th>Description</th>
                                 <th>Additional_info</th>
                                 <th>Price</th>
-                                @if(auth()->user()->user_role=='superadmin')
+                                @if(auth()->user()->user_role=='superadmin' &&
+                                app('router')->getRoutes()->match(app('request')->create(URL::current()))->getName() ==
+                                'product.getProductByCategorySlug')
                                 <th>Store</th>
                                 @endif
                                 <th>Section</th>
@@ -99,11 +112,15 @@
                                 <td class="description-style">{!! $product->description !!}</td>
                                 <td class="description-style">{!! $product->additional_info !!}</td>
                                 <td>{{ $product->price }} JOD</td>
-                                @if(auth()->user()->user_role=='superadmin')
+
+                                @if(auth()->user()->user_role=='superadmin' &&
+                                app('router')->getRoutes()->match(app('request')->create(URL::current()))->getName() ==
+                                'product.getProductByCategorySlug')
                                 <td>{{ $product->store->name }}</td>
                                 @endif
+
                                 <td>{{ $product->section }}</td>
-                                
+
                                 @if(auth()->user()->user_role=='admin' || auth()->user()->user_role=='employee')
                                 <td>{{ $product->category->name }}</td>
                                 @endif

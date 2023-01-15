@@ -34,7 +34,11 @@
         {!! Toastr::message() !!}
         <div class="card">
 
+            
             <div class="card-body">
+                @if(auth()->user()->user_role=='superadmin')
+                <h4 class="mb-3" style="font-size: 16px">{{ $store->name }} STORE</h4>
+                @endif
 
                 <div class="table-responsive">
                     <table class="table align-middle table-nowrap">
@@ -43,9 +47,6 @@
                             <tr>
                                 <th>SN</th>
                                 <th>Name</th>
-                                @if(auth()->user()->user_role=='superadmin')
-                                <th>Store</th>
-                                @endif
                                 <th>Action</th>
                                 @if(auth()->user()->user_role=='admin')
                                 <th></th>
@@ -61,9 +62,6 @@
                             <tr>
                                 <td>{{ $key+1 }}</td> 
                                 <td>{{ $category->name }}</td>
-                                @if(auth()->user()->user_role=='superadmin')
-                                <td>{{ $store->name}}</td>
-                                @endif
 
                                 <td>
                                     <a href=" {{route('product.getProductByStoreAndCategorySlug', ['storeSlug'=>$store->slug,'categorySlug'=>$category->slug])}}">
