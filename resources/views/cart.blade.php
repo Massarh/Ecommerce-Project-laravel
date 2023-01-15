@@ -116,7 +116,7 @@
                 </div> <!-- end row-->
             </div>
             @else
-            <td>No items in cart</td>
+            <td>Add items to your cart</td>
             @endif
         </div>
     </div>

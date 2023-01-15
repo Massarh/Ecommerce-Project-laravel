@@ -86,7 +86,7 @@ class FrontProductListController extends Controller
             $maxPrice = (int)$price[1];
             $price = [$minPrice, $maxPrice];
         }
-        $stores = Store::get();
+        
         // this fun wil return all products if there is no query parameter
         $products = Product::when($storeId, function ($query, $storeId) {
             $query->where('store_id', $storeId);
@@ -107,9 +107,10 @@ class FrontProductListController extends Controller
 
         $price = $request->price;
         if($storeSlug){
-            return view('category', compact('products', 'store', 'categories','sections','search', 'price',  'storeId','storeSlug','categoryId','sectionId'));
+            
+            return view('store', compact('products', 'store', 'categories','sections','search', 'price',  'storeId','storeSlug','categoryId','sectionId'));
         }else{
-
+            $stores = Store::has('products')->get();
         return view('all-product', compact('products', 'stores', 'categories', 'search', 'price', 'storeId', 'categoryId','sectionId'));
         }
     }
@@ -153,19 +154,29 @@ class FrontProductListController extends Controller
     }
 
     // when section input changes to any value accept select get categories that related to specific
-    // section (i will preview it only if store input not selected else i will preview the intersection between it and store categories) and if section input changes to select get all categories(i will preview it only if store input not selected and the store input not selected i will preview the store categories). 
+    // section (i will preview it only if store input not selected else i will preview the intersection between it and store categories) and if section input changes to select and store is on select  i will git all sections on the project.
     public function loadCategoriesDependOnSection (Request $request)
     {
         $sections=[1=>"MEN",2=>"WOMEN",3=>"KIDS"];
         $sectionId = $request->sectionId;
-        if ($sectionId) {
+        $storeId = $request->storeId;
+        if($sectionId && $storeId){
+            // edit
+            $section= $sections[$sectionId];
+            // section categories
+
+            $categories = Category::whereHas('products', function (Builder $query) use($section,$storeId) {
+                $query->where('section', $section);
+                $query->where('store_id',$storeId);
+            })->get()->pluck('name', 'id');
+        }elseif ($sectionId && !$storeId) {
 
             $section= $sections[$sectionId];
             // section categories
             $categories = Category::whereHas('products', function (Builder $query) use($section) {
                 $query->where('section', $section);
             })->get()->pluck('name', 'id');
-        } else {
+        } elseif(!$sectionId && !$storeId) {
                 //all categories
                 $categories = Category::get()->pluck('name', 'id');
                 return $categories;

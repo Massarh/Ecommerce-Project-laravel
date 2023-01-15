@@ -268,7 +268,7 @@ $("document").ready(function() {
                 }
             }else{
                 $.ajax({
-                    url:`/ajax-categories?sectionId=${sectionId}`, 
+                    url:`/ajax-categories?sectionId=${sectionId}&storeId=${storeId}`,
                     type: "GET",
                     dataType: "json",
                     success:function(categories) {

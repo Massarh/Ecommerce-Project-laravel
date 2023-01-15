@@ -330,9 +330,9 @@ padding-bottom: 3rem!important; background-color:#ffffff!important;">
                     </ul>
                 </div>
                 <div class="col-lg-3 text-center item social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-facebook-square" style="font-size: 22px"></i></a>
                     <a href="mailto:goplaza.team22@gmail.com" target="_blank"><i class="mdi mdi-gmail"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="mdi mdi-linkedin"></i></a>
                     <a href="https://www.instagram.com/go_plaza/" target="_blank"><i class="fab fa-instagram"></i></a>
 
                     <div class="copyright text-center my-auto">
@@ -436,3 +436,4 @@ padding-bottom: 3rem!important; background-color:#ffffff!important;">
         opacity: 0.6;
     }
 </style>
+

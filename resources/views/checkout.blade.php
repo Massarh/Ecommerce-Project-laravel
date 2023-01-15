@@ -317,7 +317,12 @@
                     <div id="v-pills-confir" role="tabpanel" aria-labelledby="v-pills-confir-tab">
                         <div class="card shadow-none mb-0">
                             <div class="card-body" style="border:0">
-                                <h4 class="card-title mb-4">Order Summary</h4>
+                                {{-- <h4 class="card-title mb-4">Order Summary</h4> --}}
+                                <div>
+                                    <div class="jumbotron"style="max-width:400px; margin-right:auto; margin-left:auto;">
+                                        <h3 class="fontStyleHint2" style=" font-family:Marlina; font-size:20px">Order Summary</h3>
+                                    </div>
+                                </div>
 
                                 <div class="table-responsive">
                                     <table class="table align-middle mb-0 table-nowrap">
@@ -365,6 +370,7 @@
                         </div>
                     </div>
 
+
                     {{-- Shipping & Payment information --}}
                     <div class="col">
                         <div class="card">
@@ -374,7 +380,13 @@
                                     <div class="tab-pane fade show active" id="v-pills-shipping" role="tabpanel"
                                         aria-labelledby="v-pills-shipping-tab">
                                         <div>
-                                            <h4 class="card-title">Delivery information</h4>
+                                            {{-- <h4 class="card-title">Delivery information</h4> --}}
+                                            <div>
+                                                <div class="jumbotron mt-2"style="max-width:400px; margin-right:auto; margin-left:auto;">
+                                                    <h3 class="fontStyleHint2" style=" font-family:Marlina; font-size:20px">Delivery information</h3>
+                                                </div>
+                                            </div>
+
                                             <p class="card-title-desc">Fill all information below</p>
 
                                             <form action="/charge" method="POST" id="payment-form">
@@ -433,11 +445,15 @@
                                                             required>
                                                     </div>
                                                 </div>
-
                                                 {{-- Payment information --}}
                                                 <div class="mt-5" id="v-pills-payment" role="tabpanel"
                                                     aria-labelledby="v-pills-payment-tab">
-                                                    <h4 class="card-title">Payment information</h4>
+                                                    {{-- <h4 class="card-title">Payment information</h4> --}}
+                                                    <div>
+                                                        <div class="jumbotron mt-2"style="max-width:400px; margin-right:auto; margin-left:auto;">
+                                                            <h3 class="fontStyleHint2" style=" font-family:Marlina; font-size:20px">Payment information</h3>
+                                                        </div>
+                                                    </div>
                                                     <div>
                                                         <div class="form-check form-check-inline font-size-16">
                                                             <input class="form-check-input" type="radio"

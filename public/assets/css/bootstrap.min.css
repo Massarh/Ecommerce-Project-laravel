@@ -5059,8 +5059,8 @@ textarea.form-control-lg {
   --bs-pagination-padding-x: 0.75rem;
   --bs-pagination-padding-y: 0.5rem;
   --bs-pagination-font-size: 0.8125rem;
-  --bs-pagination-color: #fff;
-  --bs-pagination-bg: #1A1A1A;
+  --bs-pagination-color: rgb(36, 36, 36);
+  --bs-pagination-bg: #ffffff;
   --bs-pagination-border-width: 1px;
   --bs-pagination-border-color: var(--bs-gray-400);
   --bs-pagination-border-radius: 0.25rem;
@@ -5070,11 +5070,11 @@ textarea.form-control-lg {
   --bs-pagination-focus-color: #1A1A1A;
   --bs-pagination-focus-bg: var(--bs-gray-200);
   --bs-pagination-focus-box-shadow: #1A1A1A;
-  --bs-pagination-active-color: #fff;
-  --bs-pagination-active-bg:var(--bs-custom-white);
-  --bs-pagination-active-border-color: #1A1A1A;
+  --bs-pagination-active-color: rgb(41, 41, 41);
+  --bs-pagination-active-bg:#2a2a2a;
+  --bs-pagination-active-border-color: #a0a0a0;
   --bs-pagination-disabled-color:black;
-  --bs-pagination-disabled-bg: var(--bs-gray-200);
+  --bs-pagination-disabled-bg: #e5e5e5;
   --bs-pagination-disabled-border-color: var(--bs-gray-400);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5123,8 +5123,8 @@ textarea.form-control-lg {
 .page-link.active, .active > .page-link {
   z-index: 3;
   color: black;
-  background-color: var(--bs-gray-200);
-  border-color: var(--bs-pagination-hover-border-color);
+  color: rgb(255, 255, 255);
+  background-color: #1A1A1A;
 }
 .page-link.disabled, .disabled > .page-link {
   color: var(--bs-pagination-disabled-color);

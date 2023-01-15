@@ -257,6 +257,8 @@
             console.log(sectionId,"hello");
             // new
             var storeId = $('#storeId').val();
+            console.log(storeId,"store");
+
             // new
             if(!sectionId && storeId){
                 var categories = $('select[name="categoryId"]').data('key');
@@ -277,7 +279,7 @@
                 }
             }else{
                 $.ajax({
-                    url:`/ajax-categories?sectionId=${sectionId}`, 
+                    url:`/ajax-categories?sectionId=${sectionId}&storeId=${storeId}`, 
                     type: "GET",
                     dataType: "json",
                     success:function(categories) {
