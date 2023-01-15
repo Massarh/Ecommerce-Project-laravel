@@ -11,7 +11,7 @@
 
             <ol class="breadcrumb m-0">
                 <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                <li class="breadcrumb-item">Category</li>
+                <li class="breadcrumb-item"><a href="{{route('category.create')}}">Category</a></li>
                 <li class="breadcrumb-item active" style="text-decoration-line: underline;">Categories Table</li>
             </ol>
 

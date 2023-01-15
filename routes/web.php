@@ -85,7 +85,7 @@ Route::middleware(['revalidate'])->group(function () {
         Route::resource('store', StoreController::class);
 
         // CategoryController
-        Route::get('category/store/{slug}', [CategoryController::class, 'getCategoryByStoreSlug'])->name('category.getCategoryByStoreSlug');
+        Route::get('category/store/{storeSlug}', [CategoryController::class, 'getCategoryByStoreSlug'])->name('category.getCategoryByStoreSlug');
         Route::resource('category', CategoryController::class);
 
         // ProductController

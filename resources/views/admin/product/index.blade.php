@@ -16,43 +16,48 @@
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
             <h4 class="mb-sm-0 font-size-18">Products Table</h4>
             @if(auth()->user()->user_role=='superadmin')
-            {{-- add if --}}
-            {{-- else part --}}
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{route('store.index')}}">Stores Table</a></li>
-                <li class="breadcrumb-item"><a href="{{ url()->previous() }}">Categories Table</a></li>
-                <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Products
-                    Table</li>
-            </ol>
-            {{-- end else part --}}
-
+                @if( app('router')->getRoutes()->match(app('request')->create(URL::current()))->getName() == 'product.getProductByCategorySlug')
+                    <ol class="breadcrumb m-0"> 
+                        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('category.create')}}">Category</a></li>
+                        <li class="breadcrumb-item active"><a href="{{route('category.index')}}">Categories Table</a></li>
+                        <li class="breadcrumb-item active" style="text-decoration-line: underline;">Products Table</li>
+                    </ol>
+                @elseif(app('router')->getRoutes()->match(app('request')->create(URL::current()))->getName() == "product.getProductByStoreAndCategorySlug")
+                    <ol class="breadcrumb"> 
+                        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('store.index')}}">Stores Table</a></li> 
+                        <li class="breadcrumb-item"><a href="{{ route('category.getCategoryByStoreSlug', [$store->slug]) }}">Categories Table</a></li> 
+                        <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Products Table</li>
+                    </ol>
+                @elseif(app('router')->getRoutes()->match(app('request')->create(URL::current()))->getName() == "product.getProductByStoreSlug")
+                <ol class="breadcrumb"> 
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('store.index')}}">Stores Table</a></li> 
+                    <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Products Table</li>
+                </ol>
+                @endif
             @endif
 
             @if(auth()->user()->user_role=='admin' || auth()->user()->user_role=='employee')
-            {{-- else part --}}
-            @if( app('router')->getRoutes()->match(app('request')->create(URL::previous()))->getName() !=
-            'category.getCategoryByStoreSlug')
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                <li class="breadcrumb-item">Product</li>
-                <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Products
-                    Table</li>
-            </ol>
-            @endif
-            {{-- end else part --}}
 
+                @if( app('router')->getRoutes()->match(app('request')->create(URL::current()))->getName() == 'product.getProductByStoreAndCategorySlug')
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+                        @if(auth()->user()->user_role=='admin' )
+                        <li class="breadcrumb-item"><a href="{{route('category.create')}}">Category</a></li>
+                        @endif
+                        <li class="breadcrumb-item"><a href="{{route('category.getCategoryByStoreSlug', [$store->slug])}}">Categories Table</a></li> 
+                        <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Products Table</li>
+                    </ol>
+                    @elseif(app('router')->getRoutes()->match(app('request')->create(URL::current()))->getName() == "product.index")
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('product.create')}}">Product</a></li> 
+                        <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Products Table</li>
+                    </ol>
+                @endif
 
-            @if( app('router')->getRoutes()->match(app('request')->create(URL::previous()))->getName() ==
-            'category.getCategoryByStoreSlug')
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                <li class="breadcrumb-item">Category</li>
-                <li class="breadcrumb-item"><a href="{{ url()->previous()}}">Categories Table</a></li>
-                <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">Products
-                    Table</li>
-            </ol>
-            @endif
             @endif
 
         </div>

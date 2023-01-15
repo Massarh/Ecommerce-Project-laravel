@@ -11,7 +11,7 @@
             @if(auth()->user()->user_role=='superadmin')
             <ol class="breadcrumb m-0">
                 <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ url()->previous() }}">Stores Table</a></li>
+                <li class="breadcrumb-item"><a href="{{route('store.index')}}">Stores Table</a></li>
                 <li class="breadcrumb-item active" style="text-decoration-line: underline;">Categories Table</li>
             </ol>
             @endif
@@ -19,7 +19,9 @@
             @if(auth()->user()->user_role=='admin' || auth()->user()->user_role=='employee')
             <ol class="breadcrumb m-0">
                 <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                <li class="breadcrumb-item">Category</li>
+                @if(auth()->user()->user_role=='admin' )
+                <li class="breadcrumb-item"><a href="{{route('category.create')}}">Category</a></li>
+                @endif
                 <li class="breadcrumb-item active" style="text-decoration-line: underline;">Categories Table</li>
             </ol>
             @endif
