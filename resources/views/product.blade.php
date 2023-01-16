@@ -295,8 +295,8 @@ padding-bottom: 3rem!important; background-color:#ffffff!important;">
                 </div>
                 <div style="display:flex;justify-content:center">
                     <a href="{{route('all.product')}}">
-                        <button style="text-align: center; background: #000; color:#fff;
-                border: #000; border-radius: 4px; --bs-btn-padding-x: 50;" class="btn ">All
+                        <button style="text-align: center; background: #1a1a1a; color:#fff;
+                border: #1a1a1a; border-radius: 4px; --bs-btn-padding-x: 50;" class="btn ">All
                             Products</button>
                     </a>
                 </div>
@@ -317,17 +317,16 @@ padding-bottom: 3rem!important; background-color:#ffffff!important;">
                 <div class="col-sm-4 col-md-3 item">
                     <h3>COMPANY INFO</h3>
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Social Responsibility</a></li>
-                        <li><a href="#">Supply Chain</a></li>
-                        <li><a href="#">Careers</a></li>
+                        <li><a href="{{route('about-us')}}">About Us</a></li>
+                        <li><a href="{{route('our-supplier')}}">Our Supplier</a></li>
+                        <li><a href="{{route('our-team')}}">Our Team</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-4 col-md-3 item">
                     <h3>HELP AND SUPPORT</h3>
                     <ul>
+                        <li><a href="{{route('customer-care')}}">Customer Care</a></li>
                         <li><a href="#">How To Order</a></li>
-                        <li><a href="#">Development</a></li>
                         <li><a href="#">Hosting</a></li>
                     </ul>
                 </div>

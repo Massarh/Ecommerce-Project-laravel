@@ -17,7 +17,7 @@
         </div>
         <div class="col-md-6 cardTop">
             <section class=" p-5 MarginTop" style="padding-right: 18px !important; max-width: 472px;">
-                <h3 width:fit-content;">{{$product->store->name}} STORE</h3>
+                <h3 style="width:fit-content;">{{$product->store->name}} STORE</h3>
 
                 {{-- Name --}}
                 <h2 class="title mb-3">

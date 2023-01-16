@@ -25,7 +25,7 @@ class CartController extends Controller
         }
         $cart->add($product);
         session()->put('cart', $cart);
-        Toastr::success('Product added to cart', 'success');
+        Toastr::success('Product added to bag', 'success');
         return redirect()->back();
     }
 
@@ -54,7 +54,7 @@ class CartController extends Controller
         $cart->updateQty($product->id, $request->qty); // qty from FORM in cart.blade.php
         session()->put('cart', $cart);
 
-        Toastr::success('Cart updated', 'success');
+        Toastr::success('Bag updated', 'success');
         return redirect()->back();
     }
 
@@ -70,10 +70,9 @@ class CartController extends Controller
             // this will execute when we remove the last item in the cart
             session()->forget('cart'); // remove from the session
         } else {
-
             session()->put('cart', $cart);
         }
-
+        Toastr::success('Product deleted successfully', 'success');
         return redirect()->back();
     }
 

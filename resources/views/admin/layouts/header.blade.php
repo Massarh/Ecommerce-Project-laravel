@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="{{ URL::asset('logo/logo.png') }}" rel="icon">
+    <link href="{{ URL::asset('logo/light.png') }}" rel="icon">
 
     <title> @yield('title') - Dashboard</title>
     {{-- <link rel="shortcut icon" href="{{ URL::asset('logo/logo.png') }}"> --}}

@@ -29,6 +29,7 @@ class FrontProductListController extends Controller
         $product = Product::find($productId);
         //تحت العنصر الي فاتحه id لعرض العناصر الي الهم نفس 
         $productFromSameCategoryAndTopSelling = Product::where('category_id', $product->category_id)
+            ->where('section', $product->section)
             ->where('id', '!=', $product->id)
             ->orderBy('number_of_sold', 'desc')
             ->limit(4)
@@ -183,4 +184,28 @@ class FrontProductListController extends Controller
         }  
         return response()->json($categories);
     }
+    
+    /*      Footer Info   */
+    
+    // In Home Page "our-supplier"
+    public function allStoreInHomePage()
+    {
+        $stores = Store::get();
+        return view('footer-info.our-supplier', compact('stores'));
+    }
+
+    public function aboutUs()
+    {
+        return view('footer-info.about-us');
+    } 
+
+    public function ourTeam()
+    {
+        return view('footer-info.our-team');
+    }   
+    
+    public function helpCustomer()
+    {
+        return view('footer-info.customer-care');
+    } 
 }

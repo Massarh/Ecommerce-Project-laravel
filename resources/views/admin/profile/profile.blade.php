@@ -162,7 +162,7 @@
                     {{-- button --}}
                     <div class="mt-4  d-flex justify-content-center mr-5">
                         <button class="btn" type="submit"
-                            style="background-color: #1a1a1a; color:#ffffff; border-radius: 4px;">Update</button>
+                            style="background-color: #212738; color:#ffffff; border-radius: 4px;">Update</button>
                     </div>
                 </form>
             </div>

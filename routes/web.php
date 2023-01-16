@@ -45,12 +45,18 @@ Route::middleware(['revalidate'])->group(function () {
     Route::get('/product/{productId}', [FrontProductListController::class, 'show'])->name('product.view'); // change 'product.
     // to search product
     Route::get('/all/products/{storeSlug?}', [FrontProductListController::class, 'allProducts'])->name('all.product');
+    // Footer info
+    Route::get('our-supplier', [FrontProductListController::class, 'allStoreInHomePage'])->name('our-supplier');
+    Route::get('about-us', [FrontProductListController::class, 'aboutUs'])->name('about-us');
+    Route::get('our-team', [FrontProductListController::class, 'ourTeam'])->name('our-team');
+    Route::get('customer-care', [FrontProductListController::class, 'helpCustomer'])->name('customer-care');
+
 
     // CartController
     Route::get('/addToCart/{product}', [CartController::class, 'addToCart'])->name('add.cart');
     Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
     Route::post('/products/{product}', [CartController::class, 'updateCart'])->name('cart.update');
-    Route::post('/product/{product}', [CartController::class, 'removeCart'])->name('cart.remove');
+    Route::put('/product/{product}', [CartController::class, 'removeCart'])->name('cart.remove');
     //payment 
     Route::get('/checkout', [CartController::class, 'checkout'])->name('cart.checkout')->middleware('auth'); // must login
     Route::post('/charge', [CartController::class, 'charge'])->name('cart.charge');
