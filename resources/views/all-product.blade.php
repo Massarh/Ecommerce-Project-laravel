@@ -72,13 +72,6 @@
     <form action="{{route('all.product')}}" method="GET">
         @csrf 
         <div class="search"  style="width: 265px">
-            {{-- <div class="" style="display: inline-block">
-                <input value="{{ $search ? $search: ''}}" type="text" name="search" class="form-control"
-                    placeholder="search">
-            </div>
-            <div class="" style="display: inline-block;">
-                <button type="submit" style="background-color:#1a1a1a; color: #fff" class="btn">Search</button>
-            </div> --}}
             <div class="input-group auth-pass-inputgroup">
                 <input value="{{ $search ? $search: ''}}" type="text" name="search" class="form-control" placeholder="search">
                 <button class="btn" type="submit"style="background-color:#1a1a1a; color: #fff"><i

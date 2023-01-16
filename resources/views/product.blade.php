@@ -51,7 +51,9 @@
     <div class="container-fluid" style="margin-top: -11px; margin-bottom: -11px;">
         <div>
             <a class="navbar-brand" href="{{ url('/') }}" style="margin-left: 50px">
-                <b style="font-family: fangsong; font-size:36px;">PLAZA</b>
+                {{-- <b style="font-family: fangsong; font-size:36px;">PLAZA</b> --}}
+                <img src="{{ URL::asset('logo/dark.png')}}" alt="" height="60">
+
             </a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarExample01"
@@ -367,7 +369,7 @@ padding-bottom: 3rem!important; background-color:#ffffff!important;">
         padding: 0;
         list-style: none;
         line-height: 1.6;
-        font-size: 14px;
+        font-size: 13px;
         margin-bottom: 0;
     }
 

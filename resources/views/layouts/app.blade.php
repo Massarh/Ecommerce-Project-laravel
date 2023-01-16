@@ -8,6 +8,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    {{-- <link href="{{ URL::asset('logo/logo.png') }}" rel="icon">
+    <link rel="shortcut icon" href="{{ URL::asset('logo/logo.png') }}"> --}}
     <title> @yield('title') - Go-plaza</title>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,7 +21,7 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss'])
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ URL::asset('logo/logo.jpeg') }}">
+    {{-- <link rel="shortcut icon" href="{{ URL::asset('logo/logo.png') }}"> --}}
     
 
     {{-- messege toastr--}}

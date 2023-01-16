@@ -17,25 +17,31 @@
         </div>
         <div class="col-md-6 cardTop">
             <section class=" p-5 MarginTop" style="padding-right: 18px !important; max-width: 472px;">
+                <h3 width:fit-content;">{{$product->store->name}} STORE</h3>
+
                 {{-- Name --}}
                 <h2 class="title mb-3">
-                    <b style=" font-family: Times New Roman">{{ $product->name }} </b>
+                    <b style="font-weight: 600 !important;">{{ $product->name }} </b>
                 </h2>
                 {{-- DESCRIPTION --}}
-                <p style=" font-family: Times New Roman">{!! $product->description !!}</p>
-                <hr style=" border-top: 1px solid #1c1c1c; " style="padding: 3rem !important;">
+                <p >{!! $product->description !!}</p>
+                {{-- <hr style=" border-top: 1px solid #1c1c1c; " style="padding: 3rem !important;"> --}}
+                <hr style=" border: 0;
+                        height: 1px;
+                        background: #333;
+                        background-image: linear-gradient(to right, #ccc, #333, #ccc);" >
                 {{-- ITEM INFO --}}
-                <p style=" font-family: Times New Roman">{!! $product->additional_info !!}</p>
+                <p >{!! $product->additional_info !!}</p>
                 {{-- Price --}}
                 <p class="price-detail-wrap">
-                    <span class="price h3 " style=" font-family: Times New Roman ; font-size:20px">
+                    <span class="price h3 " style="font-size:20px">
                         {{ $product->price }} JOD
                     </span>
                 </p>
-                <a href="{{ route('add.cart', [$product->id]) }}" style="text-align: center; color:#fff; background: #000; border: #000;
-                    border-radius: 4px; --bs-btn-padding-x: 80px; font-family: Times New Roman" class="btn">Add to Bag
+                <a href="{{ route('add.cart', [$product->id]) }}" style="text-align: center; color:#fff; background: #1a1a1a; border: #1a1a1a;
+                    border-radius: 4px; --bs-btn-padding-x: 80px;" class="btn">Add to Bag
                 </a>
-                <a href="{{ route('cart.show') }}" style="color:#fff; background: #000; border: #000;
+                <a href="{{ route('cart.show') }}" style="color:#fff; background: #1a1a1a; border: #1a1a1a;
                     border-radius: 4px; --bs-btn-padding-x: 10px;" class="btn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bag"
                         viewBox="0 0 16 16">

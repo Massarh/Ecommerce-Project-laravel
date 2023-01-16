@@ -212,7 +212,7 @@ class DatabaseSeeder extends Seeder
         //daraghmeh
         //TWO-PIECES & JUMPSUITS
         Product::create([
-            'name'        => '2-piece shirt and trousers set [D,K,TWO-PIECES & JUMPSUITS]',
+            'name'        => '2-PIECES SHIRT [D,K,TWO-PIECES]',
             'image'       => 'public/product/2-pack Printed Cotton Pajama Jumpsuits Blue Mickey Mouse  27.20 .jpg',
             'price'       => 9.85,
             'description' => 'Set with a soft cotton flannel shirt and cotton twill trousers. Shirt with a collar, buttons down the front and long sleeves with buttoned cuffs. ',
@@ -223,7 +223,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'name'        => '3-piece Cotton Set [D,K,TWO-PIECES & JUMPSUITS]',
+            'name'        => '3-PIECES SET [D,K,TWO-PIECES]',
             'image'       => 'public/product/2-piece Cotton Set 32.50.jpg',
             'price'       => 7.48,
             'description' => 'Dressy set with a shirt, sweater vest, and pants in cotton. Shirt in woven fabric with a collar, buttons at front, long sleeves with button at cuffs, and a gently rounded hem.',
@@ -235,7 +235,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Product::create([
-            'name'        => '2-piece Fleece Set [D,K,TWO-PIECES & JUMPSUITS]',
+            'name'        => '2-PIECES SET [D,K,TWO-PIECES]',
             'image'       => 'public/product/2-piece Fleece Set 19.99.jpg',
             'price'       => 15.7,
             'description' => 'Padded snowsuit in woven fabric. Hood with ear appliqués at top',
@@ -245,7 +245,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => '2-piece Knit Cotton Set[D,K,TWO-PIECES & JUMPSUITS]',
+            'name'        => '2-PIECES KNIT SET [D,K,TWO-PIECES]',
             'image'       => 'public/product/2-piece Knit Cotton Set 27.99.jpg',
             'price'       => 14.6,
             'description' => 'Quilted, padded jacket in woven fabric with a printed pattern.',
@@ -255,7 +255,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => '2-piece shirt and trousers [D,K,TWO-PIECES & JUMPSUITS]',
+            'name'        => '2-PIECES SHIRT [D,K,TWO-PIECES]',
             'image'       => 'public/product/2-piece shirt and trousers set 24.99.jpg',
             'price'       => 7.56,
             'description' => 'Low-profile sneakers in faux suede. Hook-loop tabs at front, padded edge, and a small loop at back. ',
@@ -265,7 +265,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'Shirt and Chinos [D,K,TWO-PIECES & JUMPSUITS]',
+            'name'        => 'SHIRT CHION [D,K,TWO-PIECES]',
             'image'       => 'public/product/Shirt and Chinos 29.25.jpg',
             'price'       => 17.8,
             'description' => 'Warm-lined boots in faux leather with lacing at front, zip at side, and loop at back. Faux shearling lining and insoles.',
@@ -278,7 +278,7 @@ class DatabaseSeeder extends Seeder
         //daraghmeh
         //OUTWEAR 
         Product::create([
-            'name'        => 'Bomber Jacket [D,K,OUTWEAR]',
+            'name'        => 'BINBER JACKET [D,K,OUTWEAR]',
             'image'       => 'public/product/Oversized Bomber Jacket 26.99.jpg',
             'price'       => 16.44,
             'description' => 'Oversized Bomber Jacket',
@@ -289,7 +289,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'Padded Hooded Parka [D,K,OUTWEAR]',
+            'name'        => 'HOODED PARKA [D,K,OUTWEAR]',
             'image'       => 'public/product/Padded Hooded Parka 64.99.jpg',
             'price'       => 20.7,
             'description' => 'Suit vest in woven fabric with shiny woven fabric at back.',
@@ -299,7 +299,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'Puffer Vest [D,K,OUTWEAR]',
+            'name'        => 'PUFFER VEST [D,K,OUTWEAR]',
             'image'       => 'public/product/Puffer Vest 29.99.jpg',
             'price'       => 15.82,
             'description' => 'Relaxed-fit Puffer Vest in cotton-blend fabric with soft, brushed inside. ',
@@ -309,7 +309,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'Teddy Jacket [D,K,OUTWEAR]',
+            'name'        => 'TEDDY JACKET [D,K,OUTWEAR]',
             'image'       => 'public/product/Teddy Jacket 29.27.jpg',
             'price'       => 10.59,
             'description' => 'Teddy Jacket. Waistband with concealed hook-and-eye fastener and a zip fly.',
@@ -319,7 +319,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'Water-repellent [D,K,OUTWEAR]',
+            'name'        => 'WATER-REPELLENT [D,K,OUTWEAR]',
             'image'       => 'public/product/Water-repellent Jacket 40.00.jpg',
             'price'       => 12.8,
             'description' => 'Relaxed-fit Water-repellent Jacket in cotton-blend fabric with soft, brushed inside',
@@ -332,7 +332,7 @@ class DatabaseSeeder extends Seeder
         //daraghmeh
         //shoes
         Product::create([
-            'name'        => 'Padded Baby Bunting [D,K,shoes]',
+            'name'        => 'BABY BUNTING [D,K,shoes]',
             'image'       => 'public/product/.Padded Baby Bunting 20.23 jpg.jpg',
             'price'       => 15.44,
             'description' => 'relaxed-fit, Padded Baby Bunting in a soft, undyed wool blend. Pointed lapels,',
@@ -342,7 +342,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'Sneakers [D,K,shoes]',
+            'name'        => 'SNEAKERS [D,K,shoes]',
             'image'       => 'public/product/Sneakers 29.99.jpg',
             'price'       => 7.9,
             'description' => 'Sneakers woven stretch fabric.',
@@ -352,7 +352,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'Warm-lined Boots [D,K,shoes]',
+            'name'        => 'WARMED-LINE BOOTS [D,K,shoes]',
             'image'       => 'public/product/Warm-lined Boots 19.99.jpg',
             'price'       => 8.8,
             'description' => 'Warm-lined Boots with a slight stretch for good comfort. Straight leg and a slim fit from the waist through the thigh to the hem.',
@@ -362,7 +362,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'Warm-lined Boots [D,K,shoes]',
+            'name'        => 'WARMED-LINE BOOTS [D,K,shoes]',
             'image'       => 'public/product/Warm-lined Boots 20.33.jpg',
             'price'       => 15.1,
             'description' => 'Warm-lined Boots jersey. Ribbed crew neck and straight-cut hem.',
@@ -372,7 +372,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'Warm-lined High Tops [D,K,shoes]',
+            'name'        => 'HIGH TOPS [D,K,shoes]',
             'image'       => 'public/product/Warm-lined High Tops 24.99.jpg',
             'price'       => 15.5,
             'description' => 'Warm-lined High Tops Boots with toe caps, lacing at front, zipper at one side, and a loop at back',
@@ -397,7 +397,7 @@ class DatabaseSeeder extends Seeder
         //daraghmeh
         //TOPS
         Product::create([
-            'name'        => '10-pack Regular Fit Crew-neck [D,M,TOPS]',
+            'name'        => '10-PACK CREW-NECK [D,M,TOPS]',
             'image'       => 'public/product/10-pack Regular Fit Crew-neck T-shirts 74.99.jpg',
             'price'       => 16.7,
             'description' => '10-pack Regular Fit Crew-neck. Canvas lining and insoles.',
@@ -407,7 +407,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'MEN'
         ]);
         Product::create([
-            'name'        => 'Long-sleeved Shirt [D,M,TOPS]',
+            'name'        => 'LONG-SLEEVED SHIRT [D,M,TOPS]',
             'image'       => 'public/product/Long-sleeved Shirt Long Fit 12.99.jpg',
             'price'       =>   3.4,
             'description' => 'Long-sleeved Shirt a loop at front and back. ',
@@ -417,7 +417,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'MEN'
         ]);
         Product::create([
-            'name'        => 'Printed T-shirt [D,M,TOPS]',
+            'name'        => 'PRINTED T-SHIRT [D,M,TOPS]',
             'image'       => 'public/product/Printed T-shirt 8.66.jpg',
             'price'       => 2.2,
             'description' => 'Printed T-shirt at back.',
@@ -427,7 +427,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'MEN'
         ]);
         Product::create([
-            'name'        => 'Slim Fit Polo Shirt [D,M,TOPS]',
+            'name'        => 'PLOL SHIRT [D,M,TOPS]',
             'image'       => 'public/product/Slim Fit Polo Shirt 12.88.jpg',
             'price'       => 5.88,
             'description' => 'Slim Fit Polo Shirt  details. Padded upper edge, padded tongue, and lacing at front.',
@@ -438,7 +438,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'MEN'
         ]);
         Product::create([
-            'name'        => 'Sports top [D,M,TOPS]',
+            'name'        => 'SOPRTS-TOP [D,M,TOPS]',
             'image'       => 'public/product/Sports top 12.50.jpg',
             'price'       => 3.33,
             'description' => 'Sports top leather details. Padded upper edge, padded tongue, and lacing at front.',
@@ -451,7 +451,7 @@ class DatabaseSeeder extends Seeder
 
         //hoodie & sweetshirts
         Product::create([
-            'name'        => 'hoodie [D,M,hoodie & sweetshirts]',
+            'name'        => 'HOODIE [D,M,sweetshirts]',
             'image'       => 'public/product/hoodie 20.66jpg.jpg',
             'price'       => 9.86,
             'description' => 'hoodie lacing at front.',
@@ -461,7 +461,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'MEN'
         ]);
         Product::create([
-            'name'        => 'Printed Sweatshirt [D,M,hoodie & sweetshirts]',
+            'name'        => 'PRINTED SWEATSHIRT [D,M,sweetshirts]',
             'image'       => 'public/product/Oversized Fit Printed Sweatshirt29.99.jpg',
             'price'       => 13.5,
             'description' => 'Sweatshirt Padded upper edge, ',
@@ -471,7 +471,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'MEN'
         ]);
         Product::create([
-            'name'        => 'Relaxed Fit Hoodie [D,M,hoodie & sweetshirts]',
+            'name'        => 'RELAXED FIT HOODIE [D,M,sweetshirts]',
             'image'       => 'public/product/Relaxed Fit Hoodie 24.99.jpg',
             'price'       => 15.9,
             'description' => 'Sweatshirt Relaxed Fit Hoodie at front.',
@@ -481,7 +481,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'MEN'
         ]);
         Product::create([
-            'name'        => 'Relaxed Hoodie  [D,M,hoodie & sweetshirts]',
+            'name'        => 'FIT HOODIE [D,M,sweetshirts]',
             'image'       => 'public/product/Relaxed Fit Hoodie 34.99.jpg',
             'price'       => 17.5,
             'description' => 'Relaxed Fit Hoodie with high quality ',
@@ -491,7 +491,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'MEN'
         ]);
         Product::create([
-            'name'        => 'Polo Shirt [D,M,hoodie & sweetshirts]',
+            'name'        => 'POLO SHIRT [D,M,sweetshirts]',
             'image'       => 'public/product/Relaxed Fit Polo Shirt 29.33 .jpg',
             'price'       =>  10.2,
             'description' => 'Relaxed Fit Hoodie Polo Shirt',
@@ -501,7 +501,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'MEN'
         ]);
         Product::create([
-            'name'        => 'Relaxed-fit Hoodie [D,M,hoodie & sweetshirts]',
+            'name'        => 'RELAXED-FIT HOODIE [D,M,sweetshirts]',
             'image'       => 'public/product/Relaxed-fit Hoodie 34.99.jpg',
             'price'       => 12.9,
             'description' => 'Relaxed Fit Hoodie Polo Shirt',
@@ -540,7 +540,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'WOMEN'
         ]);
         Product::create([
-            'name'        => 'MINI CHOKER WITH PEARL BEADS [L, W, ACC]',
+            'name'        => 'MINI CHOKER[L, W, ACC]',
             'image'       => 'public/product/3cc.jpg',
             'price'       => 7.7,
             'description' => 'Metal choker necklace with mini pearl bead appliqués.  ',
@@ -550,7 +550,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'WOMEN'
         ]);
         Product::create([
-            'name'        => 'PEARL BEAD CHOKER NECKLACE [L, W, ACC]',
+            'name'        => 'PEARL NECKLACE [L, W, ACC]',
             'image'       => 'public/product/4cc.jpg',
             'price'       => 12.5,
             'description' => 'Metal choker necklace with pearl bead appliqués.  ',
@@ -570,7 +570,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'WOMEN'
         ]);
         Product::create([
-            'name'        => 'PEARL BEAD MAXI CHOKER [L, W, ACC]',
+            'name'        => 'MAXI CHOKER [L, W, ACC]',
             'image'       => 'public/product/6cc.jpg',
             'price'       => 6.9,
             'description' => 'SChoker with fresh water pearl bead appliqués. Lobster clasp fastening.  ',
@@ -594,7 +594,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'CROPPED DENIM JACKET WITH RIPS [L, K, OWTWEAR]',
+            'name'        => 'CROPPED DENIM[L, K, OWTWEAR]',
             'image'       => 'public/product/D&GKO2.jpg',
             'price'       => 11,
             'description' => 'Collared, cropped denim jacket featuring long sleeves, a button-up front.  ',
@@ -604,7 +604,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'DENIM WORKER JACKET [L, K, OWTWEAR]',
+            'name'        => 'DENIM JACKET [L, K, OWTWEAR]',
             'image'       => 'public/product/D&GKO3.jpg',
             'price'       => 14.99,
             'description' => 'Collared denim jacket with long sleeves. Button-up front.   ',
@@ -614,7 +614,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'WINDPROOF AND WATER-REPELLENT APRÈS SKI PUFFER COAT [L, K, OWTWEAR]',
+            'name'        => 'PUFFER COAT [L, K, OWTWEAR]',
             'image'       => 'public/product/D&GKO4.jpg',
             'price'       => 19.54,
             'description' => 'Wind-proof and water-repellent puffer coat with a high collar and long sleeves with adjustable button fastening. Zip-up front.  ',
@@ -624,7 +624,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'DOWN AND FEATHER PUFFER JACKET WITH MAXI POCKETS [L, K, OWTWEAR]',
+            'name'        => 'MAXI POCKETS [L, K, OWTWEAR]',
             'image'       => 'public/product/D&GKO5.jpg',
             'price'       => 23.8,
             'description' => 'Puffer jacket with 50% feathers and 50% down. Detachable hood with zip and long sleeves with cuffs. Injected zip fastening at the front hidden by a snap-button placket. Maxi front pockets with flaps.',
@@ -635,7 +635,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'DOWN AND FEATHER PUFFER JACKET WITH MAXI POCKETS [L, K, OWTWEAR]',
+            'name'        => 'PUFFER JACKET [L, K, OWTWEAR]',
             'image'       => 'public/product/D&GKO6.jpg',
             'price'       => 20.2,
             'description' => 'Puffer jacket with 50% feathers and 50% down. Detachable hood with zip and long sleeves with cuffs. Injected zip fastening at the front hidden by a snap-button placket. Maxi front pockets with flaps. ',
@@ -648,7 +648,7 @@ class DatabaseSeeder extends Seeder
 
         //Pants
         Product::create([
-            'name'        => 'WINDPROOF AND WATER-REPELLENT APRÈS SKI QUILTED CARGO TROUSERS [L, K, PANTS]',
+            'name'        => 'WINDPROOF APRÈS  [L, K, PANTS]',
             'image'       => 'public/product/D&GKP1.jpg',
             'price'       => 7.4,
             'description' => 'Wind-proof and water-repellent quilted cargo trousers featuring an elasticated waistband, front snap-button fastening, belt appliqué, front pockets, rear patch pockets.  ',
@@ -658,7 +658,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'THE REGULAR PANT JEANS [L, K, PANTS]',
+            'name'        => 'PANT JEANS [L, K, PANTS]',
             'image'       => 'public/product/D&GKP2.jpg',
             'price'       => 8.2,
             'description' => 'Five-pocket regular fit jeans with an adjustable interior waistband and button fastening in the front',
@@ -668,7 +668,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'THE REGULAR PANT JEANS [L, K, PANTS]',
+            'name'        => 'PANT JEANS [L, K, PANTS]',
             'image'       => 'public/product/D&GKP3.jpg',
             'price'       => 5.3,
             'description' => 'Five-pocket regular fit jeans with an adjustable interior waistband and button fastening in the front',
@@ -689,7 +689,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'WIDE-LEG CARGO TROUSERS [L, K, PANTS]',
+            'name'        => 'WIDE-LEG TROUSERS [L, K, PANTS]',
             'image'       => 'public/product/D&GKP5.jpg',
             'price'       => 12.7,
             'description' => 'Wide-leg cargo trousers with an elasticated waistband. ',
@@ -699,7 +699,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'SOFT TOUCH CARGO TROUSERS [L, K, PANTS]',
+            'name'        => 'CARGO TROUSERS [L, K, PANTS]',
             'image'       => 'public/product/D&GKP6.jpg',
             'price'       => 14.6,
             'description' => 'Cargo trousers with an elastic waistband and drawstrings at the front. Featuring front pockets and matching flap pockets on the legs. ',
@@ -721,7 +721,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'CROSSBODY BAG WITH HANDLES [L, K, BAGS]',
+            'name'        => 'CROSSBODY BAG [L, K, BAGS]',
             'image'       => 'public/product/D&GKB2.jpg',
             'price'       => 5.7,
             'description' => 'Crossbody bag with gathering, drawstring closure and handles. ',
@@ -731,7 +731,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'MINI CROSSBODY BAG [L, K, BAGS]',
+            'name'        => 'CROSSBODY BAG [L, K, BAGS]',
             'image'       => 'public/product/D&GKB3.jpg',
             'price'       => 8.2,
             'description' => 'Mini crossbody bag with a padded effect. ',
@@ -741,7 +741,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'MINI BUCKET BAG [L, K, BAGS]',
+            'name'        => 'BUCKET BAG [L, K, BAGS]',
             'image'       => 'public/product/D&GKB4.jpg',
             'price'       => 7,
             'description' => 'Mini crossbody bag made of cotton and linen. ',
@@ -751,7 +751,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'LILO & STITCH TOTE BAG [L, K, BAGS]',
+            'name'        => 'TOTE BAG [L, K, BAGS]',
             'image'       => 'public/product/D&GKB5.jpg',
             'price'       => 3.2,
             'description' => 'Fabric tote bag with a licensed Lillo & Stitch print. Faded effect finish.',
@@ -761,7 +761,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'FAUX FUR BAG [L, K, BAGS]',
+            'name'        => 'FUR BAG [L, K, BAGS]',
             'image'       => 'public/product/D&GKB6.jpg',
             'price'       => 15.4,
             'description' => 'Monochrome faux fur shoulder bag. ',
@@ -862,7 +862,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'LEATHER ANKLE BOOTS [P, K, SHOES]',
+            'name'        => 'LEATHER BOOTS [P, K, SHOES]',
             'image'       => 'public/product/LEATHER ANKLE BOOTS  Adjustable hook-and-loop strap with faux shearling interior. Front and back pull tabs for slipping on with ease..jpg',
             'price'       => 7.6,
             'description' => 'LEATHER ANKLE BOOTS  Adjustable hook-and-loop strap with faux shearling interior. ',
@@ -892,7 +892,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'KIDS'
         ]);
         Product::create([
-            'name'        => 'QUILTED MOUNTAIN BOOTS [P, K, SHOES]',
+            'name'        => 'MOUNTAIN BOOTS [P, K, SHOES]',
             'image'       => 'public/product/QUILTED MOUNTAIN BOOTS  Quilted nylon mountain boots. Side zip and adjustable lace-up fastening. Pull tab at the back for slipping on with ease. Contrast track sole..jpg',
             'price'       => 10.99,
             'description' => 'QUILTED MOUNTAIN BOOTS  Quilted nylon mountain boots. Side zip and adjustable lace-up fastening.',
@@ -916,7 +916,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'WOMEN'
         ]);
         Product::create([
-            'name'        => 'LEATHER CARD HOLDER [P, W, BAGS]',
+            'name'        => 'CARD HOLDER [P, W, BAGS]',
             'image'       => 'public/product/LEATHER CARD HOLDER  Leather card holder. Interior divided into several compartments. Detachable metal chain crossbody strap. Metal clasp..jpg',
             'price'       => 12.7,
             'description' => 'LEATHER CARD HOLDER  Leather card holder. Interior divided into several compartments. ',
@@ -926,7 +926,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'WOMEN'
         ]);
         Product::create([
-            'name'        => 'LEATHER SHOULDER BAG [P, W, BAGS]',
+            'name'        => 'LEATHER SHOULDER [P, W, BAGS]',
             'image'       => 'public/product/LEATHER SHOULDER BAG  Rectangular leather shoulder bag. Tubular shoulder straps and detachable crossbody strap. Decorative seams. Zip closure..jpg',
             'price'       => 9.99,
             'description' => 'LEATHER SHOULDER BAG  Rectangular leather shoulder bag. Tubular shoulder straps and detachable crossbody strap. ',
@@ -937,7 +937,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'WOMEN'
         ]);
         Product::create([
-            'name'        => 'LEATHER SHOULDER BAG [P, W, BAGS]',
+            'name'        => 'LEATHER BAG [P, W, BAGS]',
             'image'       => 'public/product/MINI CITY BAG  Mini city bag. Animal print exterior. Rigid handle. Detachable shoulder strap. Lined interior with pocket. Magnetic closure..jpg',
             'price'       => 20.5,
             'description' => 'MINI CITY BAG  Mini city bag. Animal print exterior. Rigid handle. Detachable shoulder strap.',
@@ -947,7 +947,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'WOMEN'
         ]);
         Product::create([
-            'name'        => 'MINI FLORAL HANDBAG [P, W, BAGS]',
+            'name'        => 'MINI HANDBAG [P, W, BAGS]',
             'image'       => 'public/product/MINI FLORAL HANDBAG  Mini square handbag. Handle with decorative flowers and a detachable and adjustable crossbody strap. Magnetic clasp closure on the flap..jpg',
             'price'       => 22.2,
             'description' => 'MINI FLORAL HANDBAG  Mini square handbag. Handle with decorative flowers and a detachable and adjustable crossbody strap.',
@@ -957,7 +957,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'WOMEN'
         ]);
         Product::create([
-            'name'        => 'SHIMMERY MINI CITY BAG [P, W, BAGS]',
+            'name'        => 'SHIMMERY BAG [P, W, BAGS]',
             'image'       => 'public/product/SHIMMERY MINI CITY BAG  Mini city bag in bejewelled fabric. Double handle with knotted detail on the corners. Lined interior. Metal chain crossbody strap. Magnetic clasp closure..jpg',
             'price'       => 19.4,
             'description' => 'SHIMMERY MINI CITY BAG  Mini city bag in bejewelled fabric. Double handle with knotted detail on the corners. Lined interior. Metal chain crossbody strap. Magnetic clasp closure.',
@@ -970,7 +970,7 @@ class DatabaseSeeder extends Seeder
         //women
         //shoes
         Product::create([
-            'name'        => 'VINYL HIGH-HEEL [P, W, SHOES]',
+            'name'        => 'VINYL  [P, W, SHOES]',
             'image'       => 'public/product/EMBELLISHED VINYL HIGH-HEEL SHOES High-heel slingback shoes. Vinyl upper. Embellished rhinestone details on the front..jpg',
             'price'       => 20.22,
             'description' => 'EMBELLISHED VINYL HIGH-HEEL SHOES High-heel slingback shoes. Vinyl upper. ',
@@ -980,7 +980,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'WOMEN'
         ]);
         Product::create([
-            'name'        => 'OVER THE KNEE BOOTS [P, W, SHOES]',
+            'name'        => ' KNEE BOOTS [P, W, SHOES]',
             'image'       => 'public/product/FABRIC OVER THE KNEE BOOTS Sock-style ankle boots in a combination of materials. Track sole. Back pull tab detail..jpg',
             'price'       => 25.99,
             'description' => 'FABRIC OVER THE KNEE BOOTS Sock-style ankle boots in a combination of materials.',
@@ -1000,7 +1000,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'WOMEN'
         ]);
         Product::create([
-            'name'        => 'LACE UP FABRIC SLIDER SANDALS [P, W, SHOES]',
+            'name'        => 'FABRIC SANDALS [P, W, SHOES]',
             'image'       => 'public/product/LACE UP FABRIC SLIDER SANDALS Flat slider sandals in elastic fabric with thin criss cross straps. Chunky sole. Tied closure around the ankle..jpg',
             'price'       => 10.2,
             'description' => 'LACE UP FABRIC SLIDER SANDALS Flat slider sandals in elastic fabric with thin criss cross straps.',
@@ -1041,7 +1041,7 @@ class DatabaseSeeder extends Seeder
         //MEN
         //Knitwear
         Product::create([
-            'name'        => 'COLOUR BLOCK SWEATER [J, M, Knitwear]',
+            'name'        => 'BLOCK SWEATER [J, M, Knitwear]',
             'image'       => 'public/product/D&GMK1.jpg',
             'price'       => 15.3,
             'description' => 'Long sleeve round neck sweater with ribbed trims.  ',
@@ -1051,7 +1051,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'MEN'
         ]);
         Product::create([
-            'name'        => 'MOCK NECK SWEATER [J, M, Knitwear]',
+            'name'        => 'NECK SWEATER [J, M, Knitwear]',
             'image'       => 'public/product/D&GMK2.jpg',
             'price'       => 10.9,
             'description' => 'Fine knit mock neck sweater with long sleeves and ribbed trims.  ',
@@ -1061,7 +1061,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'MEN'
         ]);
         Product::create([
-            'name'        => 'KNOP YARN SWEATER [J, M, Knitwear]',
+            'name'        => 'KNOP SWEATER [J, M, Knitwear]',
             'image'       => 'public/product/D&GMK3.jpg',
             'price'       => 8.99,
             'description' => 'Long sleeve round neck sweater with ribbed trims.  ',
@@ -1071,7 +1071,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'MEN'
         ]);
         Product::create([
-            'name'        => 'RIBBED TEXTURED SWEATER [J, M, Knitwear]',
+            'name'        => 'RIBBED SWEATER [J, M, Knitwear]',
             'image'       => 'public/product/D&GMK4.jpg',
             'price'       => 15.4,
             'description' => ' Long sleeve round neck sweater with ribbed trims. ',
@@ -1081,7 +1081,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'MEN'
         ]);
         Product::create([
-            'name'        => 'TEXTURED SWEATER WITH STRIPES [J, M, Knitwear]',
+            'name'        => 'SWEATER WITH STRIPES [J, M, Knitwear]',
             'image'       => 'public/product/D&GMK5.jpg',
             'price'       => 7.05,
             'description' => 'Long sleeve sweater with a round neckline and ribbed trims ',
@@ -1091,11 +1091,11 @@ class DatabaseSeeder extends Seeder
             'section'     => 'MEN'
         ]);
         Product::create([
-            'name'        => 'ALPACA BLEND SWEATER - LIMITED EDITION [J, M, Knitwear]',
+            'name'        => 'ALPACA BLEND SWEATER [J, M, Knitwear]',
             'image'       => 'public/product/D&GMK6.jpg',
             'price'       => 11.2,
             'description' => 'Lightweight sweater made of a spun synthetic alpaca blend. Featuring a round neckline. ',
-            'additional_info' => 'long sleeves and ribbed trims. ',
+            'additional_info' => 'long sleeves and ribbed trims - LIMITED EDITION  ',
             'store_id'    => 4,
             'category_id' => 3,
             'section'     => 'MEN'
@@ -1105,7 +1105,7 @@ class DatabaseSeeder extends Seeder
 
         //Outwear
         Product::create([
-            'name'        => 'BASIC PUFFER JACKET [J, M, Knitwear]',
+            'name'        => 'PUFFER JACKET [J, M, Knitwear]',
             'image'       => 'public/product/D&GMO1.jpg',
             'price'       => 20.5,
             'description' => 'High neck jacket featuring long sleeves with elasticated cuffs, welt pockets at the hip and inside pocket detail. Zip-up front. ',
@@ -1115,7 +1115,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'MEN'
         ]);
         Product::create([
-            'name'        => 'RUBBERISED PUFFER JACKET [J, M, Knitwear]',
+            'name'        => 'RUBBERISED JACKET [J, M, Knitwear]',
             'image'       => 'public/product/D&GMO2.jpg',
             'price'       => 23.8,
             'description' => 'Loose-fitting puffer jacket made of a technical fabric with a rubberised finish. High neck and long sleeves with elastic cuffs. Hip welt pockets and interior pocket detail.',
@@ -1125,7 +1125,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'MEN'
         ]);
         Product::create([
-            'name'        => 'TECHNICAL QUILTED JACKET [J, M, Knitwear]',
+            'name'        => 'TECHNICAL JACKET [J, M, Knitwear]',
             'image'       => 'public/product/D&GMO3.jpg',
             'price'       => 15.4,
             'description' => 'Jacket with lightly padded interior. High collar with stow-away hood detail. Long sleeves with elastic inner cuffs. Patch pockets with flaps at the hip. Inside pocket.',
@@ -1135,7 +1135,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'MEN'
         ]);
         Product::create([
-            'name'        => 'CASHMERE BLEND SWEATER [J, M, Knitwear]',
+            'name'        => 'CASHMERE SWEATER [J, M, Knitwear]',
             'image'       => 'public/product/Water-repellent Puffer Jacket 75.99.jpg',
             'price'       => 25.99,
             'description' => ' Sweater made of a spun cashmere blend. Featuring a round neckline.',
@@ -1155,7 +1155,7 @@ class DatabaseSeeder extends Seeder
             'section'     => 'MEN'
         ]);
         Product::create([
-            'name'        => 'CONTRAST QUILTED JACKET [J, M, Knitwear]',
+            'name'        => 'CONTRAST JACKET [J, M, Knitwear]',
             'image'       => 'public/product/D&GMO6.jpg',
             'price'       => 16.7,
             'description' => 'Jacket with a high collar and long sleeves. Zip pockets at the hip. Inside pocket. Contrast ribbed trims. ',
@@ -1166,8 +1166,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        /*      sliders     */
-
+        /* sliders */
         Slider::create([
             'image' => 'public/slider/slider (1).jpg',
         ]);

@@ -20,7 +20,7 @@
                 <span class="float-right">
                     <img src="{{ Storage::url($item->image) }}" style="width:6rem; height:7rem;">
                 </span>
-                <div style="display: grid; justify-content: end; font-weight: 600; font-size: 14px">
+                <div style="width:70%;max-width:300px; font-weight: 600; font-size: 14px;margin-left:10px">
                     <p>{{$item->name}}</p>
                     <p>Quantity: {{$item->quantity}}</p>
                     <p>Price: {{$item->price * $item->quantity}} <span>JOD</span></p>
@@ -30,9 +30,9 @@
             <hr style="border-top: 3px solid #000;">
 
             <div style="display: flex; justify-content: space-between; margin-top: 16px;font-weight: 600; font-size: 18px">
-                <p>Total price : </p>
+                <p>Total price  </p>
                     
-                <p>{{$order->total_price}} JOD </p>
+                <p style="width:70%;max-width:300px;">{{$order->total_price}} JOD </p>
             </div>
         </div>
     </div>

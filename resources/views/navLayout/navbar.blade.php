@@ -3,7 +3,9 @@
     <div class="container-fluid" style="margin-top: -11px; margin-bottom: -11px;">
         <div>
             <a class="navbar-brand" href="{{ url('/') }}" style="margin-left: 50px">
-                <b style="font-family: fangsong; font-size:36px;">PLAZA</b>
+                {{-- <b style="font-family: fangsong; font-size:36px;">PLAZA</b> --}}
+                <img src="{{ URL::asset('logo/dark.png')}}" alt="" height="60">
+
             </a>
         </div>
 

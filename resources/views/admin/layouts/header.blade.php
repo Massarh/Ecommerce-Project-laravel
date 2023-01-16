@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="{{asset('admin/img/logo/logo.jfif')}}" rel="icon">
+    <link href="{{ URL::asset('logo/logo.png') }}" rel="icon">
 
     <title> @yield('title') - Dashboard</title>
-    <link rel="shortcut icon" href="{{ URL::asset('logo/logo.jpeg') }}">
+    {{-- <link rel="shortcut icon" href="{{ URL::asset('logo/logo.png') }}"> --}}
 
     {{-- public/admin/vendor --}}
     <link href="{{asset('admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -21,7 +21,6 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     {{-- Style --}}
     <link rel="stylesheet" href="{{asset('css/admin-panel-style.css')}}">
-
     {{-- messege toastr--}}
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
