@@ -83,8 +83,8 @@
                         <div class="d-flex flex-column h-100">
                             <div class="mb-4 mb-md-5">
                                 <div class="d-block auth-logo">
-                                    <img src="{{ URL::asset('/logo/logo.jpeg') }}" alt="" height="45">
-                                    <img src="{{ URL::asset('/logo/goplaza.jpeg') }}" alt="" height="60">
+                                    <img src="{{ URL::asset('logo/dark0.png')}}" alt="" height="60">
+
                                 </div>
                             </div>
                             <div class="my-auto">
