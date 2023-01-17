@@ -241,7 +241,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Padded snowsuit in woven fabric. Hood with ear appliqués at top',
             'additional_info' => 'Zipper at front extending along one leg, chin guard at top, and foldover mitts and feet to keep hands and feet warm. Lined.',
             'store_id'    => 1,
-            'category_id' => 3,
+            'category_id' => 5,
             'section'     => 'KIDS'
         ]);
         Product::create([
@@ -251,7 +251,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Quilted, padded jacket in woven fabric with a printed pattern.',
             'additional_info' => 'Stand-up collar, detachable hood, and zipper at front with anti-chafe chin guard. Concealed elastic at cuffs and hem. Lined.',
             'store_id'    => 1,
-            'category_id' => 3,
+            'category_id' => 5,
             'section'     => 'KIDS'
         ]);
         Product::create([
@@ -261,7 +261,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Low-profile sneakers in faux suede. Hook-loop tabs at front, padded edge, and a small loop at back. ',
             'additional_info' => ' Mesh lining, mesh insoles, and patterned rubber soles. Sole thickness 3/4 in.',
             'store_id'    => 1,
-            'category_id' => 3,
+            'category_id' => 5,
             'section'     => 'KIDS'
         ]);
         Product::create([
@@ -271,7 +271,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Warm-lined boots in faux leather with lacing at front, zip at side, and loop at back. Faux shearling lining and insoles.',
             'additional_info' => '',
             'store_id'    => 1,
-            'category_id' => 3,
+            'category_id' => 5,
             'section'     => 'KIDS'
         ]);
 
@@ -779,16 +779,16 @@ class DatabaseSeeder extends Seeder
 
         //pretty little things products
         //hats
-        Product::create([
-            'name'        => 'BEAR MESH CAP [P, K, HATS]',
-            'image'       => 'public/product/BEAR MESH CAP  Contrast cap with mesh and adjustable back fastening..jpg',
-            'price'       => 5.62,
-            'description' => 'Relaxed Fit cap Polo Shirt',
-            'additional_info' => '',
-            'store_id'    => 3,
-            'category_id' => 11,
-            'section'     => 'KIDS'
-        ]);
+        // Product::create([
+        //     'name'        => 'BEAR MESH CAP [P, K, HATS]',
+        //     'image'       => 'public/product/BEAR MESH CAP  Contrast cap with mesh and adjustable back fastening..jpg',
+        //     'price'       => 5.62,
+        //     'description' => 'Relaxed Fit cap Polo Shirt',
+        //     'additional_info' => '',
+        //     'store_id'    => 3,
+        //     'category_id' => 11,
+        //     'section'     => 'KIDS'
+        // ]);
         Product::create([
             'name'        => 'FAUX FUR HAT [P, K, HATS]',
             'image'       => 'public/product/FAUX FUR HAT WITH EARS Faux fur hat with ear appliqués and hook-and-loop fastenings..jpg',

@@ -70,11 +70,12 @@
 
 <div class="container">
     <form action="{{route('all.product')}}" method="GET">
-        @csrf 
-        <div class="search"  style="width: 265px">
+        @csrf
+        <div class="search" style="width: 265px">
             <div class="input-group auth-pass-inputgroup">
-                <input value="{{ $search ? $search: ''}}" type="text" name="search" class="form-control" placeholder="search">
-                <button class="btn" type="submit"style="background-color:#1a1a1a; color: #fff"><i
+                <input value="{{ $search ? $search: ''}}" type="text" name="search" class="form-control"
+                    placeholder="search">
+                <button class="btn" type="submit" style="background-color:#1a1a1a; color: #fff"><i
                         class="mdi mdi-magnify"></i></button>
             </div>
         </div>
@@ -89,18 +90,18 @@
     <div class="row">
         <div class="col-md-2 filter-container mb-5">
             <form action="{{route('all.product')}}" method="GET">
-                @csrf 
+                @csrf
                 <p class="p-style ms-2">Filter Products</p>
 
                 {{-- filter by stores --}}
                 <div class="form-group mb-4 ms-2">
                     <label for="">Choose Store</label>
-                    <select  name="storeId" class="form-control @error('storeId') is-invalid @enderror">
+                    <select name="storeId" class="form-control @error('storeId') is-invalid @enderror">
                         <option value="">select</option>
 
                         @foreach ( $stores as $key=>$store )
 
-                        <option {{ $storeId == $store->id ? 'selected' : ''}}
+                        <option {{ $storeId==$store->id ? 'selected' : ''}}
                             value="{{$store->id}}">{{$store->name}}</option>
 
                         @endforeach
@@ -110,14 +111,11 @@
                 {{-- filter by sections --}}
                 <div class="form-group mb-4 ms-2">
                     <label for="">Choose Section</label>
-                    <select   name="sectionId" class="form-control @error('section') is-invalid @enderror">
+                    <select name="sectionId" class="form-control @error('section') is-invalid @enderror">
                         <option value="">select</option>
-                        <option {{ $sectionId ==1 ? 'selected' : ''}}
-                            value="1">MEN</option>
-                        <option {{ $sectionId ==2 ? 'selected' : ''}}
-                            value="2">WOMEN</option>  
-                        <option {{ $sectionId ==3 ? 'selected' : ''}}
-                            value="3">KIDS</option>
+                        <option {{ $sectionId==1 ? 'selected' : '' }} value="1">MEN</option>
+                        <option {{ $sectionId==2 ? 'selected' : '' }} value="2">WOMEN</option>
+                        <option {{ $sectionId==3 ? 'selected' : '' }} value="3">KIDS</option>
                     </select>
 
                 </div>
@@ -129,10 +127,10 @@
                         <option value="">select </option>
 
                         @foreach ( $categories as $key=>$category)
-                        <option {{ $categoryId == $category->id ? 'selected' : ''}}
+                        <option {{ $categoryId==$category->id ? 'selected' : ''}}
                             value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
-                        
+
                     </select>
                 </div>
 
@@ -151,8 +149,6 @@
         {{-- end filter --}}
 
         {{-- start products --}}
-
-
         <div class="container-fluid col-md-10 ">
             <div class="row">
                 @if(count($products)>0)
@@ -187,13 +183,13 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript">
-$("document").ready(function() {
+    $("document").ready(function() {
         function loadCategoriesAndSectionsDependOnStore() { 
             status=$("body").data('status');
             var urlParams = new URLSearchParams(window.location.search);
             var storeId = $(this).val();
             $.ajax({
-                url:'/ajax-categories-sections?storeId='+storeId, // categoryId -> can be null
+                url:'/ajax-categories-sections?storeId='+storeId,
                 type: "GET",
                 dataType: "json",
                 success:function(data) {
@@ -236,7 +232,7 @@ $("document").ready(function() {
                 }
             })
         }
-       
+    
         function loadCategoriesDependOnSection() {
             status=$("body").data('status');
             var urlParams = new URLSearchParams(window.location.search);
@@ -266,54 +262,31 @@ $("document").ready(function() {
                     dataType: "json",
                     success:function(categories) {
                         console.log(categories,'sectionCategories');
-                        if(sectionId && storeId){
-                                // intersection function
-                                const isObj = x => typeof x === 'object'
-                                const common = (storeCategories, categories) => {
-                                let result = {}
-                                if (([storeCategories, categories]).every(isObj)) {
-                                    Object.keys(storeCategories).forEach((key) => {
-                                    const value = storeCategories[key]
-                                    const other = categories[key]
-                                    if (isObj(value)) { 
-                                        result[key] = common(value, other)
-                                    }else if (value === other) {
-                                        result[key] = value
-                                    }
-                                    })
-                                }
-                                return result;
-                                }
-                                var storeCategories = $('select[name="categoryId"]').data('key')
-                                console.log(storeCategories,'storeCategories');
-                                console.log(categories,'sectionCategories');
-                                // common categories
-                                var categories=common(storeCategories, categories);
-                        }
+                        
                         $('select[name="categoryId"]').empty();
-                            $('select[name="categoryId"]').append('<option value= >select</option>');
-                            $.each( categories, function(key, value){  
-                                $('select[name="categoryId"]').append(
-                                    $('<option>', { 
-                                        value: key,
-                                        text : value
-                                     }
-                                    )
-                                );
-                            })
-                            if(urlParams.get('categoryId') && status==="load" ){
-                                $(`select[name="categoryId"] option[value=${urlParams.get('categoryId')}]`).prop("selected",true)
+                        $('select[name="categoryId"]').append('<option value= >select</option>');
+                        $.each( categories, function(key, value){  
+                            $('select[name="categoryId"]').append(
+                                $('<option>', { 
+                                    value: key,
+                                    text : value
+                                    }
+                                )
+                            );
+                        })
+                        if(urlParams.get('categoryId') && status==="load" ){
+                            $(`select[name="categoryId"] option[value=${urlParams.get('categoryId')}]`).prop("selected",true)
 
-                            }
                         }
-                    })
-                }
+                    }
+                })
             }
-           
+        }
+
         function changefn(){
             $("body").data('status',"change"); 
         }   
-         function loadfn(){
+        function loadfn(){
             $("body").data('status',"load");  
         }  
         $('select[name="storeId"]').on('change',changefn);
@@ -326,10 +299,4 @@ $("document").ready(function() {
         $.proxy(loadCategoriesDependOnSection, $('select[name="sectionId"]'))();
     });
 
- 
-  
-
-</script>  
-
-
-      
+</script>

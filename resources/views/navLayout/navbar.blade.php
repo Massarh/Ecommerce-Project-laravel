@@ -62,7 +62,8 @@
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        <img class="rounded-circle header-profile-user mt-1" alt="profile image" style="margin-bottom: 6px !important;"
+                        <img class="rounded-circle header-profile-user mt-1" alt="profile image"
+                            style="margin-bottom: 6px !important;"
                             src="{{ auth()->user()->image ?  Storage::url(auth()->user()->image):asset('/logo/user.png')}}">
                         {{ Auth::user()->name }}
                     </a>

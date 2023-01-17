@@ -23,19 +23,19 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    { 
+    {
         // if logining (Admin) -> (auth/dashboard)
-        if(auth()->user()->user_role!='customer'){
+        if (auth()->user()->user_role != 'customer') {
             return redirect()->to('auth/dashboard');
         }
         // if logining (User) -> (main page)
         return redirect()->to('/');
     }
 
-// vendor-scripts.blade.php
+    // vendor-scripts.blade.php
     // public function root()
     // {
     //     return view('index');
     // }
-    
+
 }

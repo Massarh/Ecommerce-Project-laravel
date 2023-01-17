@@ -652,7 +652,7 @@ body[data-layout=horizontal] .footer {
   display: block;
 }
 .vertical-collpsed .vertical-menu {
-  position: absolute;
+  /* position: absolute; */
   width: 70px !important;
   z-index: 5;
 }
@@ -783,9 +783,9 @@ body[data-sidebar=dark] #sidebar-menu ul li ul.sub-menu li a {
 body[data-sidebar=dark] #sidebar-menu ul li ul.sub-menu li a:hover {
   color: #ffffff;
 }
-body[data-sidebar=dark].vertical-collpsed {
+/* body[data-sidebar=dark].vertical-collpsed {
   min-height: 1760px;
-}
+} */
 body[data-sidebar=dark].vertical-collpsed .vertical-menu #sidebar-menu > ul > li:hover > a {
   background: #2e3548;
   color: #ffffff;

@@ -16,10 +16,10 @@ class FrontProductListController extends Controller
     public function index()
     {
         $products = Product::orderBy('number_of_sold', 'desc')->limit(12)->get();
-        $stores=Store::has('products')->get();
+        $stores = Store::has('products')->get();
         $sliders = Slider::limit(5)->get();
 
-        return view('product', compact('products', 'stores','sliders'));
+        return view('product', compact('products', 'stores', 'sliders'));
     }
 
     // ----------------------------------------------------------------------------
@@ -41,24 +41,25 @@ class FrontProductListController extends Controller
 
     // ----------------------------------------------------------------------------
     // to search product
-    public function allProducts(Request $request,$storeSlug=null)
+    public function allProducts(Request $request, $storeSlug = null)
     {
 
         $price = null;
         $minPrice = null;
         $maxPrice = null;
-        $store=null;
+        $store = null;
         $search = $request->search;
         $categoryId = $request->categoryId;
-        $sections=[1=>"MEN",2=>"WOMEN",3=>"KIDS"];
+        $sections = [1 => "MEN", 2 => "WOMEN", 3 => "KIDS"];
         $sectionId = $request->sectionId;
-        $section=null;
+        $section = null;
         if ($sectionId) {
-            $section= $sections[$sectionId];
+            $section = $sections[$sectionId];
         }
-        if($storeSlug){
-            // from all products
-            $store=Store::where("slug",$storeSlug)->first();
+
+        if ($storeSlug) {
+            // came from Store template
+            $store = Store::where("slug", $storeSlug)->first();
             $storeId = $store->id;
             // categories
             $categories = $store->categories()->get();
@@ -66,18 +67,19 @@ class FrontProductListController extends Controller
 
             // end categories
             // sections
-            $sections=[];
-            $menProductsCount=$store->products()->where('section', 'MEN')->count();
-            $menProductsCount ? $sections += [ 1 => "MEN" ] : "";
-            
-            $womenProductsCount=$store->products()->where('section', 'WOMEN')->count();
-            $womenProductsCount ? $sections += [ 2 => "WOMEN" ]  : "";
+            $sections = [];
+            $menProductsCount = $store->products()->where('section', 'MEN')->count();
+            $menProductsCount ? $sections += [1 => "MEN"] : "";
 
-            $kidsProductsCount=$store->products()->where('section', 'KIDS')->count();
-            $kidsProductsCount ? $sections += [ 3 => "KIDS" ]  : "";
+            $womenProductsCount = $store->products()->where('section', 'WOMEN')->count();
+            $womenProductsCount ? $sections += [2 => "WOMEN"]  : "";
+
+            $kidsProductsCount = $store->products()->where('section', 'KIDS')->count();
+            $kidsProductsCount ? $sections += [3 => "KIDS"]  : "";
             // return $sections;    
             //end sections
-        }else{
+        } else {
+            // came from all-product template
             $storeId = $request->storeId;
             $categories = Category::get();
         }
@@ -87,7 +89,7 @@ class FrontProductListController extends Controller
             $maxPrice = (int)$price[1];
             $price = [$minPrice, $maxPrice];
         }
-        
+
         // this fun wil return all products if there is no query parameter
         $products = Product::when($storeId, function ($query, $storeId) {
             $query->where('store_id', $storeId);
@@ -107,86 +109,86 @@ class FrontProductListController extends Controller
         })->paginate(16)->withQueryString();
 
         $price = $request->price;
-        if($storeSlug){
-            
-            return view('store', compact('products', 'store', 'categories','sections','search', 'price',  'storeId','storeSlug','categoryId','sectionId'));
-        }else{
+        if ($storeSlug) {
+
+            return view('store', compact('products', 'store', 'categories', 'sections', 'search', 'price',  'storeId', 'storeSlug', 'categoryId', 'sectionId'));
+        } else {
             $stores = Store::has('products')->get();
-        return view('all-product', compact('products', 'stores', 'categories', 'search', 'price', 'storeId', 'categoryId','sectionId'));
+            return view('all-product', compact('products', 'stores', 'categories', 'search', 'price', 'storeId', 'categoryId', 'sectionId'));
         }
     }
-     // for customer in all-product
+    // for customer in all-product
 
     // when store input changes to any value accept select get section and categories relate to this 
     // store and if  store input changes to select get all sections and categories. 
-    public function loadCategoriesAndSectionsDependOnStore (Request $request)
+    public function loadCategoriesAndSectionsDependOnStore(Request $request)
     {
         $storeId = $request->storeId;
         if ($storeId) {
-            $store=Store::find($storeId);
+            $store = Store::find($storeId);
             // categories
             $categories = $store->categories()->get()->pluck('name', 'id');
             // end categories
             // sections
-            $sections=[];
-            $menProductsCount=$store->products()->where('section', 'MEN')->count();
-            $menProductsCount ? $sections += [ 1 => "MEN" ] : "";
-            
-            $womenProductsCount=$store->products()->where('section', 'WOMEN')->count();
-            $womenProductsCount ? $sections += [ 2 => "WOMEN" ]  : "";
+            $sections = [];
+            $menProductsCount = $store->products()->where('section', 'MEN')->count();
+            $menProductsCount ? $sections += [1 => "MEN"] : "";
 
-            $kidsProductsCount=$store->products()->where('section', 'KIDS')->count();
-            $kidsProductsCount ? $sections += [ 3 => "KIDS" ]  : "";
+            $womenProductsCount = $store->products()->where('section', 'WOMEN')->count();
+            $womenProductsCount ? $sections += [2 => "WOMEN"]  : "";
+
+            $kidsProductsCount = $store->products()->where('section', 'KIDS')->count();
+            $kidsProductsCount ? $sections += [3 => "KIDS"]  : "";
 
             //end sections
 
         } else {
-        //when user click on select in category dropdown menu
+            //when user click on select in category dropdown menu
             // categories
             $categories = Category::get()->pluck('name', 'id');
             // end categories
             // sections
-            $sections=[1=>"MEN",2=>"WOMEN",3=>"KIDS"];
+            $sections = [1 => "MEN", 2 => "WOMEN", 3 => "KIDS"];
             //end sections
         }
-        
-        $categoriesAndSections=[$categories,$sections];
+
+        $categoriesAndSections = [$categories, $sections];
         return response()->json($categoriesAndSections);
     }
 
     // when section input changes to any value accept select get categories that related to specific
     // section (i will preview it only if store input not selected else i will preview the intersection between it and store categories) and if section input changes to select and store is on select  i will git all sections on the project.
-    public function loadCategoriesDependOnSection (Request $request)
+    public function loadCategoriesDependOnSection(Request $request)
     {
-        $sections=[1=>"MEN",2=>"WOMEN",3=>"KIDS"];
+        $sections = [1 => "MEN", 2 => "WOMEN", 3 => "KIDS"];
         $sectionId = $request->sectionId;
         $storeId = $request->storeId;
-        if($sectionId && $storeId){
+        if ($sectionId && $storeId) {
             // edit
-            $section= $sections[$sectionId];
+            $section = $sections[$sectionId];
             // section categories
 
-            $categories = Category::whereHas('products', function (Builder $query) use($section,$storeId) {
+            $categories = Category::whereHas('products', function (Builder $query) use ($section, $storeId) {
                 $query->where('section', $section);
-                $query->where('store_id',$storeId);
+                $query->where('store_id', $storeId);
             })->get()->pluck('name', 'id');
-        }elseif ($sectionId && !$storeId) {
+        } elseif ($sectionId && !$storeId) {
 
-            $section= $sections[$sectionId];
+            $section = $sections[$sectionId];
             // section categories
-            $categories = Category::whereHas('products', function (Builder $query) use($section) {
+            $categories = Category::whereHas('products', function (Builder $query) use ($section) {
                 $query->where('section', $section);
             })->get()->pluck('name', 'id');
-        } elseif(!$sectionId && !$storeId) {
-                //all categories
-                $categories = Category::get()->pluck('name', 'id');
-                return $categories;
-        }  
+        } elseif (!$sectionId && !$storeId) {
+            //all categories
+            $categories = Category::get()->pluck('name', 'id');
+            return $categories;
+        }
         return response()->json($categories);
     }
-    
+
     /*      Footer Info   */
-    
+
     // In Home Page "our-supplier"
     public function allStoreInHomePage()
     {
@@ -197,15 +199,15 @@ class FrontProductListController extends Controller
     public function aboutUs()
     {
         return view('footer-info.about-us');
-    } 
+    }
 
     public function ourTeam()
     {
         return view('footer-info.our-team');
-    }   
-    
+    }
+
     public function helpCustomer()
     {
         return view('footer-info.customer-care');
-    } 
+    }
 }

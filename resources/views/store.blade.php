@@ -17,13 +17,10 @@
 <style>
     .search-container {
         margin-top: 80px;
-
     }
 
     .filter-container {
         margin-bottom: 100px;
-
-
     }
 
     .no-product-style {
@@ -218,8 +215,8 @@
                             )
                         );
                     })
-                    if(urlParams.get('categoryId') && status==="load"){
 
+                    if(urlParams.get('categoryId') && status==="load"){
                         $(`select[name="categoryId"] option[value=${urlParams.get('categoryId')}]`).prop("selected", true)
                     }
                     
@@ -243,7 +240,7 @@
                 }
             })
         }
-       
+
         function loadCategoriesDependOnSection() {
             status=$("body").data('status');
             var urlParams = new URLSearchParams(window.location.search);
@@ -269,7 +266,6 @@
                 })
                 if(urlParams.get('categoryId') && status==="load" ){
                     $(`select[name="categoryId"] option[value=${urlParams.get('categoryId')}]`).prop("selected", true)
-
                 }
             }else{
                 $.ajax({
@@ -278,59 +274,34 @@
                     dataType: "json",
                     success:function(categories) {
                         console.log(categories,'here');
-                        if(sectionId && storeId){
-                                // intersection function
-                                const isObj = x => typeof x === 'object'
-                                const common = (storeCategories, categories) => {
-                                let result = {}
-                                if (([storeCategories, categories]).every(isObj)) {
-                                    Object.keys(storeCategories).forEach((key) => {
-                                    const value = storeCategories[key]
-                                    const other = categories[key]
-                                    if (isObj(value)) { 
-                                        result[key] = common(value, other)
-                                    }else if (value === other) {
-                                        result[key] = value
-                                    }
-                                    })
-                                }
-                                return result;
-                                }
-                                var storeCategories = $('select[name="categoryId"]').data('key')
-                                console.log(storeCategories,'storeCategories1');
-                                console.log(categories,'sectionCategories1');
-                                // common categories
-                                var categories=common(storeCategories, categories);
-                        }
-                        $('select[name="categoryId"]').empty();
-                            $('select[name="categoryId"]').append('<option value= >select</option>');
-                            $.each( categories, function(key, value){  
-                                $('select[name="categoryId"]').append(
-                                    $('<option>', { 
-                                        value: key,
-                                        text : value
-                                     }
-                                    )
-                                );
-                            })
-                            if(urlParams.get('categoryId') && status==="load" ){
-                                $(`select[name="categoryId"] option[value=${urlParams.get('categoryId')}]`).prop("selected",true)
 
-                            }
+                        $('select[name="categoryId"]').empty();
+                        $('select[name="categoryId"]').append('<option value= >select</option>');
+                        $.each( categories, function(key, value){  
+                            $('select[name="categoryId"]').append(
+                                $('<option>', { 
+                                    value: key,
+                                    text : value
+                                    }
+                                )
+                            );
+                        })
+                        if(urlParams.get('categoryId') && status==="load" ){
+                            $(`select[name="categoryId"] option[value=${urlParams.get('categoryId')}]`).prop("selected",true)
                         }
-                    })
-                }
+
+                    }
+                })
             }
-           
+        }
+        
         function changefn(){
             $("body").data('status',"change"); 
         }   
-         function loadfn(){
+        function loadfn(){
             $("body").data('status',"load");  
         }  
-        $('select[name="storeId"]').on('change',changefn);
         $('select[name="sectionId"]').on('change',changefn);
-        $('select[name="storeId"]').on('change',loadCategoriesAndSectionsDependOnStore);
         $('select[name="sectionId"]').on('change', loadCategoriesDependOnSection); 
         
         $.proxy(loadfn)();

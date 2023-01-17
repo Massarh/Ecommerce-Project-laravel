@@ -5,7 +5,7 @@
             <div class="navbar-brand-box">
                 <a href="{{ route('dashboard') }}" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{ URL::asset('logo/light.png')}}" alt="" height="40">
+                        <img src="{{ URL::asset('logo/light.png')}}" alt="" height="40"  class="mt-3">
                     </span>
                     <span class="logo-lg">
                         <img src="{{ URL::asset('logo/light0.png')}}" alt="" height="40" class="mt-3">

@@ -29,9 +29,10 @@
             @endforeach
             <hr style="border-top: 3px solid #000;">
 
-            <div style="display: flex; justify-content: space-between; margin-top: 16px;font-weight: 600; font-size: 18px">
-                <p>Total price  </p>
-                    
+            <div
+                style="display: flex; justify-content: space-between; margin-top: 16px;font-weight: 600; font-size: 18px">
+                <p>Total price </p>
+
                 <p style="width:70%;max-width:300px;">{{$order->total_price}} JOD </p>
             </div>
         </div>

@@ -38,7 +38,7 @@
 
                     <!-- Image -->
                     <div class="mb-3">
-                        <label for="name">Choose Image <span style="color:#ef5b69">  *</span></label>
+                        <label for="name">Choose Image <span style="color:#ef5b69"> *</span></label>
                         <div class="custom-file">
                             <label for="customFile" class="custom-file-label bg-color-transparent">Choose image</label>
                             <input id="customFile" name="image" type="file"
@@ -55,7 +55,7 @@
 
                     <div class="row">
                         <div class="mb-3 col-2 offset-sm-5">
-                            <img id="img" src="" >
+                            <img id="img" src="">
                         </div>
                     </div>
 
@@ -84,20 +84,18 @@
             var url  = $(this).val(); 
             
             if (input.files && input.files[0]) 
-           
-                    {
-                        //  The FileReader function returns the file’s contents
-                        var reader = new FileReader();
-                        reader.onload = function (e) {
-                            console.log(e);
-                        $('#img').attr('src', e.target.result);
-                        $('#img').attr('style',"width:6rem; height:7rem");
-                        
-                        }
-                    // The readAsDataURL method is used to read the contents of the specified File.
-                    reader.readAsDataURL(input.files[0]);
-                    }
-                    
+            {
+                //  The FileReader function returns the file’s contents
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    console.log(e);
+                $('#img').attr('src', e.target.result);
+                $('#img').attr('style',"width:150px");
+                
+                }
+            // The readAsDataURL method is used to read the contents of the specified File.
+            reader.readAsDataURL(input.files[0]);
+            }
         });
     });
 

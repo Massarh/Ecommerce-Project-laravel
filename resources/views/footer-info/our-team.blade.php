@@ -28,10 +28,11 @@
             margin-left: 12px;
         }
     }
+
     @media (min-width: 576px) and (max-width: 992px) {
         .alaa-h2 {
             margin-left: -52px;
-           
+
         }
 
         .alaa-p {

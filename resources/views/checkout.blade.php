@@ -319,8 +319,10 @@
                             <div class="card-body" style="border:0">
                                 {{-- <h4 class="card-title mb-4">Order Summary</h4> --}}
                                 <div>
-                                    <div class="jumbotron"style="max-width:400px; margin-right:auto; margin-left:auto;">
-                                        <h3 class="fontStyleHint2" style=" font-family:Marlina; font-size:20px">Order Summary</h3>
+                                    <div class="jumbotron"
+                                        style="max-width:400px; margin-right:auto; margin-left:auto;">
+                                        <h3 class="fontStyleHint2" style=" font-family:Marlina; font-size:20px">Order
+                                            Summary</h3>
                                     </div>
                                 </div>
 
@@ -382,8 +384,11 @@
                                         <div>
                                             {{-- <h4 class="card-title">Delivery information</h4> --}}
                                             <div>
-                                                <div class="jumbotron mt-2"style="max-width:400px; margin-right:auto; margin-left:auto;">
-                                                    <h3 class="fontStyleHint2" style=" font-family:Marlina; font-size:20px">Delivery information</h3>
+                                                <div class="jumbotron mt-2"
+                                                    style="max-width:400px; margin-right:auto; margin-left:auto;">
+                                                    <h3 class="fontStyleHint2"
+                                                        style=" font-family:Marlina; font-size:20px">Delivery
+                                                        information</h3>
                                                 </div>
                                             </div>
 
@@ -450,8 +455,11 @@
                                                     aria-labelledby="v-pills-payment-tab">
                                                     {{-- <h4 class="card-title">Payment information</h4> --}}
                                                     <div>
-                                                        <div class="jumbotron mt-2"style="max-width:400px; margin-right:auto; margin-left:auto;">
-                                                            <h3 class="fontStyleHint2" style=" font-family:Marlina; font-size:20px">Payment information</h3>
+                                                        <div class="jumbotron mt-2"
+                                                            style="max-width:400px; margin-right:auto; margin-left:auto;">
+                                                            <h3 class="fontStyleHint2"
+                                                                style=" font-family:Marlina; font-size:20px">Payment
+                                                                information</h3>
                                                         </div>
                                                     </div>
                                                     <div>

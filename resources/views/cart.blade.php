@@ -44,7 +44,7 @@
                         </thead>
                         <tbody>
                             @if($cart)
-                            {{-- Foreach To display product in cart --}}                        
+                            {{-- Foreach To display product in cart --}}
                             {!! Toastr::message() !!}
                             @foreach($cart->items as $product)
                             <tr>

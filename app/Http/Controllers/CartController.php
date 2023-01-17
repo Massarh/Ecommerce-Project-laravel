@@ -46,7 +46,7 @@ class CartController extends Controller
 
     public function updateCart(Request $request, Product $product)
     {
-        $request->validate([ 
+        $request->validate([
             'qty' => 'required|numeric|min:1'
         ]);
 

@@ -14,7 +14,8 @@
                 <div class="card-body" style="border: 0px !important; background-color: #86868614; border-radius: 7px;">
                     <div style="display: flex ; justify-content: space-between">
                         <p>order number #{{$order->id}}</p>
-                        <a href="{{route('orderItems', [$order->id])}}" style="color:#1a1a1a">Order Details <i class="mdi mdi-arrow-right me-1"></i> </a>
+                        <a href="{{route('orderItems', [$order->id])}}" style="color:#1a1a1a">Order Details <i
+                                class="mdi mdi-arrow-right me-1"></i> </a>
                     </div>
                     <p>Date & time : {{$order->created_at}}</p>
                     <p>Total price : {{$order->total_price}} JOD</p>
