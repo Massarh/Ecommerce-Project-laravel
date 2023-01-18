@@ -269,7 +269,7 @@ class DatabaseSeeder extends Seeder
             'image'       => 'public/product/Shirt and Chinos 29.25.jpg',
             'price'       => 17.8,
             'description' => 'Warm-lined boots in faux leather with lacing at front, zip at side, and loop at back. Faux shearling lining and insoles.',
-            'additional_info' => '',
+            'additional_info' => 'T-shirts in soft, printed cotton jersey with a ribbed trim around the neckline and press-stud on one shoulder (except in sizes 2–4Y).',
             'store_id'    => 1,
             'category_id' => 5,
             'section'     => 'KIDS'
@@ -465,7 +465,7 @@ class DatabaseSeeder extends Seeder
             'image'       => 'public/product/Oversized Fit Printed Sweatshirt29.99.jpg',
             'price'       => 13.5,
             'description' => 'Sweatshirt Padded upper edge, ',
-            'additional_info' => '',
+            'additional_info' => 'Relaxed-fit sweatshirt in cotton-blend fabric with soft, brushed inside. Dropped shoulders and ribbing at neck, cuffs, and hem.',
             'store_id'    => 1,
             'category_id' => 2,
             'section'     => 'MEN'
@@ -495,7 +495,7 @@ class DatabaseSeeder extends Seeder
             'image'       => 'public/product/Relaxed Fit Polo Shirt 29.33 .jpg',
             'price'       =>  10.2,
             'description' => 'Relaxed Fit Hoodie Polo Shirt',
-            'additional_info' => '',
+            'additional_info' => 'Relaxed-fit hoodie in cotton-blend fabric with soft, brushed inside. Dropped shoulders and ribbing at neck, cuffs, and hem.',
             'store_id'    => 1,
             'category_id' => 2,
             'section'     => 'MEN'
@@ -505,7 +505,7 @@ class DatabaseSeeder extends Seeder
             'image'       => 'public/product/Relaxed-fit Hoodie 34.99.jpg',
             'price'       => 12.9,
             'description' => 'Relaxed Fit Hoodie Polo Shirt',
-            'additional_info' => '',
+            'additional_info' => 'Relaxed-fit sweatshirt hoodie in cotton-blend fabric with soft, brushed inside. Jersey-lined drawstring hood, kangaroo pocket, and long sleeves. Wide ribbing at cuffs and hem.',
             'store_id'    => 1,
             'category_id' => 2,
             'section'     => 'MEN'
@@ -779,16 +779,16 @@ class DatabaseSeeder extends Seeder
 
         //pretty little things products
         //hats
-        // Product::create([
-        //     'name'        => 'BEAR MESH CAP [P, K, HATS]',
-        //     'image'       => 'public/product/BEAR MESH CAP  Contrast cap with mesh and adjustable back fastening..jpg',
-        //     'price'       => 5.62,
-        //     'description' => 'Relaxed Fit cap Polo Shirt',
-        //     'additional_info' => '',
-        //     'store_id'    => 3,
-        //     'category_id' => 11,
-        //     'section'     => 'KIDS'
-        // ]);
+        Product::create([
+            'name'        => 'BEAR MESH CAP [P, K, HATS]',
+            'image'       => 'public/product/BEAR MESH CAP  Contrast cap with mesh and adjustable back fastening..jpg',
+            'price'       => 5.62,
+            'description' => 'Relaxed Fit cap Polo Shirt',
+            'additional_info' => 'Cap in twill and mesh with a printed motif at front. Covered button at top and an adjustable plastic fastener at back.',
+            'store_id'    => 3,
+            'category_id' => 11,
+            'section'     => 'KIDS'
+        ]);
         Product::create([
             'name'        => 'FAUX FUR HAT [P, K, HATS]',
             'image'       => 'public/product/FAUX FUR HAT WITH EARS Faux fur hat with ear appliqués and hook-and-loop fastenings..jpg',
@@ -994,7 +994,7 @@ class DatabaseSeeder extends Seeder
             'image'       => 'public/product/Knee-high Boots 74.99.jpg',
             'price'       => 20.9,
             'description' => 'LEATHER AND SUEDE KNEE HIGH BOOTS WITH A SELECTION OF HEEL HEIGHTS IN BLACK, BROWN AND WHITE COLOURS.',
-            'additional_info' => '',
+            'additional_info' => 'Knee-high boots with a loop at back. Satin lining and chunky, patterned soles. Sole thickness 2 in.',
             'store_id'    => 3,
             'category_id' => 9,
             'section'     => 'WOMEN'
@@ -1014,7 +1014,7 @@ class DatabaseSeeder extends Seeder
             'image'       => 'public/product/SOCK-STYLE TRACK SOLE ANKLE BOOTS.jpg',
             'price'       => 20.5,
             'description' => 'SOCK-STYLE TRACK SOLE ANKLE BOOTS',
-            'additional_info' => '',
+            'additional_info' => 'Chelsea boots with elasticized side panels and loop at front and back. Lining in woven fabric and chunky, patterned soles. Heel height 2 1/4 in.',
             'store_id'    => 3,
             'category_id' => 9,
             'section'     => 'WOMEN'
@@ -1333,7 +1333,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         OrderItem::create([
-            'name'        => 'Bomber Jacket [D,K,OUTWEAR]',
+            'name'        => 'BINBER JACKET [D,K,OUTWEAR]',
             'image'       => 'public/product/Oversized Bomber Jacket 26.99.jpg',
             'price'       => 16.44,
             'quantity'    => 2,
@@ -1343,7 +1343,7 @@ class DatabaseSeeder extends Seeder
             'updated_at'  => '2023-01-11 09:57:53'
         ]);
         OrderItem::create([
-            'name'        => 'Slim Fit Polo Shirt [D,M,TOPS]',
+            'name'        => 'POLO SHIRT [D,M,TOPS]',
             'image'       => 'public/product/Slim Fit Polo Shirt 12.88.jpg',
             'price'       => 5.88,
             'quantity'    => 1,
@@ -1383,7 +1383,7 @@ class DatabaseSeeder extends Seeder
             'updated_at'  => '2023-01-8 09:57:53'
         ]);
         OrderItem::create([
-            'name'        => 'Slim Fit Polo Shirt [D,M,TOPS]',
+            'name'        => 'POLO SHIRT [D,M,TOPS]',
             'image'       => 'public/product/Slim Fit Polo Shirt 12.88.jpg',
             'price'       => 5.88,
             'quantity'    => 1,
@@ -1393,7 +1393,7 @@ class DatabaseSeeder extends Seeder
             'updated_at'  => '2023-01-8 09:57:53'
         ]);
         OrderItem::create([
-            'name'        => 'DOWN AND FEATHER PUFFER JACKET WITH MAXI POCKETS [L, K, OWTWEAR]',
+            'name'        => 'MAXI POCKETS [L, K, OWTWEAR]',
             'image'       => 'public/product/D&GKO5.jpg',
             'price'       => 23.8,
             'quantity'    => 1,
@@ -1453,7 +1453,7 @@ class DatabaseSeeder extends Seeder
             'updated_at'  => '2023-01-6 09:57:53'
         ]);
         OrderItem::create([
-            'name'        => 'QUILTED MOUNTAIN BOOTS [P, K, SHOES]',
+            'name'        => 'MOUNTAIN BOOTS [P, K, SHOES]',
             'image'       => 'public/product/QUILTED MOUNTAIN BOOTS  Quilted nylon mountain boots. Side zip and adjustable lace-up fastening. Pull tab at the back for slipping on with ease. Contrast track sole..jpg',
             'price'       => 10.99,
             'quantity'    => 1,

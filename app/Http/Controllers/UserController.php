@@ -118,6 +118,8 @@ class UserController extends Controller
                     $adminOrEmployee->delete();
                 } else {
                     $request->session()->flash('status', 'cannot delete the last admin in this store, please create a new admin before you try to delete him.');
+                    return redirect()->back();
+                
                 }
             } else if ($adminOrEmployee->user_role == 'admin' && !$adminOrEmployee->store_id) {
 

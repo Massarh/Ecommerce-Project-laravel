@@ -84,9 +84,9 @@
                                 <td>{{ $key+1 }}</td>
 
                                 <td>{{ $item['name'] }}</td>
-                                <td>${{ $item['price'] }}</td>
+                                <td>{{ $item['price'] }} JOD</td>
                                 <td>{{ $item['quantity'] }}</td>
-                                <td>${{ $item['price'] * $item['quantity'] }}</td>
+                                <td>{{ $item['price'] * $item['quantity'] }} JOD</td>
                                 <td><img src="{{ Storage::url($item['image']) }}" width="100"></td>
                             </tr>
                             <?php $totalPrice += $item['price'] * $item['quantity'] ?>
@@ -100,7 +100,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td><b>${{$totalPrice}} </b></td>
+                                <td><b>{{$totalPrice}} JOD</b></td>
                                 <td></td>
                             </tr>
                         </tfoot>

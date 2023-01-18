@@ -21,7 +21,7 @@
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page" style="text-decoration-line: underline;">
-                        Create Admin / Employee</li> 
+                        Create Admin / Employee</li>
                 </ol>
             </div>
         </div>
@@ -39,7 +39,8 @@
 
                     <!-- Name -->
                     <div class="row mb-3">
-                        <label for="name" class="col-md-4 col-form-label text-md-start">{{ __('Name') }} <span style="color:#ef5b69">  *</span></label>
+                        <label for="name" class="col-md-4 col-form-label text-md-start">{{ __('Name') }} <span
+                                style="color:#ef5b69"> *</span></label>
 
                         <div class="col-md-6">
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
@@ -56,7 +57,8 @@
 
                     <!-- Email -->
                     <div class="row mb-3">
-                        <label for="email" class="col-md-4 col-form-label text-md-start">{{ __('Email Address') }} <span style="color:#ef5b69">  *</span></label>
+                        <label for="email" class="col-md-4 col-form-label text-md-start">{{ __('Email Address') }} <span
+                                style="color:#ef5b69"> *</span></label>
 
                         <div class="col-md-6">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
@@ -73,50 +75,55 @@
 
                     <!-- Password -->
                     <div class="row mb-3">
-                        <label for="password" class="col-md-4 col-form-label text-md-start">{{ __('Password') }} <span style="color:#ef5b69">  *</span></label>
+                        <label for="password" class="col-md-4 col-form-label text-md-start">{{ __('Password') }} <span
+                                style="color:#ef5b69"> *</span></label>
 
                         <div class="col-md-6">
                             <!-- Password -->
-                        <div class=" input-group auth-pass-inputgroup @error('password') is-invalid @enderror">
-                            <input type="password" name="password"
-                                class="form-control  @error('password') is-invalid @enderror" id="userpassword"
-                                placeholder="Enter password" aria-label="Password" aria-describedby="password-addon">
-                            <button class="btn btn-light " type="button" id="password-addon"><i
-                                    class="mdi mdi-eye-outline"></i></button>
-                            @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
+                            <div class=" input-group auth-pass-inputgroup @error('password') is-invalid @enderror">
+                                <input type="password" name="password"
+                                    class="form-control  @error('password') is-invalid @enderror" id="userpassword"
+                                    placeholder="Enter password" aria-label="Password"
+                                    aria-describedby="password-addon">
+                                <button class="btn btn-light " type="button" id="password-addon"><i
+                                        class="mdi mdi-eye-outline"></i></button>
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
                         </div>
                     </div>
 
                     <!-- Confirm Password -->
                     <div class="row mb-3">
                         <label for="password-confirm" class="col-md-4 col-form-label text-md-start">{{ __('Confirm
-                            Password') }} <span style="color:#ef5b69">  *</span></label>
+                            Password') }} <span style="color:#ef5b69"> *</span></label>
 
                         <div class="col-md-6">
                             <!-- Password -->
-                        <div class=" input-group auth-pass-inputgroup @error('password-confirm') is-invalid @enderror">
-                            <input type="password" name="password_confirmation" required
-                                class="form-control  @error('password-confirm') is-invalid @enderror" id="password-confirm"
-                                placeholder="Enter confirm password " aria-label="password-confirm" aria-describedby="password-addon">
-                            <button class="btn btn-light " type="button" id="password-confirm-addon"><i
-                                    class="mdi mdi-eye-outline"></i></button>
-                            @error('password-confirm')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
+                            <div
+                                class=" input-group auth-pass-inputgroup @error('password-confirm') is-invalid @enderror">
+                                <input type="password" name="password_confirmation" required
+                                    class="form-control  @error('password-confirm') is-invalid @enderror"
+                                    id="password-confirm" placeholder="Enter confirm password "
+                                    aria-label="password-confirm" aria-describedby="password-addon">
+                                <button class="btn btn-light " type="button" id="password-confirm-addon"><i
+                                        class="mdi mdi-eye-outline"></i></button>
+                                @error('password-confirm')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
                         </div>
                     </div>
 
                     <!-- Choose User Role -->
                     <div class="row mb-3">
-                        <label class='col-md-4 col-form-label text-md-start'>Choose User Role <span style="color:#ef5b69">  *</span></label>
+                        <label class='col-md-4 col-form-label text-md-start'>Choose User Role <span
+                                style="color:#ef5b69"> *</span></label>
                         <div class='col-md-6'>
                             <select name="userRole" class="form-control @error('userRole') is-invalid @enderror">
                                 <option value="{{ old('userRole') }}">Select User Role</option>
@@ -142,7 +149,7 @@
                                 {{-- i think that it was error,check it please --}}
                                 <option value="">Select Store</option>
                                 @foreach ($stores as $store)
-                                <option {{old('storeId') == $store->id ? 'selected' : '' }} value="{{ $store->id
+                                <option {{old('storeId')==$store->id ? 'selected' : '' }} value="{{ $store->id
                                     }}">{{ $store->name }}</option>
                                 @endforeach
                             </select>
