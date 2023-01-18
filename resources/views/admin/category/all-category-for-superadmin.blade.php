@@ -53,7 +53,7 @@
                             @foreach ($categories as $key=>$category)
                             <tr>
                                 <td>{{ $key+1 }}</td>
-                                <td>{{ $category->name }}</td>
+                                <td style="text-transform: uppercase">{{ $category->name }}</td>
                                 <!-- section Button-->
                                 <td>
                                     <a href=" {{route('product.getProductByCategorySlug',[$category->slug])}}">

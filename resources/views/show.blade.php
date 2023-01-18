@@ -17,11 +17,11 @@
         </div>
         <div class="col-md-6 cardTop">
             <section class=" p-5 MarginTop" style="padding-right: 18px !important; max-width: 472px;">
-                <h3 style="width:fit-content;">{{$product->store->name}} STORE</h3>
+                <h3 style="width:fit-content; text-transform: uppercase;">{{$product->store->name}} STORE</h3>
 
                 {{-- Name --}}
                 <h2 class="title mb-3">
-                    <b style="font-weight: 600 !important;">{{ $product->name }} </b>
+                    <b style="font-weight: 600 !important; text-transform: uppercase;">{{ $product->name }} </b>
                 </h2>
                 {{-- DESCRIPTION --}}
                 <p>{!! $product->description !!}</p>
@@ -64,7 +64,7 @@
                 <a href="{{ route('product.view', [$product->id]) }}">
                     <img src="{{ Storage::url($product->image) }}" style="width: 217px;" class="image-width">
                 </a>
-                <p style="margin-bottom: 0px !important;">{{ $product->name }}</p>
+                <p style="margin-bottom: 0px !important; text-transform: uppercase;">{{ $product->name }}</p>
                 <p style="margin-bottom: 0px !important;">{{ $product->price }} JOD</p>
             </div>
         </div>

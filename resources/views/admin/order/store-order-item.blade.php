@@ -83,7 +83,7 @@
                             <tr>
                                 <td>{{ $key+1 }}</td>
 
-                                <td>{{ $item['name'] }}</td>
+                                <td style="text-transform: uppercase">{{ $item['name'] }}</td>
                                 <td>{{ $item['price'] }} JOD</td>
                                 <td>{{ $item['quantity'] }}</td>
                                 <td>{{ $item['price'] * $item['quantity'] }} JOD</td>

@@ -160,7 +160,7 @@
                             <img src="{{ Storage::url($product->image) }}" style="width: 250px;">
                         </a>
 
-                        <p style="margin-bottom: 0px !important;">{{ $product->name }}</p>
+                        <p style="margin-bottom: 0px !important; text-transform: uppercase">{{ $product->name }}</p>
                         <p style="margin-bottom: 0px !important;">{{ $product->price }} JOD</p>
                     </div>
                 </div>

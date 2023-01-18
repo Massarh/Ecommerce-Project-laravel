@@ -42,7 +42,7 @@
                                 @foreach ($stores as $key=>$store)
                                     <tr>
                                         <td>{{ $key+1 }}</td> 
-                                        <td>{{ $store->name }}</td>
+                                        <td style="text-transform: uppercase">{{ $store->name }}</td>
                                         <td>{{ $store->users[0]->email }}</td> 
                                         <td><a href="{{route('item.order', [$store->slug])}}"> <button class="btn"  style="background-color: #232838;
                                             color: white;">Ordered Items</button>

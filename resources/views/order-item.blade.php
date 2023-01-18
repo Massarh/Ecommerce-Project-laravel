@@ -21,7 +21,7 @@
                     <img src="{{ Storage::url($item->image) }}" style="width:6rem; height:7rem;">
                 </span>
                 <div style="width:70%;max-width:300px; font-weight: 600; font-size: 14px;margin-left:10px">
-                    <p>{{$item->name}}</p>
+                    <p style=" text-transform: uppercase;">{{$item->name}}</p>
                     <p>Quantity: {{$item->quantity}}</p>
                     <p>Price: {{$item->price * $item->quantity}} <span>JOD</span></p>
                 </div>

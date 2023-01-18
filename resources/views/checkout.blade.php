@@ -347,7 +347,7 @@
                                                         style="width: 70px ;height:103px">
 
                                                 </th>
-                                                <td>{{$product['name']}}</td>
+                                                <td style="text-transform: uppercase">{{$product['name']}}</td>
                                                 <td>{{ $product['qty'] }}</td>
                                                 <td>{{ $product['price']*$product['qty'] }} JOD</td>
 

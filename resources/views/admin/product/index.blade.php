@@ -113,7 +113,7 @@
                             @foreach ($products as $product)
                             <tr>
                                 <td><img src="{{ Storage::url($product->image) }}" width="100"></td>
-                                <td>{{ $product->name }}</td>
+                                <td style="text-transform: uppercase">{{ $product->name }}</td>
                                 <td class="description-style">{!! $product->description !!}</td>
                                 <td class="description-style">{!! $product->additional_info !!}</td>
                                 <td>{{ $product->price }} JOD</td>
@@ -121,13 +121,13 @@
                                 @if(auth()->user()->user_role=='superadmin' &&
                                 app('router')->getRoutes()->match(app('request')->create(URL::current()))->getName() ==
                                 'product.getProductByCategorySlug')
-                                <td>{{ $product->store->name }}</td>
+                                <td style="text-transform: uppercase">{{ $product->store->name }}</td>
                                 @endif
 
                                 <td>{{ $product->section }}</td>
 
                                 @if(auth()->user()->user_role=='admin' || auth()->user()->user_role=='employee')
-                                <td>{{ $product->category->name }}</td>
+                                <td style="text-transform: uppercase">{{ $product->category->name }}</td>
                                 @endif
 
                                 @if(auth()->user()->user_role=='admin')

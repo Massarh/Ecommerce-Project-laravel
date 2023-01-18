@@ -60,7 +60,7 @@
                 </form>
 
                 <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" style="text-transform: uppercase"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         <img class="rounded-circle header-profile-user mt-1" alt="profile image"
                             style="margin-bottom: 6px !important;"

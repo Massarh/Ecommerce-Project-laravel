@@ -53,7 +53,7 @@
                                         title="product-img" class="avatar-md" style="width:200px; height:300px" />
                                 </td>
                                 <td style="min-width: 230px">
-                                    {{$product['name']}}
+                                    <p style="text-transform: uppercase">{{$product['name']}}</p>
                                     <hr style="border-top: 1px solid #989898; max-width: 400px !important;">
                                     <p style="max-width: 400px !important; font-size:12px">{!!$product['description']!!}
                                     </p>

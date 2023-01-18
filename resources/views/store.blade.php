@@ -85,7 +85,7 @@
 
 <div class="search-with-name-store mt-4">
     <div>
-        <h2 class="font-style-hint ms-2 mt-4" style="font-size: 30px; ">{{ $store->name }}</h2>
+        <h2 class="font-style-hint ms-2 mt-4" style="font-size: 30px; text-transform: uppercase;">{{ $store->name }}</h2>
     </div>
 
     <div class="container">
@@ -169,7 +169,7 @@
                         <a href="{{route('product.view',[$product->id])}}">
                             <img src="{{ Storage::url($product->image) }}" style="width: 250px;">
                         </a>
-                        <p style="margin-bottom: 0px !important;">{{ $product->name }}</p>
+                        <p style="margin-bottom: 0px !important; text-transform: uppercase;">{{ $product->name }}</p>
                         <p style="margin-bottom: 0px !important;">{{ $product->price }} JOD</p>
                     </div>
                 </div>

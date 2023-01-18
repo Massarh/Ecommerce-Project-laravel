@@ -27,7 +27,7 @@
                     <img class="rounded-circle header-profile-user"
                         src="{{ auth()->user()->image ?  Storage::url(auth()->user()->image):asset('/logo/user.png')}}"
                         alt="profile image">
-                    <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{ucfirst(Auth::user()->name)}}</span>
+                    <span class="d-none d-xl-inline-block ms-1" key="t-henry" style="text-transform: uppercase">{{ucfirst(Auth::user()->name)}}</span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
 

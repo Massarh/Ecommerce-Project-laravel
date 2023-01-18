@@ -102,7 +102,7 @@
                                         <tr >
                                             <td>{{ $key+1 }}</td> 
                                             <td><img src="{{ Storage::url($store->image) }}" alt=".." width="100"></td>
-                                            <td>{{ $store->name }}</td>
+                                            <td style="text-transform: uppercase">{{ $store->name }}</td>
                                             <td class="description-style">{{ $store->description }}</td>
                                             <td> {{App\Models\User::where('store_id', $store->id)->where('user_role', 'admin')->first()->email}} </td>
                                             
