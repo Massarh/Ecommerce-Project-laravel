@@ -129,6 +129,7 @@ class FrontProductListController extends Controller
             // categories
             $categories = $store->categories()->get()->pluck('name', 'id');
             // end categories
+
             // sections
             $sections = [];
             $menProductsCount = $store->products()->where('section', 'MEN')->count();
@@ -139,7 +140,6 @@ class FrontProductListController extends Controller
 
             $kidsProductsCount = $store->products()->where('section', 'KIDS')->count();
             $kidsProductsCount ? $sections += [3 => "KIDS"]  : "";
-
             //end sections
 
         } else {
@@ -147,6 +147,7 @@ class FrontProductListController extends Controller
             // categories
             $categories = Category::get()->pluck('name', 'id');
             // end categories
+
             // sections
             $sections = [1 => "MEN", 2 => "WOMEN", 3 => "KIDS"];
             //end sections
@@ -182,7 +183,6 @@ class FrontProductListController extends Controller
         } elseif (!$sectionId && !$storeId) {
             //all categories
             $categories = Category::get()->pluck('name', 'id');
-            return $categories;
         }
         return response()->json($categories);
     }

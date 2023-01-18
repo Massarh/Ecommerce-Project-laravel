@@ -191,7 +191,7 @@
 <script type="text/javascript">
     $("document").ready(function() {
         function loadCategoriesAndSectionsDependOnStore() { 
-            status=$("body").data('status');
+            var status=$("body").data('status');
             var urlParams = new URLSearchParams(window.location.search);
             // new
             var storeId = $('#storeId').val();
@@ -242,7 +242,7 @@
         }
 
         function loadCategoriesDependOnSection() {
-            status=$("body").data('status');
+            var status=$("body").data('status');
             var urlParams = new URLSearchParams(window.location.search);
             var sectionId = $(this).val(); 
             console.log(sectionId,"hello");

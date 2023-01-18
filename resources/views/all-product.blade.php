@@ -184,8 +184,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript">
     $("document").ready(function() {
+        /*      this function to choose categories and section Depend on Store      */
         function loadCategoriesAndSectionsDependOnStore() { 
-            status=$("body").data('status');
+            var status=$("body").data('status');
+            console.log(status);
+            console.log("hi1");
+
             var urlParams = new URLSearchParams(window.location.search);
             var storeId = $(this).val();
             $.ajax({
@@ -193,6 +197,7 @@
                 type: "GET",
                 dataType: "json",
                 success:function(data) {
+                    console.log(data);
                     // categories
                     $('select[name="categoryId"]').empty();
                     $('select[name="categoryId"]').append('<option value= >select</option>');
@@ -232,10 +237,14 @@
                 }
             })
         }
-    
+        /*       this function to choose categories Depend on store and section       */
         function loadCategoriesDependOnSection() {
-            status=$("body").data('status');
-            var urlParams = new URLSearchParams(window.location.search);
+            var status=$("body").data('status');
+            console.log(status);
+            console.log("hi2");
+
+            // urlParams for selected
+            var urlParams = new URLSearchParams(window.location.search); 
             var sectionId = $(this).val(); 
             var storeId = $('select[name="storeId"]').val();
             if(!sectionId && storeId){
@@ -255,6 +264,7 @@
                     $(`select[name="categoryId"] option[value=${urlParams.get('categoryId')}]`).prop("selected", true)
 
                 }
+                // three cases
             }else{
                 $.ajax({
                     url:`/ajax-categories?sectionId=${sectionId}&storeId=${storeId}`,
@@ -283,20 +293,25 @@
             }
         }
 
+        // change status to "load" before enter the two functions above
+        function loadfn(){
+            console.log("hi3");
+            $("body").data('status',"load");  
+        }
+        // change status to "change" before enter any function above
         function changefn(){
+            console.log("hi4");
             $("body").data('status',"change"); 
         }   
-        function loadfn(){
-            $("body").data('status',"load");  
-        }  
-        $('select[name="storeId"]').on('change',changefn);
-        $('select[name="sectionId"]').on('change',changefn);
-        $('select[name="storeId"]').on('change',loadCategoriesAndSectionsDependOnStore);
-        $('select[name="sectionId"]').on('change', loadCategoriesDependOnSection); 
-        
+
         $.proxy(loadfn)();
         $.proxy(loadCategoriesAndSectionsDependOnStore, $('select[name="storeId"]'))();
         $.proxy(loadCategoriesDependOnSection, $('select[name="sectionId"]'))();
+
+        $('select[name="storeId"]').on('change',changefn);
+        $('select[name="sectionId"]').on('change',changefn);
+        $('select[name="storeId"]').on('change',loadCategoriesAndSectionsDependOnStore);
+        $('select[name="sectionId"]').on('change', loadCategoriesDependOnSection);
     });
 
 </script>
